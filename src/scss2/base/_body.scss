@@ -1,0 +1,15 @@
+/**
+ * Body
+ *
+ * @since 1.0.0
+ */
+
+body {
+  max-width: rem-calc(1920);
+  margin: 0 auto;
+  background-color: $white;
+
+  .body-container-wrapper {
+    padding-top: 0 !important;
+  }
+}

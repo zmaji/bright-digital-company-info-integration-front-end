@@ -1,0 +1,25 @@
+/**
+ * Cover Slide-in
+ *
+ * Handy for header covers and popups
+ */
+
+@mixin cover-slidein($z, $bg: rgba($black, 0.6)) {
+  -webkit-overflow-scrolling: touch; //prevent body-scrolling on iOs
+  transition: all 0.3s ease-in-out;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  background: $bg;
+  overflow: hidden;
+  opacity: 0;
+  z-index: -1;
+  height: 0;
+
+  &.active {
+    z-index: z($z);
+    opacity: 1;
+    height: 100vh;
+  }
+}

@@ -1,0 +1,9 @@
+.u-text-shadow {
+  &--dark {
+    text-shadow: 0px 0px 40px rgba($theme-color-4, 0.43);
+  }
+
+  &--light {
+    text-shadow: 0px 0px 40px rgba($theme-color-6, 0.43);
+  }
+}
