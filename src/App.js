@@ -1,10 +1,22 @@
+import React, { Component } from 'react';
 import logo from './logo.svg';
-import './App.css';
+import './scss/main.scss';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
+class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+    }
+
+  }
+
+  render() {
+    const { } = this.state;
+
+    return (
+      <div className="App">
+      <header className="App-header u-bg-color--light-gray">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
@@ -19,7 +31,8 @@ function App() {
         </a>
       </header>
     </div>
-  );
+    )
+  }
 }
 
 export default App;
