@@ -1,0 +1,59 @@
+.u-hide-on-small {
+  @include breakpoint(small only) {
+    display: none;
+  }
+}
+
+.u-hide-on-medium {
+  @include breakpoint(medium only) {
+    display: none;
+  }
+}
+
+.u-hide-on-medium-up {
+  @include breakpoint(medium) {
+    display: none;
+  }
+}
+
+.u-hide-on-medium-down {
+  @include breakpoint(medium down) {
+    display: none;
+  }
+}
+
+.u-hide-on-large-up {
+  @include breakpoint(large) {
+    display: none;
+  }
+}
+
+.u-hide-on-large-down {
+  @include breakpoint(large down) {
+    display: none;
+  }
+}
+
+.u-hide-on-xlarge-up {
+  @include breakpoint(xlarge) {
+    display: none;
+  }
+}
+
+.u-hide-on-xlarge-down {
+  @include breakpoint(xlarge down) {
+    display: none;
+  }
+}
+
+.u-hide-on-xmlarge-up {
+  @include breakpoint(xmlarge) {
+    display: none;
+  }
+}
+
+.u-hide-on-xmlarge-down {
+  @include breakpoint(xmlarge down) {
+    display: none;
+  }
+}

@@ -23,18 +23,18 @@
   */
   &--xxxxl {
     @include breakpoint(small only) {
-      padding-top: 8.5rem !important;
-      padding-bottom: 8.5rem !important;
+      padding-top: 9.375rem !important;
+      padding-bottom: 9.375rem !important;
     }
   }
   &--top-xxxxl {
     @include breakpoint(small only) {
-      padding-top: 8.5rem !important;
+      padding-top: 9.375rem !important;
     }
   }
   &--bot-xxxxl {
     @include breakpoint(small only) {
-      padding-bottom: 8.5rem !important;
+      padding-bottom: 9.375rem !important;
     }
   }
 
@@ -43,18 +43,18 @@
   */
   &--xxxl {
     @include breakpoint(small only) {
-      padding-top: 6.5rem !important;
-      padding-bottom: 6.5rem !important;
+      padding-top: 7.8125rem !important;
+      padding-bottom: 7.8125rem !important;
     }
   }
   &--top-xxxl {
     @include breakpoint(small only) {
-      padding-top: 6.5rem !important;
+      padding-top: 7.8125rem !important;
     }
   }
   &--bot-xxxl {
     @include breakpoint(small only) {
-      padding-bottom: 6.5rem !important;
+      padding-bottom: 7.8125rem !important;
     }
   }
 
@@ -63,18 +63,18 @@
   */
   &--xxl {
     @include breakpoint(small only) {
-      padding-top: 5.5rem !important;
-      padding-bottom: 5.5rem !important;
+      padding-top: 6.25rem !important;
+      padding-bottom: 6.25rem !important;
     }
   }
   &--top-xxl {
     @include breakpoint(small only) {
-      padding-top: 5.5rem !important;
+      padding-top: 6.25rem !important;
     }
   }
   &--bot-xxl {
     @include breakpoint(small only) {
-      padding-bottom: 5.5rem !important;
+      padding-bottom: 6.25rem !important;
     }
   }
 
@@ -83,18 +83,18 @@
   */
   &--xl {
     @include breakpoint(small only) {
-      padding-top: 3.5rem !important;
-      padding-bottom: 3.5rem !important;
+      padding-top: 4.6875rem !important;
+      padding-bottom: 4.6875rem !important;
     }
   }
   &--top-xl {
     @include breakpoint(small only) {
-      padding-top: 3.5rem !important;
+      padding-top: 4.6875rem !important;
     }
   }
   &--bot-xl {
     @include breakpoint(small only) {
-      padding-bottom: 3.5rem !important;
+      padding-bottom: 4.6875rem !important;
     }
   }
 
@@ -103,38 +103,38 @@
   */
   &--l {
     @include breakpoint(small only) {
-      padding-top: 2rem !important;
-      padding-bottom: 2rem !important;
+      padding-top: 3.125rem !important;
+      padding-bottom: 3.125rem !important;
     }
   }
   &--top-l {
     @include breakpoint(small only) {
-      padding-top: 2rem !important;
+      padding-top: 3.125rem !important;
     }
   }
   &--bot-l {
     @include breakpoint(small only) {
-      padding-bottom: 2rem !important;
+      padding-bottom: 3.125rem !important;
     }
   }
 
   /**
-   * Padding medium
+   * Padding small
    */
   &--m {
     @include breakpoint(small only) {
-      padding-top: 1rem !important;
-      padding-bottom: 1rem !important;
+      padding-top: 1.5625rem !important;
+      padding-bottom: 1.5625rem !important;
     }
   }
   &--top-m {
     @include breakpoint(small only) {
-      padding-top: 1rem !important;
+      padding-top: 1.5625rem !important;
     }
   }
   &--bot-m {
     @include breakpoint(small only) {
-      padding-bottom: 1rem !important;
+      padding-bottom: 1.5625rem !important;
     }
   }
 
@@ -143,19 +143,40 @@
    */
   &--s {
     @include breakpoint(small only) {
-      padding-top: .5rem !important;
-      padding-bottom: .5rem !important;
+      padding-top: 0.625rem !important;
+      padding-bottom: 0.625rem !important;
     }
   }
   &--top-s {
     @include breakpoint(small only) {
-      padding-top: .5rem !important;
+      padding-top: 0.625rem !important;
     }
   }
 
   &--bot-s {
     @include breakpoint(small only) {
-      padding-bottom: .5rem !important;
+      padding-bottom: 0.625rem !important;
+    }
+  }
+
+  /**
+   * Padding xsmall
+   */
+  &--xs {
+    @include breakpoint(small only) {
+      padding-top: 0.3125rem !important;
+      padding-bottom: 0.3125rem !important;
+    }
+  }
+  &--top-xs {
+    @include breakpoint(small only) {
+      padding-top: 0.3125rem !important;
+    }
+  }
+
+  &--bot-xs {
+    @include breakpoint(small only) {
+      padding-bottom: 0.3125rem !important;
     }
   }
 }

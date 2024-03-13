@@ -21,6 +21,16 @@
     max-width: rem-calc(1440);
   }
 
+  &--landing {
+    width: 100%;
+    margin: 0 auto;
+
+    @include breakpoint(large) {
+      width: 92.5%;
+      max-width: rem-calc(1600);
+    }
+  }
+
   &--left {
     @include breakpoint(large) {
       width: 96.25%;

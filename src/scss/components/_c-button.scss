@@ -5,25 +5,27 @@
  */
 
 .c-button {
+  @include transition();
   $root: &;
-  position: relative;
   color: $white;
   fill: $white;
-  background: $black;
+  background: $theme-color-3;
   outline: 0;
   appearance: none;
   -webkit-appearance: none;
   cursor: pointer;
   line-height: 1;
   text-decoration: none;
-  font-size: rem-calc(16);
+  font-size: rem-calc(15);
   font-family: $primary-font-family;
+  border-radius: $radius-large;
   display: inline-block;
   padding: 1.25rem 2rem;
   font-weight: 600;
-  @include transition();
+  position: relative;
 
   @include breakpoint(medium) {
+    font-size: rem-calc(15);
     padding: 1.25rem 2rem;
   }
 
@@ -38,7 +40,7 @@
     height: 100%;
     transform: translateY(-50%);
     opacity: 0;
-    z-index: 2;
+    z-index: 4;
   }
 
   // Hover
@@ -59,69 +61,250 @@
 
   // Icon
   &__icon {
-    // @include transition(transform);
+    @include transition(transform);
     @include square(0.85rem);
     margin-bottom: 1px; // v-align
+    margin-left: 0.5rem;
 
-    &--move-right {
-      margin-left: 0.25rem;
+    &--left {
+      margin-right: 0.5rem;
+      margin-left: 0;
+      @include square(2rem);
     }
 
-    &--move-left {
-      margin-right: 0.25rem;
+    .body-container--landingspage & {
+      display: none;
     }
   }
 
   // Styles
   &--primary,
-  &--primary_target {
-    background: $black;
-    border-color: $black;
+  &--primary_target,
+  &--primary_target_up {
+    background: $gradient-65deg;
     color: $white;
     fill: $white;
+    border: 0;
+    overflow: hidden;
+
+    &::after {
+      @include absolute();
+      @include transition();
+      content: '';
+      background: $gradient-65deg;
+      border-radius: $radius-large;
+      z-index: 1;
+      opacity: 1;
+    }
+
+    &::before {
+      transition: all 0.3s;
+      content: '';
+      background: $white;
+      width: 0.25rem;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 2;
+      opacity: 1;
+      box-shadow: 0 0 10px 10px $white;
+      transform: skew(-15deg) translateX(-400%);
+      pointer-events: none;
+    }
+
+    #{$root}__content,
+    #{$root}__icon {
+      position: relative;
+      color: $white;
+      z-index: 3;
+    }
 
     &:hover {
-      background: $black;
+      background: $gradient-2-bottom;
       color: $white;
       fill: $white;
+
+      #{$root}__content {
+        color: $white;
+      }
+
+      &::after {
+        opacity: 0;
+      }
+
+      &::before {
+        left: 100%;
+        transform: translateX(400%) skew(-15deg);
+      }
     }
   }
 
-  &--secondary {
-    background: $white;
+  &--black {
+    @include button($black, $dark-gray);
+  }
+
+  &--white-border {
+    color: $white;
+    fill: $white;
+    background-color: transparent;
     border-color: $white;
-    color: $black;
-    fill: $black;
+
+    &:hover,
+    &:active {
+      color: $black;
+      fill: $black;
+      background-color: $white;
+      border-color: $white;
+    }
+  }
+
+  &--clean {
+    position: relative;
+    background-color: transparent;
+    border: 0;
+    color: $almost-black;
+    fill: $almost-black;
+    padding: 0;
+    border-radius: 0;
 
     &:hover {
+      background-color: transparent;
+      color: $almost-black;
+      fill: $almost-black;
+    }
+
+    // line
+    &::before {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background-color: $almost-black;
+      transition: all 0.25s linear 0s;
+    }
+    &:hover::before {
+      width: 100%;
+    }
+  }
+
+  &--white {
+    color: $black;
+    fill: $black;
+    background-color: $white;
+    border-color: $white;
+
+    &:hover,
+    &:active {
       color: $white;
       fill: $white;
-      background: $black;
+      background-color: $black;
+      border-color: $black;
+    }
+    @include breakpoint(small only) {
+      padding-left: 0.75rem;
+      padding-right: 0.75rem;
+    }
+  }
+
+  &--border {
+    color: $black;
+    fill: $black;
+    background-color: $white;
+    border-color: $black;
+
+    &:hover,
+    &:active {
+      color: $white;
+      fill: $white;
+      background-color: $black;
       border-color: $black;
     }
   }
 
+  &--transparent {
+    background: transparent;
+    color: $almost-black;
+    fill: $almost-black;
+    border: 1px solid $almost-black;
+
+    &:hover {
+      color: $black;
+      fill: $black;
+    }
+  }
+
+  &--secondary {
+    background: $almost-black;
+    color: $white;
+    fill: $white;
+
+    #{$root}__content {
+      color: $white;
+    }
+
+    &:hover {
+      color: $white;
+      fill: $white;
+      background: $almost-black;
+
+      #{$root}__content {
+        color: $white;
+      }
+    }
+  }
+
+  &--tertiary_gradient,
   &--tertiary {
     padding: 0;
     background: transparent;
     border-radius: 0;
-    color: $black;
-    fill: $black;
+    font-size: rem-calc(16);
+    transition: 0.3s;
+    color: $almost-black;
+
+    #{$root}__content {
+      color: $almost-black;
+      fill: $almost-black;
+    }
+
+    #{$root}__icon {
+      fill: $almost-black !important;
+    }
 
     &:hover {
-      color: $black;
     }
   }
 
+  &--tertiary-white-left,
   &--tertiary-white {
     padding: 0;
     background: transparent;
     border-radius: 0;
+    font-size: rem-calc(16);
+    transition: 0.3s;
     color: $white;
-    fill: $white;
 
-    &:hover {
+    #{$root}__content {
       color: $white;
+      fill: $white;
+    }
+
+    #{$root}__icon {
+      fill: $white !important;
+      margin-left: 0;
+      margin-right: 0.5rem;
+    }
+  }
+
+  &__gradient-icon {
+    @include breakpoint(small only) {
+      background-image: url('https://248909.fs1.hubspotusercontent-na1.net/hubfs/248909/Assest%20nieuwe%20site/blob.svg');
+      background-size: 100%;
+      background-repeat: no-repeat;
+      background-position: center;
     }
   }
 }

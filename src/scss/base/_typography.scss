@@ -10,31 +10,14 @@
 html {
   font-family: $primary-font-family;
   font-size: 16px;
-  color: $almost-black;
-
+  color: $primary-font-color;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 }
 
-h1,
-.h1,
-h2,
-.h2,
-h3,
-.h3,
-h4,
-.h4 {
-  font-family: $heading-font-family;
-  font-weight: 800;
-}
-
 body {
-  font-size: rem-calc(16);
-
-  @include breakpoint(medium) {
-    font-size: rem-calc(18);
-  }
+  font-size: rem-calc(18);
 }
 
 /**
@@ -42,8 +25,32 @@ body {
  */
 p,
 .p {
-  line-height: 1.7;
+  line-height: 1.9;
+  font-size: 1.125rem;
   margin-bottom: 1rem;
+
+  .u-text-small & {
+    font-size: 1rem;
+    color: $gray;
+    line-height: 2;
+  }
+
+  a:not(.c-button) {
+    transition: 0.3s;
+    font-weight: 500;
+    text-decoration: underline;
+    color: inherit;
+
+    &:hover {
+      color: $white;
+      background: $almost-black;
+      text-decoration: none;
+    }
+  }
+
+  strong {
+    font-weight: 500;
+  }
 }
 
 /**
@@ -61,8 +68,14 @@ h5,
 .h5,
 h6,
 .h6 {
+  font-family: $heading-font-family;
   line-height: 1.2;
   margin-bottom: 1rem;
+
+  span {
+    font-family: $secondary-font-family;
+    font-style: italic;
+  }
 }
 
 /**
@@ -70,13 +83,14 @@ h6,
  */
 h1,
 .h1 {
-  font-size: rem-calc(45);
+  font-size: rem-calc(35);
+  font-weight: 400;
 
   @include breakpoint(medium) {
-    font-size: rem-calc(52);
+    font-size: rem-calc(45);
   }
   @include breakpoint(large) {
-    font-size: rem-calc(64);
+    font-size: rem-calc(56);
   }
 }
 
@@ -85,13 +99,14 @@ h1,
  */
 h2,
 .h2 {
-  font-size: rem-calc(30);
+  font-size: rem-calc(36);
+  font-weight: 400;
 
   @include breakpoint(medium) {
-    font-size: rem-calc(34);
+    font-size: rem-calc(40);
   }
   @include breakpoint(large) {
-    font-size: rem-calc(38);
+    font-size: rem-calc(52);
   }
 }
 
@@ -100,14 +115,12 @@ h2,
  */
 h3,
 .h3 {
-  font-size: rem-calc(24);
+  font-size: rem-calc(26);
+  font-weight: 400;
+  line-height: 1.3;
 
   @include breakpoint(medium) {
-    font-size: rem-calc(27);
-  }
-
-  @include breakpoint(large) {
-    font-size: rem-calc(30);
+    font-size: rem-calc(40);
   }
 }
 
@@ -116,14 +129,12 @@ h3,
  */
 h4,
 .h4 {
-  font-size: rem-calc(18);
+  font-size: rem-calc(22);
+  font-weight: 400;
+  line-height: 1.3;
 
   @include breakpoint(medium) {
-    font-size: rem-calc(21);
-  }
-
-  @include breakpoint(large) {
-    font-size: rem-calc(24);
+    font-size: rem-calc(30);
   }
 }
 
@@ -132,14 +143,10 @@ h4,
  */
 h5,
 .h5 {
-  font-size: rem-calc(16);
+  font-size: rem-calc(20);
 
   @include breakpoint(medium) {
-    font-size: rem-calc(18);
-  }
-
-  @include breakpoint(large) {
-    font-size: rem-calc(20);
+    font-size: rem-calc(24);
   }
 }
 
@@ -148,7 +155,20 @@ h5,
  */
 h6,
 .h6 {
+  color: $darker-gray-alt;
   font-size: rem-calc(14);
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 1px;
+
+  @include breakpoint(medium) {
+    font-size: rem-calc(16);
+  }
+
+  .body-container--landingspage & {
+    color: $almost-black;
+    font-size: rem-calc(14);
+  }
 }
 
 /**
@@ -156,14 +176,19 @@ h6,
  */
 a {
   @include transition();
-  text-decoration: none;
+  color: inherit;
   cursor: pointer;
-  color: $dark-gray;
-  fill: $dark-gray;
+  text-decoration: none;
 
-  &:hover {
-    color: $primary-color;
-    fill: $primary-color;
+  &:not([class]) {
+    // All A tags without a class
+    text-decoration: underline;
+
+    &:hover {
+      background-color: $almost-black;
+      color: $white;
+      text-decoration: none;
+    }
   }
 
   .c-icon {
@@ -191,7 +216,7 @@ i {
  */
 mark,
 ins {
-  background-color: lighten($almost-black, 80);
+  background-color: lighten($theme-color-1, 80);
   text-decoration: none;
 }
 
@@ -234,7 +259,7 @@ q {
 
   &::before,
   &::after {
-    content: "\0022";
+    content: '\0022';
   }
 }
 
@@ -242,7 +267,7 @@ q {
  * HR
  */
 hr {
-  background-color: $gray;
+  background-color: $light-blue;
   border: 0;
   height: 1px;
   width: 100%;

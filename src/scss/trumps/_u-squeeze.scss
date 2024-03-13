@@ -1,17 +1,17 @@
 .u-squeeze {
   margin: 0 auto;
-  
+
   &--xs {
     max-width: rem-calc(600);
   }
   &--s {
-    max-width: rem-calc(750);
+    max-width: rem-calc(800);
   }
   &--m {
     max-width: rem-calc(900);
   }
   &--l {
-    max-width: rem-calc(1036);
+    max-width: rem-calc(1000);
   }
   &--xl {
     max-width: rem-calc(1136);
