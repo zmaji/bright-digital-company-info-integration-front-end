@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './scss2/main.scss';
+import './scss/main.scss';
 import brightDigitalLogo from './images/logo-bright-zw.svg';
 
 class App extends Component {
