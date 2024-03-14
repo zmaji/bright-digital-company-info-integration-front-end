@@ -1,0 +1,14 @@
+<svg id="icon-share-twitter" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="19.63" height="15.901" viewBox="0 0 19.63 15.901">
+  <defs>
+    <linearGradient id="linear-gradient" y1="1" x2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ef9d22"/>
+      <stop offset="0.422" stop-color="#fda15f"/>
+      <stop offset="1" stop-color="#fed736"/>
+    </linearGradient>
+  </defs>
+  <g id="icon-share-twitter-2" data-name="icon-share-twitter" transform="translate(0 0)">
+    <g id="Laag_1" data-name="Laag 1">
+      <path id="Path_64" data-name="Path 64" d="M0,14.179a11.41,11.41,0,0,0,6.172,1.81A11.4,11.4,0,0,0,17.623,4.01,8.086,8.086,0,0,0,19.63,1.922a8.028,8.028,0,0,1-2.32.638A4.061,4.061,0,0,0,19.05.333a8.22,8.22,0,0,1-2.552.975A4.032,4.032,0,0,0,9.67,4.979,11.393,11.393,0,0,1,1.369.774,4.026,4.026,0,0,0,2.616,6.151a3.945,3.945,0,0,1-1.827-.5,4.061,4.061,0,0,0,3.231,4,4.026,4.026,0,0,1-1.821.07,4.026,4.026,0,0,0,3.765,2.8A8.121,8.121,0,0,1,0,14.179Z" transform="translate(0 -0.088)" fill="url(#linear-gradient)"/>
+    </g>
+  </g>
+</svg>

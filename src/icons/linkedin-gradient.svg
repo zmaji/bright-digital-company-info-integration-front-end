@@ -1,0 +1,18 @@
+<svg id="icon-share-linkedin" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20.342" height="20.356" viewBox="0 0 20.342 20.356">
+  <defs>
+    <linearGradient id="linear-gradient" x1="-1.124" y1="1" x2="6.239" y2="-0.629" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ef9d22"/>
+      <stop offset="0.422" stop-color="#fda15f"/>
+      <stop offset="1" stop-color="#fed736"/>
+    </linearGradient>
+  </defs>
+  <g id="Laag_1" data-name="Laag 1">
+    <g id="Group_40" data-name="Group 40">
+      <g id="Group_39" data-name="Group 39">
+        <rect id="Rectangle_161" data-name="Rectangle 161" width="4.203" height="13.564" transform="translate(0.4 6.793)" fill="url(#linear-gradient)"/>
+        <path id="Path_66" data-name="Path 66" d="M2.486,5.007A2.508,2.508,0,1,0,0,2.484H0A2.5,2.5,0,0,0,2.486,5.007Z" transform="translate(0 0.01)" fill="url(#linear-gradient)"/>
+      </g>
+      <path id="Path_67" data-name="Path 67" d="M13.875,15.469c0-1.909.881-3.049,2.56-3.049,1.547,0,2.286,1.1,2.286,3.049v7.118H22.9V14c0-3.633-2.057-5.387-4.936-5.387a4.743,4.743,0,0,0-4.092,2.22V9.024H9.85V22.588h4.025Z" transform="translate(-2.561 -2.231)" fill="url(#linear-gradient)"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,13 @@
+<svg id="Layer_1" data-name="Layer 1"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 8 8.8">
+  <defs>
+    <style>.cls-1{fill:#ffd736;}</style>
+    <linearGradient id="linear-gradient" x1="-463.43" y1="451.38" x2="-463.43" y2="452.38" gradientTransform="matrix(0, 8.8, 8, 0, -3611, 4082.6)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ef9d22"/>
+      <stop offset="0.42" stop-color="#fda15f"/>
+      <stop offset="1" stop-color="#fed736"/>
+    </linearGradient>
+  </defs>
+  <path id="Polygon_1" data-name="Polygon 1" class="cls-1" d="M8,4.4,0,8.8V0Z"/>
+</svg> 

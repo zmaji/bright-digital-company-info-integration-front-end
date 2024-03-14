@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38">
+  <g id="icon_default_glyph:play_" data-name="icon [default][glyph:play]" transform="translate(0 0.18)">
+    <rect id="icon_area" data-name="icon area" width="38" height="38" transform="translate(0 -0.18)" fill="inherit" opacity="0"/>
+    <g id="icon" transform="translate(9.603 3.841)">
+      <path id="polygon" d="M14.517,1.357a1,1,0,0,1,1.7,0l13.561,21.7a1,1,0,0,1-.848,1.53H1.8a1,1,0,0,1-.848-1.53Z" transform="translate(24.584) rotate(90)" fill="inherit"/>
+    </g>
+  </g>
+</svg>

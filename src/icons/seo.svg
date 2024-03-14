@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="65.438" height="65.438" viewBox="0 0 65.438 65.438">
+  <g id="Group_3767" data-name="Group 3767" transform="translate(-151 -8394.167)">
+    <g id="Group_3769" data-name="Group 3769" transform="translate(152 8395.167)">
+      <g id="Group_3767-2" data-name="Group 3767" transform="translate(0 31.719)">
+        <line id="Line_589" data-name="Line 589" x2="19.688" transform="translate(43.75)" fill="none" stroke="inherit" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>
+        <line id="Line_590" data-name="Line 590" x2="19.688" fill="none" stroke="inherit" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>
+      </g>
+      <g id="Group_3768" data-name="Group 3768" transform="translate(31.719)">
+        <line id="Line_591" data-name="Line 591" y1="19.688" fill="none" stroke="inherit" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>
+        <line id="Line_592" data-name="Line 592" y1="19.688" transform="translate(0 43.75)" fill="none" stroke="inherit" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>
+      </g>
+    </g>
+    <circle id="Ellipse_444" data-name="Ellipse 444" cx="2.734" cy="2.734" r="2.734" transform="translate(180.984 8424.151)" fill="none" stroke="inherit" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>
+    <circle id="Ellipse_445" data-name="Ellipse 445" cx="18.034" cy="18.034" r="18.034" transform="translate(165.685 8408.852)" fill="none" stroke="inherit" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>
+    <path id="Path_2175" data-name="Path 2175" d="M207.054,8423.936a26.285,26.285,0,1,1-26.285-26.283A26.274,26.274,0,0,1,207.054,8423.936Z" transform="translate(2.95 2.949)" fill="none" stroke="inherit" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>
+  </g>
+</svg>

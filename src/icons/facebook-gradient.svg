@@ -1,0 +1,14 @@
+<svg id="icon-share-facebook" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="9.992" height="21.652" viewBox="0 0 9.992 21.652">
+  <defs>
+    <linearGradient id="linear-gradient" x1="-0.606" y1="1" x2="1.438" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ef9d22"/>
+      <stop offset="0.422" stop-color="#fda15f"/>
+      <stop offset="1" stop-color="#fed736"/>
+    </linearGradient>
+  </defs>
+  <g id="icon-share-facebook-2" data-name="icon-share-facebook" transform="translate(0 0)">
+    <g id="Laag_1" data-name="Laag 1">
+      <path id="Path_65" data-name="Path 65" d="M2.268,21.652H6.63V10.732H9.669l.323-3.645H6.63V5c0-.866.173-1.2,1-1.2H9.992V0H6.976C3.732,0,2.252,1.425,2.252,4.165V7.086H0v3.7H2.268Z" fill="url(#linear-gradient)"/>
+    </g>
+  </g>
+</svg>

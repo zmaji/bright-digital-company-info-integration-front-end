@@ -1,21 +1,121 @@
-.c-app-content__container-left {
-  width: 50%;
+.c-app-content {
+  &__container-left {
+    width: 100%;
+
+    @include breakpoint(large) {
+      width: 50%;
+    }
+  };
+  
+  &__container-left-inner {
+    max-width: 720px;
+    margin-left: auto;
+    padding-left: 4rem;
+
+    @include breakpoint(large) {
+      padding-left: 6rem;
+    }
+
+    @include breakpoint(1920px) {
+      padding-left: 0rem;
+    }
+  };
+  
+  &__container-right {
+    width: 100%;
+
+    @include breakpoint(large) {
+      width: 50%;
+    }
+  };
+  
+  &__container-right-inner {
+    max-width: 720px;
+    margin-right: auto;
+    padding-right: 4rem;
+
+    @include breakpoint(large) {
+      padding-right: 6rem;
+    }
+
+    @include breakpoint(1920px) {
+      padding-right: 0rem;
+    }
+  };
+
+  &__bright-logo {
+    width: 100%;
+    max-width: rem-calc(110);
+    margin-bottom: rem-calc(23);
+  }
+
+  &__header-container {
+    width: 100%;
+    padding-top: 2rem;
+
+    &--right {
+      text-align: right;
+    }
+  }
+
+  &__review {
+    width: 100%;
+    max-width: rem-calc(110);
+    margin-left: auto;
+  }
+
+  &__h1-small {
+    font-weight: 700;
+
+    @include breakpoint(large) {
+      font-size: rem-calc(42);
+    }
+  }
+
+  &__span {
+    display: block;
+  }
+
+  &__inner-content {
+    max-width: rem-calc(481);
+  }
+
+  &__remember-me {
+    gap: rem-calc(9);
+  }
+
+  &__p-small {
+    font-size: rem-calc(14);
+
+    &--underline {
+      font-size: rem-calc(14);
+      text-decoration: underline;
+    }
+  }
+
+  &__p-light {
+    margin-top: 0;
+    font-size: rem-calc(16);
+    font-weight: 300;
+  }
+
+  &__p-medium {
+    margin-top: 0;
+    font-weight: 500;
+  }
+
+  &__p-grey {
+    color: $disclaimer;
+    margin-top: 0;
+  }
+
+  &__line {
+    hr {
+      margin-top: 0;
+      width: calc(100% / 2.2);
+      background-color: $almost-black;
+      gap: rem-calc(12);
+    }
+  }
 }
 
-.c-app-content__container-left-inner {
-  width: 100%;
-  max-width: 720px;
-  margin-left: auto;
-  padding-right: 4rem;
-}
-
-.c-app-content__container-right {
-  width: 50%;
-}
-
-.c-app-content__container-right-inner {
-  width: 100%;
-  max-width: 720px;
-  margin-left: auto;
-  padding-right: 4rem;
-}

@@ -27,12 +27,15 @@ $star: #F5C26B;
 $gradient-color-1: #f59f1c;
 $gradient-color-2: #fda15f;
 $gradient-color-3: #ffcc2a;
+$gradient-color-4: #ef9d22;
+$gradient-color-5: #fed736;
 $primary-font-color: $almost-black;
 $see-through: rgba(33, 33, 33, 0.6);
 
 $gradient-45deg: linear-gradient(45deg, $gradient-color-1 0%, $gradient-color-2 50%, $gradient-color-3 100%);
 $gradient-65deg: linear-gradient(65deg, $gradient-color-1 0%, $gradient-color-2 50%, $gradient-color-3 100%);
 $gradient-65deg-reversed: linear-gradient(65deg, $gradient-color-3 0%, $gradient-color-2 50%, $gradient-color-1 100%);
+$gradient-button: linear-gradient(5deg, $gradient-color-4 0%, $gradient-color-2 50%, $gradient-color-5 100%);
 
 // Theme colors
 $theme-color-1: #ffd736; 

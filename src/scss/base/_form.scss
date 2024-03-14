@@ -1,21 +1,21 @@
-// /**
-//  * Form
-//  *
-//  * @since 1.0.0
-//  */
+/**
+ * Form
+ *
+ * @since 1.0.0
+ */
 
-// /*
-//  * NOTE <input>:
-//  * Make min-height and line-height the same for cross-browser height;
-//  * Firefox/Safari/Chrome needs MIN-height for <select>;
-//  * Edge needs height;
-//  */
+/*
+ * NOTE <input>:
+ * Make min-height and line-height the same for cross-browser height;
+ * Firefox/Safari/Chrome needs MIN-height for <select>;
+ * Edge needs height;
+ */
 
-// .hf-warning {
-//   display: none;
-// }
+.hf-warning {
+  display: none;
+}
 
-// form {
+form {
 //   h1,
 //   h2,
 //   h3,
@@ -25,74 +25,79 @@
 //   p {
 //     width: 100%;
 //   }
-// }
 
-// .hs-form-field {
-//   $root: &;
+display: flex;
+flex-wrap: wrap;
+flex-direction: column;
 
-//   fieldset {
-//     display: block;
-//     width: 100%;
-//     margin-bottom: 2rem;
-//     border: 2px solid lighten($gray, 20%);
-//     padding: 1.5rem;
-//   }
-
-//   legend {
-//     padding: 0 1rem;
-//     color: $gray;
-//   }
-
-//   input[type='text'],
-//   input[type='email'],
+  input[type='text'],
+  input[type='email'],
 //   input[type='number'],
 //   input[type='tel'],
 //   input[type='url'],
 //   input[type='search'],
-//   input[type='submit'],
-//   select,
-//   textarea {
-//     @include transition(all);
-//     width: 100%;
-//     z-index: 1;
-//     position: relative;
-//     -webkit-appearance: none;
-//     appearance: none;
-//     font-family: $primary-font-family;
-//     font-size: rem-calc(16);
-//     background-color: $input-background;
-//     color: $input-color;
-//     outline: 0;
-//     border: 0;
-//     border-bottom: 1px solid $input-border;
-//     border-radius: 0;
-//     box-shadow: none;
-//     margin: 0;
-//     min-height: 2.5rem; // see NOTE
-//     line-height: 2.5rem; // see NOTE
+  input[type='submit'],
+  input[type='password'],
+  select,
+  textarea {
+    @include transition(all);
+    z-index: 1;
+    position: relative;
+    -webkit-appearance: none;
+    appearance: none;
+    font-family: $primary-font-family;
+    font-size: rem-calc(16);
+    background-color: $white;
+    color: $input-color;
+    outline: 0;
+    border: 1px solid $light-blue-gray-alt;
+    border-radius: rem-calc(300);
+    box-shadow: none;
+    padding: 0 2rem;
+    margin: 0;
+    margin-top: rem-calc(10);
+    margin-bottom: rem-calc(25);
+    min-height: 3.5rem;
+    line-height: 3.5rem;
 
-//     @supports (-ms-ime-align: auto) {
-//       /* Edge */
-//       height: 2.5rem; // see NOTE
-//     }
+    @supports (-ms-ime-align: auto) {
+      /* Edge */
+      height: 3.5rem;
+    }
 
-//     &:focus {
-//       border-color: $input-focus;
-//     }
+    &:focus {
+      border-color: $input-focus;
+    }
 
-//     &:disabled {
-//       background-color: $input-disabled;
-//     }
+    &:disabled {
+      background-color: $input-disabled;
+    }
 
-//     &::placeholder {
-//       color: $input-placeholder;
-//       opacity: 1;
-//     }
+    &::placeholder {
+      color: $input-placeholder;
+      opacity: 1;
+    }
 
-//     &::-ms-clear {
-//       display: none;
-//     }
-//   }
+    &::-ms-clear {
+      display: none;
+    }
+  }
+
+  input[type='submit'] {
+    border: none;
+    border-radius: rem-calc(300);
+    color: $white;
+    font-size: rem-calc(18);
+    font-weight: 600;
+    background-image: $gradient-button;
+    min-height: 3.5rem;
+    line-height: 3.5rem;
+  }
+
+  label {
+    font-size: rem-calc(16);
+    font-weight: 500;
+  }
 
 //   textarea {
 //     @include transition();
@@ -112,7 +117,7 @@
 //   select {
 //     color: $input-placeholder;
 //     appearance: none;
-//     background-image: url('../img/chevron-down.svg');
+//     background-image: url('../../icons/chevron-down.svg');
 //     background-position: calc(100% - 14px) center;
 //     background-repeat: no-repeat;
 //     background-size: 20px 20px;
@@ -132,7 +137,7 @@
 //   }
 
 //   input[type='search'] {
-//     background-image: url('../img/search.svg');
+//     background-image: url('../../icons/search.svg');
 //     background-position: left center;
 //     background-repeat: no-repeat;
 //     background-size: 20px 20px;
@@ -142,18 +147,5 @@
 //       -webkit-appearance: none; //safari: remove left-padding
 //     }
 //   }
+}
 
-//   .u-text-color--white {
-//     input[type='text'],
-//     input[type='email'],
-//     input[type='number'],
-//     input[type='tel'],
-//     input[type='url'],
-//     input[type='search'],
-//     input[type='submit'],
-//     select,
-//     textarea {
-//       color: $white;
-//     }
-//   }
-// }
