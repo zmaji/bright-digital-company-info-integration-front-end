@@ -1,0 +1,31 @@
+.c-sidebar {
+    &__item-container {
+        margin-bottom: rem-calc(20);
+    }
+
+    &__item {
+        &-title {
+            font-size: rem-calc(16);
+        }
+
+        &-icon {
+            max-width: rem-calc(18);
+            margin-right: rem-calc(13);
+        }
+    }
+
+    &__category {
+        &-title {
+            font-size: rem-calc(14);
+            letter-spacing: rem-calc(1);
+            text-transform: uppercase;
+            color: $text-gray;
+        }
+    }
+
+    &__group {
+        &--last {
+            margin-bottom: rem-calc(460);
+        }
+    }
+}
