@@ -1,26 +1,24 @@
 import React from 'react';
-import Sidebar from '../components/Sidebar/Sidebar';
-import SidebarGroup from '../components/Sidebar/SidebarGroup';
-import SidebarItem from '../components/Sidebar/SidebarItem';
-import homeIcon from '../icons/auto.svg';
-
-import sidebarData from '../data/defaultSideBar';
+import DefaultLayout from '../components/Layout/DefaultLayout';
+import Button from '../components/Elements/Button';
 
 const DashboardOverview = () => {
     return (
-        <Sidebar>
-            <SidebarItem icon={homeIcon} title='Home' />
-                {sidebarData.map((sidebarGroup, index) => (
-                    <SidebarGroup
-                        key={index}
-                        title={sidebarGroup.title}
-                        items={sidebarGroup.items}
-                        link={sidebarGroup.link}
-                        isLast={sidebarGroup.isLast || false}
-                    />
-                ))}
-        </Sidebar>
+        <div className='v-dashboard-overview'>
+            <DefaultLayout>
+                <div className='v-dashboard-overview__content-container'>
+                    <h1 className='v-dashboard-overview__content-title'>
+                        Start retrieving Bright data
+                    </h1>
+
+                    <p className='v-dashboard-overview__content-text'>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique duis cursus. 
+                    </p>
+
+                    <Button title='Set up properties' style='primary' link='/' icon='Plus' animation='move-right' />
+                </div>
+            </DefaultLayout>
+        </div>
     );
   };
-
 export default DashboardOverview;

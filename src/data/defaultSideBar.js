@@ -1,26 +1,28 @@
+import carIcon from '../icons/auto.svg';
+
 const sidebarData = [
     {
         title: 'Analytics',
         items: [
-            { icon: homeIcon, title: 'Test menu item 1', link: '/test' },
-            { icon: homeIcon, title: 'Test menu item 2', link: '/test' },
-            { icon: homeIcon, title: 'Test menu item 3', link: '/test' }
+            { icon: carIcon, title: 'Test menu item 1', link: '/' },
+            { icon: carIcon, title: 'Test menu item 2', link: '/' },
+            { icon: carIcon, title: 'Test menu item 3', link: '/test' }
         ],
     },
     {
         title: 'Set-up',
         items: [
-            { icon: homeIcon, title: 'Test menu item 4', link: '/test' },
-            { icon: homeIcon, title: 'Test menu item 5', link: '/test' }
-        ],
-        isLast: true
+            { icon: carIcon, title: 'Test menu item 4', link: '/' },
+            { icon: carIcon, title: 'Test menu item 5', link: '/' }
+        ]
     },
     {
         items: [
-            { icon: homeIcon, title: 'Support', link: '/test' },
-            { icon: homeIcon, title: 'Settings', link: '/test' },
-            { icon: homeIcon, title: 'Logout', link: '/test' }
-        ]
+            { icon: carIcon, title: 'Support', link: '/' },
+            { icon: carIcon, title: 'Settings', link: '/' },
+            { icon: carIcon, title: 'Logout', link: '/' }
+        ],
+        isLast: true
     },
 ];
 

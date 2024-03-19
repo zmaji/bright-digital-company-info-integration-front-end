@@ -1,0 +1,21 @@
+.c-default-layout {
+    background-color: #FAFAFB;
+
+    &__sidebar {
+        width: rem-calc(250);
+    }
+
+    &__container {
+        padding: 3.5rem 0 6.5rem 0;
+        min-height: calc(100vh - 251px);
+    }
+
+    &__content-wrapper {
+        background-color: $white;
+        width: calc(100% - 250px);
+    }
+
+    &__content-container {
+        padding: 0 70px 0 70px;
+    }
+}

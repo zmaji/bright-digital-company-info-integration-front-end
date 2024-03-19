@@ -1,0 +1,14 @@
+.v-dashboard-overview {
+    &__content-container {
+        max-width: rem-calc(500);
+    }
+
+    &__content-title {
+        font-size: rem-calc(48);
+    }
+
+    &__content-text {
+        line-height: 150%;
+        padding-bottom: rem-calc(6);
+    }
+}

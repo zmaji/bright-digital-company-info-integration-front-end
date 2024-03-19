@@ -1,5 +1,16 @@
 .c-sidebar {
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+
+    &__items-container {
+        display: flex;
+        flex-direction: column;
+    }
+
     &__item-container {
+        width: 100%;
         margin-bottom: rem-calc(20);
     }
 
@@ -24,8 +35,9 @@
     }
 
     &__group {
+        width: 100%;
         &--last {
-            margin-bottom: rem-calc(460);
+            margin-top: auto;
         }
     }
 }

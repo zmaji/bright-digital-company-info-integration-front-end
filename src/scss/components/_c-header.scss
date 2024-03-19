@@ -1,0 +1,21 @@
+.c-header {
+    background-color: $white;
+    box-shadow: $header-shadow;
+
+    &__container {
+        padding: rem-calc(16) 0 rem-calc(12);
+    }
+
+    &__logo {
+        width: 100%;
+        max-width: rem-calc(88);
+    }
+
+    &__profile-circle {
+        height: rem-calc(40);
+        width: rem-calc(40);
+        border-radius: 50%;
+        background-color: $light-gray; 
+        margin-left: rem-calc(18);
+    }
+}

@@ -7,14 +7,16 @@ const SidebarGroup = ({ title, items, isLast, link }) => {
         <div className={`c-sidebar__group ${isLast ? 'c-sidebar__group--last' : ''}`}>
             <React.Fragment>
                 {title && <SidebarCategory title={title} />}
-                    {items.map((item, index) => (
-                        <SidebarItem
-                            key={index}
-                            icon={item.icon}
-                            title={item.title}
-                            link={item.link}
-                        />
-                    ))}
+                    <div className="c-sidebar__items-container">
+                        {items.map((item, index) => (
+                            <SidebarItem
+                                key={index}
+                                icon={item.icon}
+                                title={item.title}
+                                link={link}
+                            />
+                        ))}
+                    </div>
             </React.Fragment>
         </div>
     );
