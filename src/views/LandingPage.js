@@ -4,6 +4,7 @@ import Button from '../components/elements/Button';
 import Form from '../components/form/Form';
 import Label from '../components/form/Label'; 
 import Input from '../components/form/Input';
+import { Link } from 'react-router-dom';
 
 const LandingPage = () => {
     return (
@@ -47,8 +48,8 @@ const LandingPage = () => {
                         <Button title='Sign in' style='primary_submit' link='/overview'/>
 
                         <div className="v-landingpage-content__no-account u-flex u-flex-v-center">
-                            <p className='v-landingpage-content__p-light'>Don't have an account?&nbsp;</p>
-                            <p className='v-landingpage-content__p-medium'>Sign up</p>
+                            <p className='v-landingpage-content__no-account__title'>Don't have an account?&nbsp;</p>
+                            <Link to='/register' className='v-landingpage-content__no-account__title-secondary'>Sign up</Link>
                         </div>
                     </div>
                 </div>

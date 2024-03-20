@@ -1,4 +1,4 @@
-.v-landingpage {
+.v-register {
   min-height: 100vh;
 
   &-content {
@@ -31,6 +31,11 @@
         width: 50%;
       }
     };
+
+    &__return-icon {
+      max-width: 16px;
+      margin-right: rem-calc(12);
+    }
     
     &__container-right-inner {
       max-width: 720px;
@@ -112,10 +117,20 @@
       }
     }
 
-    &__form {
-      display: flex;
-      flex-wrap: wrap;
-      flex-direction: column;
+    &__sign-up--underline {
+      text-decoration: underline;
     }
+  }
+
+  &-form__name-container {
+    display: flex;
+  }
+
+  &-form__name-row {
+    flex-direction: column;
+  }
+
+  &-form__lastname-row {
+    flex-direction: column;
   }
 }

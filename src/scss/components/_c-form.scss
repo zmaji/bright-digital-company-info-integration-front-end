@@ -4,4 +4,8 @@
     flex-wrap: wrap;
     flex-direction: column;
   }
+
+  &__input--small {
+    max-width: 162px;
+  }
 }
