@@ -1,10 +1,10 @@
 import React from 'react';
-import Sidebar from '../Sidebar/Sidebar';
-import SidebarGroup from '../Sidebar/SidebarGroup';
-import SidebarItem from '../Sidebar/SidebarItem';
-import sidebarData from '../../data/DefaultSidebar';
-import ContentContainer from '../Content/ContentContainer';
-import Header from '../Header/Header';
+import Sidebar from '../sidebar/Sidebar';
+import SidebarGroup from '../sidebar/SidebarGroup';
+import SidebarItem from '../sidebar/SidebarItem';
+import sidebarData from '../../data/defaultSideBar';
+import ContentContainer from '../content/ContentContainer';
+import Header from '../header/Header';
 import carIcon from '../../icons/auto.svg';
 
 const DefaultLayout = ({ children }) => {

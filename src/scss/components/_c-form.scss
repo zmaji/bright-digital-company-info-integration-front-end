@@ -1,0 +1,7 @@
+.c-form {
+  &--flex-column {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+}

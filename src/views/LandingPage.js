@@ -1,66 +1,62 @@
 import React from 'react';
 import brightDigitalLogo from '../images/logo-bright-zw.svg';
+import Button from '../components/elements/Button';
+import Form from '../components/form/Form';
+import Label from '../components/form/Label'; 
+import Input from '../components/form/Input';
 
 const LandingPage = () => {
     return (
-        <div className='c-app-container u-flex'> 
-            <div className="c-app-content__container-left u-bg-color--light-blue">
-                <div className="c-app-content__container-left-inner">
-                    <div className='c-app-content__header-container'>
-                        <img className="c-app-content__bright-logo" src={brightDigitalLogo} alt="Bright Digital Logo" />
+        <div className='v-landingpage u-flex'> 
+            <div className="v-landingpage-content__container-left u-bg-color--light-blue">
+                <div className="v-landingpage-content__container-left-inner">
+                    <div className='v-landingpage-content__header-container'>
+                        <img className="v-landingpage-content__bright-logo" src={brightDigitalLogo} alt="Bright Digital Logo" />
                     </div>
 
-                    <p className='c-app-content__p'>
+                    <p className='v-landingpage-content__p'>
                         The #1 HubSpot integration to improve your sales
                     </p>
 
-                    <h1 className='c-app-content__h1-small'>
+                    <h1 className='v-landingpage-content__h1-small'>
                         Company.info + HubSpot
-                        <span className='c-app-content__span'>Make your data Bright</span>
+                        <span className='v-landingpage-content__span'>Make your data Bright</span>
                     </h1>
 
-                    <div className="c-app-content__inner-content">
+                    <div className="v-landingpage-content__inner-content">
                         <p>
                             Discover the possibilities of connecting Company.Info with HubSpot and improve your sales process now!
                         </p>
 
-                        <form>
-                            <div className="u-m-top">
-                                <label>Email address</label>
-                            </div>
-                            <input type="email" name="name" />
+                        <Form style='flex-column'>
+                            <Label text='Email address' />
+                            <Input type="email" name="name" />
 
-                            <label>Password</label>
-                            <input type="password" name="name" />
+                            <Label text='Password' />
+                            <Input type="password" name="name" />
 
-                            <div className="c-app-content__form-bar u-flex u-flex-sb">
-                                <div className="c-app-content__remember-me u-flex">
-                                    <input type='checkbox'></input>
-                                    <p className='c-app-content__p-small'>Remember me</p>
+                            <div className="v-landingpage-content__form-bar u-flex u-flex-sb">
+                                <div className="v-landingpage-content__remember-me u-flex">
+                                    <Input type='checkbox' />
+                                    <p className='v-landingpage-content__p-small'>Remember me</p>
                                 </div>
-                                <p className='c-app-content__p-small--underline'>Forgot password?</p>
+                                <p className='v-landingpage-content__p-small--underline'>Forgot password?</p>
                             </div>
+                        </Form>
 
-                            <input type="submit" value="Sign in" />
+                        <Button title='Sign in' style='primary_submit' link='/overview'/>
 
-                            {/* <div className="c-app-content__line u-flex u-flex-sb u-flex-v-center">
-                                <hr/>
-                                <p className='c-app-content__p-grey'>Or</p>
-                                <hr/>
-                            </div> */}
-
-                            <div className="c-app-content__no-account u-flex u-flex-center u-flex-v-center">
-                                <p className='c-app-content__p-light'>Don't have an account?&nbsp;</p>
-                                <p className='c-app-content__p-medium'>Sign up</p>
-                            </div>
-                        </form>
+                        <div className="v-landingpage-content__no-account u-flex u-flex-v-center">
+                            <p className='v-landingpage-content__p-light'>Don't have an account?&nbsp;</p>
+                            <p className='v-landingpage-content__p-medium'>Sign up</p>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div className="c-app-content__container-right u-bg-color--light-blue-alt">
-                <div className="c-app-content__container-right-inner">
-                    <div className='c-app-content__header-container c-app-content__header-container--right'>
-                        <img className="c-app-content__review" src={brightDigitalLogo} alt="Bright Digital Logo" />
+            <div className="v-landingpage-content__container-right u-bg-color--light-blue-alt">
+                <div className="v-landingpage-content__container-right-inner">
+                    <div className='v-landingpage-content__header-container v-landingpage-content__header-container--right'>
+                        <img className="v-landingpage-content__review" src={brightDigitalLogo} alt="Bright Digital Logo" />
                     </div>
                 </div>
             </div>

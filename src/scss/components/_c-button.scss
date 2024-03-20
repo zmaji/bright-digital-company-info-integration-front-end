@@ -80,7 +80,8 @@
   // Styles
   &--primary,
   &--primary_target,
-  &--primary_target_up {
+  &--primary_target_up,
+  &--primary_submit {
     background: $gradient-65deg;
     color: $white;
     fill: $white;
@@ -138,6 +139,14 @@
         transform: translateX(400%) skew(-15deg);
       }
     }
+  }
+
+  &--primary_submit {
+    width: rem-calc(136);
+  }
+
+  &__content {
+    justify-content: center;
   }
 
   &--black {
@@ -293,6 +302,12 @@
       fill: $white !important;
       margin-left: 0;
       margin-right: 0.5rem;
+    }
+  }
+
+  &-width {
+    &--s {
+      width: 150px;
     }
   }
 }

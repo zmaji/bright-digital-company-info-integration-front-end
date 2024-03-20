@@ -55,11 +55,16 @@
  */
 @import "components/c-button";
 @import "components/c-icon";
-@import "components/c-app";
-@import "components/c-app-container";
+@import "components/c-form";
 @import "components/c-sidebar";
 @import "components/c-header";
 @import "components/c-default-layout";
+
+/**
+  * Views
+*/
+@import "views/v-landingpage";
+@import "views/v-dashboard-overview";
 
 /**
   * Utilities
@@ -96,8 +101,3 @@
 @import "utilities/u-text-align";
 @import "utilities/u-text-color";
 // @import "utilities/u-text-shadow";
-
-/**
-  * Views
-*/
-@import "views/v-dashboard-overview";

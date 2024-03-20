@@ -1,6 +1,6 @@
 import React from 'react';
-import DefaultLayout from '../components/Layout/DefaultLayout';
-import Button from '../components/Elements/Button';
+import DefaultLayout from '../components/layout/DefaultLayout';
+import Button from '../components/elements/Button';
 
 const DashboardOverview = () => {
     return (

@@ -8,18 +8,18 @@ const Card = ({ icon, title, text, button }) => {
     const IconComponent = retrieveIcon(icon);
 
     return (
-      <div className="v-dashboard-overview__card">
+      <div className="c-card">
         {icon && (
             <Suspense fallback={<div>Loading...</div>}>
                 <IconComponent className={`c-icon c-button__icon c-button__icon--${animation}`} />
             </Suspense>
         )}
 
-        <div className='v-dashboard-overview__card-title'>
+        <div className='c-card__title'>
             {title}
         </div>
 
-        <div className='v-dashboard-overview__card-text'>
+        <div className='c-card__text'>
             {title}
         </div>
 
