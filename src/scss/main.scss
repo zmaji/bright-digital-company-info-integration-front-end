@@ -57,7 +57,8 @@
 @import "components/c-icon";
 @import "components/c-form";
 @import "components/c-sidebar";
-@import "components/c-header";
+@import "components/c-default-header";
+@import "components/c-install-header";
 @import "components/c-default-layout";
 @import "components/c-card";
 
@@ -67,6 +68,7 @@
 @import "views/v-landingpage";
 @import "views/v-register";
 @import "views/v-dashboard-overview";
+@import "views/v-install";
 
 /**
   * Utilities

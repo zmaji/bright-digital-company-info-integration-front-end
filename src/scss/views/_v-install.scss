@@ -1,3 +1,11 @@
 .v-install {
-  
+  min-height: 100vh;
+
+  &__wrapper {
+    min-height: 735px;
+    background-image: url('../../images/Install-background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
 }
