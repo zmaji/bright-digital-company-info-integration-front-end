@@ -45,7 +45,7 @@ const LandingPage = () => {
                             </div>
                         </Form>
 
-                        <Button title='Sign in' style='primary_submit' link='/overview'/>
+                        <Button title='Sign in' style='primary_submit' link='/install'/>
 
                         <div className="v-landingpage-content__no-account u-flex u-flex-v-center">
                             <p className='v-landingpage-content__no-account__title'>Don't have an account?&nbsp;</p>

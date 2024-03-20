@@ -5,7 +5,7 @@ const Header = () => {
     return (
       <div className='c-header'>
         <div className="o-container">
-            <div className="u-squeeze u-squeeze--l">
+            <div className="u-squeeze u-squeeze--xl">
                <div className='c-header__container u-flex u-flex-sb u-flex-v-center'>
                 <div className='c-header__logo-container'>
                     <img className="c-header__logo" src={brightDigitalLogo} alt="Bright Digital Logo" />

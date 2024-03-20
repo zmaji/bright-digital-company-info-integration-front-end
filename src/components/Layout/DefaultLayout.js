@@ -4,15 +4,15 @@ import SidebarGroup from '../sidebar/SidebarGroup';
 import SidebarItem from '../sidebar/SidebarItem';
 import sidebarData from '../../data/defaultSideBar';
 import ContentContainer from '../content/ContentContainer';
-import Header from '../header/Header';
+import DefaultHeader from '../header/DefaultHeader';
 import carIcon from '../../icons/auto.svg';
 
 const DefaultLayout = ({ children }) => {
     return (
         <div className='c-default-layout'>
-         <Header />
+         <DefaultHeader />
             <div className='o-container'>
-                <div className='u-squeeze u-squeeze--l'>
+                <div className='u-squeeze u-squeeze--xl'>
                     <div className='c-default-layout__container u-flex'>
                         <div className='c-default-layout__sidebar'>
                             <Sidebar>

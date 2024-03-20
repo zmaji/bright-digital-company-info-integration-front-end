@@ -1,0 +1,22 @@
+.c-card {
+  flex-grow: 1;
+  max-width: calc(33.33% - 24px);
+
+  &-icon {
+    margin-bottom: rem-calc(21);
+    max-height: rem-calc(42);
+  }
+
+  &__content {
+    &-title {
+      margin-bottom: rem-calc(21);
+      font-size: rem-calc(20);
+      font-weight: 500;
+    }
+
+    &-text {
+      margin-bottom: rem-calc(21);
+      font-size: rem-calc(16);
+    }
+  }
+}
