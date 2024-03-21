@@ -58,7 +58,6 @@ const LandingPage = () => {
 
                     <div className="v-landingpage__content-right">
                         <div className="v-landingpage__content__image-preview">
-                            test
                         </div>
 
                         <div className="v-landingpage__content__logo-row">

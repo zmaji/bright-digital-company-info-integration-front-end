@@ -78,11 +78,14 @@
     }
 
       &-right {
-        max-width: rem-calc(480);
+        max-width: rem-calc(637);
       }
 
       &__image-preview {
-        background: red;
+        background: $white;
+        width: rem-calc(637);
+        height: rem-calc(518);
+        border-radius: 27px;
       }
     }
   }
