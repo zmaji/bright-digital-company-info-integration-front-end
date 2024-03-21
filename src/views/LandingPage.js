@@ -24,7 +24,7 @@ const LandingPage = () => {
 
                 <div className="v-landingpage__content u-flex u-flex-sb">
                     <div className="v-landingpage__content-left">
-                        <span className='v-landingpage__content__payoff'>The #1 HubSpot integration to improve your sales</span>
+                        <span className='v-landingpage__content__payoff'>The #1 HubSpot integration</span>
 
                         <h1 className='v-landingpage__content__title'>Company.info + HubSpot</h1>
 
@@ -55,9 +55,15 @@ const LandingPage = () => {
                             <Link to='/register' className='v-landingpage__content__no-account__title-secondary'>Sign up</Link>
                         </div>
                     </div>
-                    
+
                     <div className="v-landingpage__content-right">
-                        <span className='v-landingpage-content__left-inner__payoff'>The #1 HubSpot integration to improve your sales</span>
+                        <div className="v-landingpage__content__image-preview">
+                            test
+                        </div>
+
+                        <div className="v-landingpage__content__logo-row">
+
+                        </div>
                     </div>
                 </div>
             </div>
