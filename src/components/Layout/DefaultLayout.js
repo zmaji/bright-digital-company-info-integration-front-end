@@ -2,7 +2,7 @@ import React from 'react';
 import Sidebar from '../sidebar/Sidebar';
 import SidebarGroup from '../sidebar/SidebarGroup';
 import SidebarItem from '../sidebar/SidebarItem';
-import sidebarData from '../../data/defaultSideBar';
+import sidebarData from '../../data/DefaultSidebar';
 import ContentContainer from '../content/ContentContainer';
 import DefaultHeader from '../header/DefaultHeader';
 import carIcon from '../../icons/auto.svg';
