@@ -1,11 +1,40 @@
 .v-install {
   min-height: 100vh;
+  position: relative;
 
-  &__wrapper {
+  &__background-wrapper {
     min-height: 735px;
     background-image: url('../../images/Install-background.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+  }
+
+  &__content-wrapper {
+    margin: 160px 0 257px 0px;
+    background-color: $white;
+    height: 441px;
+    width: 585px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+
+  &__content-container {
+    padding: 70px 40px 70px 40px;
+    justify-content: center;
+  }
+
+  &__logo-row {
+
+  }
+
+  &__logo-row__item {
+    margin: 0 16px;
+    color: $almost-black;
+    max-width: 100%;
+    height: rem-calc(40);
+    width: auto;
   }
 }
