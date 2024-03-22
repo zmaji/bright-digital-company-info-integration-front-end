@@ -1,0 +1,81 @@
+.c-logo-row {
+    $root: &;
+  
+    &__container {
+      position: relative;
+      overflow: hidden;
+    }
+  
+    &__logo-slider {
+      display: flex;
+      width: 100%;
+    }
+  
+    &__logo-wrapper {
+      width: 100%;
+      overflow: hidden;
+    }
+  
+    &__logo-container {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      will-change: transform;
+      animation: bannerMove 80s linear infinite;
+    }
+  
+    @for $i from 1 through 50 {
+        &__logo-container[data-logos="#{$i}"] {
+          width: calc(13.875rem * #{$i}); // width + margin-right
+    
+          @include breakpoint(large) {
+            width: calc(24.375rem * #{$i});  // width + margin-right
+          }
+        }
+      }
+  
+    &__logo {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+  
+      height: rem-calc(35);
+      width: rem-calc(190);
+      margin-right: 2rem;
+  
+      @include breakpoint(large) {
+        height: rem-calc(82);
+        width: rem-calc(286);
+        margin-right: 6.5rem;
+      }
+  
+      &:hover {
+        #{$root}__image {
+          filter: grayscale(0);
+        }
+      }
+    }
+  
+    &__image {
+      @include transition();
+      @include square(100%);
+      object-fit: contain;
+      filter: grayscale(100%);
+      opacity: 0.5 !important; //overwrite lazy load
+  
+      &:hover {
+        opacity: 1 !important; //overwrite lazy load
+        filter: grayscale(0);
+      }
+    }
+  
+    @keyframes bannerMove {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+  }

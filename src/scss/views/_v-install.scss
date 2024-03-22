@@ -3,7 +3,7 @@
   position: relative;
 
   &__background-wrapper {
-    min-height: 735px;
+    min-height: 100vh;
     background-image: url('../../images/Install-background.png');
     background-repeat: no-repeat;
     background-size: cover;
@@ -26,15 +26,30 @@
     justify-content: center;
   }
 
+  &__content-title {
+    font-size: 30px;
+    font-weight: 600;
+  }
+
+  &__content-text {
+    font-weight: 300;
+    text-align: center;
+    margin-top: rem-calc(18);
+    margin-bottom: rem-calc(42);
+  }
+
   &__logo-row {
-
+    margin-bottom: rem-calc(24);
   }
 
-  &__logo-row__item {
-    margin: 0 16px;
-    color: $almost-black;
-    max-width: 100%;
+  &__logo-row__logo {
     height: rem-calc(40);
-    width: auto;
   }
+
+  &__logo-row__icon {
+    color: $almost-black;
+    height: 22px;
+    margin: 0px 20px 0px 20px;
+  }
+
 }

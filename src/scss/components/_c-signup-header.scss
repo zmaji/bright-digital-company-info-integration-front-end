@@ -1,0 +1,26 @@
+.c-signup-header {
+    background-color: $white;
+    &__container {
+        width: 100%;
+        justify-content: center;
+    }
+  
+    &__logo {
+        width: 100%;
+        max-width: rem-calc(110);
+    }
+
+    &__return-container {
+        display: flex;
+        margin-right: auto;
+    }
+
+    &__logo-container {
+        margin-left: 120px;
+    }
+
+    &__sticker-container {
+        margin-left: auto;
+    }
+  }
+  

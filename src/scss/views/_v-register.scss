@@ -1,69 +1,18 @@
 .v-register {
   min-height: 100vh;
 
+  &-header {
+    padding-bottom: rem-calc(55);
+  }
+
   &-content {
-    &__container-left {
-      width: 100%;
-  
-      @include breakpoint(large) {
-        width: 50%;
-      }
-    };
-    
-    &__container-left-inner {
-      max-width: 720px;
-      margin-left: auto;
-      padding-left: 4rem;
-  
-      @include breakpoint(large) {
-        padding-left: 6rem;
-      }
-  
-      @include breakpoint(1920px) {
-        padding-left: 0rem;
-      }
-    };
-    
-    &__container-right {
-      width: 100%;
-  
-      @include breakpoint(large) {
-        width: 50%;
-      }
-    };
+    &__container {
+      width: 480px;
+    }
 
     &__return-icon {
       max-width: 16px;
       margin-right: rem-calc(12);
-    }
-    
-    &__container-right-inner {
-      max-width: 720px;
-      margin-right: auto;
-      padding-right: 4rem;
-  
-      @include breakpoint(large) {
-        padding-right: 6rem;
-      }
-  
-      @include breakpoint(1920px) {
-        padding-right: 0rem;
-      }
-    };
-  
-    &__bright-logo {
-      width: 100%;
-      max-width: rem-calc(110);
-      margin-bottom: rem-calc(23);
-    }
-  
-    &__header-container {
-      width: 100%;
-      padding-top: 2rem;
-  
-      &--right {
-        text-align: right;
-      }
     }
   
     &__review {
@@ -73,11 +22,13 @@
     }
   
     &__h1-small {
-      font-weight: 700;
-  
-      @include breakpoint(large) {
-        font-size: rem-calc(42);
-      }
+      font-size: rem-calc(30);
+      font-weight: 600;
+      margin-bottom: rem-calc(39);
+        
+      // @include breakpoint(large) {
+      //   font-size: rem-calc(30);
+      // }
     }
   
     &__span {
@@ -90,6 +41,7 @@
   
     &__remember-me {
       gap: rem-calc(9);
+      margin-bottom: rem-calc(64);
     }
   
     &__p-small {
@@ -102,7 +54,7 @@
     }
 
     &__no-account {
-      margin-top: rem-calc(15);
+      margin-top: rem-calc(18);
 
       &__title {
         color: $disclaimer;
@@ -112,8 +64,10 @@
         font-weight: 300;
 
         &-secondary {
+          font-size: rem-calc(16);
           margin-top: 0;
           font-weight: 500;
+          text-decoration: underline;
         }
       }
     }
