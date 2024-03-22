@@ -12,6 +12,12 @@
     &__item-container {
         width: 100%;
         margin-bottom: rem-calc(20);
+
+        &--active {
+            max-width: 190px;
+            padding: 12px;
+            background-color: #E3EAF4;
+        }
     }
 
     &__item {

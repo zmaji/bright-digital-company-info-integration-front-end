@@ -5,8 +5,14 @@ import ChartIcon from '../icons/chart-bar.svg';
 import SupportIcon from '../icons/support.svg';
 import CogIcon from '../icons/cog.svg';
 import LogoutIcon from '../icons/logout.svg';
+import HomeIcon from '../icons/home.svg';
 
 const sidebarData = [
+    {
+        items: [
+            { icon: HomeIcon, title: 'Home', link: '/overview' },
+        ]
+    },
     {
         title: 'Analytics',
         items: [

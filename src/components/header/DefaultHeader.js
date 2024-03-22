@@ -5,7 +5,7 @@ const DefaultHeader = () => {
     return (
       <div className='c-default-header'>
         <div className="o-container">
-            <div className="u-squeeze u-squeeze--xl">
+            <div className="u-squeeze u-squeeze--xxl">
                <div className='c-default-header__container u-flex u-flex-sb u-flex-v-center'>
                 <div className='c-default-header__logo-container'>
                     <img className="c-default-header__logo" src={brightDigitalLogo} alt="Bright Digital Logo" />

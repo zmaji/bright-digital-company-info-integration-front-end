@@ -1,31 +1,27 @@
 import React from 'react';
 import Sidebar from '../sidebar/Sidebar';
 import SidebarGroup from '../sidebar/SidebarGroup';
-import SidebarItem from '../sidebar/SidebarItem';
 import sidebarData from '../../data/DefaultSidebar';
 import ContentContainer from '../content/ContentContainer';
 import DefaultHeader from '../header/DefaultHeader';
-import HomeIcon from '../../icons/home.svg';
 
 const DefaultLayout = ({ children }) => {
     return (
         <div className='c-default-layout'>
          <DefaultHeader />
             <div className='o-container'>
-                <div className='u-squeeze u-squeeze--xl'>
+                <div className='u-squeeze u-squeeze--xxl'>
                     <div className='c-default-layout__container u-flex'>
                         <div className='c-default-layout__sidebar'>
                             <Sidebar>
-                                <SidebarItem icon={HomeIcon} title='Home' link='/overview' />
-                                    {sidebarData.map((sidebarGroup, index) => (
-                                        <SidebarGroup
-                                            key={index}
-                                            title={sidebarGroup.title}
-                                            items={sidebarGroup.items}
-                                            link={sidebarGroup.link}
-                                            isLast={sidebarGroup.isLast || false}
-                                        />
-                                    ))}
+                                {sidebarData.map((sidebarGroup, index) => (
+                                    <SidebarGroup
+                                        key={index}
+                                        title={sidebarGroup.title}
+                                        items={sidebarGroup.items}
+                                        isLast={sidebarGroup.isLast || false}
+                                    />
+                                ))}
                             </Sidebar>
                         </div>
                         <ContentContainer>

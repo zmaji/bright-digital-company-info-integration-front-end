@@ -2,7 +2,7 @@ import React from 'react';
 import SidebarCategory from './SidebarCategory';
 import SidebarItem from './SidebarItem';
 
-const SidebarGroup = ({ title, items, isLast, link }) => {
+const SidebarGroup = ({ title, items, isLast }) => {
     return (
         <div className={`c-sidebar__group ${isLast ? 'c-sidebar__group--last' : ''}`}>
             <React.Fragment>
@@ -13,7 +13,7 @@ const SidebarGroup = ({ title, items, isLast, link }) => {
                                 key={index}
                                 icon={item.icon}
                                 title={item.title}
-                                link={link}
+                                link={item.link}
                             />
                         ))}
                     </div>
