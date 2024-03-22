@@ -13,6 +13,7 @@
     &__content-wrapper {
         background-color: $white;
         width: calc(100% - 250px);
+        padding-bottom: rem-calc(62);
     }
 
     &__content-container {

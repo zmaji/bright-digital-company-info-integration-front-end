@@ -5,7 +5,7 @@ import SidebarItem from '../sidebar/SidebarItem';
 import sidebarData from '../../data/DefaultSidebar';
 import ContentContainer from '../content/ContentContainer';
 import DefaultHeader from '../header/DefaultHeader';
-import carIcon from '../../icons/auto.svg';
+import HomeIcon from '../../icons/home.svg';
 
 const DefaultLayout = ({ children }) => {
     return (
@@ -16,7 +16,7 @@ const DefaultLayout = ({ children }) => {
                     <div className='c-default-layout__container u-flex'>
                         <div className='c-default-layout__sidebar'>
                             <Sidebar>
-                                <SidebarItem icon={carIcon} title='Home' />
+                                <SidebarItem icon={HomeIcon} title='Home' link='/overview' />
                                     {sidebarData.map((sidebarGroup, index) => (
                                         <SidebarGroup
                                             key={index}

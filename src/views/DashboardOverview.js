@@ -8,27 +8,30 @@ const DashboardOverview = () => {
     return (
         <div className='v-dashboard-overview'>
             <DefaultLayout>
-                <div className='v-dashboard-overview__content-container'>
+              <div className="v-dashboard-overview__content-wrapper">
+                <div className='v-dashboard-overview__content-container u-flex'>
                     <h1 className='v-dashboard-overview__content-title'>
-                        Start retrieving Bright data
-                    </h1>
+                          Start retrieving <br /> Bright data
+                      </h1>
 
-                    <p className='v-dashboard-overview__content-text'>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique duis cursus. 
-                    </p>
+                      <p className='v-dashboard-overview__content-text'>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                          Suspendisse varius enim in eros elementum tristique. 
+                      </p>
 
-                    <Button title='Set up properties' style='primary' link='/' icon='Plus' animation='move-right' />
+                      <Button title='Set up properties' style='primary' link='/' icon='Plus' animation='move-right' />
+                  </div>
                 </div>
 
                     <Cards>
                       <div className="v-dashboard-overview__cards-container">
                         <Card 
-                          icon='LightBulb' 
+                          icon='DownloadGradient' 
                           title='Install script' 
                           text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in.' 
                           button={{
                             title: 'Start now',
-                            style: 'secondary',
+                            style: 'tertiary',
                             link: '/',
                             icon: 'ArrowRight',
                             animation: 'move-right'
@@ -36,12 +39,12 @@ const DashboardOverview = () => {
                         />
 
                         <Card 
-                          icon='LightBulb' 
+                          icon='LightBulbGradient' 
                           title='Install script' 
                           text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in.' 
                           button={{
                             title: 'Start now',
-                            style: 'secondary',
+                            style: 'tertiary',
                             link: '/',
                             icon: 'ArrowRight',
                             animation: 'move-right'
@@ -49,12 +52,12 @@ const DashboardOverview = () => {
                         />
 
                         <Card 
-                          icon='LightBulb' 
+                          icon='SearchGradient' 
                           title='Install script' 
                           text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in.' 
                           button={{
                             title: 'Start now',
-                            style: 'secondary',
+                            style: 'tertiary',
                             link: '/',
                             icon: 'ArrowRight',
                             animation: 'move-right'

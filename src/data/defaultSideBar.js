@@ -1,26 +1,31 @@
-import carIcon from '../icons/auto.svg';
+import DownloadIcon from '../icons/download.svg';
+import LightbulbIcon from '../icons/lightbulb.svg';
+import SearchIcon from '../icons/search.svg';
+import ChartIcon from '../icons/chart-bar.svg';
+import SupportIcon from '../icons/support.svg';
+import CogIcon from '../icons/cog.svg';
+import LogoutIcon from '../icons/logout.svg';
 
 const sidebarData = [
     {
         title: 'Analytics',
         items: [
-            { icon: carIcon, title: 'Test menu item 1', link: '/' },
-            { icon: carIcon, title: 'Test menu item 2', link: '/' },
-            { icon: carIcon, title: 'Test menu item 3', link: '/test' }
+            { icon: DownloadIcon, title: 'Install script', link: '/' },
+            { icon: LightbulbIcon, title: 'Enrich existing data', link: '/' },
+            { icon: SearchIcon, title: 'Search for data', link: '/' }
         ],
     },
     {
         title: 'Set-up',
         items: [
-            { icon: carIcon, title: 'Test menu item 4', link: '/' },
-            { icon: carIcon, title: 'Test menu item 5', link: '/' }
+            { icon: ChartIcon, title: 'Set up properties', link: '/' },
         ]
     },
     {
         items: [
-            { icon: carIcon, title: 'Support', link: '/' },
-            { icon: carIcon, title: 'Settings', link: '/' },
-            { icon: carIcon, title: 'Logout', link: '/' }
+            { icon: SupportIcon, title: 'Support', link: '/' },
+            { icon: CogIcon, title: 'Settings', link: '/' },
+            { icon: LogoutIcon, title: 'Logout', link: '/' },
         ],
         isLast: true
     },
