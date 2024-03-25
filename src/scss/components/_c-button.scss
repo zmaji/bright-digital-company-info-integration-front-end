@@ -78,6 +78,12 @@
       // @include square(2rem);
     }
 
+    &--large {
+      width: 17px;
+      height: 17px;
+      margin-bottom: 0.5rem;
+    }
+
     .body-container--landingspage & {
       display: none;
     }

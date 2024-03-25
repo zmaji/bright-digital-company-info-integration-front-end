@@ -1,0 +1,15 @@
+.c-breadcrumb {
+    &__item {
+      font-weight: 16px;
+      font-weight: 500;
+
+      &--home {
+        font-weight: 300;
+      }
+    }
+
+    &__separator-icon {
+        margin-left: 14px;
+        margin-right: 14px;
+    }
+}

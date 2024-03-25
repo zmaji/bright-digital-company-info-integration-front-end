@@ -1,40 +1,51 @@
 .v-install-script {
     &__background {
-        padding: 0;
+        max-height: 375px;
+        height: 375px;
         background-image: url('../../images/Install-script-background.png');
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
+        transform: scaleX(-1);
+    }
+
+    &__breadcrumb-container {
+        margin-bottom: 47px;
     }
 
     &__content-wrapper {
-        width: 100%;
+        padding: 25px 61px 51px 61px;
     }
 
-    &__content-container {
-        width: rem-calc(490);
-        justify-content: center;
-        margin: 0 auto;
+    &__content-left {
+        width: 489px;
+    }
+
+    &__content-right {
+        margin-left: auto;
     }
 
     &__content-title {
-        font-size: rem-calc(46);
+        font-size: rem-calc(30);
         font-weight: 500;
-        text-align: center;
         margin-bottom: rem-calc(6);
         margin-top: rem-calc(0);
+        
+    }
+
+    &__content-title-secondary {
+        font-size: rem-calc(21);
+        font-weight: 500;
+        margin-bottom: rem-calc(20);
+        margin-top: rem-calc(10);
     }
 
     &__content-text {
-        text-align: center;
+        font-size: 16px;
         margin-bottom: rem-calc(30);
     }
 
-    &__cards-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      margin-top: rem-calc(75);
-      margin-bottom: rem-calc(21);
+    &__steps {
+        max-width: 247px;
     }
 }

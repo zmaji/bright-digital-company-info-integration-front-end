@@ -1,0 +1,48 @@
+.c-steps {
+    &__row {
+        margin-bottom: 20px;
+        display: flex;
+        position: relative;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 12px;
+            height: calc(100% + 20px);
+            width: 1.5px;
+            background-color: #E3EAF4;
+        }
+
+        &:last-child {
+            &::before {
+                display: none;
+            }
+        }
+    }
+
+    &__circle {
+        position: relative;
+        align-items: center;
+        justify-content: center;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background-color: #E3EAF4;
+        margin-right: 11px;
+    }
+
+    &__number {
+        font-size: 15px;
+        font-weight: 600;
+        margin-top: 1px;
+    }
+
+    &__title {
+        font-size: 16px;
+        font-weight: 300;
+        width: calc(100% - 36px);
+        height: fit-content;
+        line-height: 1.6;
+    }
+}

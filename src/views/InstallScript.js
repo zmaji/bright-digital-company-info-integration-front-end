@@ -1,17 +1,30 @@
 import React from 'react';
 import DefaultLayout from '../components/layout/DefaultLayout';
 import Button from '../components/elements/Button';
+import BreadCrumb from '../components/elements/BreadCrumb';
+import Steps from '../components/content/Steps';
 
-// Breadcrumb component
+const steps = [
+  { title: 'Copy tag' },
+  { title: 'Go to Settings > Website > Pages > Template' },
+  { title: 'Paste tag in header' }
+];
 
 const InstallScript = () => {
     return (
         <div className='v-install-script'>
             <DefaultLayout>
                 <div className="v-install-script__background">
-                  <div className="v-install-script__content-wrapper">
-                    <div className='v-install-script__content-container u-flex'>
-                      <h1 className='v-install-script__content-title'>
+                </div>
+
+                <div className="v-install-script__content-wrapper">
+                  <div className="v-install-script__breadcrumb-container">
+                    <BreadCrumb />
+                  </div>
+
+                  <div className='v-install-script__content-container u-flex'>
+                    <div className="v-install-script__content-left">
+                        <h1 className='v-install-script__content-title'>
                             Install script
                         </h1>
 
@@ -21,7 +34,17 @@ const InstallScript = () => {
                           Nullam ornare purus in turpis pharetra, eu congue arcu laoreet. 
                         </p>
 
-                        <Button title='Copy' style='tertiary' link='' icon='Download' animation='move-down' />
+                        <Button title='Copy' style='tertiary' link='' icon='Download' animation='move-down' customStyle='large'/>
+                    </div>
+
+                    <div className='v-install-script__content-right'>
+                      <h2 className='v-install-script__content-title-secondary'>
+                            Next steps
+                      </h2>
+
+                      <div className="v-install-script__steps">
+                        <Steps steps={steps} />
+                      </div>
                     </div>
                   </div>
                 </div>

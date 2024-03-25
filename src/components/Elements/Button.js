@@ -2,7 +2,7 @@ import React, { Suspense } from 'react';
 import { Link } from 'react-router-dom';
 import { retrieveIcon } from '../../helpers/retrieveIcon';
 
-const Button = ({ style, link, title, icon = '', animation = '' }) => {
+const Button = ({ style, link, title, icon = '', animation = '', customStyle ='' }) => {
   const IconComponent = retrieveIcon(icon);
 
   return (
@@ -20,7 +20,7 @@ const Button = ({ style, link, title, icon = '', animation = '' }) => {
 
             {icon && animation && (
               <Suspense fallback={<div>Loading...</div>}>
-                <IconComponent className={`c-icon c-button__icon c-button__icon--${animation}`} />
+                <IconComponent className={`c-icon c-button__icon c-button__icon--${animation} c-button__icon--${customStyle}`} />
                </Suspense>
             )}
         </div>
