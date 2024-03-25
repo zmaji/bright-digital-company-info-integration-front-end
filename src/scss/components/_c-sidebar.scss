@@ -10,12 +10,9 @@
     }
 
     &__item-container {
-        width: 100%;
-        margin-bottom: rem-calc(20);
+        padding: 12px;
 
         &--active {
-            max-width: 190px;
-            padding: 12px;
             background-color: #E3EAF4;
         }
     }
@@ -33,6 +30,8 @@
     }
 
     &__category {
+        margin-left: 13px;
+
         &-title {
             font-size: rem-calc(14);
             letter-spacing: rem-calc(1);
@@ -42,7 +41,7 @@
     }
 
     &__group {
-        width: 100%;
+        padding-right: 34px;
         &--last {
             margin-top: auto;
         }
