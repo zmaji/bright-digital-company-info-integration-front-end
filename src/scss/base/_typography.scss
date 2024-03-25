@@ -189,11 +189,11 @@ a {
     // All A tags without a class
     text-decoration: underline;
 
-    &:hover {
-      background-color: $almost-black;
-      color: $white;
-      text-decoration: none;
-    }
+    // &:hover {
+    //   background-color: $almost-black;
+    //   color: $white;
+    //   text-decoration: none;
+    // }
   }
 
   .c-icon {
