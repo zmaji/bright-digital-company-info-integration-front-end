@@ -1,0 +1,28 @@
+.c-table-row {
+    &__content-container {
+        width: calc(100% - 80px);
+    }
+
+    &__title-container {
+        width: calc(50% - 80px);
+    }
+
+    // &__value-container {
+
+    // }
+
+    &__title {
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    &__value {
+        font-size: 16px;
+        font-weight: 300;
+    }
+
+    &__button-container {
+        margin-left: auto;
+    }
+
+}
