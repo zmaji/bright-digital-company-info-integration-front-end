@@ -63,11 +63,17 @@
   &__icon {
     @include transition(transform);
     @include square(0.85rem);
-    margin-bottom: 1px; // v-align
+    margin-bottom: 1px;
     margin-left: 0.5rem;
 
     &--left {
       margin-right: 0.5rem;
+      // margin-left: 0;
+      // @include square(2rem);
+    }
+
+    &--down {
+      margin-bottom: 0.5rem;
       // margin-left: 0;
       // @include square(2rem);
     }
@@ -280,7 +286,7 @@
     }
 
     #{$root}__icon {
-      fill: $almost-black !important;
+      // fill: $almost-black !important;
     }
   }
 

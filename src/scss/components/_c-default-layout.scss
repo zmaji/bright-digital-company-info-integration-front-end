@@ -16,6 +16,8 @@
     }
 
     &__content-container {
-        padding: 86px 83px 88px 83px;
+        &__padding--default {
+            padding: 86px 83px 88px 83px;  
+        }
     }
 }

@@ -11,6 +11,11 @@
         max-width: rem-calc(88);
     }
 
+    &__profile-title {
+        font-size: 16px;
+        font-weight: 500;
+    }
+
     &__profile-circle {
         height: rem-calc(40);
         width: rem-calc(40);

@@ -7,7 +7,7 @@ import Card from '../components/content/Card';
 const DashboardOverview = () => {
     return (
         <div className='v-dashboard-overview'>
-            <DefaultLayout>
+            <DefaultLayout padding='default'>
               <div className="v-dashboard-overview__content-wrapper">
                 <div className='v-dashboard-overview__content-container u-flex'>
                     <h1 className='v-dashboard-overview__content-title'>
@@ -32,7 +32,7 @@ const DashboardOverview = () => {
                           button={{
                             title: 'Start now',
                             style: 'tertiary',
-                            link: '/',
+                            link: '/install-script',
                             icon: 'ArrowRight',
                             animation: 'move-right'
                           }}

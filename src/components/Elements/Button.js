@@ -18,7 +18,7 @@ const Button = ({ style, link, title, icon = '', animation = '' }) => {
                 {title}
             </div>
 
-            {icon && animation === "move-right" && (
+            {icon && animation && (
               <Suspense fallback={<div>Loading...</div>}>
                 <IconComponent className={`c-icon c-button__icon c-button__icon--${animation}`} />
                </Suspense>

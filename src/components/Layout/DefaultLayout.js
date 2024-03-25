@@ -5,7 +5,7 @@ import sidebarData from '../../data/DefaultSidebar';
 import ContentContainer from '../content/ContentContainer';
 import DefaultHeader from '../header/DefaultHeader';
 
-const DefaultLayout = ({ children }) => {
+const DefaultLayout = ({ padding, children }) => {
     return (
         <div className='c-default-layout'>
          <DefaultHeader />
@@ -24,7 +24,7 @@ const DefaultLayout = ({ children }) => {
                                 ))}
                             </Sidebar>
                         </div>
-                        <ContentContainer>
+                        <ContentContainer padding={padding}>
                             { children }
                         </ContentContainer>
                     </div>

@@ -16,7 +16,7 @@ const sidebarData = [
     {
         title: 'Analytics',
         items: [
-            { icon: DownloadIcon, title: 'Install script', link: '/' },
+            { icon: DownloadIcon, title: 'Install script', link: '/install-script' },
             { icon: LightbulbIcon, title: 'Enrich existing data', link: '/' },
             { icon: SearchIcon, title: 'Search for data', link: '/' }
         ],
