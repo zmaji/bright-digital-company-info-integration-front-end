@@ -8,6 +8,14 @@
   }
 
   &__content {
+    &-step {
+      font-size: 12px;
+      font-weight: 500px;
+      color: #666666;
+      text-transform: uppercase;
+      margin-bottom: 7px;
+    }
+
     &-title {
       margin-bottom: rem-calc(21);
       font-size: rem-calc(20);

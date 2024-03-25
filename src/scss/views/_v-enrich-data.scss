@@ -1,0 +1,39 @@
+.v-enrich-data {
+    &__background {
+        max-height: 375px;
+        height: 375px;
+        background-image: url('../../images/Enrich-data-background.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+    &__breadcrumb-container {
+        margin-bottom: 47px;
+    }
+
+    &__content-wrapper {
+        padding: 25px 61px 51px 61px; 
+    }
+
+    &__content-inner {
+        max-width: 489px;
+    }
+
+    &__content-title {
+        font-size: rem-calc(30);
+        font-weight: 500;
+        margin-bottom: rem-calc(6);
+        margin-top: rem-calc(0);
+        
+    }
+
+    &__content-text {
+        font-size: 16px;
+        margin-bottom: rem-calc(62);
+    }
+
+    &__cards-container {
+        margin-bottom: rem-calc(50);
+    }
+}

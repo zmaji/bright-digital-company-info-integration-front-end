@@ -40,12 +40,12 @@ const DashboardOverview = () => {
 
                         <Card 
                           icon='LightBulbGradient' 
-                          title='Install script' 
+                          title='Enricht existing data' 
                           text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in.' 
                           button={{
                             title: 'Start now',
                             style: 'tertiary',
-                            link: '/',
+                            link: '/enrich-data',
                             icon: 'ArrowRight',
                             animation: 'move-right'
                           }}
@@ -53,7 +53,7 @@ const DashboardOverview = () => {
 
                         <Card 
                           icon='SearchGradient' 
-                          title='Install script' 
+                          title='Search for data' 
                           text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in.' 
                           button={{
                             title: 'Start now',

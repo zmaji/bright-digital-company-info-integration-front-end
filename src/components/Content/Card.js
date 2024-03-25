@@ -2,13 +2,19 @@ import React from 'react';
 import { retrieveIcon } from '../../helpers/retrieveIcon';
 import Button from '../elements/Button';
 
-const Card = ({ icon, title, text, button }) => {
+const Card = ({ step, icon, title, text, button }) => {
 
     const IconComponent = retrieveIcon(icon);
   
     return (
       <div className="c-card">
         <div className="c-card__content">
+          {step && (
+            <div className='c-card__content-step'>
+                { step }
+            </div>
+          )}
+          
           {icon && (
             <IconComponent className={`c-icon c-card-icon`} />
           )}
