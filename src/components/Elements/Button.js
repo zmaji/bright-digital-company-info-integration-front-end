@@ -10,7 +10,7 @@ const Button = ({ style, link, title, icon = '', animation = '', customStyle =''
         <div className='c-button__content u-flex u-flex-v-center'>
             {icon && animation === "move-left" && ( 
               <Suspense fallback={<div>Loading...</div>}>
-                <IconComponent className={`c-icon c-button__icon c-button__icon--left c-button__icon--${animation}`} />
+                <IconComponent className={`c-icon c-button__icon c-button__icon--left c-button__icon--${animation} c-button__icon--${customStyle}`} />
                </Suspense>
             )}
 
@@ -18,7 +18,7 @@ const Button = ({ style, link, title, icon = '', animation = '', customStyle =''
                 {title}
             </div>
 
-            {icon && animation && (
+            {icon && animation && animation !== "move-left" && (
               <Suspense fallback={<div>Loading...</div>}>
                 <IconComponent className={`c-icon c-button__icon c-button__icon--${animation} c-button__icon--${customStyle}`} />
                </Suspense>

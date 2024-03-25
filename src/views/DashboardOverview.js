@@ -58,7 +58,7 @@ const DashboardOverview = () => {
                           button={{
                             title: 'Start now',
                             style: 'tertiary',
-                            link: '/',
+                            link: '',
                             icon: 'ArrowRight',
                             animation: 'move-right'
                           }}

@@ -1,7 +1,7 @@
 import React from 'react';
 import brightDigitalLogo from '../../images/logo-bright-zw.svg';
-import ArrowLeft from '../../icons/arrow-left.svg';
 import HubspotSticker from '../elements/HubspotSticker';
+import { Link } from 'react-router-dom';
 
 import Button from '../elements/Button';
 
@@ -17,7 +17,9 @@ const SignupHeader = () => {
                 </div>
 
                 <div className="c-signup-header__logo-container">
-                    <img className="c-signup-header__logo" src={brightDigitalLogo} alt="Bright Digital Logo" />   
+                    <Link to="/">
+                      <img className="c-signup-header__logo" src={brightDigitalLogo} alt="Bright Digital Logo" />   
+                    </Link>
                 </div>
 
                 <div className="c-signup-header__sticker-container">
