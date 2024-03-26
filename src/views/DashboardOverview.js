@@ -24,8 +24,6 @@ const DashboardOverview = () => {
                 </div>
 
                 <Cards cardData={overviewCardsData} customStyles={['c-cards--flex', 'c-cards--default-margin', 'c-cards--sb']} />
-
-
             </DefaultLayout>
         </div>
     );

@@ -29,7 +29,8 @@
           width: calc(13.875rem * #{$i}); // width + margin-right
     
           @include breakpoint(large) {
-            width: calc(24.375rem * #{$i});  // width + margin-right
+            width: calc(rem-calc(529) * #{$i});  // width + margin-right
+            height: rem-calc(47); 
           }
         }
       }
@@ -45,7 +46,7 @@
       margin-right: 2rem;
   
       @include breakpoint(large) {
-        height: rem-calc(82);
+        height: rem-calc(42);
         width: rem-calc(286);
         margin-right: 6.5rem;
       }
@@ -62,10 +63,10 @@
       @include square(100%);
       object-fit: contain;
       filter: grayscale(100%);
-      opacity: 0.5 !important; //overwrite lazy load
+      opacity: 0.5 !important;
   
       &:hover {
-        opacity: 1 !important; //overwrite lazy load
+        opacity: 1 !important;
         filter: grayscale(0);
       }
     }
