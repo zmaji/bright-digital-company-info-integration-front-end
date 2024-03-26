@@ -11,6 +11,7 @@ import brightDigitalLogo from '../images/logo-bright-zw.svg';
 import ImagePreview from '../images/Image-preview.png';
 import logorowData from '../data/DefaultLogoRow';
 import authService from '../services/authService';
+import { validateForm } from '../helpers/validateFormData';
 
 const LandingPage = () => {
     const navigation = useNavigate();
@@ -37,44 +38,33 @@ const LandingPage = () => {
     };
 
     const handleLogin = async () => {
-        if (!validateForm()) return;
+        const formData = { email, password };
+        const errors = validateForm(formData);
 
-        try {
-            const response = await authService.login(email, password);
-
-            if (response.ok) {
-                navigation('/overview');
-            } else {
-                if (response.status === 409) {
-                    setEmailError('Email address does not exist.');
-
-                } else if (response.status === 401) {
-                    setConflictError('Email address and password do not match.')
-                    
+        if (Object.keys(errors).length === 0) {
+            try {
+                const response = await authService.login(email, password);
+    
+                if (response.ok) {
+                    navigation('/overview');
                 } else {
-                    setError('An error occurred while logging in');
+                    if (response.status === 409) {
+                        setEmailError('Email address does not exist.');
+    
+                    } else if (response.status === 401) {
+                        setConflictError('Email address and password do not match.')
+                        
+                    } else {
+                        setError('An error occurred while logging in');
+                    }
                 }
+            } catch (error) {
+                console.error('Error:', error);
+                setError('An error occurred. Please try again later.');
             }
-        } catch (error) {
-            console.error('Error:', error);
-            setError('An error occurred. Please try again later.');
+        } else {
+            setValidationErrors(errors);
         }
-    };
-
-    const validateForm = () => {
-        let errors = {};
-
-        if (!email.trim()) {
-            errors.email = 'Email is required';
-        }
-
-        if (!password.trim()) {
-            errors.password = 'Password is required';
-        }
-
-        setValidationErrors(errors);
-
-        return Object.keys(errors).length === 0;
     };
 
     return (
