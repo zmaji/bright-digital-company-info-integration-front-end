@@ -1,9 +1,17 @@
 import React from 'react';
+import SidebarGroup from './SidebarGroup';
 
-const Sidebar = ({ children }) => {
+const Sidebar = ({ sidebarData }) => {
     return (
       <div className='c-sidebar'>
-        {children}
+        {sidebarData.map((sidebarGroup, index) => (
+          <SidebarGroup
+            key={index}
+            title={sidebarGroup.title}
+            items={sidebarGroup.items}
+            isLast={sidebarGroup.isLast || false}
+          />
+        ))}
       </div>
     );
   };
