@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 import Button from '../components/elements/Button';
 import Form from '../components/form/Form';
@@ -10,8 +10,38 @@ import LogoRow from '../components/elements/LogoRow';
 import brightDigitalLogo from '../images/logo-bright-zw.svg';
 import ImagePreview from '../images/Image-preview.png';
 import logorowData from '../data/DefaultLogoRow';
+import authService from '../services/authService';
 
 const LandingPage = () => {
+    const navigation = useNavigate();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
+
+    const handleEmailChange = (e) => {
+        setEmail(e.target.value);
+      };
+    
+    const handlePasswordChange = (e) => {
+        setPassword(e.target.value);
+    };
+
+    const handleLogin = async () => {
+        try {
+            const response = await authService.login(email, password);
+
+            if (response.ok) {
+                navigation('/overview');
+            } else {
+                const data = await response.json();
+                setError(data.message || 'An error occurred while logging in');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            setError('An error occurred. Please try again later.');
+        }
+    };
+
     return (
         <div className='v-landingpage u-bg-color--light-blue'> 
             <div className="o-container">
@@ -40,10 +70,10 @@ const LandingPage = () => {
 
                             <Form style='flex-column'>
                                 <Label text='Email address' />
-                                <Input type="email" name="name" />
+                                <Input type="email" name="name" onChange={handleEmailChange} />
 
                                 <Label text='Password' />
-                                <Input type="password" name="name" />
+                                <Input type="password" name="name" onChange={handlePasswordChange} />
 
                                 <div className="v-landingpage__content__form-bar u-flex u-flex-sb">
                                     <div className="v-landingpage__content__form-bar__remember u-flex">
@@ -54,7 +84,8 @@ const LandingPage = () => {
                                 </div>
                             </Form>
 
-                            <Button title='Sign in' style='primary_submit' link='/install' icon='ArrowRight' animation='move-right'/>
+                            {/* link='/install' */}
+                            <Button title='Sign in' style='primary_submit' icon='ArrowRight' animation='move-right' onClick={handleLogin}/>
 
                             <div className="v-landingpage__content__no-account u-flex u-flex-v-center">
                                 <p className='v-landingpage__content__no-account__title'>Don't have an account?&nbsp;</p>

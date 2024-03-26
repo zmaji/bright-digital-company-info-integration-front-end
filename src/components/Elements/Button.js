@@ -2,11 +2,17 @@ import React, { Suspense } from 'react';
 import { Link } from 'react-router-dom';
 import { retrieveIcon } from '../../helpers/retrieveIcon';
 
-const Button = ({ style, link, title, icon = '', animation = '', customStyle ='' }) => {
+const Button = ({ style, link, title, icon = '', animation = '', customStyle ='', onClick=null }) => {
   const IconComponent = retrieveIcon(icon);
 
+  const handleClick = () => {
+    if (onClick) {
+      onClick();
+    }
+  };
+
   return (
-    <Link to={link} className={`c-button c-button--${style}`}>
+    <Link to={link} className={`c-button c-button--${style}`} onClick={handleClick}>
         <div className='c-button__content u-flex u-flex-v-center'>
             {icon && animation === 'move-left' && ( 
               <Suspense fallback={<div>Loading...</div>}>
