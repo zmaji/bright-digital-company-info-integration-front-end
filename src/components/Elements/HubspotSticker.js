@@ -1,17 +1,17 @@
 import React from 'react';
 
 import StarIcon from '../../icons/star-fill.svg';
-import StickerIcon from '../../icons/hubspot-sticker.svg';
-import ArrowRight from '../../icons/arrow-right.svg';
+import StickerIcon from '../../images/hubspot-sticker-no-flag.png';
 import { Link } from 'react-router-dom';
 
 const HubspotSticker = ( ) => {
     return (
-      <div className='c-hubspot-sticker'>
+      <div className='c-hubspot-sticker u-flex u-flex-v-center'>
+
         <img className='c-hubspot-sticker__sticker-icon' src={StickerIcon} alt='HubSpot Review Sticker' />
 
-        <div className='c-hubspot-sticker__content'>
-            <div className='c-hubspot-sticker__rating u-flex u-flex-v-center'>
+        <div className='c-hubspot-sticker__content-container u-flex'>
+            <div className='c-hubspot-sticker__rating u-flex'>
                 <img className='c-icon c-hubspot-sticker__star-icon' src={StarIcon} alt='Star Icon' />
                 <img className='c-icon c-hubspot-sticker__star-icon' src={StarIcon} alt='Star Icon' />
                 <img className='c-icon c-hubspot-sticker__star-icon' src={StarIcon} alt='Star Icon' />
@@ -25,11 +25,8 @@ const HubspotSticker = ( ) => {
                     <span className='c-hubspot-sticker__button-title'>
                         Bekijk alle reviews
                     </span>
-
-                    <img className='c-icon c-hubspot-sticker__star-icon' src={ArrowRight} alt='Arrow Right Icon' />
                 </Link>
             </div>
-
         </div>
       </div>
     );
