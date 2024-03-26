@@ -5,7 +5,47 @@
     flex-direction: column;
   }
 
-  &__input--small {
-    max-width: 162px;
+  &__input {
+    &-wrapper {
+      flex-direction: column;
+      position: relative;
+      z-index: 0;
+      margin-bottom: rem-calc(24);
+    }
+
+    &__error {
+      border-color: $error;
+    }
+
+    &__error-message {
+      min-height: 12px;
+      text-align: end;
+      color: $error;
+      font-size: rem-calc(14);
+      margin-top: rem-calc(12);
+      margin-right: rem-calc(35);
+    }
+
+    &--small {
+      max-width: 162px;
+    }
+
+    &-icon--valid {
+      position: absolute;
+      height: rem-calc(15);
+      width: rem-calc(15);
+      top: 47%;
+      left: 90%;
+      z-index: 1;
+    }
+
+    &-icon--invalid {
+      position: absolute;
+      height: rem-calc(15);
+      width: rem-calc(15);
+      top: 32%;
+      left: 90%;
+      z-index: 1;
+    }
   }
 }

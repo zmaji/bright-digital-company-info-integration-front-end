@@ -17,29 +17,64 @@ const LandingPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const [emailError, setEmailError] = useState('');
+    const [conflictError, setConflictError] = useState('');
+    const [validationErrors, setValidationErrors] = useState({});
 
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
+        setError('');
+        setEmailError('');
+        setConflictError('');
+        setValidationErrors((prevErrors) => ({ ...prevErrors, email: '' }));
       };
     
     const handlePasswordChange = (e) => {
         setPassword(e.target.value);
+        setError('');
+        setConflictError('');
+        setValidationErrors((prevErrors) => ({ ...prevErrors, password: '' }));
     };
 
     const handleLogin = async () => {
+        if (!validateForm()) return;
+
         try {
             const response = await authService.login(email, password);
 
             if (response.ok) {
                 navigation('/overview');
             } else {
-                const data = await response.json();
-                setError(data.message || 'An error occurred while logging in');
+                if (response.status === 409) {
+                    setEmailError('Email address does not exist.');
+
+                } else if (response.status === 401) {
+                    setConflictError('Email address and password do not match.')
+                    
+                } else {
+                    setError('An error occurred while logging in');
+                }
             }
         } catch (error) {
             console.error('Error:', error);
             setError('An error occurred. Please try again later.');
         }
+    };
+
+    const validateForm = () => {
+        let errors = {};
+
+        if (!email.trim()) {
+            errors.email = 'Email is required';
+        }
+
+        if (!password.trim()) {
+            errors.password = 'Password is required';
+        }
+
+        setValidationErrors(errors);
+
+        return Object.keys(errors).length === 0;
     };
 
     return (
@@ -68,12 +103,12 @@ const LandingPage = () => {
                                 Discover the possiblities of connecting Company.Info with HubSpot and improve your sales process now!
                             </p>
 
-                            <Form style='flex-column'>
+                            <Form style='flex-column' error={error}>
                                 <Label text='Email address' />
-                                <Input type="email" name="name" onChange={handleEmailChange} />
+                                <Input type="email" name="name" value={email} onChange={handleEmailChange} icon='true' validationError={validationErrors.email} emailError={emailError} conflictError={conflictError} ignoreError='true'/>
 
                                 <Label text='Password' />
-                                <Input type="password" name="name" onChange={handlePasswordChange} />
+                                <Input type="password" name="name" value={password} onChange={handlePasswordChange} icon='true' validationError={validationErrors.password} conflictError={conflictError} technicalError={error}/>
 
                                 <div className="v-landingpage__content__form-bar u-flex u-flex-sb">
                                     <div className="v-landingpage__content__form-bar__remember u-flex">
@@ -84,7 +119,6 @@ const LandingPage = () => {
                                 </div>
                             </Form>
 
-                            {/* link='/install' */}
                             <Button title='Sign in' style='primary_submit' icon='ArrowRight' animation='move-right' onClick={handleLogin}/>
 
                             <div className="v-landingpage__content__no-account u-flex u-flex-v-center">
