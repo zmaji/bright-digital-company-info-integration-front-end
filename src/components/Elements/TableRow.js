@@ -4,6 +4,8 @@ import Button from '../elements/Button'
 const TableRow = ({ title, value, button }) => {
     return (
       <div className="c-table-row u-flex">
+        <div className="c-table-row__line"></div>
+        
         <div className="c-table-row__content-container u-flex">
           {title && ( 
             <div className="c-table-row__title-container">

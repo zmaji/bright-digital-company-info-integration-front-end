@@ -2,21 +2,7 @@ import React from 'react';
 import DefaultLayout from '../components/layout/DefaultLayout';
 import BreadCrumb from '../components/elements/BreadCrumb';
 import Table from '../components/content/Table';
-
-const testData = [
-  { title: 'Name', value: 'John Doe', button: null },
-  { title: 'Company info username', value: 30, button: null },
-  { title: 'Email', value: 'john@example.com', button: null },
-  {
-      title: 'Actions',
-      value: 'Test',
-      button: {
-          title: 'Change',
-          style: 'tertiary',
-          link: '',
-      }
-  }
-];
+import defaultProperties from '../data/DefaultProfile';
 
 const Profile = () => {
     return (
@@ -53,7 +39,7 @@ const Profile = () => {
                         Suspendisse varius enim in eros.
                       </p>
 
-                      <Table data={testData} />
+                      <Table data={defaultProperties} />
                   </div>
               </div>
             </DefaultLayout>

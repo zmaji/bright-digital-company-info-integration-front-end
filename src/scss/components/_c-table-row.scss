@@ -1,19 +1,28 @@
 .c-table-row {
     &__content-container {
-        width: calc(100% - 80px);
+        width: calc(100% - 140px);
+    }
+
+    &__line {
+        width: 100%;
+        height: 1px;
+        background-color: $light-blue-gray-alt;
+        margin-top: rem-calc(24);
+        margin-bottom: rem-calc(24);
     }
 
     &__title-container {
         width: calc(50% - 80px);
     }
 
-    // &__value-container {
-
-    // }
+    &__value-container {
+        margin-right: auto;
+    }
 
     &__title {
         font-size: 16px;
         font-weight: 600;
+        margin-right: 48px;
     }
 
     &__value {
@@ -24,5 +33,4 @@
     &__button-container {
         margin-left: auto;
     }
-
 }

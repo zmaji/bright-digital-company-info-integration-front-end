@@ -296,6 +296,8 @@
     }
   }
 
+  
+
   &--tertiary-white-left,
   &--tertiary-white {
     padding: 0;
@@ -321,5 +323,16 @@
     &--s {
       width: 150px;
     }
+  }
+
+  &--edit {
+    padding: 0;
+    background: transparent;
+    border-radius: 0;
+    font-size: rem-calc(16);
+    font-weight: 500;
+    transition: 0.3s;
+    color: $almost-black;
+    text-decoration: underline;
   }
 }
