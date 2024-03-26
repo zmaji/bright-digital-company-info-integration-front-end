@@ -7,7 +7,7 @@ const SidebarGroup = ({ title, items, isLast }) => {
         <div className={`c-sidebar__group ${isLast ? 'c-sidebar__group--last' : ''}`}>
             <React.Fragment>
                 {title && <SidebarCategory title={title} />}
-                    <div className="c-sidebar__items-container">
+                    <div className='c-sidebar__items-container'>
                         {items.map((item, index) => (
                             <SidebarItem
                                 key={index}

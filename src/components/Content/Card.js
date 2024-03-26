@@ -7,8 +7,8 @@ const Card = ({ step, icon, title, text, button }) => {
     const IconComponent = retrieveIcon(icon);
   
     return (
-      <div className="c-card">
-        <div className="c-card__content">
+      <div className='c-card'>
+        <div className='c-card__content'>
           {step && (
             <div className='c-card__content-step'>
                 { step }
@@ -32,7 +32,7 @@ const Card = ({ step, icon, title, text, button }) => {
           )}
 
           {button && (
-            <div className="c-card__content-button">
+            <div className='c-card__content-button'>
               <Button {...button} />
             </div>
           )}

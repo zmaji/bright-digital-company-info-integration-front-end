@@ -20,9 +20,9 @@ const HubspotSticker = ( ) => {
                 <span className='c-hubspot-sticker__rating-title'>5/5</span>
             </div>
 
-            <div className="c-hubspot-sticker__button-container">
+            <div className='c-hubspot-sticker__button-container'>
                 <Link to='https://ecosystem.hubspot.com/marketplace/solutions/bright-digital' className='c-hubspot-sticker__button u-flex u-flex-v-center'>
-                    <span className="c-hubspot-sticker__button-title">
+                    <span className='c-hubspot-sticker__button-title'>
                         Bekijk alle reviews
                     </span>
 
