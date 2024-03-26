@@ -37,6 +37,15 @@
       top: 47%;
       left: 90%;
       z-index: 1;
+
+      &-small {
+        position: absolute;
+        height: rem-calc(15);
+        width: rem-calc(15);
+        top: 32%;
+        left: 78%;
+        z-index: 1;
+      }
     }
 
     &-icon--invalid {
@@ -46,6 +55,15 @@
       top: 32%;
       left: 90%;
       z-index: 1;
+
+      &-small {
+        position: absolute;
+        height: rem-calc(15);
+        width: rem-calc(15);
+        top: 32%;
+        left: 78%;
+        z-index: 1;
+      }
     }
   }
 }

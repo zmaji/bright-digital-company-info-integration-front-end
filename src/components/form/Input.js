@@ -20,6 +20,12 @@ const Input = ({ type, name, value, onChange, style, validationError, emailError
       ) : hasText ? (
         <img className='c-icon c-form__input-icon--valid' src={validIcon} alt='Valid Icon' />
       ) : null }
+
+      {/* { (validationError || emailError || conflictError || technicalError) && style === 'small'  ? (
+        <img className='c-icon c-form__input-icon--invalid-small' src={invalidIcon} alt='Invalid Icon' />
+      ) : hasText ? (
+        <img className='c-icon c-form__input-icon--valid-small' src={validIcon} alt='Valid Icon' />
+      ) : null } */}
       
       {validationError && <span className="c-form__input__error-message">{validationError}</span>}
 
