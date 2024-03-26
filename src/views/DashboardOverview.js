@@ -2,7 +2,7 @@ import React from 'react';
 import DefaultLayout from '../components/layout/DefaultLayout';
 import Button from '../components/elements/Button';
 import Cards from '../components/content/Cards';
-import Card from '../components/content/Card';
+import overviewCardsData from '../data/OverviewCards';
 
 const DashboardOverview = () => {
     return (
@@ -23,48 +23,8 @@ const DashboardOverview = () => {
                   </div>
                 </div>
 
-                    <Cards>
-                      <div className="v-dashboard-overview__cards-container">
-                        <Card 
-                          icon='DownloadGradient' 
-                          title='Install script' 
-                          text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in.' 
-                          button={{
-                            title: 'Start now',
-                            style: 'tertiary',
-                            link: '/install-script',
-                            icon: 'ArrowRight',
-                            animation: 'move-right'
-                          }}
-                        />
+                <Cards cardData={overviewCardsData} customStyles={['c-cards--flex', 'c-cards--default-margin', 'c-cards--sb']} />
 
-                        <Card 
-                          icon='LightBulbGradient' 
-                          title='Enricht existing data' 
-                          text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in.' 
-                          button={{
-                            title: 'Start now',
-                            style: 'tertiary',
-                            link: '/enrich-data',
-                            icon: 'ArrowRight',
-                            animation: 'move-right'
-                          }}
-                        />
-
-                        <Card 
-                          icon='SearchGradient' 
-                          title='Search for data' 
-                          text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in.' 
-                          button={{
-                            title: 'Start now',
-                            style: 'tertiary',
-                            link: '',
-                            icon: 'ArrowRight',
-                            animation: 'move-right'
-                          }}
-                        />
-                      </div>
-                    </Cards>
 
             </DefaultLayout>
         </div>

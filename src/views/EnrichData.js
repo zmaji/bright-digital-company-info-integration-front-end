@@ -2,8 +2,8 @@ import React from 'react';
 import DefaultLayout from '../components/layout/DefaultLayout';
 import Button from '../components/elements/Button';
 import BreadCrumb from '../components/elements/BreadCrumb';
-import Card from '../components/content/Card';
 import Cards from '../components/content/Cards';
+import enrichCardsData from '../data/EnrichCards'
 
 const EnrichData = () => {
     return (
@@ -29,45 +29,7 @@ const EnrichData = () => {
                         </p>
                     </div>
 
-                    <Cards>
-                      <div className='v-enrich-data__cards-container u-flex'>
-                        <Card 
-                          step='Step 1' 
-                          title='Dolor sit amet' 
-                          text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in.' 
-                        />
-
-                        <Card 
-                          step='Step 2' 
-                          title='Voluptat aenean' 
-                          text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in.' 
-                        />
-
-                        <Card 
-                          step='Step 3' 
-                          title='Suspendise var' 
-                          text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in.' 
-                        />
-
-                        <Card 
-                          step='Step 4' 
-                          title='Elit adipiscing' 
-                          text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in.' 
-                        />
-
-                        <Card 
-                          step='Step 5' 
-                          title='Lorem ipsum' 
-                          text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in.' 
-                        />
-
-                        <Card 
-                          step='Step 6' 
-                          title='Varius enim' 
-                          text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in.' 
-                        />
-                      </div>
-                    </Cards>
+                    <Cards cardData={enrichCardsData} customStyles={['c-cards--flex', 'c-cards--margin-bottom']} />
 
                     <Button title='Go to HubSpot' style='primary-gradient' link='' icon='ArrowRight' animation='move-right'/>
                   </div>

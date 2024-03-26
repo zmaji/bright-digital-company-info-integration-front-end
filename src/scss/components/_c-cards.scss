@@ -1,0 +1,19 @@
+.c-cards {
+    &--flex {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    &--sb {
+        justify-content: space-between;
+    }
+
+    &--default-margin {
+        margin-top: rem-calc(75);
+        margin-bottom: rem-calc(21);
+    }
+
+    &--margin-bottom {
+        margin-bottom: rem-calc(50);
+    }
+}
