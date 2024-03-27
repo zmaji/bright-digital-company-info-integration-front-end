@@ -48,9 +48,8 @@ const LandingPage = () => {
         if (Object.keys(errors).length === 0) {
           const response = await authService.login(email, password);
 
-          if (response.ok) {
-              const responseData = await response.json();
-              const token = responseData.result;
+          if (response.status >= 200 && response.status < 300) {
+              const token = response.data.result;
               dispatch(setAuthToken(token));
               navigation('/overview');
           } else {

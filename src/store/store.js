@@ -1,6 +1,5 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit';
 
-// Create auth slice using createSlice
 const authSlice = createSlice({
   name: 'auth',
   initialState: {
@@ -9,20 +8,37 @@ const authSlice = createSlice({
   reducers: {
     setAuthToken: (state, action) => {
       state.authToken = action.payload;
+      // localStorage.setItem('authToken', action.payload);
     },
     removeAuthToken: (state) => {
       state.authToken = null;
+      // localStorage.removeItem('authToken');
     }
   }
 });
 
-// Export action creators from auth slice
-export const { setAuthToken, removeAuthToken } = authSlice.actions;
+const userSlice = createSlice({
+  name: 'user',
+  initialState: {
+    userData: null
+  },
+  reducers: {
+    setUserData: (state, action) => {
+      state.userData = action.payload;
+    },
+    clearUserData: (state) => {
+      state.userData = null;
+    }
+  }
+});
 
-// Create store using configureStore and pass in reducer object
+export const { setAuthToken, removeAuthToken } = authSlice.actions;
+export const { setUserData, clearUserData } = userSlice.actions;
+
 const store = configureStore({
   reducer: {
-    auth: authSlice.reducer
+    auth: authSlice.reducer,
+    user: userSlice.reducer
   }
 });
 

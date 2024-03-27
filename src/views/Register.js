@@ -59,13 +59,13 @@ const Register = () => {
         if (Object.keys(errors).length === 0) {
             const response = await userService.register(firstName, lastName, email, password);
 
-            if (response.ok) {
+            if (response.status >= 200 && response.status < 300) {
                 navigation('/');
             } else {
               if (response.status === 409) {
                 setEmailError('Email address already exists.');
               } else {
-                setError('An error occurred while logging in.');
+                setError('An error occurred while registering in.');
               }
             }
           } else {

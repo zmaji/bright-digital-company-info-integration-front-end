@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import DefaultLayout from '../components/layout/DefaultLayout';
 import BreadCrumb from '../components/elements/BreadCrumb';
 import Table from '../components/content/Table';
+import userService from '../services/userService';
 import { useSelector } from 'react-redux';
-import { decodeToken }  from 'react-jwt';
 
 const Profile = () => {
   const authToken = useSelector(state => state.auth.authToken);
@@ -11,10 +11,18 @@ const Profile = () => {
   const [profileData, setProfileData] = useState([]);
 
   useEffect(() => {
-      if (authToken) {
-          const decodedToken = decodeToken(authToken);
-          setUserInfo(decodedToken);
+    const fetchUserData = async () => {
+      try {
+        if (authToken) {
+          const userData = await userService.getCurrentUser(authToken);
+          setUserInfo(userData.data);
+        }
+      } catch (error) {
+        console.error('Error fetching user data:', error);
       }
+    };
+
+    fetchUserData();
   }, [authToken]);
 
   useEffect(() => {

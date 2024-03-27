@@ -6,9 +6,7 @@ const useLogout = () => {
 
   const logout = () => {
     dispatch(removeAuthToken());
-    console.log('User logged out :)');
   };
-
   return logout;
 };
 
