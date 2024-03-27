@@ -38,33 +38,33 @@ const LandingPage = () => {
     };
 
     const handleLogin = async () => {
+      try {
         const formData = { email, password };
         const errors = validateForm(formData);
 
         if (Object.keys(errors).length === 0) {
-            try {
-                const response = await authService.login(email, password);
-    
-                if (response.ok) {
-                    navigation('/overview');
-                } else {
-                    if (response.status === 409) {
-                        setEmailError('Email address does not exist.');
-    
-                    } else if (response.status === 401) {
-                        setConflictError('Email address and password do not match.')
-                        
-                    } else {
-                        setError('An error occurred while logging in');
-                    }
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                setError('An error occurred. Please try again later.');
-            }
+          const response = await authService.login(email, password);
+
+          if (response.ok) {
+              navigation('/overview');
+          } else {
+              if (response.status === 409) {
+                  setEmailError('Email address does not exist.');
+
+              } else if (response.status === 401) {
+                  setConflictError('Email address and password do not match.')
+                  
+              } else {
+                  setError('An error occurred while logging in');
+              }
+          }
         } else {
             setValidationErrors(errors);
         }
+      } catch (error) {
+        console.error('Error:', error);
+        setError('An error occurred. Please try again later.');
+      }
     };
 
     return (
@@ -95,7 +95,7 @@ const LandingPage = () => {
 
                             <Form style='flex-column' error={error}>
                                 <Label text='Email address' />
-                                <Input type="email" name="name" value={email} onChange={handleEmailChange} icon='true' validationError={validationErrors.email} emailError={emailError} conflictError={conflictError} ignoreError='true'/>
+                                <Input type="email" name="name" value={email} onChange={handleEmailChange} icon='true' validationError={validationErrors.email} emailError={emailError} conflictError={conflictError}/>
 
                                 <Label text='Password' />
                                 <Input type="password" name="name" value={password} onChange={handlePasswordChange} icon='true' validationError={validationErrors.password} conflictError={conflictError} technicalError={error}/>

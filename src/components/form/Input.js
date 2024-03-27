@@ -2,8 +2,18 @@ import React from 'react';
 import validIcon from '../../icons/valid.svg';
 import invalidIcon from '../../icons/invalid.svg';
 
-const Input = ({ type, name, value, onChange, style, validationError, emailError, conflictError, technicalError, ignoreError='' }) => {
+const Input = ({ type, name, value, onChange, style, validationError, emailError, conflictError, technicalError }) => {
   const hasText = !!value;
+
+  const renderIcon = (isValid) => {
+    const className = `c-icon c-form__input-icon--${isValid ? 'valid' : 'invalid'}${style === 'small' ? '-small' : ''}`;
+    const iconSrc = isValid ? validIcon : invalidIcon;
+    return <img className={className} src={iconSrc} alt={isValid ? 'Valid Icon' : 'Invalid Icon'} />;
+  };
+
+  const renderErrorMessage = (error) => {
+    return error && <span className="c-form__input__error-message">{error}</span>;
+  };
 
   return (
     <div className={'c-form__input-wrapper u-flex'}>
@@ -15,27 +25,12 @@ const Input = ({ type, name, value, onChange, style, validationError, emailError
         value={value}
       />
 
-      { validationError || emailError || conflictError || technicalError ? (
-        <img className='c-icon c-form__input-icon--invalid' src={invalidIcon} alt='Invalid Icon' />
-      ) : hasText ? (
-        <img className='c-icon c-form__input-icon--valid' src={validIcon} alt='Valid Icon' />
-      ) : null }
+      { (validationError || emailError || conflictError || technicalError) ? 
+        renderIcon(false) :
+        hasText && renderIcon(true)
+      }
 
-      {/* { (validationError || emailError || conflictError || technicalError) && style === 'small'  ? (
-        <img className='c-icon c-form__input-icon--invalid-small' src={invalidIcon} alt='Invalid Icon' />
-      ) : hasText ? (
-        <img className='c-icon c-form__input-icon--valid-small' src={validIcon} alt='Valid Icon' />
-      ) : null } */}
-      
-      {validationError && <span className="c-form__input__error-message">{validationError}</span>}
-
-      {emailError && !validationError && <span className="c-form__input__error-message">{emailError}</span>}
-
-      {conflictError && !validationError && ignoreError === '' && <span className="c-form__input__error-message">{conflictError}</span>}
-      {conflictError && !validationError && ignoreError === 'true' && <span className="c-form__input__error-message"></span>}
-
-      {technicalError && !validationError && <span className="c-form__input__error-message">{technicalError}</span>}
-
+      {renderErrorMessage(emailError || validationError || conflictError || technicalError)}
     </div>
   );
 };

@@ -6,46 +6,70 @@ import Input from '../components/form/Input';
 import { Link } from 'react-router-dom';
 import SignupHeader from '../components/header/SignupHeader';
 import { validateForm } from '../helpers/validateFormData';
+import userService from '../services/userService';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
+    const navigation = useNavigate();
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [repeatPassword, setRepeatPassword] = useState('');
+    const [error, setError] = useState('');
     const [validationErrors, setValidationErrors] = useState({});
 
     const handleFirstNameChange = (e) => {
         setFirstName(e.target.value);
+        setError('');
+        setValidationErrors((prevErrors) => ({ ...prevErrors, firstName: '' }));
     };
     
     const handleLastNameChange = (e) => {
         setLastName(e.target.value);
+        setError('');
+        setValidationErrors((prevErrors) => ({ ...prevErrors, lastName: '' }));
     };
 
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
+        setError('');
+        setValidationErrors((prevErrors) => ({ ...prevErrors, email: '' }));
     };
 
     const handlePasswordChange = (e) => {
         setPassword(e.target.value);
+        setError('');
+        setValidationErrors((prevErrors) => ({ ...prevErrors, password: '' }));
     };
 
     const handleRepeatPasswordChange = (e) => {
         setRepeatPassword(e.target.value);
+        setError('');
+        setValidationErrors((prevErrors) => ({ ...prevErrors, repeatPassword: '' }));
     };
 
-    const handleSignUp = () => {
-        const formData = { firstName, lastName, email, password, repeatPassword };
+    const handleSignUp = async () => {
+      try {
+        const formData = { firstName, lastName, email, password };
         const errors = validateForm(formData);
         
         if (Object.keys(errors).length === 0) {
-            // TODO: PROCEED WITH LOGIC
-        } else {
+            const response = await userService.register(firstName, lastName, email, password);
+
+            if (response.ok) {
+                navigation('/');
+            } else {
+              setError('An error occurred while logging in');
+            }
+          } else {
             setValidationErrors(errors);
         }
+      } catch (error) {
+        console.error('Error:', error);
+        setError('An error occurred. Please try again later.');
+      }
     };
-
 
     return (
         <div className='v-register u-bg-color--light-blue'> 
@@ -79,7 +103,7 @@ const Register = () => {
                         <Input type="password" name="password" value={password} onChange={handlePasswordChange} validationError={validationErrors.password} />
 
                         <Label text='Repeat password' />
-                        <Input type="password" name="repeatPassword" value={repeatPassword} onChange={handleRepeatPasswordChange} validationError={validationErrors.repeatPassword} />
+                        <Input type="password" name="repeatPassword" value={repeatPassword} onChange={handleRepeatPasswordChange} validationError={validationErrors.repeatPassword} technicalError={error} />
 
                         <div className="v-register-content__form-bar u-flex u-flex-sb">
                             <div className="v-register-content__remember-me u-flex">

@@ -1,15 +1,23 @@
 export const validateForm = (formData) => {
-    let errors = {};
+  let errors = {};
 
-    for (const fieldName in formData) {
-        if (!formData[fieldName].trim()) {
-            errors[fieldName] = `${fieldName.charAt(0).toUpperCase() + fieldName.slice(1)} is required`;
-        }
-    }
+  const fieldNames = {
+      firstName: 'First name',
+      lastName: 'Last name',
+      email: 'Email',
+      password: 'Password',
+      repeatPassword: 'Repeat password',
+  };
 
-    if (formData.password && formData.repeatPassword && formData.password !== formData.repeatPassword) {
-        errors.repeatPassword = 'Passwords do not match';
-    }
+  for (const fieldName in formData) {
+      if (!formData[fieldName].trim()) {
+          errors[fieldName] = `${fieldNames[fieldName] || (fieldName.charAt(0).toUpperCase() + fieldName.slice(1))} is required`;
+      }
+  }
 
-    return errors;
+  if (formData.password && formData.repeatPassword && formData.password !== formData.repeatPassword) {
+      errors.repeatPassword = 'Passwords do not match';
+  }
+
+  return errors;
 };
