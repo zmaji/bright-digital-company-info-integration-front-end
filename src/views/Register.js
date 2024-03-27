@@ -17,6 +17,7 @@ const Register = () => {
     const [password, setPassword] = useState('');
     const [repeatPassword, setRepeatPassword] = useState('');
     const [error, setError] = useState('');
+    const [emailError, setEmailError] = useState('');
     const [validationErrors, setValidationErrors] = useState({});
 
     const handleFirstNameChange = (e) => {
@@ -34,6 +35,7 @@ const Register = () => {
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
         setError('');
+        setEmailError('');
         setValidationErrors((prevErrors) => ({ ...prevErrors, email: '' }));
     };
 
@@ -51,7 +53,7 @@ const Register = () => {
 
     const handleSignUp = async () => {
       try {
-        const formData = { firstName, lastName, email, password };
+        const formData = { firstName, lastName, email, password, repeatPassword };
         const errors = validateForm(formData);
         
         if (Object.keys(errors).length === 0) {
@@ -60,7 +62,11 @@ const Register = () => {
             if (response.ok) {
                 navigation('/');
             } else {
-              setError('An error occurred while logging in');
+              if (response.status === 409) {
+                setEmailError('Email address already exists.');
+              } else {
+                setError('An error occurred while logging in.');
+              }
             }
           } else {
             setValidationErrors(errors);
@@ -97,7 +103,7 @@ const Register = () => {
                         </div>
 
                         <Label text='E-mail address' />
-                        <Input type="email" name="email" value={email} onChange={handleEmailChange} validationError={validationErrors.email} />
+                        <Input type="email" name="email" value={email} onChange={handleEmailChange} validationError={validationErrors.email} emailError={emailError}/>
 
                         <Label text='Password' />
                         <Input type="password" name="password" value={password} onChange={handlePasswordChange} validationError={validationErrors.password} />
