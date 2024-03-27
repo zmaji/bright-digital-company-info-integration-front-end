@@ -9,7 +9,7 @@ const DefaultHeader = () => {
             <div className='u-squeeze u-squeeze--xxl'>
                <div className='c-default-header__container u-flex u-flex-sb u-flex-v-center'>
                 <div className='c-default-header__logo-container'>
-                    <Link to="/">
+                    <Link to="/overview">
                         <img className='c-default-header__logo' src={brightDigitalLogo} alt='Bright Digital Logo' />
                     </Link>
                 </div>

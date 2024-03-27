@@ -10,20 +10,10 @@ const Profile = () => {
     const authToken = useSelector(state => state.auth.authToken);
     const [userInfo, setUserInfo] = useState({});
 
-    console.log(authToken)
-    console.log(authToken)
-    console.log(authToken)
-    console.log(authToken)
-    console.log(authToken)
-    console.log(authToken)
-
     useEffect(() => {
         if (authToken) {
-            // Decode the token to extract user information
             const decodedToken = decodeToken(authToken);
-            console.log('decodeToken')
-            console.log(decodeToken)
-            setUserInfo(decodedToken); // Set user info state
+            setUserInfo(decodedToken); 
         }
     }, [authToken]);
 

@@ -14,6 +14,7 @@ const SidebarGroup = ({ title, items, isLast }) => {
                                 icon={item.icon}
                                 title={item.title}
                                 link={item.link}
+                                onClick={item.onClick}
                             />
                         ))}
                     </div>

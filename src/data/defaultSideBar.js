@@ -31,7 +31,7 @@ const sidebarData = [
         items: [
             { icon: SupportIcon, title: 'Support', link: '' },
             { icon: CogIcon, title: 'Settings', link: '/profile' },
-            { icon: LogoutIcon, title: 'Logout', link: '' },
+            { icon: LogoutIcon, title: 'Logout', link: '/', onClick: 'logout' },
         ],
         isLast: true
     },
