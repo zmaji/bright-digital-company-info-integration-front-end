@@ -1,10 +1,32 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import DefaultLayout from '../components/layout/DefaultLayout';
 import BreadCrumb from '../components/elements/BreadCrumb';
 import Table from '../components/content/Table';
 import defaultProperties from '../data/DefaultProfile';
+import { useSelector } from 'react-redux';
+import { decodeToken }  from 'react-jwt';
 
 const Profile = () => {
+    const authToken = useSelector(state => state.auth.authToken);
+    const [userInfo, setUserInfo] = useState({});
+
+    console.log(authToken)
+    console.log(authToken)
+    console.log(authToken)
+    console.log(authToken)
+    console.log(authToken)
+    console.log(authToken)
+
+    useEffect(() => {
+        if (authToken) {
+            // Decode the token to extract user information
+            const decodedToken = decodeToken(authToken);
+            console.log('decodeToken')
+            console.log(decodeToken)
+            setUserInfo(decodedToken); // Set user info state
+        }
+    }, [authToken]);
+
     return (
         <div className='v-profile'>
             <DefaultLayout>
@@ -19,7 +41,7 @@ const Profile = () => {
                       </div>
 
                       <h2 className='v-profile__personal-information__name'>
-                        John Doe
+                        { userInfo.firstName }
                       </h2>
 
                       <span className='v-profile__personal-information__email'>

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './scss/main.scss';
-import AppRoutes from './routes/Routes'
+import { Provider } from 'react-redux';
+import store from './store/store';
+import AppRoutes from './routes/Routes';
 
 class App extends Component {
   constructor(props) {
@@ -12,7 +14,9 @@ class App extends Component {
 
   render() {
     return (
-      <AppRoutes />
+      <Provider store={store}>
+        <AppRoutes />
+      </Provider>
     );
   }
 }

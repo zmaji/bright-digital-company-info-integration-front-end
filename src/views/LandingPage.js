@@ -12,9 +12,12 @@ import ImagePreview from '../images/Image-preview.png';
 import logorowData from '../data/DefaultLogoRow';
 import authService from '../services/authService';
 import { validateForm } from '../helpers/validateFormData';
+import { useDispatch } from 'react-redux';
+import { setAuthToken } from '../store/store';
 
 const LandingPage = () => {
     const navigation = useNavigate();
+    const dispatch = useDispatch();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
@@ -46,6 +49,9 @@ const LandingPage = () => {
           const response = await authService.login(email, password);
 
           if (response.ok) {
+              const responseData = await response.json();
+              const token = responseData.result;
+              dispatch(setAuthToken(token));
               navigation('/overview');
           } else {
               if (response.status === 409) {
