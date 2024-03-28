@@ -29,9 +29,9 @@ const EnrichData = () => {
                         </p>
                     </div>
 
-                    <Cards cardData={enrichCardsData} customStyles={['c-cards--flex', 'c-cards--margin-bottom']} />
+                    <Cards cardData={enrichCardsData} customStyles={['c-cards--flex', 'c-cards--default-margin']} />
 
-                    <Button title='Go to HubSpot' style='primary-gradient' link='' icon='ArrowRight' animation='move-right'/>
+                    <Button title='Go to HubSpot' style='primary' link='' icon='ArrowRight' animation='move-right'/>
                   </div>
                 </div>
             </DefaultLayout>
