@@ -1,6 +1,6 @@
 import React from 'react';
 import Sidebar from '../sidebar/Sidebar';
-import sidebarData from '../../data/DefaultSidebar';
+import sidebarData from '../../data/defaultSideBar';
 import ContentContainer from '../content/ContentContainer';
 import DefaultHeader from '../header/DefaultHeader';
 
