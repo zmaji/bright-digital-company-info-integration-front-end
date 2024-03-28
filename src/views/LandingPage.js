@@ -9,6 +9,7 @@ import HubspotSticker from '../components/elements/HubspotSticker';
 import LogoRow from '../components/elements/LogoRow';
 import brightDigitalLogo from '../images/logo-bright-zw.svg';
 import ImagePreview from '../images/Image-preview.png';
+import LandingpageBackground from '../images/landingpage-background-image.png';
 import logorowData from '../data/DefaultLogoRow';
 import authService from '../services/authService';
 import { validateForm } from '../helpers/validateFormData';
@@ -126,12 +127,14 @@ const LandingPage = () => {
                 
                 <div className="v-landingpage__content-right">
                     <div className="v-landingpage__content-right-inner">
-                        <div className="v-landingpage__content__image-preview__container">
-                            <img className="v-landingpage__content__image-preview__image" src={ImagePreview} alt="Bright Digital Logo" />
-                        </div>
+                        <div className="v-landingpage__content-right-inner-spacing">
+                            <div className="v-landingpage__content__image-preview__container">
+                                <img className="v-landingpage__content__image-preview__image" src={LandingpageBackground} alt="Bright Digital Logo" />
+                            </div>
 
-                        <div className="v-landingpage__content__logo-row">
-                            <LogoRow logos={logorowData} />
+                            <div className="v-landingpage__content__logo-row">
+                                <LogoRow logos={logorowData} />
+                            </div>
                         </div>
                     </div>
                 </div>
