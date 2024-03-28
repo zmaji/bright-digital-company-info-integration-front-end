@@ -86,7 +86,7 @@ const LandingPage = () => {
                 </div>
              </div>
 
-            <div className="v-landingpage__content u-flex u-flex-sb">
+            <div className="v-landingpage__content u-flex u-flex-v-center">
                 <div className="v-landingpage__content-left">
                     <div className="v-landingpage__content-left-inner">
                         <div className="v-landingpage__content-left-inner-spacing">
