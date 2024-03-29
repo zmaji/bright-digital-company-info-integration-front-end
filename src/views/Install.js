@@ -4,38 +4,50 @@ import Button from '../components/elements/Button';
 import HubSpotLogo from '../icons/hubspot-logo-v2.svg';
 import SyncIcon from '../icons/sync.svg';
 import CompanyInfoLogo from '../icons/company-info-logo.svg';
+import { useSelector } from 'react-redux';
 
-// const baseUrl = process.env.BASE_URL;
-const baseUrl='http://localhost:3000'
-const installLink = baseUrl + '/install';
+const baseUrl = 'http://localhost:3000';
+const installUrl = baseUrl + '/install';
 
 const Install = () => {
+    const authToken = useSelector(state => state.auth.authToken);
+
+    const handleInstall = async () => {
+        try {
+            localStorage.setItem('authToken', authToken);
+            window.location.href = installUrl;
+        } catch (error) {
+            console.error('Error:', error);
+            setError('An error occurred. Please try again later.');
+        }
+    }
+
     return (
         <div className='v-install'>
-          <SignupHeader />
-          <div className="v-install__background-wrapper">
-            <div className='o-container'>
-              <div className='u-squeeze u-squeeze--xl'>
-                <div className="v-install__content-wrapper">
-                  <div className="v-install__content-container u-flex">
-                    <div className="v-install__logo-row u-flex u-flex-v-center">
-                      <img className="v-install__logo-row__logo" src={CompanyInfoLogo} alt="Company info Logo" />
-                      <img className="v-install__logo-row__icon" src={SyncIcon} alt="Swap icon" />
-                      <img className="v-install__logo-row__logo" src={HubSpotLogo} alt="HubSpot Logo" />
+            <SignupHeader />
+            <div className="v-install__background-wrapper">
+                <div className='o-container'>
+                    <div className='u-squeeze u-squeeze--xl'>
+                        <div className="v-install__content-wrapper">
+                            <div className="v-install__content-container u-flex">
+                                <div className="v-install__logo-row u-flex u-flex-v-center">
+                                    <img className="v-install__logo-row__logo" src={CompanyInfoLogo} alt="Company info Logo" />
+                                    <img className="v-install__logo-row__icon" src={SyncIcon} alt="Swap icon" />
+                                    <img className="v-install__logo-row__logo" src={HubSpotLogo} alt="HubSpot Logo" />
+                                </div>
+
+                                <h1 className='v-install__content-title'>Install the app</h1>
+
+                                <p className='v-install__content-text'>Discover the possiblities of connecting Company.Info with HubSpot and improve your sales process now!</p>
+
+                                <Button title='Start now' style='primary' onClick={handleInstall} icon='ArrowRight' animation='move-right'/>
+                            </div>
+                        </div>
                     </div>
-
-                    <h1 className='v-install__content-title'>Install the app</h1>
-
-                    <p className='v-install__content-text'>Discover the possiblities of connecting Company.Info with HubSpot and improve your sales process now!</p>
-
-                    <Button title='Start now' style='primary' link={installLink} icon='ArrowRight' animation='move-right'/>
-                  </div>
                 </div>
-              </div>
             </div>
-          </div>
         </div>
     );
-  };
+};
 
 export default Install;

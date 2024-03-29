@@ -1,4 +1,3 @@
-import { useSelector } from 'react-redux';
 // import dotenv from 'dotenv';
 import axios from 'axios';
 import { setUserData } from '../store/store';
@@ -9,7 +8,6 @@ import { setUserData } from '../store/store';
 const BASE_URL='http://localhost:3000/'
 
 const setAuthorizationHeader = async (authToken) => {
-  // const authToken = useSelector(state => state.auth.authToken);
 
   if (authToken) {
     axios.defaults.headers.common['Authorization'] = `Bearer ${authToken}`;
@@ -49,9 +47,23 @@ const register = async (firstName, lastName, email, password) => {
   }
 };
 
+const updateUser = async (authToken, portalId) => {
+  await setAuthorizationHeader(authToken);
+  
+  try {
+    await axios.put(`${BASE_URL}users`, {
+      hubSpotPortalId: portalId,
+    });
+  } catch (error) {
+      console.error('Error:', error);
+      throw new Error(error.message || 'An error occurred getting a user');
+  }
+};
+
 const userService = {
   getCurrentUser,
-  register
+  register,
+  updateUser
 };
 
 export default userService;
