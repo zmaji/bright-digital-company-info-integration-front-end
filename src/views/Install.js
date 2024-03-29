@@ -5,6 +5,10 @@ import HubSpotLogo from '../icons/hubspot-logo-v2.svg';
 import SyncIcon from '../icons/sync.svg';
 import CompanyInfoLogo from '../icons/company-info-logo.svg';
 
+// const baseUrl = process.env.BASE_URL;
+const baseUrl='http://localhost:3000'
+const installLink = baseUrl + '/install';
+
 const Install = () => {
     return (
         <div className='v-install'>
@@ -24,7 +28,7 @@ const Install = () => {
 
                     <p className='v-install__content-text'>Discover the possiblities of connecting Company.Info with HubSpot and improve your sales process now!</p>
 
-                    <Button title='Start now' style='primary' link='/overview' icon='ArrowRight' animation='move-right'/>
+                    <Button title='Start now' style='primary' link={installLink} icon='ArrowRight' animation='move-right'/>
                   </div>
                 </div>
               </div>

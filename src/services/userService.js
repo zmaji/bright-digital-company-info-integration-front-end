@@ -21,11 +21,6 @@ const getCurrentUser = async (authToken) => {
   
   try {
       const response = await axios.get(`${BASE_URL}users`)
-      console.log('response')
-      console.log('response')
-      console.log('response')
-      console.log('response')
-      console.log(response)
       setUserData(response);
       return response;
   } catch (error) {

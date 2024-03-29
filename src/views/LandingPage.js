@@ -52,7 +52,7 @@ const LandingPage = () => {
           if (response.status >= 200 && response.status < 300) {
               const token = response.data.result;
               dispatch(setAuthToken(token));
-              navigation('/overview');
+              navigation('/install');
           } else {
               if (response.status === 409) {
                   setEmailError('Email address does not exist.');
