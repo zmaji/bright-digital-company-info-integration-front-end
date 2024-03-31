@@ -6,21 +6,25 @@ import SyncIcon from '../icons/sync.svg';
 import CompanyInfoLogo from '../icons/company-info-logo.svg';
 import { useLocation, useNavigate } from 'react-router';
 import userService from '../services/userService';
+import { useDispatch } from 'react-redux';
+import { setAuthToken } from '../store/store';
 
 const ThankYou = () => {
+    const dispatch = useDispatch();
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
-    const portalId = searchParams.get('portalId');
+    const portalId = parseInt(searchParams.get('portalId'));
     const navigate = useNavigate();
 
     const updateUser = async () => {
         try {
             const authToken = localStorage.getItem('authToken');
             await userService.updateUser(authToken, portalId);
+            dispatch(setAuthToken(authToken));
+            localStorage.removeItem('authToken');
             navigate('/overview');
         } catch (error) {
             console.error('Error:', error);
-            setError('An error occurred. Please try again later.');
         }
     }
 

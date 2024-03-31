@@ -52,7 +52,7 @@ const updateUser = async (authToken, portalId) => {
   
   try {
     await axios.put(`${BASE_URL}users`, {
-      hubSpotPortalId: portalId,
+      portalId: portalId,
     });
   } catch (error) {
       console.error('Error:', error);
