@@ -60,7 +60,7 @@ const Register = () => {
             const response = await userService.register(firstName, lastName, email, password);
 
             if (response.status >= 200 && response.status < 300) {
-                navigation('/');
+                navigation('/activate');
             } else {
               if (response.status === 409) {
                 setEmailError('Email address already exists.');

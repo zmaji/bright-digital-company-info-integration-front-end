@@ -8,6 +8,7 @@ import DashboardOverview from '../views/DashboardOverview';
 import InstallScript from '../views/InstallScript';
 import EnrichData from '../views/EnrichData';
 import Profile from '../views/Profile';
+import Activate from '../views/Activate';
 
 const AppRoutes = () => {
   return (
@@ -21,6 +22,7 @@ const AppRoutes = () => {
         <Route path="/install-script" element={<InstallScript/>} />
         <Route path="/enrich-data" element={<EnrichData/>} />
         <Route path="/profile" element={<Profile/>} />
+        <Route path="/activate" element={<Activate/>} />
         {/* <Route path="*" element={<NotFound />} /> */}
       </Routes>
     </Router>

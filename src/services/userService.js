@@ -42,8 +42,8 @@ const register = async (firstName, lastName, email, password) => {
 
     return response;
   } catch (error) {
-    console.error('Error:', error.response.data);
-    throw new Error(error.response.data.error || 'An error occurred while registering');
+    console.error('Error:', error);
+    throw new Error(error|| 'An error occurred while registering');
   }
 };
 
@@ -60,10 +60,24 @@ const updateUser = async (authToken, portalId) => {
   }
 };
 
+const verifyActivationCode = async (activationCode) => {
+  try {
+    const response = axios.put(`${BASE_URL}users/verify`, {
+      activationCode: activationCode,
+    });
+
+    return response;
+  } catch (error) {
+      console.error('Error:', error);
+      throw new Error(error.message || 'An error occurred verifying a user');
+  }
+};
+
 const userService = {
   getCurrentUser,
   register,
-  updateUser
+  updateUser,
+  verifyActivationCode,
 };
 
 export default userService;
