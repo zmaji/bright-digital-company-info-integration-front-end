@@ -1,7 +1,6 @@
 import React, { Suspense } from 'react';
 import { Link } from 'react-router-dom';
 import { retrieveIcon } from '../../helpers/retrieveIcon';
-import userService from '../../services/userService';
 
 const Button = ({ style, link, title, icon = '', animation = '', customStyle ='', onClick=null}) => {
   const IconComponent = retrieveIcon(icon);

@@ -25,10 +25,8 @@ const Input = ({ type, name, value, onChange, style, validationError, emailError
         value={value}
       />
 
-      { (validationError || emailError || conflictError || technicalError) ? 
-        renderIcon(false) :
-        hasText && renderIcon(true)
-      }
+      {(validationError || emailError || conflictError || technicalError) && renderIcon(false)}
+      {hasText && !(validationError || emailError || conflictError || technicalError) && renderIcon(true)}
 
       {renderErrorMessage(emailError || validationError || conflictError || technicalError)}
     </div>

@@ -8,7 +8,6 @@ import Input from '../components/form/Input';
 import HubspotSticker from '../components/elements/HubspotSticker';
 import LogoRow from '../components/elements/LogoRow';
 import brightDigitalLogo from '../images/logo-bright-zw.svg';
-import ImagePreview from '../images/Image-preview.png';
 import LandingpageBackground from '../images/landingpage-background-image.png';
 import logorowData from '../data/DefaultLogoRow';
 import authService from '../services/authService';
@@ -56,12 +55,8 @@ const LandingPage = () => {
           } else {
               if (response.status === 409) {
                   setEmailError('Email address does not exist.');
-
               } else if (response.status === 401) {
-                  setConflictError('Email address and password do not match.')
-                  
-              } else {
-                  setError('An error occurred while logging in');
+                  setConflictError('Email address and password do not match.');
               }
           }
         } else {
