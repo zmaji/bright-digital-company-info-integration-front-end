@@ -12,16 +12,17 @@ const Profile = () => {
   const firstName = userData ? userData.firstName : 'First name not found';
   const lastName = userData ? userData.lastName : 'Last name not found';
   const emailAddress = userData ? userData.emailAddress : 'Email address not found';
-  const companyInfoUserName = userData ? userData.companyInfoUserName : 'Company info username not found';
+  const domain = userData ? userData.domain : 'Domain not found';
+  // const companyInfoUserName = userData ? userData.companyInfoUserName : 'Company info username not found';
 
   useEffect(() => {
       const updatedProfileData = [
         { title: 'Full name', value: firstName + ' ' + lastName, button: { title: 'Change', style: 'edit', link: '' } },
-        { title: 'Website', value: 'NOT DYNAMIC YET', button: { title: 'Change', style: 'edit', link: '' } },
+        { title: 'Website', value: domain, button: { title: 'Change', style: 'edit', link: '' } },
         { title: 'Email address', value: emailAddress, button: { title: 'Change', style: 'edit', link: '' } },
         { title: 'Password', value: '********', button: { title: 'Change', style: 'edit', link: '' } },
-        { title: 'Company info username', value: companyInfoUserName, button: { title: 'Change', style: 'edit', link: '' } },
-        { title: 'Company info password', value: '********', button: { title: 'Change', style: 'edit', link: '' } },
+        // { title: 'Company info username', value: companyInfoUserName, button: { title: 'Change', style: 'edit', link: '' } },
+        // { title: 'Company info password', value: '********', button: { title: 'Change', style: 'edit', link: '' } },
       ];
       setProfileData(updatedProfileData);
   }, [userData]);
