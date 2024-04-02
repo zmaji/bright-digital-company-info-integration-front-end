@@ -14,7 +14,7 @@ import authService from '../services/authService';
 import { validateForm } from '../helpers/validateFormData';
 import { useDispatch } from 'react-redux';
 import { setAuthToken } from '../store/authSlice';
-import userService from '../services/userService';
+import { useSelector } from 'react-redux';
 
 const LandingPage = () => {
     const navigation = useNavigate();
@@ -52,7 +52,7 @@ const LandingPage = () => {
           if (response.status >= 200 && response.status < 300) {
               const token = response.data.result;
               dispatch(setAuthToken(token));
-              navigation('/install');
+              navigate();
           } else {
               if (response.status === 409) {
                   setEmailError('Email address does not exist.');
@@ -68,6 +68,21 @@ const LandingPage = () => {
         setError('An error occurred. Please try again later.');
       }
     };
+
+    const userData = useSelector(state => state.auth.userData);
+
+    const navigate = async () => {
+      try {
+        if (userData.hubSpotPortalId) {
+          navigation('/overview');
+        } else {
+          navigation('/install');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        setError('An error occurred. Please try again later.');
+      }
+    }
 
     return (
         <div className='v-landingpage u-bg-color--light-blue'> 
