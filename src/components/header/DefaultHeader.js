@@ -24,7 +24,7 @@ const DefaultHeader = () => {
                     <span className='c-default-header__profile-title'>{firstName} {lastName}</span>
 
                     <Link to='/profile'>
-                        <img className='c-default-header__profile-icon' src={profileIcon} alt='Bright Digital Logo' />
+                        <img className='c-default-header__profile-icon' src={profileIcon} alt='Profile icon' />
                     </Link>
                 </div>
             </div>

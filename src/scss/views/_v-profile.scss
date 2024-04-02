@@ -3,11 +3,9 @@
         padding: 48px 55px;
     }
 
-    &__image {
+    &__profile-icon {
         height: rem-calc(150);
         width: rem-calc(150);
-        border-radius: 50%;
-        background-color: $light-gray; 
     }
 
     &__personal-information {

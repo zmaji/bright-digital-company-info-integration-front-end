@@ -3,6 +3,7 @@ import DefaultLayout from '../components/layout/DefaultLayout';
 import BreadCrumb from '../components/elements/BreadCrumb';
 import Table from '../components/content/Table';
 import { useSelector } from 'react-redux';
+import profileIcon from '../icons/profile.svg';
 
 const Profile = () => {
   const userData = useSelector(state => state.user.userData);
@@ -31,7 +32,7 @@ const Profile = () => {
                 <div className="v-profile__content-wrapper">
                   <div className="v-profile__content-container u-flex u-flex-v-center">
 
-                    <div className="v-profile__image"></div>
+                    <img className='v-profile__profile-icon' src={profileIcon} alt='Profile icon' />
 
                     <div className="v-profile__personal-information">
                       <div className="v-profile__breadcrumb-container">
