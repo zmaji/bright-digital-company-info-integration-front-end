@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { setUserData } from '../store/store';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -10,15 +9,13 @@ const setAuthorizationHeader = async (authToken) => {
   }
 };
 
-const createGroup = async (firstName, lastName, email, password) => {
+const createGroup = async (authToken, objectType, groupName) => {
   await setAuthorizationHeader(authToken);
   
   try {
-    const response = await axios.post(`${BASE_URL}/users`, {
-      firstName: firstName,
-      lastName: lastName,
-      emailAddress: email,
-      password: password,
+    const response = await axios.post(`${BASE_URL}/groups`, {
+      objectType: objectType,
+      groupName: groupName,
     }, {
       headers: {
         'Content-Type': 'application/json',
@@ -28,48 +25,9 @@ const createGroup = async (firstName, lastName, email, password) => {
     return response;
   } catch (error) {
     console.error('Error:', error);
-    throw new Error(error|| 'An error occurred while registering');
+    throw new Error(error|| 'An error occurred while creating a group');
   }
 };
-
-// const getCurrentUser = async (authToken) => {
-//   await setAuthorizationHeader(authToken);
-  
-//   try {
-//       const response = await axios.get(`${BASE_URL}users`)
-//       setUserData(response);
-//       return response;
-//   } catch (error) {
-//       console.error('Error:', error);
-//       throw new Error(error.message || 'An error occurred getting a user');
-//   }
-// };
-
-// const updateUser = async (authToken, portalId) => {
-//   await setAuthorizationHeader(authToken);
-  
-//   try {
-//     await axios.put(`${BASE_URL}users`, {
-//       portalId: portalId,
-//     });
-//   } catch (error) {
-//       console.error('Error:', error);
-//       throw new Error(error.message || 'An error occurred getting a user');
-//   }
-// };
-
-// const verifyActivationCode = async (activationCode) => {
-//   try {
-//     const response = axios.put(`${BASE_URL}users/verify`, {
-//       activationCode: activationCode,
-//     });
-
-//     return response;
-//   } catch (error) {
-//       console.error('Error:', error);
-//       throw new Error(error.message || 'An error occurred verifying a user');
-//   }
-// };
 
 const groupService = {
   createGroup,

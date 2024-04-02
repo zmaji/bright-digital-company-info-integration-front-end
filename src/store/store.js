@@ -1,45 +1,28 @@
-import { configureStore, createSlice } from '@reduxjs/toolkit';
+import { configureStore, combineReducers  } from '@reduxjs/toolkit';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
-const authSlice = createSlice({
-  name: 'auth',
-  initialState: {
-    authToken: null
-  },
-  reducers: {
-    setAuthToken: (state, action) => {
-      state.authToken = action.payload;
-      // localStorage.setItem('authToken', action.payload);
-    },
-    removeAuthToken: (state) => {
-      state.authToken = null;
-      // localStorage.removeItem('authToken');
-    }
-  }
+import { authSlice } from './authSlice';
+import { userSlice } from './userSlice';
+
+const authPersistConfig = {
+  key: 'auth',
+  storage,
+};
+
+const rootReducer = combineReducers({
+  auth: persistReducer(authPersistConfig, authSlice.reducer),
+  user: userSlice.reducer,
 });
-
-const userSlice = createSlice({
-  name: 'user',
-  initialState: {
-    userData: null
-  },
-  reducers: {
-    setUserData: (state, action) => {
-      state.userData = action.payload;
-    },
-    clearUserData: (state) => {
-      state.userData = null;
-    }
-  }
-});
-
-export const { setAuthToken, removeAuthToken } = authSlice.actions;
-export const { setUserData, clearUserData } = userSlice.actions;
 
 const store = configureStore({
-  reducer: {
-    auth: authSlice.reducer,
-    user: userSlice.reducer
-  }
+  reducer: rootReducer,
+  middleware: (getDefaultMiddleware) =>
+  getDefaultMiddleware({
+    serializableCheck: false,
+  }),
 });
+
+export const persistor = persistStore(store);
 
 export default store;

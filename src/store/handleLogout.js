@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { removeAuthToken } from '../store/store';
+import { removeAuthToken } from '../store/authSlice';
 
 const useLogout = () => {
   const dispatch = useDispatch();

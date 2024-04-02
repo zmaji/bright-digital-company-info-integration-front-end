@@ -3,12 +3,21 @@ import DefaultLayout from '../components/layout/DefaultLayout';
 import Button from '../components/elements/Button';
 import Cards from '../components/content/Cards';
 import overviewCardsData from '../data/OverviewCards';
+import groupService from '../services/groupService';
+import { useSelector } from 'react-redux';
 
 const DashboardOverview = () => {
+    const authToken = useSelector(state => state.auth.authToken);
 
     const handleCreateProperties = async () => {
       try {
+        const group = await groupService.createGroup(authToken, 'company', 'company_info_integration');
         
+        if (group) {
+          console.log('found group');
+        } else {
+          console.log('no group found');
+        }
       } catch (error) {
         console.error('Error:', error);
       }
@@ -28,7 +37,7 @@ const DashboardOverview = () => {
                           Suspendisse varius enim in eros elementum tristique. 
                       </p>
 
-                      <Button title='Set up properties' style='primary' link='/' icon='Plus' animation='move-right' onClick={handleCreateProperties} />
+                      <Button title='Set up properties' style='primary' icon='Plus' animation='move-right' onClick={handleCreateProperties} />
                   </div>
                 </div>
 

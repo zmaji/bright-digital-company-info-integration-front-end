@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { setUserData } from '../store/store';
+import { setUserData } from '../store/userSlice';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 

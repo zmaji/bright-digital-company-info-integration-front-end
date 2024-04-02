@@ -3,6 +3,8 @@ import './scss/main.scss';
 import { Provider } from 'react-redux';
 import store from './store/store';
 import AppRoutes from './routes/Routes';
+import { PersistGate } from 'redux-persist/integration/react';
+import { persistor } from './store/store';
 
 class App extends Component {
   constructor(props) {
@@ -15,7 +17,9 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <AppRoutes />
+        <PersistGate loading={null} persistor={persistor}>
+          <AppRoutes />
+        </PersistGate>
       </Provider>
     );
   }
