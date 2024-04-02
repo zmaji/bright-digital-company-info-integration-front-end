@@ -2,40 +2,28 @@ import React, { useState, useEffect } from 'react';
 import DefaultLayout from '../components/layout/DefaultLayout';
 import BreadCrumb from '../components/elements/BreadCrumb';
 import Table from '../components/content/Table';
-import userService from '../services/userService';
 import { useSelector } from 'react-redux';
 
 const Profile = () => {
-  const authToken = useSelector(state => state.auth.authToken);
-  const [userInfo, setUserInfo] = useState({});
+  const userData = useSelector(state => state.user.userData);
   const [profileData, setProfileData] = useState([]);
 
-  useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        if (authToken) {
-          const userData = await userService.getCurrentUser(authToken);
-          setUserInfo(userData.data);
-        }
-      } catch (error) {
-        console.error('Error fetching user data:', error);
-      }
-    };
-
-    fetchUserData();
-  }, [authToken]);
+  const firstName = userData ? userData.firstName : 'First name not found';
+  const lastName = userData ? userData.lastName : 'Last name not found';
+  const emailAddress = userData ? userData.emailAddress : 'Email address not found';
+  const companyInfoUserName = userData ? userData.companyInfoUserName : 'Company info username not found';
 
   useEffect(() => {
       const updatedProfileData = [
-        { title: 'Full name', value: userInfo.firstName + ' ' + userInfo.lastName, button: { title: 'Change', style: 'edit', link: '' } },
+        { title: 'Full name', value: firstName + ' ' + lastName, button: { title: 'Change', style: 'edit', link: '' } },
         { title: 'Website', value: 'NOT DYNAMIC YET', button: { title: 'Change', style: 'edit', link: '' } },
-        { title: 'Email address', value: userInfo.emailAddress, button: { title: 'Change', style: 'edit', link: '' } },
-        { title: 'Password', value: 'NOT DYNAMIC YET', button: { title: 'Change', style: 'edit', link: '' } },
-        { title: 'Company info username', value: 'JNOT DYNAMIC YET', button: { title: 'Change', style: 'edit', link: '' } },
-        { title: 'Company info password', value: 'NOT DYNAMIC YET', button: { title: 'Change', style: 'edit', link: '' } },
+        { title: 'Email address', value: emailAddress, button: { title: 'Change', style: 'edit', link: '' } },
+        { title: 'Password', value: '********', button: { title: 'Change', style: 'edit', link: '' } },
+        { title: 'Company info username', value: companyInfoUserName, button: { title: 'Change', style: 'edit', link: '' } },
+        { title: 'Company info password', value: '********', button: { title: 'Change', style: 'edit', link: '' } },
       ];
       setProfileData(updatedProfileData);
-  }, [userInfo]);
+  }, [userData]);
 
     return (
         <div className='v-profile'>
@@ -51,11 +39,11 @@ const Profile = () => {
                       </div>
 
                       <h2 className='v-profile__personal-information__name'>
-                        { userInfo.firstName } { userInfo.lastName }
+                        { firstName } { lastName }
                       </h2>
 
                       <span className='v-profile__personal-information__email'>
-                        { userInfo.emailAddress }
+                        { emailAddress }
                       </span>
                     </div>
 

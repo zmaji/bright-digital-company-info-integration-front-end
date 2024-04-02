@@ -1,8 +1,15 @@
 import React from 'react';
 import brightDigitalLogo from '../../images/logo-bright-zw.svg';
+import profileIcon from '../../icons/profile.svg';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const DefaultHeader = () => {
+    const userData = useSelector(state => state.user.userData);
+
+    const firstName = userData ? userData.firstName : 'First name not found';
+    const lastName = userData ? userData.lastName : 'Last name not found';
+
     return (
       <div className='c-default-header'>
         <div className='o-container'>
@@ -14,10 +21,10 @@ const DefaultHeader = () => {
                     </Link>
                 </div>
                 <div className='c-default-header__profile-container u-flex u-flex-v-center'>
-                    <span className='c-default-header__profile-title'>John Doe</span>
+                    <span className='c-default-header__profile-title'>{firstName} {lastName}</span>
 
                     <Link to='/profile'>
-                        <div className='c-default-header__profile-circle'></div>
+                        <img className='c-default-header__profile-icon' src={profileIcon} alt='Bright Digital Logo' />
                     </Link>
                 </div>
             </div>

@@ -5,22 +5,22 @@ import storage from 'redux-persist/lib/storage';
 import { authSlice } from './authSlice';
 import { userSlice } from './userSlice';
 
-const authPersistConfig = {
-  key: 'auth',
+const PersistConfig = {
+  key: 'root',
   storage,
 };
 
 const rootReducer = combineReducers({
-  auth: persistReducer(authPersistConfig, authSlice.reducer),
-  user: userSlice.reducer,
+  auth: persistReducer(PersistConfig, authSlice.reducer),
+  user: persistReducer(PersistConfig, userSlice.reducer),
 });
 
 const store = configureStore({
   reducer: rootReducer,
-  middleware: (getDefaultMiddleware) =>
-  getDefaultMiddleware({
-    serializableCheck: false,
-  }),
+    middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 });
 
 export const persistor = persistStore(store);

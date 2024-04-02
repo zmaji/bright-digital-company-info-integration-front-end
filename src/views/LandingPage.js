@@ -14,6 +14,8 @@ import authService from '../services/authService';
 import { validateForm } from '../helpers/validateFormData';
 import { useDispatch } from 'react-redux';
 import { setAuthToken } from '../store/authSlice';
+import { setUserData } from '../store/userSlice';
+import userService from '../services/userService';
 
 const LandingPage = () => {
     const navigation = useNavigate();
@@ -50,17 +52,16 @@ const LandingPage = () => {
 
           if (response.status >= 200 && response.status < 300) {
               const token = response.data.result;
+              dispatch(setAuthToken(token));
 
-              if (typeof token === 'string') {
-                dispatch(setAuthToken(token));
-                navigation('/install');
-              } else {
-                // Handle non-serializable token
-                console.error('Authentication token is not serializable');
-                setError('An error occurred. Please try again later.');
+              if (token) {
+                const currentUser = await userService.getCurrentUser(token);
+
+                if (currentUser) {
+                  dispatch(setUserData(currentUser.data))
+                  navigation('/install');
+                }
               }
-              // dispatch(setAuthToken(token));
-              // navigation('/install');
           } else {
               if (response.status === 409) {
                   setEmailError('Email address does not exist.');
