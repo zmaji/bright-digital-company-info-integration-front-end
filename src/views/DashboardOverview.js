@@ -5,24 +5,32 @@ import Cards from '../components/content/Cards';
 import overviewCardsData from '../data/OverviewCards';
 import groupService from '../services/groupService';
 import { useSelector } from 'react-redux';
+import propertyService from '../services/propertyService';
 
 const DashboardOverview = () => {
-    const authToken = useSelector(state => state.auth.authToken);
+  const authToken = useSelector(state => state.auth.authToken);
 
-    const handleCreateProperties = async () => {
+  const handleCreateProperties = async () => {
       try {
-        const group = await groupService.getGroup(authToken, 'company', 'company_info_integration');
-        
-        if (group) {
-          console.log('found group');
-        } else {
-          console.log('no group found');
-          const newGroup = await groupService.createGroup(authToken, 'company', 'company_info_integration');
-        }
+          let group = await groupService.getGroup(authToken, 'company', 'company_info_integration');
+          
+          if (!group) {
+            console.log('Group does not exist..');
+              group = await groupService.createGroup(authToken, 'company', 'company_info_integration');
+          }
+
+          let properties = await propertyService.getProperties(authToken, 'company', 'company_info_integration');
+          
+          if (!properties) {
+            console.log('Properties do not exist..');
+              properties = await propertyService.createProperties(authToken, 'company', 'company_info_integration');
+          }
+
+          console.log('Group and properties exist');
       } catch (error) {
-        console.error('Error:', error);
+          console.error('Error:', error);
       }
-    };
+  };
 
     return (
         <div className='v-dashboard-overview'>
