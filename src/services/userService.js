@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { setUserData } from '../store/userSlice';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -15,7 +14,6 @@ const getCurrentUser = async (authToken) => {
   
   try {
       const response = await axios.get(`${BASE_URL}/users`)
-      setUserData(response);
       return response;
   } catch (error) {
       console.error('Error:', error);

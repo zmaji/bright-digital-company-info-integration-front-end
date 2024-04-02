@@ -10,9 +10,9 @@ import { useSelector } from 'react-redux';
 
 const ThankYou = () => {
     const location = useLocation();
+    const navigate = useNavigate();
     const searchParams = new URLSearchParams(location.search);
     const hubSpotPortalId = searchParams.get('hubSpotPortalId');
-    const navigate = useNavigate();
     const authToken = useSelector(state => state.auth.authToken);
 
     const updateUser = async () => {

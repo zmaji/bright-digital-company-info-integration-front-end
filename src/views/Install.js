@@ -6,22 +6,10 @@ import SyncIcon from '../icons/sync.svg';
 import CompanyInfoLogo from '../icons/company-info-logo.svg';
 import { useSelector } from 'react-redux';
 
-const baseUrl = 'http://localhost:3000';
+const baseUrl = process.env.REACT_APP_BASE_URL;
 const installUrl = baseUrl + '/install';
 
 const Install = () => {
-    const authToken = useSelector(state => state.auth.authToken);
-
-    const handleInstall = async () => {
-        try {
-            localStorage.setItem('authToken', authToken);
-            window.location.href = installUrl;
-        } catch (error) {
-            console.error('Error:', error);
-            setError('An error occurred. Please try again later.');
-        }
-    }
-
     return (
         <div className='v-install'>
             <SignupHeader />
@@ -40,7 +28,7 @@ const Install = () => {
 
                                 <p className='v-install__content-text'>Discover the possiblities of connecting Company.Info with HubSpot and improve your sales process now!</p>
 
-                                <Button title='Start now' style='primary' onClick={handleInstall} icon='ArrowRight' animation='move-right'/>
+                                <Button title='Start now' style='primary' link={installUrl} icon='ArrowRight' animation='move-right'/>
                             </div>
                         </div>
                     </div>

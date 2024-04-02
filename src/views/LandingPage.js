@@ -14,7 +14,6 @@ import authService from '../services/authService';
 import { validateForm } from '../helpers/validateFormData';
 import { useDispatch } from 'react-redux';
 import { setAuthToken } from '../store/authSlice';
-import { setUserData } from '../store/userSlice';
 import userService from '../services/userService';
 
 const LandingPage = () => {
@@ -53,15 +52,7 @@ const LandingPage = () => {
           if (response.status >= 200 && response.status < 300) {
               const token = response.data.result;
               dispatch(setAuthToken(token));
-
-              if (token) {
-                const currentUser = await userService.getCurrentUser(token);
-
-                if (currentUser) {
-                  dispatch(setUserData(currentUser.data))
-                  navigation('/install');
-                }
-              }
+              navigation('/install');
           } else {
               if (response.status === 409) {
                   setEmailError('Email address does not exist.');

@@ -3,16 +3,14 @@ import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
 import { authSlice } from './authSlice';
-import { userSlice } from './userSlice';
 
 const PersistConfig = {
-  key: 'root',
+  key: 'auth',
   storage,
 };
 
 const rootReducer = combineReducers({
   auth: persistReducer(PersistConfig, authSlice.reducer),
-  user: persistReducer(PersistConfig, userSlice.reducer),
 });
 
 const store = configureStore({

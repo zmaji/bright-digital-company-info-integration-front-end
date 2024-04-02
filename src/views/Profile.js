@@ -6,7 +6,8 @@ import { useSelector } from 'react-redux';
 import profileIcon from '../icons/profile.svg';
 
 const Profile = () => {
-  const userData = useSelector(state => state.user.userData);
+  const userData = useSelector(state => state.auth.userData);
+
   const [profileData, setProfileData] = useState([]);
 
   const firstName = userData ? userData.firstName : 'First name not found';
