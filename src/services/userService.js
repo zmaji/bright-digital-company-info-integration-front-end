@@ -1,11 +1,7 @@
-// import dotenv from 'dotenv';
 import axios from 'axios';
 import { setUserData } from '../store/store';
 
-// dotenv.config();
-
-// const BASE_URL = process.env.BASE_URL;
-const BASE_URL='http://localhost:3000/'
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const setAuthorizationHeader = async (authToken) => {
 
@@ -18,7 +14,7 @@ const getCurrentUser = async (authToken) => {
   await setAuthorizationHeader(authToken);
   
   try {
-      const response = await axios.get(`${BASE_URL}users`)
+      const response = await axios.get(`${BASE_URL}/users`)
       setUserData(response);
       return response;
   } catch (error) {
@@ -29,7 +25,7 @@ const getCurrentUser = async (authToken) => {
 
 const register = async (firstName, lastName, email, password) => {
   try {
-    const response = await axios.post(`${BASE_URL}users`, {
+    const response = await axios.post(`${BASE_URL}/users`, {
       firstName: firstName,
       lastName: lastName,
       emailAddress: email,
@@ -47,12 +43,12 @@ const register = async (firstName, lastName, email, password) => {
   }
 };
 
-const updateUser = async (authToken, portalId) => {
+const updateUser = async (authToken, hubSpotPortalId) => {
   await setAuthorizationHeader(authToken);
   
   try {
-    await axios.put(`${BASE_URL}users`, {
-      portalId: portalId,
+    await axios.put(`${BASE_URL}/users`, {
+      hubSpotPortalId: hubSpotPortalId,
     });
   } catch (error) {
       console.error('Error:', error);
@@ -62,7 +58,7 @@ const updateUser = async (authToken, portalId) => {
 
 const verifyActivationCode = async (activationCode) => {
   try {
-    const response = axios.put(`${BASE_URL}users/verify`, {
+    const response = axios.put(`${BASE_URL}/users/verify`, {
       activationCode: activationCode,
     });
 

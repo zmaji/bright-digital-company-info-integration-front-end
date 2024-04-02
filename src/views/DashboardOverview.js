@@ -5,6 +5,15 @@ import Cards from '../components/content/Cards';
 import overviewCardsData from '../data/OverviewCards';
 
 const DashboardOverview = () => {
+
+    const handleCreateProperties = async () => {
+      try {
+        
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    };
+
     return (
         <div className='v-dashboard-overview'>
             <DefaultLayout padding='default'>
@@ -19,7 +28,7 @@ const DashboardOverview = () => {
                           Suspendisse varius enim in eros elementum tristique. 
                       </p>
 
-                      <Button title='Set up properties' style='primary' link='/' icon='Plus' animation='move-right' />
+                      <Button title='Set up properties' style='primary' link='/' icon='Plus' animation='move-right' onClick={handleCreateProperties} />
                   </div>
                 </div>
 

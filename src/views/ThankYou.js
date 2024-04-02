@@ -13,13 +13,13 @@ const ThankYou = () => {
     const dispatch = useDispatch();
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
-    const portalId = parseInt(searchParams.get('portalId'));
+    const hubSpotPortalId = searchParams.get('hubSpotPortalId');
     const navigate = useNavigate();
 
     const updateUser = async () => {
         try {
             const authToken = localStorage.getItem('authToken');
-            await userService.updateUser(authToken, portalId);
+            await userService.updateUser(authToken, hubSpotPortalId);
             dispatch(setAuthToken(authToken));
             localStorage.removeItem('authToken');
             navigate('/overview');
@@ -46,7 +46,7 @@ const ThankYou = () => {
 
                     <p className='v-thank-you__content-text'>Lorem ipsum dolor sit amet, consectetur adipiscing. Ut enim ad minim veniam</p>
 
-                    <Button title='Continue' style='primary' onClick={updateUser} link='/overview' icon='ArrowRight' animation='move-right' variable={portalId}/>
+                    <Button title='Continue' style='primary' onClick={updateUser} link='/overview' icon='ArrowRight' animation='move-right' variable={hubSpotPortalId}/>
                   </div>
                 </div>
               </div>
