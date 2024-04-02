@@ -9,6 +9,23 @@ const setAuthorizationHeader = async (authToken) => {
   }
 };
 
+const getGroup = async (authToken, objectType, groupName) => {
+  await setAuthorizationHeader(authToken);
+  
+  try {
+    const response = await axios.get(`${BASE_URL}/groups?objectType=${objectType}&groupName=${groupName}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    return response.data;
+  } catch (error) {
+    console.error('Error:', error);
+    throw new Error(error || 'An error occurred while retrieving a group');
+  }
+};
+
 const createGroup = async (authToken, objectType, groupName) => {
   await setAuthorizationHeader(authToken);
   
@@ -30,6 +47,7 @@ const createGroup = async (authToken, objectType, groupName) => {
 };
 
 const groupService = {
+  getGroup,
   createGroup,
 };
 

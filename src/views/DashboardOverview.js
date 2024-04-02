@@ -11,12 +11,13 @@ const DashboardOverview = () => {
 
     const handleCreateProperties = async () => {
       try {
-        const group = await groupService.createGroup(authToken, 'company', 'company_info_integration');
+        const group = await groupService.getGroup(authToken, 'company', 'company_info_integration');
         
         if (group) {
           console.log('found group');
         } else {
           console.log('no group found');
+          const newGroup = await groupService.createGroup(authToken, 'company', 'company_info_integration');
         }
       } catch (error) {
         console.error('Error:', error);
