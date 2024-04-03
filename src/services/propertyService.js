@@ -19,29 +19,29 @@ const getProperties = async (authToken, objectType, groupName) => {
       },
     });
 
-    return response.data;
+    return response.data.results;
   } catch (error) {
     console.error('Error:', error);
     throw new Error(error || 'An error occurred while retrieving properties');
   }
 };
 
-const createProperties = async (authToken, objectType, groupName) => {
+const createProperties = async (authToken, objectType, missingProperties) => {
   await setAuthorizationHeader(authToken);
   
   try {
     const response = await axios.post(`${BASE_URL}/properties`, {
       objectType: objectType,
-      groupName: groupName,
+      missingProperties: missingProperties,
     }, {
       headers: {
         'Content-Type': 'application/json',
       },
     });
 
-    return response;
+    return response.data;
   } catch (error) {
-    console.error('Error:', error);
+    console.error('Error:', error.response);
     throw new Error(error|| 'An error occurred while creating properties');
   }
 };

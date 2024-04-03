@@ -6,30 +6,54 @@ import overviewCardsData from '../data/OverviewCards';
 import groupService from '../services/groupService';
 import { useSelector } from 'react-redux';
 import propertyService from '../services/propertyService';
+import { generatePropertyFields } from '../helpers/hubSpot/generatePropertyFields';
+import { compareProperties } from '../helpers/hubSpot/compareProperties';
 
 const DashboardOverview = () => {
   const authToken = useSelector(state => state.auth.authToken);
 
+  // TODO: Remove unnecessary debugging logs
   const handleCreateProperties = async () => {
-      try {
-          let group = await groupService.getGroup(authToken, 'company', 'company_info_integration');
-          
-          if (!group) {
-            console.log('Group does not exist..');
-              group = await groupService.createGroup(authToken, 'company', 'company_info_integration');
-          }
-
-          let properties = await propertyService.getProperties(authToken, 'company', 'company_info_integration');
-          
-          if (!properties) {
-            console.log('Properties do not exist..');
-              properties = await propertyService.createProperties(authToken, 'company', 'company_info_integration');
-          }
-
-          console.log('Group and properties exist');
-      } catch (error) {
-          console.error('Error:', error);
+    try {
+      let group = await groupService.getGroup(authToken, 'company', 'company_info_integration');
+      
+      if (!group) {
+        console.log('Group does not exist..');
+        group = await groupService.createGroup(authToken, 'company', 'company_info_integration');
+  
+        if (group) {
+          console.log('Group created successfully!');
+        } else {
+          console.log('Failed to create group!');
+          return;
+        }
+      } else {
+        console.log('Group exists!');
       }
+  
+      const currentProperties = await propertyService.getProperties(authToken, 'company', 'company_info_integration');
+      const propertyFields = await generatePropertyFields('company_info_integration');
+  
+      if (currentProperties && currentProperties.length > 0 && propertyFields && propertyFields.length > 0) {
+        const missingProperties = await compareProperties(currentProperties, propertyFields);
+  
+        if (missingProperties.length > 0) {
+          console.log('Creating missing properties...');
+          const createdProperties = await propertyService.createProperties(authToken, 'company', missingProperties);
+          if (createdProperties) {
+            console.log('Missing properties created successfully!');
+          } else {
+            console.log('Failed to create missing properties!');
+          }
+        } else {
+          console.log('All properties are up to date.');
+        }
+      } else {
+        console.log('Failed to fetch properties or generate property fields!');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
 
     return (
