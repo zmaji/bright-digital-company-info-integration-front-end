@@ -14,7 +14,9 @@ import authService from '../services/authService';
 import { validateForm } from '../helpers/validateFormData';
 import { useDispatch } from 'react-redux';
 import { setAuthToken } from '../store/authSlice';
+import { setUserData } from '../store/userSlice';
 import { useSelector } from 'react-redux';
+import userService from '../services/userService';
 
 const LandingPage = () => {
     const navigation = useNavigate();
@@ -51,8 +53,13 @@ const LandingPage = () => {
 
           if (response.status >= 200 && response.status < 300) {
               const token = response.data.result;
-              dispatch(setAuthToken(token));
-              navigate();
+              
+              if (token) {
+                dispatch(setAuthToken(token));
+                const currentUser = await userService.getUser(token);
+                dispatch(setUserData(currentUser));
+                navigate();
+              }
           } else {
               if (response.status === 409) {
                   setEmailError('Email address does not exist.');
@@ -69,19 +76,18 @@ const LandingPage = () => {
       }
     };
 
-    const userData = useSelector(state => state.auth.userData);
+    const userData = useSelector(state => state.user.userData);
 
     const navigate = async () => {
-      try {
-        if (userData.hubSpotPortalId) {
-          navigation('/overview');
-        } else {
-          navigation('/install');
+        try {
+            if (userData && userData.data && userData.data.hubSpotPortalId) {
+                navigation('/overview');
+            } else {
+                navigation('/install');
+            }
+        } catch (error) {
+            console.error('Error:', error);
         }
-      } catch (error) {
-        console.error('Error:', error);
-        setError('An error occurred. Please try again later.');
-      }
     }
 
     return (

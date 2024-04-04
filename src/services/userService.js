@@ -9,7 +9,7 @@ const setAuthorizationHeader = async (authToken) => {
   }
 };
 
-const getCurrentUser = async (authToken) => {
+const getUser = async (authToken) => {
   await setAuthorizationHeader(authToken);
   
   try {
@@ -68,7 +68,7 @@ const verifyActivationCode = async (activationCode) => {
 };
 
 const userService = {
-  getCurrentUser,
+  getUser,
   register,
   updateUser,
   verifyActivationCode,

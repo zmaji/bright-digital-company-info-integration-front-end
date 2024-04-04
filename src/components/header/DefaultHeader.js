@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 const DefaultHeader = () => {
-    const userData = useSelector(state => state.auth.userData);
+    const userData = useSelector(state => state.user.userData.data);
 
     const firstName = userData ? userData.firstName : 'First name not found';
     const lastName = userData ? userData.lastName : 'Last name not found';

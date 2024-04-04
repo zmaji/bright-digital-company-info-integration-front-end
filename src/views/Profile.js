@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import profileIcon from '../icons/profile.svg';
 
 const Profile = () => {
-  const userData = useSelector(state => state.auth.userData);
+  const userData = useSelector(state => state.user.userData.data);
 
   const [profileData, setProfileData] = useState([]);
 
