@@ -8,6 +8,7 @@ import SignupHeader from '../components/header/SignupHeader';
 import { validateForm } from '../helpers/validateFormData';
 import userService from '../services/userService';
 import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 const Register = () => {
     const navigation = useNavigate();
@@ -16,6 +17,7 @@ const Register = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [repeatPassword, setRepeatPassword] = useState('');
+    const [termsAndConditions, setTermsAndConditions] = useState('');
     const [error, setError] = useState('');
     const [emailError, setEmailError] = useState('');
     const [validationErrors, setValidationErrors] = useState({});
@@ -51,15 +53,22 @@ const Register = () => {
         setValidationErrors((prevErrors) => ({ ...prevErrors, repeatPassword: '' }));
     };
 
+    const handleTermsAndConditionsChange = (e) => {
+        setTermsAndConditions(e.target.checked);
+        setError('');
+        setValidationErrors((prevErrors) => ({ ...prevErrors, termsAndConditions: '' }));
+    };
+
     const handleSignUp = async () => {
       try {
-        const formData = { firstName, lastName, email, password, repeatPassword };
+        const formData = { firstName, lastName, email, password, repeatPassword, termsAndConditions };
         const errors = validateForm(formData);
         
         if (Object.keys(errors).length === 0) {
             const response = await userService.register(firstName, lastName, email, password);
 
             if (response.status >= 200 && response.status < 300) {
+                toast.success('Successfully registered an account!')
                 navigation('/activate');
             } else {
               if (response.status === 409) {
@@ -111,9 +120,9 @@ const Register = () => {
                         <Label text='Repeat password' />
                         <Input type="password" name="repeatPassword" value={repeatPassword} onChange={handleRepeatPasswordChange} validationError={validationErrors.repeatPassword} technicalError={error} />
 
-                        <div className="v-register-content__form-bar u-flex u-flex-sb">
-                            <div className="v-register-content__remember-me u-flex">
-                                <Input type='checkbox' />
+                        <div className="v-register-content__form-bar">
+                            <div className="v-register-content__remember-me u-flex u-flex-v-center">
+                                <Input type="checkbox" name='termsAndConditions' value={termsAndConditions} onChange={handleTermsAndConditionsChange} validationError={validationErrors.termsAndConditions}/>
                                 <span className='v-register-content__p-small'>
                                     By signing up I agree with the&nbsp;
                                     <Link to='/' className='v-register-content__sign-up--underline'>
