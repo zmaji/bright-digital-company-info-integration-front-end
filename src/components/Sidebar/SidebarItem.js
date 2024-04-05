@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import useLogout from '../../store/handleLogout';
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 
 const SidebarItem = ({ title, icon, link, onClick }) => {
   const location = useLocation();
@@ -10,8 +10,9 @@ const SidebarItem = ({ title, icon, link, onClick }) => {
 
   const handleClick = () => {
     if (onClick === 'logout') {
-      logout();
+      console.log('Successfully logged out!');
       toast.success('Successfully logged out!');
+      logout();
     } else {
       console.log('Something went wrong logging out')
       toast.error('Could not log out, please contact an admin');
@@ -26,7 +27,6 @@ const SidebarItem = ({ title, icon, link, onClick }) => {
     >
       <img src={icon} alt={`${icon}`} className='c-sidebar__item-icon c-icon' />
       <span className='c-sidebar__item-title'>{title}</span>
-      <Toaster />
     </Link>
   );
 };

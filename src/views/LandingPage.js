@@ -17,6 +17,7 @@ import { setAuthToken } from '../store/authSlice';
 import { setUserData } from '../store/userSlice';
 import { useSelector } from 'react-redux';
 import userService from '../services/userService';
+import toast from 'react-hot-toast';
 
 const LandingPage = () => {
     const navigation = useNavigate();
@@ -58,6 +59,7 @@ const LandingPage = () => {
                 dispatch(setAuthToken(token));
                 const currentUser = await userService.getUser(token);
                 dispatch(setUserData(currentUser));
+                toast.success('Successfully logged in!')
                 navigate();
               }
           } else {
@@ -87,6 +89,7 @@ const LandingPage = () => {
             }
         } catch (error) {
             console.error('Error:', error);
+            toast.error('Unavailable to log in, please contact an admin');
         }
     }
 

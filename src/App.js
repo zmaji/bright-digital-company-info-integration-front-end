@@ -5,6 +5,7 @@ import store from './store/store';
 import AppRoutes from './routes/Routes';
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistor } from './store/store';
+import { Toaster } from 'react-hot-toast';
 
 class App extends Component {
   constructor(props) {
@@ -20,6 +21,7 @@ class App extends Component {
         <PersistGate loading={null} persistor={persistor}>
           <AppRoutes />
         </PersistGate>
+        <Toaster />
       </Provider>
     );
   }

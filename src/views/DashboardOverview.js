@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
 import propertyService from '../services/propertyService';
 import { generatePropertyFields } from '../helpers/hubSpot/generatePropertyFields';
 import { compareProperties } from '../helpers/hubSpot/compareProperties';
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 
 const DashboardOverview = () => {
   const authToken = useSelector(state => state.auth.authToken);
@@ -70,7 +70,6 @@ const DashboardOverview = () => {
 
                 <Cards cardData={overviewCardsData} customStyles={['c-cards--flex', 'c-cards--default-margin', 'c-cards--sb']} />
             </DefaultLayout>
-          <Toaster />
         </div>
         
     );
