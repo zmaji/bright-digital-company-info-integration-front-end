@@ -13,9 +13,6 @@ const SidebarItem = ({ title, icon, link, onClick }) => {
       console.log('Successfully logged out!');
       toast.success('Successfully logged out!');
       logout();
-    } else {
-      console.log('Something went wrong logging out')
-      toast.error('Could not log out, please contact an admin');
     }
   };
 
