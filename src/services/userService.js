@@ -41,12 +41,12 @@ const register = async (firstName, lastName, email, password) => {
   }
 };
 
-const updateUser = async (authToken, hubSpotPortalId) => {
+const updateUser = async (authToken, updateFields) => {
   await setAuthorizationHeader(authToken);
   
   try {
     await axios.put(`${BASE_URL}/users`, {
-      hubSpotPortalId: hubSpotPortalId,
+      updateFields,
     });
   } catch (error) {
       console.error('Error:', error);

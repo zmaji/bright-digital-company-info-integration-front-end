@@ -10,20 +10,21 @@ const Profile = () => {
 
   const [profileData, setProfileData] = useState([]);
 
-  const firstName = userData ? userData.firstName : 'First name not found';
-  const lastName = userData ? userData.lastName : 'Last name not found';
-  const emailAddress = userData ? userData.emailAddress : 'Email address not found';
-  const domain = userData ? userData.domain : 'Domain not found';
-  // const companyInfoUserName = userData ? userData.companyInfoUserName : 'Company info username not found';
+  const firstName = userData ? userData.firstName : '';
+  const lastName = userData ? userData.lastName : '';
+  const emailAddress = userData ? userData.emailAddress : '';
+  const domain = userData ? userData.domain : '';
+  const companyInfoUserName = userData ? userData.companyInfoUserName : '';
 
   useEffect(() => {
       const updatedProfileData = [
-        { title: 'Full name', value: firstName + ' ' + lastName, button: { title: 'Change', style: 'edit', link: '' } },
-        { title: 'Website', value: domain, button: { title: 'Change', style: 'edit', link: '' } },
+        { title: 'First name', value: firstName, button: { title: 'Change', style: 'edit', link: '' } },
+        { title: 'Last name', value: lastName, button: { title: 'Change', style: 'edit', link: '' } },
         { title: 'Email address', value: emailAddress, button: { title: 'Change', style: 'edit', link: '' } },
-        { title: 'Password', value: '********', button: { title: 'Change', style: 'edit', link: '' } },
-        // { title: 'Company info username', value: companyInfoUserName, button: { title: 'Change', style: 'edit', link: '' } },
-        // { title: 'Company info password', value: '********', button: { title: 'Change', style: 'edit', link: '' } },
+        { title: 'Website', value: domain, button: { title: 'Change', style: 'edit', link: '' } },
+        { title: 'Password', value: '*******', button: { title: 'Change', style: 'edit', link: '' } },
+        { title: 'Company info username', value: companyInfoUserName, button: { title: 'Change', style: 'edit', link: '' } },
+        { title: 'Company info password', value: '*******', button: { title: 'Change', style: 'edit', link: '' } },
       ];
       setProfileData(updatedProfileData);
   }, [userData]);

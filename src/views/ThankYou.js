@@ -15,9 +15,13 @@ const ThankYou = () => {
     const hubSpotPortalId = searchParams.get('hubSpotPortalId');
     const authToken = useSelector(state => state.auth.authToken);
 
+    const updateFields = {
+      hubSpotPortalId: hubSpotPortalId
+    }
+
     const updateUser = async () => {
         try {
-            await userService.updateUser(authToken, hubSpotPortalId);
+            await userService.updateUser(authToken, updateFields);
             navigate('/overview');
         } catch (error) {
             console.error('Error:', error);
