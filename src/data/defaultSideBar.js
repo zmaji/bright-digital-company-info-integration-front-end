@@ -29,7 +29,7 @@ const sidebarData = [
     // },
     {
         items: [
-            { icon: SupportIcon, title: 'Support', link: '' },
+            // { icon: SupportIcon, title: 'Support', link: '' },
             { icon: CogIcon, title: 'Settings', link: '/profile' },
             { icon: LogoutIcon, title: 'Logout', link: '/', onClick: 'logout' },
         ],
