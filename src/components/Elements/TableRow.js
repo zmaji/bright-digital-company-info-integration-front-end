@@ -17,7 +17,7 @@ const TableRow = ({ title, value, button }) => {
   const handleSubmitClick = () => {
     setIsEditing(false);
     if (button.onClick) {
-      button.onClick(editableValue);
+      button.onClick(title, editableValue);
     }
   };
 

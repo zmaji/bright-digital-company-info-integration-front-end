@@ -4,9 +4,14 @@ import BreadCrumb from '../components/elements/BreadCrumb';
 import Table from '../components/content/Table';
 import { useSelector } from 'react-redux';
 import profileIcon from '../icons/profile.svg';
+import userService from '../services/userService';
+import { setUserData } from '../store/userSlice';
+import { useDispatch } from 'react-redux';
 
 const Profile = () => {
   const userData = useSelector(state => state.user.userData.data);
+  const authToken = useSelector(state => state.auth.authToken);
+  const dispatch = useDispatch();
 
   const [profileData, setProfileData] = useState([]);
 
@@ -15,16 +20,46 @@ const Profile = () => {
   const emailAddress = userData ? userData.emailAddress : '';
   const domain = userData ? userData.domain : '';
   const companyInfoUserName = userData ? userData.companyInfoUserName : '';
+  
+  const updateUser = async (title, editableValue) => {
+    const titleToFieldMap = {
+      'First name': 'firstName',
+      'Last name': 'lastName',
+      'Email address': 'emailAddress',
+      'Domain': 'domain',
+      'Password': 'password',
+      'Company info username': 'companyInfoUserName',
+      'Company info password': 'companyInfoPassword'
+    };
+
+    const fieldName = titleToFieldMap[title];
+
+    try {
+      const updateFields = {
+        [fieldName]: editableValue
+      }
+
+      await userService.updateUser(authToken, updateFields);
+      const updatedUser = await userService.getUser(authToken);
+
+      if (updateUser) {
+        dispatch(setUserData(updatedUser));
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      setError('An error occurred. Please try again later.');
+    }
+  };
 
   useEffect(() => {
       const updatedProfileData = [
-        { title: 'First name', value: firstName, button: { title: 'Change', style: 'edit' } },
-        { title: 'Last name', value: lastName, button: { title: 'Change', style: 'edit' } },
-        { title: 'Email address', value: emailAddress, button: { title: 'Change', style: 'edit' } },
-        { title: 'Domain', value: domain, button: { title: 'Change', style: 'edit' } },
-        { title: 'Password', value: '*******', button: { title: 'Change', style: 'edit' } },
-        { title: 'Company info username', value: companyInfoUserName, button: { title: 'Change', style: 'edit' } },
-        { title: 'Company info password', value: '*******', button: { title: 'Change', style: 'edit' } },
+        { title: 'First name', value: firstName, button: { title: 'Change', style: 'edit', onClick: updateUser } },
+        { title: 'Last name', value: lastName, button: { title: 'Change', style: 'edit', onClick: updateUser } },
+        { title: 'Email address', value: emailAddress, button: { title: 'Change', style: 'edit', onClick: updateUser } },
+        { title: 'Domain', value: domain, button: { title: 'Change', style: 'edit', onClick: updateUser } },
+        { title: 'Password', value: '*******', button: { title: 'Change', style: 'edit', onClick: updateUser } },
+        { title: 'Company info username', value: companyInfoUserName, button: { title: 'Change', style: 'edit', onClick: updateUser } },
+        { title: 'Company info password', value: '*******', button: { title: 'Change', style: 'edit', onClick: updateUser } },
       ];
       setProfileData(updatedProfileData);
   }, [userData]);
