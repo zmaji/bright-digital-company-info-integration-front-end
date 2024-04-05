@@ -45,7 +45,7 @@ const Profile = () => {
 
       if (updateUser) {
         dispatch(setUserData(updatedUser));
-        toast.success(`Successfully updated ${title}!`);
+        toast.success(`Successfully updated ${(title.toLowerCase())}!`);
       }
     } catch (error) {
       console.error('Error:', error);
