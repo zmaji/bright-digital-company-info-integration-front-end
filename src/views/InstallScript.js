@@ -9,7 +9,7 @@ import headerScriptData from '../data/HeaderScript';
 const steps = [
   { title: 'Copy tag' },
   { title: 'Go to Settings > Content > Pages > Templates' },
-  { title: 'Paste tag in side header' }
+  { title: 'Paste tag inside header' }
 ];
 
 const InstallScript = () => {
