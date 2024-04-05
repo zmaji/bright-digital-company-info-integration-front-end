@@ -18,15 +18,15 @@ const sidebarData = [
         items: [
             { icon: DownloadIcon, title: 'Install script', link: '/install-script' },
             { icon: LightbulbIcon, title: 'Enrich existing data', link: '/enrich-data' },
-            { icon: SearchIcon, title: 'Search for data', link: '' }
+            // { icon: SearchIcon, title: 'Search for data', link: '' }
         ],
     },
-    {
-        title: 'Set-up',
-        items: [
-            { icon: ChartIcon, title: 'Set up properties', link: '' },
-        ]
-    },
+    // {
+    //     title: 'Set-up',
+    //     items: [
+    //         { icon: ChartIcon, title: 'Set up properties', link: '' },
+    //     ]
+    // },
     {
         items: [
             { icon: SupportIcon, title: 'Support', link: '' },
