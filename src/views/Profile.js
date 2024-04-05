@@ -7,6 +7,7 @@ import profileIcon from '../icons/profile.svg';
 import userService from '../services/userService';
 import { setUserData } from '../store/userSlice';
 import { useDispatch } from 'react-redux';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Profile = () => {
   const userData = useSelector(state => state.user.userData.data);
@@ -44,10 +45,11 @@ const Profile = () => {
 
       if (updateUser) {
         dispatch(setUserData(updatedUser));
+        toast.success(`Successfully updated ${title}!`);
       }
     } catch (error) {
       console.error('Error:', error);
-      setError('An error occurred. Please try again later.');
+      toast.success('An error occured, please contact an admin')
     }
   };
 
@@ -102,6 +104,7 @@ const Profile = () => {
                   </div>
               </div>
             </DefaultLayout>
+            <Toaster />
         </div>
     );
   };

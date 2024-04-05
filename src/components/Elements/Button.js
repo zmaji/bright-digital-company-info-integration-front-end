@@ -4,7 +4,7 @@ import { retrieveIcon } from '../../helpers/retrieveIcon';
 
 const Button = ({ style, link, newTab='false', title, icon = '', animation = '', customStyle ='', onClick=null}) => {
   const IconComponent = retrieveIcon(icon);
-  const target = newTab ? '_blank' : '_self';
+  const target = newTab === 'true' ? '_blank' : null;
 
   const handleClick = () => {
     if (onClick) {
@@ -13,7 +13,7 @@ const Button = ({ style, link, newTab='false', title, icon = '', animation = '',
   };
 
   return (
-    <Link to={link} target={target} className={`c-button c-button--${style}`} onClick={handleClick}>
+    <Link to={link} {...(target && { target })} className={`c-button c-button--${style}`} onClick={handleClick}>
         <div className='c-button__content u-flex u-flex-v-center'>
             {icon && animation === 'move-left' && ( 
               <Suspense fallback={<div>Loading...</div>}>
