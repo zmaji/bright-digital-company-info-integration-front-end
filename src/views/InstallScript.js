@@ -3,14 +3,22 @@ import DefaultLayout from '../components/layout/DefaultLayout';
 import Button from '../components/elements/Button';
 import BreadCrumb from '../components/elements/BreadCrumb';
 import Steps from '../components/content/Steps';
+import { useSelector } from 'react-redux';
+import headerScriptData from '../data/HeaderScript';
 
 const steps = [
   { title: 'Copy tag' },
-  { title: 'Go to Settings > Website > Pages > Template' },
-  { title: 'Paste tag in header' }
+  { title: 'Go to Settings > Content > Pages > Templates' },
+  { title: 'Paste tag in side header' }
 ];
 
 const InstallScript = () => {
+    const userData = useSelector(state => state.user.userData.data);
+
+    const copyHeaderScript = async () => {
+      await navigator.clipboard.writeText(headerScriptData);
+    }
+
     return (
         <div className='v-install-script'>
             <DefaultLayout>
@@ -33,8 +41,7 @@ const InstallScript = () => {
                           Phasellus pharetra eros dui, et pellentesque est bibendum eget. 
                           Nullam ornare purus in turpis pharetra, eu congue arcu laoreet. 
                         </p>
-
-                        <Button title='Copy' style='tertiary' link='' icon='Download' animation='move-down' customStyle='large'/>
+                        <Button title='Copy' style='tertiary' link={`https://app-eu1.hubspot.com/settings/${userData.hubSpotPortalId}/website/pages/all-domains/page-templates`} newTab='true' icon='Download' animation='move-down' customStyle='large' onClick={copyHeaderScript}/>
                     </div>
 
                     <div className='v-install-script__content-right'>
