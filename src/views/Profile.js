@@ -18,13 +18,13 @@ const Profile = () => {
 
   useEffect(() => {
       const updatedProfileData = [
-        { title: 'First name', value: firstName, button: { title: 'Change', style: 'edit', link: '' } },
-        { title: 'Last name', value: lastName, button: { title: 'Change', style: 'edit', link: '' } },
-        { title: 'Email address', value: emailAddress, button: { title: 'Change', style: 'edit', link: '' } },
-        { title: 'Website', value: domain, button: { title: 'Change', style: 'edit', link: '' } },
-        { title: 'Password', value: '*******', button: { title: 'Change', style: 'edit', link: '' } },
-        { title: 'Company info username', value: companyInfoUserName, button: { title: 'Change', style: 'edit', link: '' } },
-        { title: 'Company info password', value: '*******', button: { title: 'Change', style: 'edit', link: '' } },
+        { title: 'First name', value: firstName, button: { title: 'Change', style: 'edit' } },
+        { title: 'Last name', value: lastName, button: { title: 'Change', style: 'edit' } },
+        { title: 'Email address', value: emailAddress, button: { title: 'Change', style: 'edit' } },
+        { title: 'Website', value: domain, button: { title: 'Change', style: 'edit' } },
+        { title: 'Password', value: '*******', button: { title: 'Change', style: 'edit' } },
+        { title: 'Company info username', value: companyInfoUserName, button: { title: 'Change', style: 'edit' } },
+        { title: 'Company info password', value: '*******', button: { title: 'Change', style: 'edit' } },
       ];
       setProfileData(updatedProfileData);
   }, [userData]);

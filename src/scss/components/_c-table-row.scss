@@ -33,4 +33,22 @@
     &__button-container {
         margin-left: auto;
     }
+
+    &__input {
+        @include transition(all);
+        z-index: 1;
+        position: relative;
+        -webkit-appearance: none;
+        appearance: none;
+        font-family: $primary-font-family;
+        font-size: rem-calc(16);
+        background-color: $white;
+        color: $input-color;
+        outline: 0;
+        border: none;
+        box-shadow: none;
+        font-weight: 300;
+        padding: 0;
+        margin-bottom: 2px;
+    }
 }
