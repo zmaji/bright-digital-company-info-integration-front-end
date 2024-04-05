@@ -2,8 +2,9 @@ import React, { Suspense } from 'react';
 import { Link } from 'react-router-dom';
 import { retrieveIcon } from '../../helpers/retrieveIcon';
 
-const Button = ({ style, link, title, icon = '', animation = '', customStyle ='', onClick=null}) => {
+const Button = ({ style, link, newTab='false', title, icon = '', animation = '', customStyle ='', onClick=null}) => {
   const IconComponent = retrieveIcon(icon);
+  const target = newTab ? '_blank' : '_self';
 
   const handleClick = () => {
     if (onClick) {
@@ -12,7 +13,7 @@ const Button = ({ style, link, title, icon = '', animation = '', customStyle =''
   };
 
   return (
-    <Link to={link} className={`c-button c-button--${style}`} onClick={handleClick}>
+    <Link to={link} target={target} className={`c-button c-button--${style}`} onClick={handleClick}>
         <div className='c-button__content u-flex u-flex-v-center'>
             {icon && animation === 'move-left' && ( 
               <Suspense fallback={<div>Loading...</div>}>
