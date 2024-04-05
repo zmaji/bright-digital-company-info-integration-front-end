@@ -7,6 +7,7 @@ import CompanyInfoLogo from '../icons/company-info-logo.svg';
 import { useLocation, useNavigate } from 'react-router';
 import userService from '../services/userService';
 import { useSelector } from 'react-redux';
+import toast from 'react-hot-toast';
 
 const ThankYou = () => {
     const location = useLocation();
@@ -22,6 +23,7 @@ const ThankYou = () => {
     const updateUser = async () => {
         try {
             await userService.updateUser(authToken, updateFields);
+            toast.success('Successfully installed the integration!')
             navigate('/overview');
         } catch (error) {
             console.error('Error:', error);

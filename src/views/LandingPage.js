@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import Button from '../components/elements/Button';
@@ -60,7 +60,6 @@ const LandingPage = () => {
                 const currentUser = await userService.getUser(token);
                 dispatch(setUserData(currentUser));
                 toast.success('Successfully logged in!')
-                navigate();
               }
           } else {
               if (response.status === 409) {
@@ -92,6 +91,12 @@ const LandingPage = () => {
             toast.error('Unavailable to log in, please contact an admin');
         }
     }
+
+    useEffect(() => {
+        if (userData) {
+            navigate();
+        }
+    }, [userData]);
 
     return (
         <div className='v-landingpage u-bg-color--light-blue'> 
