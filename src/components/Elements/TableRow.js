@@ -32,7 +32,7 @@ const TableRow = ({ title, value, button }) => {
         )}
         {isEditing ? (
           <input
-            type='text'
+            type={title.toLowerCase().includes('password') ? 'password' : 'text'}
             value={editableValue}
             onChange={handleChange}
             className='c-table-row__input'
