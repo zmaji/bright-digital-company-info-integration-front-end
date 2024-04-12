@@ -53,15 +53,15 @@ const Register = () => {
         setValidationErrors((prevErrors) => ({ ...prevErrors, repeatPassword: '' }));
     };
 
-    const handleTermsAndConditionsChange = (e) => {
-        setTermsAndConditions(e.target.checked);
-        setError('');
-        setValidationErrors((prevErrors) => ({ ...prevErrors, termsAndConditions: '' }));
-    };
+    // const handleTermsAndConditionsChange = (e) => {
+    //     setTermsAndConditions(e.target.checked);
+    //     setError('');
+    //     setValidationErrors((prevErrors) => ({ ...prevErrors, termsAndConditions: '' }));
+    // };
 
     const handleSignUp = async () => {
       try {
-        const formData = { firstName, lastName, email, password, repeatPassword, termsAndConditions };
+        const formData = { firstName, lastName, email, password, repeatPassword };
         const errors = validateForm(formData);
         
         if (Object.keys(errors).length === 0) {
@@ -69,7 +69,8 @@ const Register = () => {
 
             if (response.status >= 200 && response.status < 300) {
                 toast.success('Successfully registered an account!')
-                navigation('/activate');
+                // navigation('/activate');
+                navigation('/');
             } else {
               if (response.status === 409) {
                 setEmailError('Email address already exists.');
@@ -122,7 +123,8 @@ const Register = () => {
 
                         <div className="v-register-content__form-bar">
                             <div className="v-register-content__remember-me u-flex u-flex-v-center">
-                                <Input type="checkbox" name='termsAndConditions' value={termsAndConditions} onChange={handleTermsAndConditionsChange} validationError={validationErrors.termsAndConditions}/>
+                                {/* <Input type="checkbox" name='termsAndConditions' value={termsAndConditions} onChange={handleTermsAndConditionsChange} validationError={validationErrors.termsAndConditions}/> */}
+                                <Input type="checkbox" name='termsAndConditions' value={termsAndConditions} validationError={validationErrors.termsAndConditions}/>
                                 <span className='v-register-content__p-small'>
                                     By signing up I agree with the&nbsp;
                                     <Link to='/' className='v-register-content__sign-up--underline'>

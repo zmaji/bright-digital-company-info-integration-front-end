@@ -25,6 +25,9 @@ export const validateForm = (formData) => {
         errors.repeatPassword = 'Passwords do not match';
     }
   
-    return errors;
-  };
+    // if (!formData.termsAndConditions) {
+    //     errors.termsAndConditions = 'Please accept the terms and conditions';
+    // }
   
+    return errors;
+};
