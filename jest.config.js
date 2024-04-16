@@ -1,1 +1,4 @@
-export const testEnvironment = 'jsdom';
+module.exports = {
+  testEnvironment: 'jsdom',
+  verbose: true,
+};
