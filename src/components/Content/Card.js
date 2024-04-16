@@ -16,7 +16,7 @@ const Card = ({ step, icon, title, text, button }) => {
           )}
           
           {icon && (
-            <IconComponent className={`c-icon c-card-icon`} />
+            <IconComponent className={`c-icon c-card-icon`} data-testid="card-icon" />
           )}
 
           {title && (
@@ -32,7 +32,7 @@ const Card = ({ step, icon, title, text, button }) => {
           )}
 
           {button && (
-            <div className='c-card__content-button'>
+            <div className='c-card__content-button' data-testid="card-button">
               <Button {...button} />
             </div>
           )}

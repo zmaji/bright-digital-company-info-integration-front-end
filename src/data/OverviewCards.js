@@ -30,9 +30,6 @@ const overviewCardsData = [
       button: {
         title: 'Coming soon!',
         style: 'tertiary',
-        // link: '',
-        // icon: 'ArrowRight',
-        // animation: 'move-right'
       }
     }
   ];
