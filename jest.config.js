@@ -1,10 +1,12 @@
 module.exports = {
   testEnvironment: 'jsdom',
   testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.js$',
+  "modulePaths": [
+    "<rootDir>"
+  ],
   moduleNameMapper: {
-    '\\.(css|less|scss|sass)$': 'identity-obj-proxy', // Mock CSS modules
+    '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
   },
-  setupFilesAfterEnv: ['<rootDir>/src/__tests__/utils/singleton.js'], // This may be required for your setup, adjust as needed
   testPathIgnorePatterns: [
     '/node_modules/',
     '/dist/',
