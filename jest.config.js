@@ -1,4 +1,5 @@
+console.log('test');
+
 module.exports = {
   verbose: true,
-  setupFilesAfterEnv: ['<rootDir>/jest-setup.js']
 };
