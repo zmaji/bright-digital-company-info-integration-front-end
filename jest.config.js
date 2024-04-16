@@ -1,9 +1,7 @@
 module.exports = {
   testEnvironment: 'jsdom',
   testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.js$',
-  "modulePaths": [
-    "<rootDir>"
-  ],
+  modulePaths: [ "<rootDir>/src" ],
   moduleNameMapper: {
     '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
   },
