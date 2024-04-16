@@ -1,8 +1,8 @@
 module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'node',
-  setupFilesAfterEnv: ['<rootDir>/src/__tests__/utils/singleton.ts'],
   moduleFileExtensions: ['ts', 'js'],
+  modulePaths: ["<rootDir>/src/"],
   transform: {
     '^.+\\.js$': 'babel-jest',
   },
@@ -24,8 +24,5 @@ module.exports = {
   coverageDirectory: 'coverage',
   coveragePathIgnorePatterns: [
     '/node_modules/',
-    '/src/typings',
-    'src/__tests__/mocks',
-    'src/__tests__/utils',
   ],
 };
