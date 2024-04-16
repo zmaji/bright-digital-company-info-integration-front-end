@@ -12,7 +12,7 @@ pipelines:
         caches:
           - node
         script:
-          - npm install
+          - npm run build
 
   branches:
     testing:
@@ -21,7 +21,7 @@ pipelines:
           caches:
             - node
           script:
-            - npm install
+            - npm run build
 
       - step:
           name: Tests
