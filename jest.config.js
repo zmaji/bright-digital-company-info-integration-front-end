@@ -1,12 +1,10 @@
 module.exports = {
-  preset: 'ts-jest',
-  testEnvironment: 'node',
-  moduleFileExtensions: ['ts', 'js'],
-  modulePaths: ["<rootDir>/src/"],
-  transform: {
-    '^.+\\.js$': 'babel-jest',
+  testEnvironment: 'jsdom',
+  testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.js$',
+  moduleNameMapper: {
+    '\\.(css|less|scss|sass)$': 'identity-obj-proxy', // Mock CSS modules
   },
-  testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.(ts|js)$',
+  setupFilesAfterEnv: ['<rootDir>/src/__tests__/utils/singleton.js'], // This may be required for your setup, adjust as needed
   testPathIgnorePatterns: [
     '/node_modules/',
     '/dist/',
@@ -19,7 +17,7 @@ module.exports = {
   clearMocks: true,
   resetMocks: true,
   collectCoverage: process.env.npm_lifecycle_event === 'test:coverage',
-  collectCoverageFrom: ['src/**/*.ts'],
+  collectCoverageFrom: ['src/**/*.js'],
   coverageReporters: ['json', 'lcov', 'text', 'clover'],
   coverageDirectory: 'coverage',
   coveragePathIgnorePatterns: [
