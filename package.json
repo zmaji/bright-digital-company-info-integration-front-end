@@ -21,7 +21,7 @@
   "scripts": {
     "start": "set PORT=8080 && react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --detectOpenHandles",
+    "test": "react-scripts test --env=jsdom",
     "test:coverage": "react-scripts test -- --coverage",
     "eject": "react-scripts eject"
   },
