@@ -28,6 +28,7 @@ const LandingPage = () => {
     const [emailError, setEmailError] = useState('');
     const [conflictError, setConflictError] = useState('');
     const [validationErrors, setValidationErrors] = useState({});
+    const [rememberMe, setRememberMe] = useState(false);
 
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
@@ -42,6 +43,10 @@ const LandingPage = () => {
         setError('');
         setConflictError('');
         setValidationErrors((prevErrors) => ({ ...prevErrors, password: '' }));
+    };
+
+    const handleRememberMeChange = () => {
+      setRememberMe(!rememberMe);
     };
 
     const handleLogin = async () => {
@@ -59,7 +64,20 @@ const LandingPage = () => {
                 dispatch(setAuthToken(token));
                 const currentUser = await userService.getUser(token);
                 dispatch(setUserData(currentUser));
-                toast.success('Successfully logged in!')
+
+                if (rememberMe) {
+                  localStorage.setItem('rememberMe', 'true');
+                } else {
+                  localStorage.setItem('rememberMe', 'false');
+                }
+                
+                if (currentUser?.data?.hubSpotPortalId) {
+                  navigation('/overview');
+                  toast.success('Successfully logged in!')
+                } else {
+                  navigation('/install');
+                  toast.success('Successfully logged in!')
+                }
               }
           } else {
               if (response.status === 409) {
@@ -79,23 +97,12 @@ const LandingPage = () => {
 
     const userData = useSelector(state => state.user.userData);
 
-    const navigate = async () => {
-        try {
-            if (userData && userData.data && userData.data.hubSpotPortalId) {
-                navigation('/overview');
-            } else {
-                navigation('/install');
-            }
-        } catch (error) {
-            console.error('Error:', error);
-            toast.error('Unavailable to log in, please contact an admin');
-        }
-    }
-
     useEffect(() => {
-        if (userData) {
-            navigate();
-        }
+      const rememberMeValue = localStorage.getItem('rememberMe');
+
+      if (userData && userData.data && rememberMeValue === 'true') {
+        navigation('/overview');
+      }
     }, [userData]);
 
     return (
@@ -133,7 +140,7 @@ const LandingPage = () => {
 
                                 <div className="v-landingpage__content__form-bar u-flex u-flex-sb">
                                     <div className="v-landingpage__content__form-bar__remember u-flex">
-                                        <Input type='checkbox' />
+                                        <Input type='checkbox' checked={rememberMe} onChange={handleRememberMeChange}/>
                                         <span className='v-landingpage__content__form-bar__remember-title'>Remember me</span>
                                     </div>
                                     <span className='v-landingpage__content__form-bar__password'>Forgot password?</span>

@@ -8,6 +8,7 @@ const useLogout = () => {
   const logout = () => {
     dispatch(removeAuthToken());
     dispatch(removeUserData());
+    localStorage.setItem('rememberMe', 'false');
   };
   return logout;
 };
