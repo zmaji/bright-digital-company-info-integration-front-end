@@ -49,6 +49,10 @@ const LandingPage = () => {
       setRememberMe(!rememberMe);
     };
 
+    const handleForgotPassword = () => {
+      toast.error('Please contact an admin to change password')
+    };
+
     const handleLogin = async () => {
       try {
         const formData = { email, password };
@@ -143,7 +147,7 @@ const LandingPage = () => {
                                         <Input type='checkbox' checked={rememberMe} onChange={handleRememberMeChange}/>
                                         <span className='v-landingpage__content__form-bar__remember-title'>Remember me</span>
                                     </div>
-                                    <span className='v-landingpage__content__form-bar__password'>Forgot password?</span>
+                                    <span className='v-landingpage__content__form-bar__password' onClick={handleForgotPassword}>Forgot password?</span>
                                 </div>
                             </Form>
 
