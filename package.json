@@ -50,5 +50,10 @@
     "prettier": "3.2.5",
     "svg-react-loader": "^0.4.6",
     "webpack": "^5.90.3"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    }
   }
 }
