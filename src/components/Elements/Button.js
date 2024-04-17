@@ -13,7 +13,7 @@ const Button = ({ style, link, newTab='false', title, icon = '', animation = '',
   };
 
   return (
-    <Link to={link} {...(target && { target })} className={`c-button c-button--${style}`} onClick={handleClick}>
+    <Link to={link} {...(target && { target })} className={`c-button c-button--${style}`} onClick={handleClick} data-testid="button-component">
         <div className='c-button__content u-flex u-flex-v-center'>
             {icon && animation === 'move-left' && ( 
               <Suspense fallback={<div>Loading...</div>}>
