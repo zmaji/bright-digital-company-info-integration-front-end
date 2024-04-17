@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import Card from '../../../components/content/Card';
+import Card from '../../../../components/content/Card';
 
 describe('Card Component', () => {
   it('renders card with given props', () => {

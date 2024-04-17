@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import Cards from '../../../components/content/Cards';
+import Cards from '../../../../components/content/Cards';
 import { MemoryRouter } from 'react-router-dom';
 
 describe('Cards Component', () => {

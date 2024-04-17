@@ -45,7 +45,7 @@ const TableRow = ({ title, value, button }) => {
         )}
       </div>
       {button && (
-        <div className='c-table-row__button-container'>
+        <div className='c-table-row__button-container' data-testid="table-row-button">
           <Button
             {...button}
             title={isEditing ? 'Submit' : 'Change'}

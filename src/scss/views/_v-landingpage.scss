@@ -101,15 +101,6 @@
           max-width: 618px;
           margin-right: auto;
 
-        //   @include breakpoint(large) {
-        //     padding-right: 6rem;
-        //   }
-      
-        //   @include breakpoint(1920px) {
-        //     padding-right: 0rem;
-        //   }
-        // }
-
         &-spacing {
           padding-left: rem-calc(110);
         }
@@ -119,12 +110,16 @@
       &__image-preview {
         &__container {
           margin-bottom: rem-calc(47);
-
         }
 
         &__image {
           height: 100%;
           width: 700px;
+
+          @include breakpoint(xxlarge) {
+            height: 100%;
+            width: 700px;
+          }
         }
 
       }
