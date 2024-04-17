@@ -10,6 +10,7 @@ const Sidebar = ({ sidebarData }) => {
             title={sidebarGroup.title}
             items={sidebarGroup.items}
             isLast={sidebarGroup.isLast || false}
+            testId={`sidebar-group-${index}`}
           />
         ))}
       </div>

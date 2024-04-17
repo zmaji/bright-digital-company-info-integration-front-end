@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import useLogout from '../../store/handleLogout';
 import toast from 'react-hot-toast';
 
-const SidebarItem = ({ title, icon, link, onClick }) => {
+const SidebarItem = ({ title, icon, link, onClick, testId }) => {
   const location = useLocation();
   const isActive = location.pathname === link;
   const logout = useLogout();
@@ -20,6 +20,7 @@ const SidebarItem = ({ title, icon, link, onClick }) => {
     <Link
       to={link}
       className={`c-sidebar__item-container ${isActive ? 'c-sidebar__item-container--active' : ''}`}
+      data-testid={testId}
       onClick={handleClick}
     >
       <img src={icon} alt={`${icon}`} className='c-sidebar__item-icon c-icon' />
