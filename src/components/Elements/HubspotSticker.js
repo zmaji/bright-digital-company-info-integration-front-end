@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const HubspotSticker = ( ) => {
     return (
-      <div className='c-hubspot-sticker u-flex u-flex-v-center'>
+      <div className='c-hubspot-sticker u-flex u-flex-v-center' data-testid="hubspot-sticker">
 
         <img className='c-hubspot-sticker__sticker-icon' src={StickerIcon} alt='HubSpot Review Sticker' />
 
