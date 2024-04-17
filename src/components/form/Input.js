@@ -19,6 +19,7 @@ const Input = ({ type, name, value, onChange, style, validationError, emailError
     <div className={'c-form__input-wrapper u-flex'}>
       <input
         className={`c-form__input c-form__input--${style}`}
+        data-testid="input-component"
         type={type}
         name={name}
         onChange={onChange}
