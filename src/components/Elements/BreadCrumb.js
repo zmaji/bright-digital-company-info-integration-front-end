@@ -16,7 +16,7 @@ const BreadCrumb = () => {
 
             {paths.map((path, index) => (
                 <React.Fragment key={index}>
-                    <img className='c-breadcrumb__separator-icon' src={ChevronRightGrey} alt='Chevron right icon' />
+                    <img className='c-breadcrumb__separator-icon' src={ChevronRightGrey} alt='Chevron right icon' data-testid="breadcrumb-icon"/>
 
                     <Link className='c-breadcrumb__item' to={`/${paths.slice(0, index + 1).join('/')}`}>
                         {capitalizeFirstLetter(path.replace(/-/g, ' '))}
