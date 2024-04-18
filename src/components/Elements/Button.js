@@ -2,7 +2,7 @@ import React, { Suspense } from 'react';
 import { Link } from 'react-router-dom';
 import { retrieveIcon } from '../../helpers/retrieveIcon';
 
-const Button = ({ style, link, newTab='false', title, icon = '', animation = '', customStyle ='', onClick=null}) => {
+const Button = ({ style, link, newTab='false', title, icon = '', animation = '', iconStyle = '', customStyle = '', onClick=null}) => {
   const IconComponent = retrieveIcon(icon);
   const target = newTab === 'true' ? '_blank' : null;
 
@@ -13,11 +13,11 @@ const Button = ({ style, link, newTab='false', title, icon = '', animation = '',
   };
 
   return (
-    <Link to={link} {...(target && { target })} className={`c-button c-button--${style}`} onClick={handleClick} data-testid="button-component">
+    <Link to={link} {...(target && { target })} className={`c-button c-button--${style} c-button--${customStyle}`} onClick={handleClick} data-testid="button-component">
         <div className='c-button__content u-flex u-flex-v-center'>
             {icon && animation === 'move-left' && ( 
               <Suspense fallback={<div>Loading...</div>}>
-                <IconComponent className={`c-icon c-button__icon c-button__icon--left c-button__icon--${animation} c-button__icon--${customStyle}`} />
+                <IconComponent className={`c-icon c-button__icon c-button__icon--left c-button__icon--${animation} c-button__icon--${iconStyle}`} />
                </Suspense>
             )}
 
@@ -27,7 +27,7 @@ const Button = ({ style, link, newTab='false', title, icon = '', animation = '',
 
             {icon && animation && animation !== 'move-left' && (
               <Suspense fallback={<div>Loading...</div>}>
-                <IconComponent className={`c-icon c-button__icon c-button__icon--${animation} c-button__icon--${customStyle}`} />
+                <IconComponent className={`c-icon c-button__icon c-button__icon--${animation} c-button__icon--${iconStyle}`} />
                </Suspense>
             )}
         </div>

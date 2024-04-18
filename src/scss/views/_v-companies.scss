@@ -1,0 +1,25 @@
+.v-companies {
+    &__content-wrapper {
+        padding: 48px 55px;
+    }
+
+    &__content-container {
+        flex-direction: column;
+    }
+
+    &__breadcrumb__container {
+    }
+
+    &__title {
+        font-size: rem-calc(30);
+        font-weight: 500;
+        margin-bottom: rem-calc(6);
+        margin-top: rem-calc(20);
+    }
+
+    &__text {
+        font-size: 16px;
+        font-weight: 300;
+        margin-bottom: rem-calc(62);
+    }
+}

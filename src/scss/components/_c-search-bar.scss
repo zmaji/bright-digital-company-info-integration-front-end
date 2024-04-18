@@ -1,0 +1,16 @@
+.c-search-bar {
+    &__container {
+        position: relative;
+    }
+
+    &__button-container {
+        position: absolute;
+        top: 0;
+        right: 20px
+    }
+    
+    &__input {
+        width: 380px;
+        display: block;
+    }
+}

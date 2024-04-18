@@ -41,7 +41,7 @@ const InstallScript = () => {
                           Phasellus pharetra eros dui, et pellentesque est bibendum eget. 
                           Nullam ornare purus in turpis pharetra, eu congue arcu laoreet. 
                         </p>
-                        <Button title='Copy' style='tertiary' link={`https://app-eu1.hubspot.com/settings/${userData.hubSpotPortalId}/website/pages/all-domains/page-templates`} newTab='true' icon='Download' animation='move-down' customStyle='large' onClick={copyHeaderScript}/>
+                        <Button title='Copy' style='tertiary' link={`https://app-eu1.hubspot.com/settings/${userData.hubSpotPortalId}/website/pages/all-domains/page-templates`} newTab='true' icon='Download' animation='move-down' iconStyle='large-margin' onClick={copyHeaderScript}/>
                     </div>
 
                     <div className='v-install-script__content-right'>

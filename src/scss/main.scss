@@ -67,7 +67,9 @@
 @import "components/c-breadcrumb";
 @import "components/c-steps";
 @import "components/c-table-row";
+@import "components/c-search-row";
 @import "components/c-cards";
+@import "components/c-search-bar";
 
 /**
   * Views
@@ -79,6 +81,8 @@
 @import "views/v-dashboard-overview";
 @import "views/v-install-script";
 @import "views/v-enrich-data";
+@import "views/v-search-data";
+@import "views/v-companies";
 @import "views/v-profile";
 @import "views/v-activate";
 

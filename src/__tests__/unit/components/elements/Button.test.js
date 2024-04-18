@@ -10,7 +10,7 @@ describe('Button Component', () => {
       link: '/example',
       title: 'Click me',
       animation: 'move-left',
-      customStyle: 'large',
+      iconStyle: 'large-margin',
       onClick: jest.fn(),
     };
 

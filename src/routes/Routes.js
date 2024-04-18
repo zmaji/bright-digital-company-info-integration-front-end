@@ -7,6 +7,8 @@ import ThankYou from '../views/ThankYou';
 import DashboardOverview from '../views/DashboardOverview';
 import InstallScript from '../views/InstallScript';
 import EnrichData from '../views/EnrichData';
+import SearchData from '../views/SearchData';
+import Companies from '../views/Companies';
 import Profile from '../views/Profile';
 import Activate from '../views/Activate';
 
@@ -21,6 +23,8 @@ const AppRoutes = () => {
         <Route path="/overview" element={<DashboardOverview />} />
         <Route path="/install-script" element={<InstallScript/>} />
         <Route path="/enrich-data" element={<EnrichData/>} />
+        <Route path="/search-data" element={<SearchData/>} />
+        <Route path="/companies" element={<Companies/>} />
         <Route path="/profile" element={<Profile/>} />
         <Route path="/activate" element={<Activate/>} />
         {/* <Route path="*" element={<NotFound />} /> */}

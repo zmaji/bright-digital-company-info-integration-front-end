@@ -1,0 +1,33 @@
+import React, { useState } from 'react';
+import Button from '../elements/Button'
+
+const SearchBar = ({ onSearch }) => {
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const handleChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const handleSubmit = () => {
+    onSearch(searchTerm);
+  };
+
+  return (
+    <div className="c-search-bar">
+        <form className="c-search-bar__container">
+        <input
+            type="search"
+            placeholder="Trade name"
+            value={searchTerm}
+            onChange={handleChange}
+            className="c-search-bar__input"
+        />
+        <div className="c-search-bar__button-container">
+            <Button title='Search' style='primary_search' icon='SearchWhite' animation='move-left' iconStyle='large' customStyle='small' onClick={handleSubmit}/>
+        </div>
+        </form>
+    </div>
+  );
+};
+
+export default SearchBar;

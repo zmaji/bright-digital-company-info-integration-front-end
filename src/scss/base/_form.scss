@@ -31,7 +31,7 @@ form {
 //   input[type='number'],
 //   input[type='tel'],
 //   input[type='url'],
-//   input[type='search'],
+  input[type='search'],
   input[type='submit'],
   input[type='password'],
   select,
@@ -87,6 +87,11 @@ form {
     background-image: $gradient-button;
     min-height: 3.5rem;
     line-height: 3.5rem;
+  }
+
+  input[type='search'] {
+    min-height: 3rem;
+    line-height: 3rem;
   }
   
   label {

@@ -59,6 +59,10 @@
     }
   }
 
+  &--small {
+    padding: 1rem 2rem;
+  }
+
   // Icon
   &__icon {
     @include transition(transform);
@@ -68,20 +72,22 @@
 
     &--left {
       margin-right: 0.5rem;
-      // margin-left: 0;
-      // @include square(2rem);
+      margin-left: 0;
     }
 
     &--down {
       margin-bottom: 0.5rem;
-      // margin-left: 0;
-      // @include square(2rem);
+    }
+
+    &--large-margin {
+      width: 17px;
+      height: 17px;
+      margin-bottom: 0.5rem;
     }
 
     &--large {
       width: 17px;
       height: 17px;
-      margin-bottom: 0.5rem;
     }
 
     .body-container--landingspage & {
@@ -153,6 +159,31 @@
     }
   }
 
+  &--primary_search {
+    background: $gradient-65deg;
+    color: $white;
+    fill: $white;
+    border: 0;
+    overflow: hidden;
+
+    &::after {
+      @include absolute();
+      @include transition();
+      content: '';
+      background: $gradient-65deg;
+      border-radius: $radius-large;
+      z-index: 1;
+      opacity: 1;
+    }
+
+    #{$root}__content,
+    #{$root}__icon {
+      position: relative;
+      color: $white;
+      z-index: 3;
+    }
+  }
+
   &--primary_submit {
     width: rem-calc(136);
   }
@@ -163,6 +194,10 @@
 
   &--black {
     @include button($black, $dark-gray);
+  }
+
+  &--white {
+    fill: white;
   }
 
   &--white-border {

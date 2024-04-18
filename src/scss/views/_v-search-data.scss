@@ -1,0 +1,57 @@
+.v-search-data {
+    &__content-wrapper {
+        padding: 52px 48px 52px 48px; 
+    }
+
+    &__content-container {
+        &-left {
+            width: calc(50% - 33px);
+        }
+
+        &-right {
+            width: calc(50% - 33px);
+            margin-left: auto;
+        }
+    }
+
+    &__breadcrumb-container {
+        margin-top: 25px;
+        margin-bottom: 100px;
+    }
+
+    &__content-title {
+        font-size: rem-calc(46);
+        font-weight: 500;
+        margin-bottom: rem-calc(30);
+    }
+
+    &__content-text {
+        font-size: 16px;
+        font-weight: 300;
+        margin-bottom: rem-calc(40);
+    }
+
+    &__content-terms {
+        font-size: rem-calc(14);
+        font-weight: 300;
+        margin-bottom: 23px;
+        margin-top: 25px;
+
+        &-link {
+            text-decoration: underline;
+        }
+    }
+
+    &__image {
+        height: 640px;
+        background-image: url('../../images/Search-data-background.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+
+        &-container {
+            width: 423px;
+            height: 640px;
+        }
+    }
+};
