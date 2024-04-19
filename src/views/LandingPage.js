@@ -104,8 +104,6 @@ const LandingPage = () => {
     useEffect(() => {
       const rememberMeValue = localStorage.getItem('rememberMe');
 
-      console.log('ENTERED APP')
-
       if (userData && userData.data && rememberMeValue === 'true') {
         navigation('/overview');
       }

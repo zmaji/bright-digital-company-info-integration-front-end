@@ -3,6 +3,7 @@ import Button from '../components/elements/Button';
 import SignupHeader from '../components/header/SignupHeader';
 import Input from '../components/form/Input';
 import userService from '../services/userService';
+import toast from 'react-hot-toast';
 
 const Activate = () => {
    const [activationCode, setActivationCode] = useState('');
@@ -12,12 +13,16 @@ const Activate = () => {
     };
 
     const handleVerifyActivationCode = async () => {
-      const result = userService.verifyActivationCode(activationCode);
+        const userId = localStorage.getItem('userId');
+        const result = await userService.verifyActivationCode(userId, activationCode);
 
-      if (result.status === 200) {
-        console.log('ACTIVATED!!!!!!!!!!!');
+      if (result && result.status === 200) {
+        localStorage.removeItem('userId');
+        toast.success('Successfully activated account');
+      } else {
+        toast.error('Something went wrong activating your account');
       }
-    };
+  };
 
     return (
         <div className='v-activate'>

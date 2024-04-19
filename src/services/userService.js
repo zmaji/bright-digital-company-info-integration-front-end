@@ -54,10 +54,13 @@ const updateUser = async (authToken, updateFields) => {
   }
 };
 
-const verifyActivationCode = async (activationCode) => {
+const verifyActivationCode = async (userId, activationCode) => {
   try {
-    const response = axios.put(`${BASE_URL}/users/verify`, {
-      activationCode: activationCode,
+    const response = axios.get(`${BASE_URL}/users/verify`, {
+      params: {
+        userId: userId,
+        activationCode: activationCode,
+      }
     });
 
     return response;
