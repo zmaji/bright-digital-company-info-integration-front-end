@@ -28,8 +28,11 @@ const overviewCardsData = [
       title: 'Search for data',
       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in.',
       button: {
-        title: 'Coming soon!',
+        title: 'Start now',
         style: 'tertiary',
+        link: '/search-data',
+        icon: 'ArrowRight',
+        animation: 'move-right'
       }
     }
   ];
