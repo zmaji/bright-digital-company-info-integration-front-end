@@ -60,9 +60,9 @@ form {
       height: 3.5rem;
     }
 
-    &:focus {
-      border-color: $input-focus;
-    }
+    // &:focus {
+    //   border-color: $input-focus;
+    // }
 
     &:disabled {
       background-color: $input-disabled;
