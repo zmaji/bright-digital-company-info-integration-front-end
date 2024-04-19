@@ -2,11 +2,7 @@
 import React from 'react';
 import Button from '../elements/Button';
 
-const SearchRow = ({ name, address, location, button }) => {
-    const handleClick = () => {
-        console.log('click');
-        };
-    
+const SearchRow = ({ name, address, location, button }) => {    
   return (
     <div className='c-search-row u-flex'>
       <div className='c-search-row__line'></div>
@@ -24,7 +20,6 @@ const SearchRow = ({ name, address, location, button }) => {
             <div className='c-search-row__button-container' data-testid="search-row-button">
             <Button
                 {...button}
-                onClick={handleClick}
             />
             </div>
      </div>

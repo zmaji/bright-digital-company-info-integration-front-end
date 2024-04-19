@@ -11,7 +11,7 @@ const setAuthorizationHeader = async (authToken) => {
 
 const getCompanies = async (tradeName) => {
     try {
-      const response = await axios.get(`${BASE_URL}/companies`, {
+      const response = await axios.get(`${BASE_URL}/companies/`, {
         params: {
           tradeName: tradeName
         },
@@ -32,25 +32,28 @@ const getCompanies = async (tradeName) => {
     }
   };
 
-const getCompany = async (authToken, objectType, groupName) => {
-  await setAuthorizationHeader(authToken);
+  const getCompany = async (dossierNumber) => {
+    try {
+      const response = await axios.get(`${BASE_URL}/companies/info`, {
+        params: {
+          dossierNumber: dossierNumber
+        },
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
   
-  try {
-    const response = await axios.post(`${BASE_URL}/groups`, {
-      objectType: objectType,
-      groupName: groupName,
-    }, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-
-    return response;
-  } catch (error) {
-    console.error('Error:', error);
-    throw new Error(error|| 'An error occurred while creating a group');
-  }
-};
+      return response.data;
+    } catch (error) {
+      if (error.response && error.response.status === 404) {
+        console.error('No company info found');
+        return null;
+      } else {
+        console.error('Error:', error);
+        throw new Error(error || 'An error occurred while retrieving a company');
+      }
+    }
+  };
 
 const companyService = {
   getCompanies,

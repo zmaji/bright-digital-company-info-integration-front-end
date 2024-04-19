@@ -1,6 +1,6 @@
 .v-search-results {
     &__content-wrapper {
-        padding: 48px 55px;
+        padding: 76px 55px;
     }
 
     &__content-container {
@@ -11,12 +11,12 @@
         font-size: rem-calc(30);
         font-weight: 500;
         margin-bottom: rem-calc(6);
-        margin-top: rem-calc(20);
+        margin-top: rem-calc(60);
     }
 
     &__text {
         font-size: 16px;
         font-weight: 300;
-        margin-bottom: rem-calc(62);
+        margin-bottom: rem-calc(36);
     }
 }

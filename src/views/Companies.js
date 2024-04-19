@@ -16,12 +16,17 @@ const Companies = () => {
         if (location.state && location.state.searchResults) {
             const companies = location.state.searchResults;
             const updatedCompanyData = companies.map(company => ({
-                name: company.name,
-                address: company.correspondence_street,
-                location: capitalizeFirstLetter(company.correspondence_city),
-                button: { title: 'More information', style: 'tertiary', link: '/', icon: 'ArrowRight', animation: 'move-right'}
-            }));
-    
+              name: company.name,
+              address: company.correspondence_street,
+              location: capitalizeFirstLetter(company.correspondence_city),
+              button: {
+                  title: 'More information',
+                  style: 'tertiary',
+                  link: `/search-company/search-results/company-detail?dossierNumber=${encodeURIComponent(company.dossier_number)}`,
+                  icon: 'ArrowRight',
+                  animation: 'move-right'
+              }
+          }));
             setCompanyData(updatedCompanyData);
         } else {
             setCompanyData([]);

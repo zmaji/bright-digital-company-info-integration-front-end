@@ -11,6 +11,7 @@ import SearchCompany from '../views/SearchCompany';
 import Companies from '../views/Companies';
 import Profile from '../views/Profile';
 import Activate from '../views/Activate';
+import CompanyDetail from '../views/CompanyDetail';
 
 const AppRoutes = () => {
   return (
@@ -25,6 +26,7 @@ const AppRoutes = () => {
         <Route path="/enrich-data" element={<EnrichData/>} />
         <Route path="/search-company" element={<SearchCompany/>} />
         <Route path="/search-company/search-results" element={<Companies/>} />
+        <Route path="/search-company/search-results/company-detail" element={<CompanyDetail/>} />
         <Route path="/profile" element={<Profile/>} />
         <Route path="/activate" element={<Activate/>} />
         {/* <Route path="*" element={<NotFound />} /> */}
