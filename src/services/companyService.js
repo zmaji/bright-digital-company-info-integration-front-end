@@ -22,7 +22,7 @@ const getCompanies = async (tradeName) => {
   
       return response.data;
     } catch (error) {
-      if (error.response && error.response.status === 404) {
+      if (error.response && error.response.status === 404 || error.response.status === 500) {
         console.error('No company found');
         return null;
       } else {
@@ -45,7 +45,7 @@ const getCompanies = async (tradeName) => {
   
       return response.data;
     } catch (error) {
-      if (error.response && error.response.status === 404) {
+      if (error.response && error.response.status === 404 || error.response.status === 500) {
         console.error('No company info found');
         return null;
       } else {

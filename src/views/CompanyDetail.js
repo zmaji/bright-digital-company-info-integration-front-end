@@ -4,25 +4,38 @@ import BreadCrumb from '../components/elements/BreadCrumb';
 import { useLocation } from 'react-router-dom';
 import companyService from '../services/companyService';
 import Button from '../components/elements/Button';
+import toast from 'react-hot-toast';
 
 const CompanyDetail = () => {
     const location = useLocation();
     const [companyData, setCompanyData] = useState(null);
+    const [visibleItemCount, setVisibleItemCount] = useState(10);
 
     useEffect(() => {
         const fetchData = async () => {
-            if (location) {
+            if (location && location.search) {
                 const searchParams = new URLSearchParams(location.search);
                 const dossierNumber = searchParams.get('dossierNumber');
                 const company = await companyService.getCompany(dossierNumber);
-                setCompanyData(company);
-                console.log(company)
-            } else {
-                setCompanyData(null);
+
+                if (company) {
+                    setCompanyData(company);
+                    console.log(company);
+                } else {
+                    toast.error('Not enough credits to perform this action, please contact an admin');
+                }
             }
         };
         fetchData();
     }, [location.search]);
+
+    const formatKey = (key) => {
+        return key.replace(/_/g, ' ').replace(/\b\w/g, char => char.toUpperCase());
+    };
+
+    const handleSeeMore = () => {
+        setVisibleItemCount(prevCount => prevCount + 10);
+    };
 
     return (
         <div className='v-company-detail'>
@@ -53,6 +66,20 @@ const CompanyDetail = () => {
                                     <p className='v-company-detail__identification-title'>
                                         Identification characteristics
                                     </p>
+
+                                    <div className="v-company-detail__properties u-flex">
+                                        {Object.entries(companyData)
+                                            .filter(([key]) => ['dossier_number', 'rsin_number', 'establishment_number'].includes(key))
+                                            .map(([key, value]) => (
+                                                (typeof value === 'string' || typeof value === 'number') && (value !== null && value !== '') && (
+                                                    <div key={key} className="v-company-detail__property">
+                                                        <p className='v-company-detail__property-title'>{formatKey(key)}</p>
+                                                        <p className='v-company-detail__property-value'>{value}</p>
+                                                    </div>
+                                                )
+                                        ))}
+                                    </div>
+                                    
                                     <div className='v-company-detail__line'></div>
                                 </div>
 
@@ -61,18 +88,27 @@ const CompanyDetail = () => {
                                         Company characteristics
                                     </p>
 
-                                    {Object.entries(companyData).map(([key, value]) => (
-                                        <div key={key} className="v-company-detail__properties">
-                                            <p className='v-company-detail__property-title'>{key}</p>
-                                            <p className='v-company-detail__property-value'>{value}</p>
-                                        </div>
-                                    ))}
-                                 </div>
-                                <div className='v-company-detail__line'></div>
+                                    <div className="v-company-detail__properties u-flex">
+                                        {companyData &&
+                                            Object.entries(companyData)
+                                                .filter(([key]) => !['dossier_number', 'rsin_number', 'establishment_number'].includes(key))
+                                                .slice(0, visibleItemCount)
+                                                .map(([key, value]) => (
+                                                    (typeof value === 'string' || typeof value === 'number') && (value !== null && value !== '') && (
+                                                        <div key={key} className="v-company-detail__property">
+                                                            <p className='v-company-detail__property-title'>{formatKey(key)}</p>
+                                                            <p className='v-company-detail__property-value'>{value}</p>
+                                                        </div>
+                                                    )
+                                            ))}
+                                    </div>
+                                </div>
                             </React.Fragment>
                         )}
 
-                        <Button title='See more' style='tertiary' link='/' icon='ArrowDown' animation='move-down'/>
+                        {visibleItemCount < (companyData ? Object.keys(companyData).length : 0) && (
+                            <Button title='See more' style='tertiary' link='/' icon='ArrowDown' animation='move-down' onClick={handleSeeMore} />
+                        )}
 
                       </div>
 
@@ -82,5 +118,5 @@ const CompanyDetail = () => {
             </DefaultLayout>
         </div>
     );
-  };
+};
 export default CompanyDetail;
