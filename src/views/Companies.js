@@ -29,20 +29,20 @@ const Companies = () => {
     }, [location.state]);
 
     return (
-        <div className='v-companies'>
+        <div className='v-search-results'>
             <DefaultLayout>
-                <div className="v-companies__content-wrapper">
-                  <div className="v-companies__content-container u-flex">
+                <div className="v-search-results__content-wrapper">
+                  <div className="v-search-results__content-container u-flex">
 
-                      <div className="v-companies__breadcrumb-container">
+                      <div className="v-search-results__breadcrumb-container">
                         <BreadCrumb />
                       </div>
 
-                      <h2 className='v-companies__title'>
+                      <h2 className='v-search-results__title'>
                         Search results
                       </h2>
 
-                      <p className='v-companies__text'>
+                      <p className='v-search-results__text'>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.
                       </p>
 

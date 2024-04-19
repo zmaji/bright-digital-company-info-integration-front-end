@@ -13,7 +13,7 @@ const overviewCardsData = [
     },
     {
       icon: 'LightBulbGradient',
-      title: 'Enricht existing data',
+      title: 'Enrich data',
       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in.',
       button: {
         title: 'Start now',
@@ -25,7 +25,7 @@ const overviewCardsData = [
     },
     {
       icon: 'SearchGradient',
-      title: 'Search for data',
+      title: 'Search company',
       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in.',
       button: {
         title: 'Start now',

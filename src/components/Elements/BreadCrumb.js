@@ -9,6 +9,7 @@ const capitalizeFirstLetter = (string) => {
 const BreadCrumb = () => {
     const location = useLocation();
     const paths = location.pathname.split('/').filter(path => path !== '');
+    const totalPaths = paths.length;
 
     return (
         <div className='c-breadcrumb__container u-flex u-flex-v-center'>
@@ -18,7 +19,10 @@ const BreadCrumb = () => {
                 <React.Fragment key={index}>
                     <img className='c-breadcrumb__separator-icon' src={ChevronRightGrey} alt='Chevron right icon' data-testid="breadcrumb-icon"/>
 
-                    <Link className='c-breadcrumb__item' to={`/${paths.slice(0, index + 1).join('/')}`}>
+                    <Link
+                        className={`c-breadcrumb__item ${index === totalPaths - 1 ? 'c-breadcrumb__item--bold' : ''}`}
+                        to={`/${paths.slice(0, index + 1).join('/')}`}
+                    >
                         {capitalizeFirstLetter(path.replace(/-/g, ' '))}
                     </Link>
                 </React.Fragment>

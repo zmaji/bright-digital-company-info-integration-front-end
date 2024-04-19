@@ -6,7 +6,7 @@ import SearchBar from '../components/elements/SearchBar';
 import toast from 'react-hot-toast';
 import companyService from '../services/companyService';
 
-const SearchData = () => {
+const SearchCompany = () => {
     const navigation = useNavigate();
 
     const handleSearch = async (searchTerm) => {
@@ -18,29 +18,29 @@ const SearchData = () => {
         console.log(companies)
 
         if (companies && companies.item) {
-          navigation('/companies', { state: { searchResults: companies.item } });
+          navigation('/search-company/search-results', { state: { searchResults: companies.item } });
         } else {
           toast.error(`No companies found with trade name: ${searchTerm}`);
         }
     };
 
     return (
-        <div className='v-search-data'>
+        <div className='v-search-company'>
             <DefaultLayout>
-                <div className='v-search-data__content-wrapper'>
-                  <div className="v-search-data__content-container u-flex">
+                <div className='v-search-company__content-wrapper'>
+                  <div className="v-search-company__content-container u-flex">
                     
-                    <div className="v-search-data__content-container-left">
-                      <div className='v-search-data__breadcrumb-container'>
+                    <div className="v-search-company__content-container-left">
+                      <div className='v-search-company__breadcrumb-container'>
                         <BreadCrumb />
                       </div>
 
-                      <div className='v-search-data__content-inner'>
-                        <h1 className='v-search-data__content-title'>
+                      <div className='v-search-company__content-inner'>
+                        <h1 className='v-search-company__content-title'>
                             Search for a company
                         </h1>
 
-                        <p className='v-search-data__content-text'>
+                        <p className='v-search-company__content-text'>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
                         Phasellus pharetra eros dui, et pellentesque est bibendum eget. 
                         Nullam ornare purus in turpis pharetra, eu congue arcu laoreet. 
@@ -48,19 +48,19 @@ const SearchData = () => {
 
                         <SearchBar onSearch={handleSearch} />
 
-                        <p className='v-search-data__content-terms'>
+                        <p className='v-search-company__content-terms'>
                           By searching you agree with the&nbsp;
                           
-                          <Link to='/' className='v-search-data__content-terms-link'>
+                          <Link to='/' className='v-search-company__content-terms-link'>
                             terms & conditions
                           </Link>
                         </p>
                       </div>
                     </div>
 
-                    <div className="v-search-data__content-container-right">
-                      <div className="v-search-data__image-container">
-                        <div className="v-search-data__image">
+                    <div className="v-search-company__content-container-right">
+                      <div className="v-search-company__image-container">
+                        <div className="v-search-company__image">
                         </div>
                       </div>
                     </div>
@@ -71,4 +71,4 @@ const SearchData = () => {
         </div>
     );
   };
-export default SearchData;
+export default SearchCompany;
