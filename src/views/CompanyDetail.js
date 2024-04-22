@@ -5,28 +5,15 @@ import { useLocation } from 'react-router-dom';
 import companyService from '../services/companyService';
 import Button from '../components/elements/Button';
 import toast from 'react-hot-toast';
-import { formatCompanyData } from '../helpers/formatCompanyData';
+import { useSelector } from 'react-redux';
+import removeEmptyStrings from '../helpers/cleanObject';
 
 const CompanyDetail = () => {
     const location = useLocation();
+    const authToken = useSelector(state => state.auth.authToken);
     const [companyData, setCompanyData] = useState(null);
+    const [cleanCompanyData, setCleanCompanyData] = useState(null);
     const [visibleItemCount, setVisibleItemCount] = useState(6);
-
-    const removeEmptyStrings = async (object) => {
-    const cleanedObject = { ...object };
-
-    for (const key in cleanedObject) {
-        if (cleanedObject.hasOwnProperty(key)) {
-            if (cleanedObject[key] === "") {
-                delete cleanedObject[key];
-            }
-            else if (typeof cleanedObject[key] === "object" && cleanedObject[key] !== null) {
-                cleanedObject[key] = removeEmptyStrings(cleanedObject[key]);
-            };
-        };
-    };
-        return cleanedObject;
-    };
   
     useEffect(() => {
         const fetchData = async () => {
@@ -36,179 +23,77 @@ const CompanyDetail = () => {
                 // const company = await companyService.getCompany(dossierNumber);
 
                 const company = {
-                    annual_financial_statement_summary: {
-                        assets: {
-                            amount: 867308,
-                            currency: "EUR",
-                            formatted: "EUR 867.308,00",
-                        },
-                        year: 2022,
-                    },
-                    authorized_share_capital: 0,
+                    assets: 867308,
+                    authorized_share_capital: "",
                     authorized_share_capital_currency: "EUR",
-                    chamber_number: "08",
-                    class_personnel: 5,
-                    class_personnel_ci: 1,
-                    class_personnel_fulltime: 5,
-                    contact_gender: "",
-                    contact_initials: "",
-                    contact_prefix: "",
-                    contact_surname: "",
-                    contact_title1: "",
-                    contact_title2: "",
-                    correspondence_address: {
-                        formatted: {
-                            city: "Apeldoorn",
-                            country: "NLD",
-                            house_number: 300,
-                            house_number_addition: "",
-                            postcode: "7311VV",
-                            street: "Vosselmanstraat",
-                        },
-                        official: {
-                            city: "Apeldoorn",
-                            country: "Nederland",
-                            house_number: 300,
-                            house_number_addition: "",
-                            postcode: "7311VV",
-                            street: "Vosselmanstraat",
-                        },
-                        original: {
-                            city: "APELDOORN",
-                            country: "NLD",
-                            house_number: 300,
-                            house_number_addition: "",
-                            postcode: "7311VV",
-                            street: "Vosselmanstraat",
-                        },
-                    },
+                    city_correspondence_address: "Apeldoorn",
+                    city_country: "",
+                    city_establishment_address: "Apeldoorn",
+                    continuation_date: "",
+                    correspondence_address: "Vosselmanstraat 300 7311VV Apeldoorn",
+                    country_correspondence_address: "Nederland",
+                    country_establishment_address: "Nederland",
+                    discontinuation_date: "",
                     domain_name: "www.brightdigital.nl",
-                    dossier_number: "62801406",
-                    establishment_address: {
-                        formatted: {
-                            city: "Apeldoorn",
-                            country: "NLD",
-                            house_number: 300,
-                            house_number_addition: "",
-                            postcode: "7311VV",
-                            street: "Vosselmanstraat",
-                        },
-                        official: {
-                            city: "Apeldoorn",
-                            country: "Nederland",
-                            house_number: 300,
-                            house_number_addition: "",
-                            postcode: "7311VV",
-                            street: "Vosselmanstraat",
-                        },
-                        original: {
-                            city: "APELDOORN",
-                            country: "NLD",
-                            house_number: 300,
-                            house_number_addition: "",
-                            postcode: "7311VV",
-                            street: "Vosselmanstraat",
-                        },
-                    },
-                    establishment_date: {
-                        day: 5,
-                        month: 3,
-                        year: 2015,
-                    },
-                    establishment_number: "000031778321",
-                    founding_date: {
-                        day: 5,
-                        month: 3,
-                        year: 2015,
-                    },
-                    indication_bankruptcy: false,
-                    indication_dip: false,
-                    indication_economically_active: true,
-                    indication_export: false,
-                    indication_import: false,
-                    indication_main_establishment: true,
-                    indication_non_mailing: true,
+                    dossier_number: 62801406,
+                    establishment_address: "Vosselmanstraat 300 7311VV Apeldoorn",
+                    establishment_date: "2015-03-05",
+                    establishment_number: 31778321,
+                    founder: "",
+                    founding_date: "2015-03-05",
+                    house_number_addition_correspondence_address: "",
+                    house_number_addition_establishment_address: "",
+                    house_number_and_addition: "",
+                    house_number_correspondence_address: 300,
+                    house_number_establishment_address: "300",
+                    indication_bankruptcy: "",
+                    indication_insolvency: "",
+                    indication_insolvency_number_description_date: "",
                     indication_organisation_code: "O",
+                    industry_companyinfo: "",
                     issued_share_capital: 1000,
                     issued_share_capital_currency: "EUR",
-                    legal_form_code: "41",
-                    legal_form_text: "Besloten Vennootschap met gewone structuur",
+                    legal_form_code: 41,
                     legal_name: "Bright Digital B.V.",
-                    main_establishment_number: "000031778321",
+                    main_establishment_number: 85840408,
+                    main_establishment_number_direct: 91231779,
                     mobile_number: "06 43218079",
+                    number_of_establishments: "",
                     paid_up_share_capital: 1000,
                     paid_up_share_capital_currency: "EUR",
-                    personnel: 16,
-                    personnel_ci: 0,
-                    personnel_ci_reference_date: {
-                        day: 0,
-                        month: 0,
-                        year: 2022,
-                    },
-                    personnel_fulltime: 15,
-                    personnel_reference_date: {
-                        day: 1,
-                        month: 11,
-                        year: 2018,
-                    },
-                    primary_sbi_code: "7311",
+                    personnel_annual_reports: "",
+                    personnel_kvk: 16,
+                    postal_code: "",
+                    postalcode_correspondence_address: "7311VV",
+                    postalcode_establishment_address: "7311VV",
+                    primary_sbi_code: 7311,
                     primary_sbi_code_text: "Reclamebureaus",
+                    profit: "",
+                    profit_currency: "",
+                    revenue: "",
+                    revenue_currency: "",
                     rsin_number: "854962657",
-                    sbi_collection: {
-                        company_info: {
-                            item: [
-                                { sbi_code: "70221", description: "Organisatie-adviesbureaus" },
-                                { sbi_code: "6201", description: "Ontwikkelen, produceren en uitgeven van software" },
-                                { sbi_code: "6202", description: "Advisering op het gebied van informatietechnologie" },
-                                { sbi_code: "7320", description: "Markt- en opinieonderzoekbureaus" },
-                            ],
-                        },
-                        original: {
-                            item: [
-                                { sbi_code: "7311", description: "Reclamebureaus" },
-                            ],
-                        },
-                    },
-                    secondary_sbi_code1: "",
-                    secondary_sbi_code1_text: "",
+                    sbi_code_description: "",
                     secondary_sbi_code2: "",
-                    secondary_sbi_code2_text: "",
-                    structure: {
-                        parent: "91231779",
-                        ultimate_parent: "85840408",
-                    },
+                    street: "",
+                    street_correspondence_address: "Vosselmanstraat",
+                    street_establishment_address: "Vosselmanstraat",
                     telephone_number: "",
-                    trade_name_45: "Bright Digital B.V.",
+                    trade_name: "Bright Digital B.V.",
                     trade_name_full: "Bright Digital B.V.",
-                    trade_names: {
-                        item: [
-                            "Bright",
-                            "Bright Digital B.V.",
-                            "Bureau Bright",
-                            "Visible",
-                        ],
-                    },
-                    update_info: {
-                        date_last_update: "2022-01-30T00:00:00.000Z",
-                        dossier_number: "62801406",
-                        establishment_number: "000031778321",
-                        update_types: {
-                            item: ["Tradenames"],
-                        },
-                    },
-                };
+                    ws_indication_economically_active: "",
+                  };
 
-                const formattedData = await formatCompanyData(company);
-                const cleanedData = await removeEmptyStrings(formattedData);
+                const cleanedData = await removeEmptyStrings(company);
 
                 if (cleanedData) {
-                    setCompanyData(cleanedData);
-                    console.log(cleanedData);
+                    setCompanyData(company);
+                    setCleanCompanyData(cleanedData);
                 } else {
-                    toast.error('Not enough credits to perform this action, please contact an admin');
+                    toast.error('Something went wrong, please contact an admin');
                 }
-            // }
-        };
+            }
+        // };
         fetchData();
     }, [location.search]);
 
@@ -220,7 +105,39 @@ const CompanyDetail = () => {
         setVisibleItemCount((prevCount) => prevCount + 6);
     };
 
-    const showSeeMoreButton = companyData && Object.keys(companyData).length > visibleItemCount;
+    const showSeeMoreButton = cleanCompanyData && Object.keys(cleanCompanyData).length > visibleItemCount;
+    
+    const handleSaveCompany = async () => {
+        if (companyData) {
+            if (companyData.trade_name || companyData.trade_name_full) {
+                const existingCompanies = await companyService.getHubSpotCompanies(authToken);
+
+                const matchingCompany = existingCompanies.find(
+                    (company) => 
+                      company.properties.name === companyData.trade_name || 
+                      company.properties.name === companyData.trade_name_full
+                  );
+
+                  if (matchingCompany) {
+                    console.log('Matching company found');
+                    const updatedCompany = await companyService.updateHubSpotCompany(authToken, matchingCompany.hs_object_id, companyData);
+
+                    console.log('updatedCompany');
+                    console.log(updatedCompany);
+                } else {
+                    console.log('No matching company found');
+                    const createdCompany = await companyService.createHubSpotCompany(authToken, companyData);
+
+                    console.log('createdCompany');
+                    console.log(createdCompany);
+                }
+            } else {
+                toast.error('No data found, please contact an admin.')
+            }
+        } else {
+            toast.error('No data found, please contact an admin.')
+        }
+    };
 
     return (
         <div className='v-company-detail'>
@@ -234,18 +151,18 @@ const CompanyDetail = () => {
 
                       <div className="v-company-detail__content-container__left">
                         <h2 className='v-company-detail__title'>
-                            {companyData ? companyData.trade_name_full : "No trade name found"}
+                            {cleanCompanyData ? cleanCompanyData.trade_name_full : "No trade name found"}
                         </h2>
 
                         <p className='v-company-detail__text'>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus pharetra eros dui, et pellentesque est bibendum eget. Nullam ornare purus in turpis pharetra, eu congue.
                         </p>
 
-                        <Button title='Save in HubSpot' style='primary' link='/' icon='ArrowRight' animation='move-right'/>
+                        <Button title='Save in HubSpot' style='primary' icon='ArrowRight' animation='move-right' onClick={handleSaveCompany}/>
                       </div>
 
                       <div className="v-company-detail__content-container__right">
-                        {companyData && (
+                        {cleanCompanyData && (
                             <React.Fragment>
                                 <div className="v-company-detail__identification-container">
                                     <p className='v-company-detail__identification-title'>
@@ -253,7 +170,7 @@ const CompanyDetail = () => {
                                     </p>
 
                                     <div className="v-company-detail__properties u-flex">
-                                        {Object.entries(companyData)
+                                        {Object.entries(cleanCompanyData)
                                             .filter(([key]) => ['dossier_number', 'rsin_number', 'establishment_number'].includes(key))
                                             .map(([key, value]) => (
                                                 (typeof value === 'string' || typeof value === 'number') && (value !== null && value !== '') && (
@@ -274,8 +191,8 @@ const CompanyDetail = () => {
                                     </p>
 
                                     <div className="v-company-detail__properties u-flex">
-                                        {companyData &&
-                                            Object.entries(companyData)
+                                        {cleanCompanyData &&
+                                            Object.entries(cleanCompanyData)
                                                 .filter(([key]) => !['dossier_number', 'rsin_number', 'establishment_number'].includes(key))
                                                 .slice(0, visibleItemCount)
                                                 .map(([key, value]) => (
