@@ -15,7 +15,6 @@ const SearchCompany = () => {
         }
 
         const companies = await companyService.getCompanies(searchTerm);
-        console.log(companies)
 
         if (companies && companies.item) {
           navigation('/search-company/search-results', { state: { searchResults: companies.item } });
