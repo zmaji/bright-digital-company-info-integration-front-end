@@ -29,9 +29,7 @@ const DashboardOverview = () => {
       }
   
       const currentProperties = await propertyService.getProperties(authToken, 'company', 'company_info_integration');
-      const propertyFields = await generatePropertyFields('company_info_integration');
-
-      console.log(propertyFields);
+      const propertyFields = await generatePropertyFields();
   
       if (currentProperties && currentProperties.length > 0 && propertyFields && propertyFields.length > 0) {
         const missingProperties = await compareProperties(currentProperties, propertyFields);

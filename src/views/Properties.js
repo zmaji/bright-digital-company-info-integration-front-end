@@ -4,27 +4,42 @@ import BreadCrumb from '../components/elements/BreadCrumb';
 import Button from '../components/elements/Button';
 import toast from 'react-hot-toast';
 import { useSelector } from 'react-redux';
-import Input from '../components/form/Input';
 import { generatePropertyFields } from '../helpers/hubSpot/generatePropertyFields';
+import propertyService from '../services/propertyService';
 
 const CompanyDetail = () => {
   const authToken = useSelector((state) => state.auth.authToken);
   const [allProperties, setAllProperties] = useState([]);
+  const [currentProperties, setCurrentProperties] = useState([]);
   const [selectedProperties, setSelectedProperties] = useState([]); 
 
   useEffect(() => {
     const fetchPropertyFields = async () => {
       try {
         const properties = await generatePropertyFields();
-        setAllProperties(properties); // Set all properties
-        setSelectedProperties(properties.map((property) => property.name));
+        setAllProperties(properties);
+  
+        const currentProperties = await propertyService.getProperties(
+          authToken,
+          'company',
+          'company_info_integration'
+        );
+        const currentPropertyNames = currentProperties.map((property) => property.name);
+        setCurrentProperties(currentPropertyNames);
+  
+        const matchedProperties = properties.filter((property) =>
+          currentPropertyNames.includes(property.name)
+        );
+  
+        const selectedPropertyNames = matchedProperties.map((property) => property.name);
+        setSelectedProperties(selectedPropertyNames);
       } catch (error) {
         console.error('Error fetching property fields:', error);
       }
     };
-
+  
     fetchPropertyFields();
-  }, []);
+  }, [authToken]);
 
   const formatPropertyLabel = (str) => {
     return str
@@ -43,9 +58,34 @@ const CompanyDetail = () => {
     });
   };
 
-  const handleSaveProperties = () => {
-    console.log('Properties saved:', selectedProperties);
-    toast.success('Properties saved!');
+  const handleSaveProperties = async () => {
+    try {
+      const propertiesToDelete = allProperties.filter(
+        (property) => !selectedProperties.includes(property.name)
+      );
+  
+      const propertiesToCreate = selectedProperties.filter(
+        (propertyName) => !currentProperties.includes(propertyName)
+      );
+  
+      if (propertiesToDelete.length > 0) {
+        console.log('Properties to delete:', propertiesToDelete);
+        // Logic
+      }
+  
+      if (propertiesToCreate.length > 0) {
+        console.log('Properties to create:', propertiesToCreate);
+        // Logic
+      }
+  
+      if (propertiesToDelete.length === 0 && propertiesToCreate.length === 0) {
+        toast.success('No changes needed.');
+      } 
+
+    } catch (error) {
+      console.error('Error processing properties:', error);
+      toast.error('Failed to process properties, please contact an admin');
+    }
   };
 
   return (
