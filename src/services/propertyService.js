@@ -39,16 +39,37 @@ const createProperties = async (authToken, objectType, missingProperties) => {
       },
     });
 
-    return response.data;
+    return response;
   } catch (error) {
     console.error('Error:', error.response);
     throw new Error(error|| 'An error occurred while creating properties');
   }
 };
 
+const deleteProperties = async (authToken, objectType, propertyName) => {
+  try {
+    await setAuthorizationHeader(authToken);
+
+    const response = await axios.delete(
+      `${BASE_URL}/properties/${objectType}/${propertyName}`,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    );
+
+    return response;
+  } catch (error) {
+    const errorMessage = error.response ? error.response.data : 'Unknown error';
+    console.error('Error deleting property:', errorMessage);
+  }
+};
+
 const propertyService = {
   getProperties,
   createProperties,
+  deleteProperties,
 };
 
 export default propertyService;

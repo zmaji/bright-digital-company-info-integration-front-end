@@ -19,20 +19,23 @@ const CompanyDetail = () => {
         const properties = await generatePropertyFields();
         setAllProperties(properties);
   
-        const currentProperties = await propertyService.getProperties(
+        const fetchedCurrentProperties = await propertyService.getProperties(
           authToken,
           'company',
           'company_info_integration'
         );
-        const currentPropertyNames = currentProperties.map((property) => property.name);
-        setCurrentProperties(currentPropertyNames);
   
-        const matchedProperties = properties.filter((property) =>
-          currentPropertyNames.includes(property.name)
+        const propertyNames = properties.map((property) => property.name);
+  
+        const validProperties = fetchedCurrentProperties.filter((property) =>
+          propertyNames.includes(property.name)
         );
   
-        const selectedPropertyNames = matchedProperties.map((property) => property.name);
+        setCurrentProperties(validProperties);
+  
+        const selectedPropertyNames = validProperties.map((property) => property.name);
         setSelectedProperties(selectedPropertyNames);
+  
       } catch (error) {
         console.error('Error fetching property fields:', error);
       }
@@ -60,25 +63,30 @@ const CompanyDetail = () => {
 
   const handleSaveProperties = async () => {
     try {
-      const propertiesToDelete = allProperties.filter(
+      const propertiesToDelete = currentProperties.filter(
         (property) => !selectedProperties.includes(property.name)
       );
   
-      const propertiesToCreate = selectedProperties.filter(
-        (propertyName) => !currentProperties.includes(propertyName)
-      );
+      // const propertiesToCreate = selectedProperties.filter(
+      //   (propertyName) => !currentProperties.includes(propertyName)
+      // );
   
       if (propertiesToDelete.length > 0) {
         console.log('Properties to delete:', propertiesToDelete);
-        // Logic
+
+        const deletedProperties = await propertyService.deleteProperties(authToken, 'company', propertiesToDelete[0].name);
+        if (deletedProperties) {
+          toast.success('Successfully deleted properties');
+          console.log(deletedProperties);
+        }
       }
   
-      if (propertiesToCreate.length > 0) {
-        console.log('Properties to create:', propertiesToCreate);
-        // Logic
-      }
+      // if (propertiesToCreate.length > 0) {
+      //   console.log('Properties to create:', propertiesToCreate);
+      // }
   
-      if (propertiesToDelete.length === 0 && propertiesToCreate.length === 0) {
+      if (propertiesToDelete.length === 0) {
+      // if (propertiesToDelete.length === 0 && propertiesToCreate.length === 0) {
         toast.success('No changes needed.');
       } 
 
