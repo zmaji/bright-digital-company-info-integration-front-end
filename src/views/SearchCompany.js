@@ -5,16 +5,18 @@ import { Link, useNavigate } from 'react-router-dom';
 import SearchBar from '../components/elements/SearchBar';
 import toast from 'react-hot-toast';
 import companyService from '../services/companyService';
+import { useSelector } from 'react-redux';
 
 const SearchCompany = () => {
     const navigation = useNavigate();
+    const authToken = useSelector(state => state.auth.authToken);
 
     const handleSearch = async (searchTerm) => {
         if (searchTerm === '') {
           toast.error('Please enter a valid trade name');
         }
 
-        const companies = await companyService.getCompanies(searchTerm);
+        const companies = await companyService.getCompanies(searchTerm, authToken);
 
         if (companies && companies.item) {
           navigation('/search-company/search-results', { state: { searchResults: companies.item } });

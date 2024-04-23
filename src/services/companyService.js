@@ -9,7 +9,9 @@ const setAuthorizationHeader = async (authToken) => {
   }
 };
 
-const getCompanies = async (tradeName) => {
+const getCompanies = async (tradeName, authToken) => {
+  await setAuthorizationHeader(authToken);
+
     try {
       const response = await axios.get(`${BASE_URL}/companies/`, {
         params: {
@@ -98,7 +100,9 @@ const getCompanies = async (tradeName) => {
   };
 
 
-  const getCompany = async (dossierNumber) => {
+  const getCompany = async (dossierNumber, authToken) => {
+    await setAuthorizationHeader(authToken);
+    
     try {
       const response = await axios.get(`${BASE_URL}/companies/info`, {
         params: {

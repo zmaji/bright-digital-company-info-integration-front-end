@@ -54,7 +54,7 @@ const CompanyDetail = () => {
                     issued_share_capital: 1000,
                     issued_share_capital_currency: "EUR",
                     legal_form_code: 41,
-                    legal_name: "Bright Digital B.V.",
+                    // legal_name: "Bright Digital B.V.",
                     main_establishment_number: 85840408,
                     main_establishment_number_direct: 91231779,
                     mobile_number: "06 43218079",
@@ -109,27 +109,41 @@ const CompanyDetail = () => {
     
     const handleSaveCompany = async () => {
         if (companyData) {
-            if (companyData.trade_name || companyData.trade_name_full) {
+            if (companyData.trade_name || companyData.trade_name_full || companyData.dossier_number) {
                 const existingCompanies = await companyService.getHubSpotCompanies(authToken);
 
                 const matchingCompany = existingCompanies.find(
-                    (company) => 
-                      company.properties.name === companyData.trade_name || 
-                      company.properties.name === companyData.trade_name_full
-                  );
+                  (company) => {
+                    const name = String(company.properties.name || '').trim().toLowerCase();
+                    const tradeName = String(companyData.trade_name || '').trim().toLowerCase();
+                    const tradeNameFull = String(companyData.trade_name_full || '').trim().toLowerCase();
+                    const dossierNumber = String(company.properties.dossier_number || '').trim().toLowerCase();
+                    const companyDossierNumber = String(companyData.dossier_number || '').trim().toLowerCase();
+                
+                    return (
+                      name === tradeName || 
+                      name === tradeNameFull || 
+                      dossierNumber === companyDossierNumber
+                    );
+                  }
+                );
 
-                  if (matchingCompany) {
-                    console.log('Matching company found');
-                    const updatedCompany = await companyService.updateHubSpotCompany(authToken, matchingCompany.hs_object_id, companyData);
+                if (matchingCompany) {
+                  const updatedCompany = await companyService.updateHubSpotCompany(authToken, matchingCompany.properties.hs_object_id, companyData);
 
-                    console.log('updatedCompany');
-                    console.log(updatedCompany);
+                  if (updatedCompany) {
+                    toast.success('Successfully updated company');
+                  } else {
+                    toast.error('Could not update company, please contact an admin');
+                  }
                 } else {
-                    console.log('No matching company found');
-                    const createdCompany = await companyService.createHubSpotCompany(authToken, companyData);
+                  const newCompany = await companyService.createHubSpotCompany(authToken, companyData);
 
-                    console.log('createdCompany');
-                    console.log(createdCompany);
+                  if (newCompany) {
+                    toast.success('Successfully created company');
+                  } else {
+                    toast.error('Could not create company, please contact an admin');
+                  }
                 }
             } else {
                 toast.error('No data found, please contact an admin.')
