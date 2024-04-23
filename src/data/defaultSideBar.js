@@ -21,12 +21,12 @@ const sidebarData = [
             { icon: SearchIcon, title: 'Search company', link: '/search-company' }
         ],
     },
-    // {
-    //     title: 'Set-up',
-    //     items: [
-    //         { icon: ChartIcon, title: 'Set up properties', link: '' },
-    //     ]
-    // },
+    {
+        title: 'Set-up',
+        items: [
+            { icon: ChartIcon, title: 'Set up properties', link: '/properties' },
+        ]
+    },
     {
         items: [
             // { icon: SupportIcon, title: 'Support', link: '' },
