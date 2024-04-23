@@ -10,18 +10,23 @@ import { useSelector } from 'react-redux';
 const SearchCompany = () => {
     const navigation = useNavigate();
     const authToken = useSelector(state => state.auth.authToken);
+    const userData = useSelector(state => state.user.userData.data);
 
     const handleSearch = async (searchTerm) => {
         if (searchTerm === '') {
           toast.error('Please enter a valid trade name');
         }
 
-        const companies = await companyService.getCompanies(searchTerm, authToken);
+        if (userData && userData.companyInfoUserName && userData.companyInfoPassword) {
+          const companies = await companyService.getCompanies(searchTerm, authToken);
 
-        if (companies && companies.item) {
-          navigation('/search-company/search-results', { state: { searchResults: companies.item } });
+          if (companies && companies.item) {
+            navigation('/search-company/search-results', { state: { searchResults: companies.item } });
+          } else {
+            toast.error(`No companies found with trade name: ${searchTerm}`);
+          }
         } else {
-          toast.error(`No companies found with trade name: ${searchTerm}`);
+          toast.error('No Company.info credentials found, please enter them at your profile');
         }
     };
 
