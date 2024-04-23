@@ -70,7 +70,8 @@ const Register = () => {
             if (response.status >= 200 && response.status < 300) {
                 toast.success('Successfully registered an account!')
                 localStorage.setItem('userId', response.data.id); 
-                navigation('/activate');
+                // navigation('/activate');
+                navigation('/');
             } else {
               if (response.status === 409) {
                 setEmailError('Email address already exists.');
