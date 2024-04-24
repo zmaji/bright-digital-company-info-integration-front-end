@@ -16,7 +16,9 @@ const InstallScript = () => {
     const userData = useSelector(state => state.user.userData.data);
 
     const copyHeaderScript = async () => {
-      await navigator.clipboard.writeText(headerScriptData);
+      const headerScript = headerScriptData;
+      
+      await navigator.clipboard.writeText(headerScript);
     }
 
     return (
