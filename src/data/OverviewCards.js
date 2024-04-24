@@ -30,7 +30,7 @@ const overviewCardsData = [
       button: {
         title: 'Start now',
         style: 'tertiary',
-        link: '/search-data',
+        link: '/search-company',
         icon: 'ArrowRight',
         animation: 'move-right'
       }
