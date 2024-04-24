@@ -89,23 +89,22 @@ const CompanyDetail = () => {
         (property) => !selectedProperties.has(property.name)
       );
 
-      const HubSpotPropertiesToDelete = Array.from(currentHubSpotProperties).filter(
+      const hubSpotPropertiesToDelete = Array.from(currentHubSpotProperties).filter(
         (property) => !selectedProperties.has(property.name)
       );
 
-      const propertiesToCreate = Array.from(allProperties).filter(
-        (property) => selectedProperties.has(property.name) &&
-          !currentProperties.some((cp) => cp.name === property.name)
+      const propertiesToCreate = Array.from(currentProperties).filter(
+        (property) => 
+          selectedProperties.has(property.name) &&
+          property.toSave === false 
       );
 
-      // if (deleteUnselected) {
-      //   for (const property of propertiesToDelete) {
-      //     await propertyService.deleteHubSpotProperties(authToken, 'company', property.name);
-      //     toast.success('Successfully deleted properties');
-
-      // }
-
+      console.log('propertiesToDelete');
       console.log(propertiesToDelete);
+      console.log('HubSpotPropertiesToDelete');
+      console.log(hubSpotPropertiesToDelete);
+      console.log('propertiesToCreate');
+      console.log(propertiesToCreate);
 
       if (propertiesToDelete.length > 0 && !deleteUnselected) {
         const propertiesToUpdate = propertiesToDelete.map((property) => ({
@@ -115,22 +114,34 @@ const CompanyDetail = () => {
         await propertyService.updateProperties(authToken, propertiesToUpdate);
       }
 
-      if (HubSpotPropertiesToDelete.length > 0 && deleteUnselected) {
+      if (hubSpotPropertiesToDelete.length > 0 && deleteUnselected) {
         const propertiesToUpdate = propertiesToDelete.map((property) => ({
           ...property,
           toSave: false,
         }));
         await propertyService.updateProperties(authToken, propertiesToUpdate);
-        
-        for (const property of HubSpotPropertiesToDelete) {
+
+        for (const property of hubSpotPropertiesToDelete) {
           await propertyService.deleteHubSpotProperties(authToken, 'company', property.name);
         }  
       }
 
-      // if (propertiesToCreate.length > 0) {
-      //   await propertyService.createHubSpotProperties(authToken, 'company', propertiesToCreate);
-      //   toast.success('Successfully created new properties');
-      // }
+      if (propertiesToCreate.length > 0) {
+        const propertiesToUpdate = propertiesToCreate.map((property) => ({
+          ...property,
+          toSave: true,
+        }));
+
+        await propertyService.updateProperties(authToken, propertiesToUpdate);
+
+        //VAN HIER NIET
+
+        const propertiesToCreateFull = propertiesToCreate.some((createProperty) =>
+          allProperties.some((allProperty) => allProperty.name === createProperty.name)
+        );
+
+        await propertyService.createHubSpotProperties(authToken, 'company', propertiesToCreateFull);
+      }
 
       if (propertiesToDelete.length === 0 && propertiesToCreate.length === 0) {
         toast.success('All properties are up-to-date');
