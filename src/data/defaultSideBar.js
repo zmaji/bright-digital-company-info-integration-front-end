@@ -24,7 +24,7 @@ const sidebarData = [
     {
         title: 'Set-up',
         items: [
-            { icon: ChartIcon, title: 'Set up properties', link: '/properties' },
+            { icon: ChartIcon, title: 'Manage properties', link: '/properties' },
         ]
     },
     {

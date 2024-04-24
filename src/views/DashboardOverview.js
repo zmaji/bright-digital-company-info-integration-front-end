@@ -64,7 +64,7 @@ const DashboardOverview = () => {
                           Suspendisse varius enim in eros elementum tristique. 
                       </p>
 
-                      <Button title='Set up properties' style='primary' icon='Plus' animation='move-right' onClick={handleCreateProperties} />
+                      <Button title='Set up default properties' style='primary' icon='Plus' animation='move-right' onClick={handleCreateProperties} />
                   </div>
                 </div>
 

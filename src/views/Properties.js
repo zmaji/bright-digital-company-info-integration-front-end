@@ -111,15 +111,10 @@ const CompanyDetail = () => {
           <div className="v-properties__content-container__left">
             <h2 className="v-properties__title">Select properties</h2>
             <p className="v-properties__text">
-              Select the properties that you would like to manage. 
+              Select the properties that you would like to create and/or delete.
             </p>
 
-            <Button
-              title="Save selected properties"
-              style="primary"
-              icon="ArrowRight"
-              animation="move-right"
-              onClick={handleSaveProperties}
+            <Button title="Save selected settings" style="primary" icon='Plus' animation='move-right' onClick={handleSaveProperties}
             />
           </div>
 
