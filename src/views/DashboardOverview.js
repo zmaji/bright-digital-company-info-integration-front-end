@@ -7,7 +7,8 @@ import groupService from '../services/groupService';
 import { useSelector } from 'react-redux';
 import propertyService from '../services/propertyService';
 import { generatePropertyFields } from '../helpers/hubSpot/generatePropertyFields';
-import { compareProperties } from '../helpers/hubSpot/compareProperties';
+import { compareHubSpotProperties } from '../helpers/hubSpot/compareHubSpotProperties';
+import { compareProperties } from '../helpers/compareProperties';
 import toast from 'react-hot-toast';
 
 const DashboardOverview = () => {
@@ -28,21 +29,36 @@ const DashboardOverview = () => {
         }
       }
   
-      const currentProperties = await propertyService.getHubSpotProperties(authToken, 'company', 'company_info_integration');
+      const currentHubSpotProperties = await propertyService.getHubSpotProperties(authToken, 'company', 'company_info_integration');
+      const currentProperties = await propertyService.getProperties(authToken);
+
       const propertyFields = await generatePropertyFields();
   
-      if (currentProperties && currentProperties.length > 0 && propertyFields && propertyFields.length > 0) {
+      if (currentHubSpotProperties && currentHubSpotProperties.length > 0 && propertyFields && propertyFields.length > 0) {
+        const missingHubSpotProperties = await compareHubSpotProperties(currentHubSpotProperties, propertyFields);
         const missingProperties = await compareProperties(currentProperties, propertyFields);
-  
+
         if (missingProperties.length > 0) {
-          const createdProperties = await propertyService.createHubSpotProperties(authToken, 'company', missingProperties);
+          const createdProperties = await propertyService.createProperties(authToken, missingProperties);
+
           if (createdProperties) {
+            toast.success('Successfully created missing properties!');
+          } else {
+            toast.error('Failed to create missing properties, please contact an admin!');
+          }
+        }
+  
+        if (missingHubSpotProperties.length > 0) {
+          const createdHubSpotProperties = await propertyService.createHubSpotProperties(authToken, 'company', missingHubSpotProperties);
+          if (createdHubSpotProperties) {
             toast.success('Successfully created missing HubSpot properties!');
           } else {
-            toast.error('Failed to create missing HubSpot properties.. contact an admin!');
+            toast.error('Failed to create missing HubSpot propertiesm, please contact an admin!');
           }
-        } else {
-          toast.success('All properties are up to date!');
+        }
+
+        if (missingHubSpotProperties.length === 0 && missingProperties.length === 0) {
+          toast.success('All properties are up to date');
         }
       }
     } catch (error) {

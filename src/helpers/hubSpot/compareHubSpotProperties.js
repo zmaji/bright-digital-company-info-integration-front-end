@@ -1,4 +1,4 @@
-export const compareProperties = async (currentProperties, propertyFields) => {
+export const compareHubSpotProperties = async (currentProperties, propertyFields) => {
   const missingFields = propertyFields.filter((propertyField) => {
     return !currentProperties.some((currentProperty) => currentProperty.name === propertyField.name);
   });

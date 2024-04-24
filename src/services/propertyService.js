@@ -13,7 +13,7 @@ const getHubSpotProperties = async (authToken, objectType, groupName) => {
   await setAuthorizationHeader(authToken);
   
   try {
-    const response = await axios.get(`${BASE_URL}/hubspot/properties?objectType=${objectType}&groupName=${groupName}`, {
+    const response = await axios.get(`${BASE_URL}/properties/hubspot?objectType=${objectType}&groupName=${groupName}`, {
       headers: {
         'Content-Type': 'application/json',
       },
@@ -30,7 +30,7 @@ const createHubSpotProperties = async (authToken, objectType, missingProperties)
   await setAuthorizationHeader(authToken);
   
   try {
-    const response = await axios.post(`${BASE_URL}/hubspot/properties`, {
+    const response = await axios.post(`${BASE_URL}/properties/hubspot`, {
       objectType: objectType,
       missingProperties: missingProperties,
     }, {
@@ -51,7 +51,7 @@ const deleteHubSpotProperties = async (authToken, objectType, propertyName) => {
     await setAuthorizationHeader(authToken);
 
     const response = await axios.delete(
-      `${BASE_URL}/hubspot/properties/${objectType}/${propertyName}`,
+      `${BASE_URL}/properties/hubspot/${objectType}/${propertyName}`,
       {
         headers: {
           'Content-Type': 'application/json',
@@ -76,7 +76,7 @@ const getProperties = async (authToken) => {
       },
     });
 
-    return response;
+    return response.data;
   } catch (error) {
     console.error('Error:', error);
     throw new Error(error || 'An error occurred while retrieving properties');
