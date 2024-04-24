@@ -96,4 +96,14 @@
       margin-top: rem-calc(0);
       margin-bottom: rem-calc(24);
   }
+
+  &__delete-unselected-container {
+    margin-top: 10px;
+  }
+
+  &__delete-unselected-title {
+    font-size: 16px;
+    font-weight: 300;
+    margin-left: 5px;
+  }
 }

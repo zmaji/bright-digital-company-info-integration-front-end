@@ -28,14 +28,14 @@ const DashboardOverview = () => {
         }
       }
   
-      const currentProperties = await propertyService.getProperties(authToken, 'company', 'company_info_integration');
+      const currentProperties = await propertyService.getHubSpotProperties(authToken, 'company', 'company_info_integration');
       const propertyFields = await generatePropertyFields();
   
       if (currentProperties && currentProperties.length > 0 && propertyFields && propertyFields.length > 0) {
         const missingProperties = await compareProperties(currentProperties, propertyFields);
   
         if (missingProperties.length > 0) {
-          const createdProperties = await propertyService.createProperties(authToken, 'company', missingProperties);
+          const createdProperties = await propertyService.createHubSpotProperties(authToken, 'company', missingProperties);
           if (createdProperties) {
             toast.success('Successfully created missing HubSpot properties!');
           } else {

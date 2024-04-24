@@ -13,14 +13,15 @@ const CompanyDetail = () => {
   const [allProperties, setAllProperties] = useState([]);
   const [currentProperties, setCurrentProperties] = useState([]);
   const [selectedProperties, setSelectedProperties] = useState(new Set());
-
+  const [deleteUnselected, setDeleteUnselected] = useState(false);
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
         const allProps = await generatePropertyFields();
         setAllProperties(allProps);
 
-        const fetchedCurrentProperties = await propertyService.getProperties(authToken, 'company', 'company_info_integration');
+        const fetchedCurrentProperties = await propertyService.getHubSpotProperties(authToken, 'company', 'company_info_integration');
         
         const validCurrentProperties = fetchedCurrentProperties.filter((property) =>
           allProps.some((ap) => ap.name === property.name)
@@ -56,7 +57,7 @@ const CompanyDetail = () => {
   const formatPropertyLabel = (str) => {
     return str
       .split('_')
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()) 
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
       .join(' ');
   };
 
@@ -77,17 +78,19 @@ const CompanyDetail = () => {
       );
 
       const propertiesToCreate = Array.from(allProperties).filter(
-        (property) => selectedProperties.has(property.name) && 
+        (property) => selectedProperties.has(property.name) &&
           !currentProperties.some((cp) => cp.name === property.name)
       );
 
-      for (const property of propertiesToDelete) {
-        await propertyService.deleteProperties(authToken, 'company', property.name);
-        toast.success('Successfully deleted properties')
+      if (deleteUnselected) {
+        for (const property of propertiesToDelete) {
+          await propertyService.deleteHubSpotProperties(authToken, 'company', property.name);
+          toast.success('Successfully deleted properties');
+        }
       }
 
       if (propertiesToCreate.length > 0) {
-        await propertyService.createProperties(authToken, 'company', propertiesToCreate);
+        await propertyService.createHubSpotProperties(authToken, 'company', propertiesToCreate);
         toast.success('Successfully created new properties');
       }
 
@@ -114,20 +117,40 @@ const CompanyDetail = () => {
               Select the properties that you would like to create and/or delete.
             </p>
 
-            <Button title="Save selected settings" style="primary" icon='Plus' animation='move-right' onClick={handleSaveProperties}
+            <Button
+              title="Save selected settings"
+              style="primary"
+              icon="Plus"
+              animation="move-right"
+              onClick={handleSaveProperties}
             />
+
+            <div className="v-properties__delete-unselected-container u-flex u-flex-v-cent">
+              <div className="v-properties__delete-unselected-checkbox">
+                <input
+                  type="checkbox"
+                  id="delete-unselected"
+                  checked={deleteUnselected}
+                  onChange={(e) => setDeleteUnselected(e.target.checked)} 
+                />
+              </div>
+
+              <div className="v-properties__delete-unselected-title">
+                  Delete unselected properties
+              </div>
+            </div>
           </div>
 
           <div className="v-properties__content-container__right u-flex">
             <div className="v-properties__titles-container u-flex">
               <div className="v-properties__hubspot-property-title-container">
                 <div className="v-properties__hubspot-properties-title">HubSpot property name</div>
-                <div className="v-properties__line"></div>
+                <div class="v-properties__line"></div>
               </div>
 
               <div className="v-properties__company-info-property-title-container">
-                <div className="v-properties__company-info-properties-title">Company.info property name</div>
-                <div className="v-properties__line"></div>
+                <div class="v-properties__company-info-properties-title">Company.info property name</div>
+                <div class="v-properties__line"></div>
               </div>
             </div>
 
@@ -146,7 +169,9 @@ const CompanyDetail = () => {
                   </div>
 
                   <div className="v-properties__company-info-property u-flex u-flex-v-center">
-                    <div className="v-properties__company-info-label">{formatPropertyLabel(property.label)}</div>
+                    <div className="v-properties__company-info-label">
+                      {formatPropertyLabel(property.label)}
+                    </div>
                   </div>
                 </div>
               ))}
