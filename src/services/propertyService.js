@@ -106,7 +106,7 @@ const updateProperties = async (authToken, propertiesToUpdate) => {
   await setAuthorizationHeader(authToken);
   
   try {
-    const response = await axios.post(`${BASE_URL}/properties`, {
+    const response = await axios.put(`${BASE_URL}/properties`, {
       propertiesToUpdate,
     }, {
       headers: {

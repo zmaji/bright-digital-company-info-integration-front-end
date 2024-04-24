@@ -12,6 +12,7 @@ const CompanyDetail = () => {
   const authToken = useSelector((state) => state.auth.authToken);
   const [allProperties, setAllProperties] = useState([]);
   const [currentProperties, setCurrentProperties] = useState([]);
+  const [currentHubSpotProperties, setCurrentHubSpotProperties] = useState([]);
   const [selectedProperties, setSelectedProperties] = useState(new Set());
   const [deleteUnselected, setDeleteUnselected] = useState(false);
   
@@ -21,17 +22,28 @@ const CompanyDetail = () => {
         const allProps = await generatePropertyFields();
         setAllProperties(allProps);
 
-        const fetchedCurrentProperties = await propertyService.getHubSpotProperties(authToken, 'company', 'company_info_integration');
+        const currentHubSpotProperties = await propertyService.getHubSpotProperties(authToken, 'company', 'company_info_integration');
+
+        const validCurrentHubSpotProperties = currentHubSpotProperties.filter((property) =>
+        allProps.some((ap) => ap.name === property.name)
+        );
+
+        setCurrentHubSpotProperties(validCurrentHubSpotProperties);
+
+        const currentProperties = await propertyService.getProperties(authToken);
         
-        const validCurrentProperties = fetchedCurrentProperties.filter((property) =>
+        const validCurrentProperties = currentProperties.filter((property) =>
           allProps.some((ap) => ap.name === property.name)
         );
 
         setCurrentProperties(validCurrentProperties);
 
         const initialSelectedProperties = new Set(
-          validCurrentProperties.map((property) => property.name)
+          validCurrentProperties
+            .filter((property) => property.toSave)
+            .map((property) => property.name)
         );
+        
         setSelectedProperties(initialSelectedProperties);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -77,22 +89,48 @@ const CompanyDetail = () => {
         (property) => !selectedProperties.has(property.name)
       );
 
+      const HubSpotPropertiesToDelete = Array.from(currentHubSpotProperties).filter(
+        (property) => !selectedProperties.has(property.name)
+      );
+
       const propertiesToCreate = Array.from(allProperties).filter(
         (property) => selectedProperties.has(property.name) &&
           !currentProperties.some((cp) => cp.name === property.name)
       );
 
-      if (deleteUnselected) {
-        for (const property of propertiesToDelete) {
-          await propertyService.deleteHubSpotProperties(authToken, 'company', property.name);
-          toast.success('Successfully deleted properties');
-        }
+      // if (deleteUnselected) {
+      //   for (const property of propertiesToDelete) {
+      //     await propertyService.deleteHubSpotProperties(authToken, 'company', property.name);
+      //     toast.success('Successfully deleted properties');
+
+      // }
+
+      console.log(propertiesToDelete);
+
+      if (propertiesToDelete.length > 0 && !deleteUnselected) {
+        const propertiesToUpdate = propertiesToDelete.map((property) => ({
+          ...property,
+          toSave: false,
+        }));
+        await propertyService.updateProperties(authToken, propertiesToUpdate);
       }
 
-      if (propertiesToCreate.length > 0) {
-        await propertyService.createHubSpotProperties(authToken, 'company', propertiesToCreate);
-        toast.success('Successfully created new properties');
+      if (HubSpotPropertiesToDelete.length > 0 && deleteUnselected) {
+        const propertiesToUpdate = propertiesToDelete.map((property) => ({
+          ...property,
+          toSave: false,
+        }));
+        await propertyService.updateProperties(authToken, propertiesToUpdate);
+        
+        for (const property of HubSpotPropertiesToDelete) {
+          await propertyService.deleteHubSpotProperties(authToken, 'company', property.name);
+        }  
       }
+
+      // if (propertiesToCreate.length > 0) {
+      //   await propertyService.createHubSpotProperties(authToken, 'company', propertiesToCreate);
+      //   toast.success('Successfully created new properties');
+      // }
 
       if (propertiesToDelete.length === 0 && propertiesToCreate.length === 0) {
         toast.success('All properties are up-to-date');
