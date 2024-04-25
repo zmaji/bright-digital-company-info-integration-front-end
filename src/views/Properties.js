@@ -24,27 +24,31 @@ const CompanyDetail = () => {
 
         const currentHubSpotProperties = await propertyService.getHubSpotProperties(authToken, 'company', 'company_info_integration');
 
-        const validCurrentHubSpotProperties = currentHubSpotProperties.filter((property) =>
-        allProps.some((ap) => ap.name === property.name)
-        );
-
-        setCurrentHubSpotProperties(validCurrentHubSpotProperties);
-
-        const currentProperties = await propertyService.getProperties(authToken);
-        
-        const validCurrentProperties = currentProperties.filter((property) =>
+        if (currentHubSpotProperties) {
+          const validCurrentHubSpotProperties = currentHubSpotProperties.filter((property) =>
           allProps.some((ap) => ap.name === property.name)
-        );
+          );
 
-        setCurrentProperties(validCurrentProperties);
+          setCurrentHubSpotProperties(validCurrentHubSpotProperties);
 
-        const initialSelectedProperties = new Set(
-          validCurrentProperties
-            .filter((property) => property.toSave)
-            .map((property) => property.name)
-        );
-        
-        setSelectedProperties(initialSelectedProperties);
+          const currentProperties = await propertyService.getProperties(authToken);
+          
+          if (currentProperties) {
+            const validCurrentProperties = currentProperties.filter((property) =>
+            allProps.some((ap) => ap.name === property.name)
+          );
+
+          setCurrentProperties(validCurrentProperties);
+
+          const initialSelectedProperties = new Set(
+            validCurrentProperties
+              .filter((property) => property.toSave)
+              .map((property) => property.name)
+          );
+          
+          setSelectedProperties(initialSelectedProperties);
+          }
+        }
       } catch (error) {
         console.error('Error fetching data:', error);
         toast.error('Failed to fetch data. Please try again.');
