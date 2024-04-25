@@ -43,9 +43,9 @@ const DashboardOverview = () => {
             const createdProperties = await propertyService.createProperties(authToken, missingProperties);
 
             if (createdProperties) {
-              toast.success('Successfully created missing properties!');
+              toast.success('Successfully created default mapping!');
             } else {
-              toast.error('Failed to create missing properties. Contact an admin!');
+              toast.error('Failed to create default properties. Contact an admin!');
             }
           }
         }
@@ -53,7 +53,7 @@ const DashboardOverview = () => {
         if (missingHubSpotProperties.length > 0) {
           const createdHubSpotProperties = await propertyService.createHubSpotProperties(authToken, 'company', missingHubSpotProperties);
           if (createdHubSpotProperties) {
-            toast.success('Successfully created missing HubSpot properties!');
+            toast.success('Successfully created default HubSpot properties!');
           } else {
             toast.error('Failed to create missing HubSpot properties. Contact an admin!');
           }
@@ -92,7 +92,7 @@ const DashboardOverview = () => {
 
       if (updatedProperties) {
         setMissingProperties([]);
-        toast.success('Successfully reset default properties');
+        toast.success('Successfully reset default properties and mapping');
       } else {
         toast.error('Something went wrong resetting properties, please contact an admin')
       }
@@ -105,8 +105,6 @@ const DashboardOverview = () => {
 
       if (currentProperties) {
         const propertiesMissing = await currentProperties.filter((property) => property.toSave === false);
-        console.log('propertiesMissing');
-        console.log(propertiesMissing);
         setMissingProperties(propertiesMissing);
       }
     };
