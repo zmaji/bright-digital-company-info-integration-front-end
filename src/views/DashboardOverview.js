@@ -7,7 +7,6 @@ import groupService from '../services/groupService';
 import { useSelector } from 'react-redux';
 import propertyService from '../services/propertyService';
 import { generatePropertyFields } from '../helpers/hubSpot/generatePropertyFields';
-import { compareProperties } from '../helpers/compareProperties';
 import toast from 'react-hot-toast';
 
 const DashboardOverview = () => {
@@ -31,10 +30,10 @@ const DashboardOverview = () => {
         await propertyService.createHubSpotProperties(authToken, 'company', missingHubSpotProperties);
       }
 
-      if (missingProperties.length === 64) {
+      if (missingProperties.length > 0) {
         await propertyService.createProperties(authToken, missingProperties);
       } else {
-        await propertyService.updateProperties(authToken, missingProperties)
+        await propertyService.updateProperties(authToken, propertiesToUpdate)
       }
 
       setMissingProperties(missingProperties);
@@ -61,7 +60,7 @@ const DashboardOverview = () => {
   
         console.log('propertiesToUpdate')
         console.log(propertiesToUpdate)
-        setMissingProperties(propertiesToUpdate);
+        setPropertiesToUpdate(propertiesToUpdate);
       } else {
         const missingProperties = propertyFields.map((property) => ({
           name: property.name,
