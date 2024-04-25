@@ -83,9 +83,9 @@ const DashboardOverview = () => {
     checkForMissingProperties();
   }, [authToken]);
 
-  const buttonText = missingProperties.length > 0 
-    ? 'Reset default properties' 
-    : 'Set up default properties';
+  const buttonText = missingProperties.length === 64 
+    ? 'Set up default properties' 
+    : 'Reset default properties';
 
   return (
     <div className='v-dashboard-overview'>
