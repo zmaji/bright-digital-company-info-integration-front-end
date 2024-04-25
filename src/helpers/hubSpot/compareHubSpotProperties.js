@@ -1,13 +1,15 @@
-export const compareHubSpotProperties = async (currentProperties, propertyFields) => {
-  const missingFields = propertyFields.filter((propertyField) => {
-    return !currentProperties.some((currentProperty) => currentProperty.name === propertyField.name);
-  });
+export const compareHubSpotProperties = (currentProperties, propertyFields) => {
+  const missingFields = propertyFields.filter(
+    (propertyField) => !currentProperties.some(
+      (currentProperty) => currentProperty.name === propertyField.name
+    )
+  );
 
   if (missingFields.length === 0) {
-    console.log('All HubSpot properties have been created');
-    return [];
+    console.log('All properties are missing');
+    return propertyFields;
   } else {
-    console.log('The following properties are not yet created..');
+    console.log('The following HubSpot properties are missing...');
     missingFields.forEach((missingField) => {
       console.log(missingField);
     });

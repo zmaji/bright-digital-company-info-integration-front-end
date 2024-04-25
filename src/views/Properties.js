@@ -48,6 +48,8 @@ const CompanyDetail = () => {
           
           setSelectedProperties(initialSelectedProperties);
           }
+        } else {
+          console.log('test');
         }
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -108,7 +110,13 @@ const CompanyDetail = () => {
           ...property,
           toSave: false,
         }));
-        await propertyService.updateProperties(authToken, propertiesToUpdate);
+        const updatedProperties = await propertyService.updateProperties(authToken, propertiesToUpdate);
+
+        if (updatedProperties) {
+          toast.success('Successfully deleted a property mapping');
+        } else {
+          toast.error('Something went wrong, please contact an admin');
+        }
       }
 
       if (hubSpotPropertiesToDelete.length > 0 && deleteUnselected) {
@@ -118,14 +126,20 @@ const CompanyDetail = () => {
         }));
         await propertyService.updateProperties(authToken, propertiesToUpdate);
 
-        for (const property of hubSpotPropertiesToDelete) {
-          await propertyService.deleteHubSpotProperties(authToken, 'company', property.name);
-        }  
+        const deletionPromises = hubSpotPropertiesToDelete.map(
+          (property) => propertyService.deleteHubSpotProperties(authToken, 'company', property.name)
+        );
+
+        const deletedProperties = await Promise.all(deletionPromises);
+
+        if (deletedProperties) {
+          toast.success('Successfully deleted hubspot properties');
+        } else {
+          toast.error('Something went wrong, please contact an admin');
+        }
       }
 
       if (propertiesToCreate.length > 0) {
-        console.log('propertiesToCreate')
-        console.log(propertiesToCreate)
         const propertiesToUpdate = propertiesToCreate.map((property) => ({
           ...property,
           toSave: true,

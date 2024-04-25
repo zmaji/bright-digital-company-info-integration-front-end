@@ -7,7 +7,6 @@ export const compareProperties = async (currentProperties, propertyFields) => {
     }));
   }
 
-  // Identify missing fields by checking if they are not in currentProperties
   const missingFields = propertyFields
     .filter(
       (propertyField) =>
@@ -20,15 +19,5 @@ export const compareProperties = async (currentProperties, propertyFields) => {
       toSave: true,
     }));
 
-  // Log the results and return missing fields
-  if (missingFields.length === 0) {
-    console.log('All properties have been created.');
-    return [];
-  } else {
-    console.log('The following properties are not yet created:');
-    missingFields.forEach((missingField) => {
-      console.log(missingField.name);
-    });
     return missingFields;
-  }
-};
+  };

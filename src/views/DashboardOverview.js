@@ -7,117 +7,86 @@ import groupService from '../services/groupService';
 import { useSelector } from 'react-redux';
 import propertyService from '../services/propertyService';
 import { generatePropertyFields } from '../helpers/hubSpot/generatePropertyFields';
-import { compareHubSpotProperties } from '../helpers/hubSpot/compareHubSpotProperties';
 import { compareProperties } from '../helpers/compareProperties';
 import toast from 'react-hot-toast';
 
 const DashboardOverview = () => {
   const authToken = useSelector((state) => state.auth.authToken);
+  const [missingHubSpotProperties, setMissingHubSpotProperties] = useState([]);
   const [missingProperties, setMissingProperties] = useState([]);
-  const [currentProperties, setCurrentProperties] = useState([]);
+  const [propertiesToUpdate, setPropertiesToUpdate] = useState([]);
 
-  const handleCreateProperties = async () => {
+  const updateProperties = async () => {
     try {
       let group = await groupService.getGroup(authToken, 'company', 'company_info_integration');
-
       if (!group) {
         group = await groupService.createGroup(authToken, 'company', 'company_info_integration');
-        if (group) {
-          toast.success('Successfully created a HubSpot group!');
-        } else {
+        if (!group) {
           toast.error('Failed to create a HubSpot group. Contact an admin!');
           return;
         }
       }
 
-      const currentHubSpotProperties = await propertyService.getHubSpotProperties(authToken, 'company', 'company_info_integration');
-
-      const propertyFields = await generatePropertyFields();
-
-      if (currentHubSpotProperties && currentHubSpotProperties.length > 0 && propertyFields && propertyFields.length > 0) {
-        const missingHubSpotProperties = await compareHubSpotProperties(currentHubSpotProperties, propertyFields);
-        
-        if (currentProperties && currentProperties.length > 0) {
-          const missingProperties = await compareProperties(currentProperties, propertyFields);
-          if (missingProperties.length > 0) {
-            const createdProperties = await propertyService.createProperties(authToken, missingProperties);
-
-            if (createdProperties) {
-              toast.success('Successfully created default mapping!');
-            } else {
-              toast.error('Failed to create default properties. Contact an admin!');
-            }
-          }
-        }
-
-        if (missingHubSpotProperties.length > 0) {
-          const createdHubSpotProperties = await propertyService.createHubSpotProperties(authToken, 'company', missingHubSpotProperties);
-          if (createdHubSpotProperties) {
-            toast.success('Successfully created default HubSpot properties!');
-          } else {
-            toast.error('Failed to create missing HubSpot properties. Contact an admin!');
-          }
-        }
-
-        if (missingHubSpotProperties.length === 0 && missingProperties.length === 0) {
-          toast.success('All properties are up to date');
-        }
+      if (missingHubSpotProperties.length > 0) {
+        await propertyService.createHubSpotProperties(authToken, 'company', missingHubSpotProperties);
       }
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  };
 
-  const handleResetProperties = async () => {
-    const propertyFields = await generatePropertyFields();
-
-    console.log('missingProperties')
-    console.log(missingProperties)
-
-    const propertiesToCreate = propertyFields.filter(property => 
-      missingProperties.some(missing => missing.name === property.name)
-    );
-
-    console.log('propertiesToCreate')
-    console.log(propertiesToCreate)
-
-    const createdHubSpotProperties = await propertyService.createHubSpotProperties(authToken, 'company', propertiesToCreate);
-
-    if (createdHubSpotProperties) {
-      const propertiesToUpdate = missingProperties.map((property) => ({
-        ...property,
-        toSave: true,
-      }));
-      const updatedProperties = await propertyService.updateProperties(authToken, propertiesToUpdate);
-
-      if (updatedProperties) {
-        setMissingProperties([]);
-        toast.success('Successfully reset default properties and mapping');
+      if (missingProperties.length === 64) {
+        await propertyService.createProperties(authToken, missingProperties);
       } else {
-        toast.error('Something went wrong resetting properties, please contact an admin')
+        await propertyService.updateProperties(authToken, missingProperties)
       }
+
+      setMissingProperties(missingProperties);
+      toast.success('Successfully updated all properties!');
+    } catch (error) {
+      console.error('Error setting up properties:', error);
+      toast.error('Failed to set up properties. Contact an admin.');
     }
   };
 
   useEffect(() => {
     const checkForMissingProperties = async () => {
       const currentProperties = await propertyService.getProperties(authToken);
+      const currentHubSpotProperties = await propertyService.getHubSpotProperties(authToken, 'company', 'company_info_integration');
+      const propertyFields = await generatePropertyFields();
 
-      if (currentProperties) {
-        const propertiesMissing = await currentProperties.filter((property) => property.toSave === false);
-        setMissingProperties(propertiesMissing);
+      if (currentProperties !== null) {
+        const propertiesToUpdate = currentProperties
+        .filter((property) => property.toSave === false)
+        .map((property) => ({
+          ...property,
+          toSave: true,
+        }));
+  
+        console.log('propertiesToUpdate')
+        console.log(propertiesToUpdate)
+        setMissingProperties(propertiesToUpdate);
+      } else {
+        const missingProperties = propertyFields.map((property) => ({
+          name: property.name,
+          toSave: true,
+        }));
+        console.log('missingProperties')
+        console.log(missingProperties)
+        setMissingProperties(missingProperties);
       }
+
+      if (currentHubSpotProperties) {
+        const missingHubSpotProperties = propertyFields.filter(
+          (field) => !currentHubSpotProperties.some((cp) => cp.name === field.name)
+        );
+        console.log('missingHubSpotProperties');
+        console.log(missingHubSpotProperties);
+        setMissingHubSpotProperties(missingHubSpotProperties);
+      };
     };
     checkForMissingProperties();
-  }, [authToken]); 
+  }, [authToken]);
 
   const buttonText = missingProperties.length > 0 
     ? 'Reset default properties' 
     : 'Set up default properties';
-
-  const buttonAction = missingProperties.length > 0 
-    ? handleResetProperties 
-    : handleCreateProperties;
 
   return (
     <div className='v-dashboard-overview'>
@@ -137,12 +106,12 @@ const DashboardOverview = () => {
               style="primary"
               icon="Plus"
               animation="move-right"
-              onClick={buttonAction}
+              onClick={updateProperties}
             />
           </div>
+          
+          <Cards cardData={overviewCardsData} customStyles={['c-cards--flex', 'c-cards--default-margin', 'c-cards--sb']} />
         </div>
-
-        <Cards cardData={overviewCardsData} customStyles={['c-cards--flex', 'c-cards--default-margin', 'c-cards--sb']} />
       </DefaultLayout>
     </div>
   );
