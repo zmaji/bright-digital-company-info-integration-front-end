@@ -138,13 +138,14 @@ const CompanyDetail = () => {
 
         await propertyService.updateProperties(authToken, propertiesToUpdate);
 
-        //VAN HIER NIET
-
-        const propertiesToCreateFull = propertiesToCreate.some((createProperty) =>
-          allProperties.some((allProperty) => allProperty.name === createProperty.name)
+        const matchingProperties = allProperties.filter((allProperty) =>
+          propertiesToCreate.some((createProperty) => createProperty.name === allProperty.name)
         );
 
-        await propertyService.createHubSpotProperties(authToken, 'company', propertiesToCreateFull);
+        console.log('matchingProperties')
+        console.log(matchingProperties)
+
+        await propertyService.createHubSpotProperties(authToken, 'company', matchingProperties);
       }
 
       if (propertiesToDelete.length === 0 && propertiesToCreate.length === 0) {

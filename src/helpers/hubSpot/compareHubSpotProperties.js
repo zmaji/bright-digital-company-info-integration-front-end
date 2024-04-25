@@ -4,7 +4,7 @@ export const compareHubSpotProperties = async (currentProperties, propertyFields
   });
 
   if (missingFields.length === 0) {
-    console.log('All properties have been created');
+    console.log('All HubSpot properties have been created');
     return [];
   } else {
     console.log('The following properties are not yet created..');
