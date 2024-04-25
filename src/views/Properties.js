@@ -103,13 +103,6 @@ const CompanyDetail = () => {
           property.toSave === false 
       );
 
-      console.log('propertiesToDelete');
-      console.log(propertiesToDelete);
-      console.log('HubSpotPropertiesToDelete');
-      console.log(hubSpotPropertiesToDelete);
-      console.log('propertiesToCreate');
-      console.log(propertiesToCreate);
-
       if (propertiesToDelete.length > 0 && !deleteUnselected) {
         const propertiesToUpdate = propertiesToDelete.map((property) => ({
           ...property,
@@ -131,6 +124,8 @@ const CompanyDetail = () => {
       }
 
       if (propertiesToCreate.length > 0) {
+        console.log('propertiesToCreate')
+        console.log(propertiesToCreate)
         const propertiesToUpdate = propertiesToCreate.map((property) => ({
           ...property,
           toSave: true,
@@ -141,9 +136,6 @@ const CompanyDetail = () => {
         const matchingProperties = allProperties.filter((allProperty) =>
           propertiesToCreate.some((createProperty) => createProperty.name === allProperty.name)
         );
-
-        console.log('matchingProperties')
-        console.log(matchingProperties)
 
         await propertyService.createHubSpotProperties(authToken, 'company', matchingProperties);
       }
