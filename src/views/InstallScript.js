@@ -7,8 +7,9 @@ import { useSelector } from 'react-redux';
 import headerScriptData from '../data/HeaderScript';
 
 const steps = [
-  { title: 'Copy tag' },
-  { title: 'Go to Settings > Content > Pages > Templates' },
+  { title: 'Create a HubSpot form' },
+  { title: 'Copy style tag' },
+  { title: 'You will be redirect to Settings > Content > Pages > Templates' },
   { title: 'Paste tag inside header' }
 ];
 
@@ -35,20 +36,18 @@ const InstallScript = () => {
                   <div className='v-install-script__content-container u-flex'>
                     <div className="v-install-script__content-left">
                         <h1 className='v-install-script__content-title'>
-                            Install script
+                            Enrich audience
                         </h1>
 
                         <p className='v-install-script__content-text'>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                          Phasellus pharetra eros dui, et pellentesque est bibendum eget. 
-                          Nullam ornare purus in turpis pharetra, eu congue arcu laoreet. 
+                        Enrich your target audience by creating a HubSpot form and embedding it on your website. Once set up, this form allows you to gather valuable information from visitors, helping you understand and engage with your audience more effectively.
                         </p>
-                        <Button title='Copy' style='tertiary' link={`https://app-eu1.hubspot.com/settings/${userData.hubSpotPortalId}/website/pages/all-domains/page-templates`} newTab='true' icon='Download' animation='move-down' iconStyle='large-margin' onClick={copyHeaderScript}/>
+                        <Button title='Copy tags' style='tertiary' link={`https://app-eu1.hubspot.com/settings/${userData.hubSpotPortalId}/website/pages/all-domains/page-templates`} newTab='true' icon='Download' animation='move-down' iconStyle='large-margin' onClick={copyHeaderScript}/>
                     </div>
 
                     <div className='v-install-script__content-right'>
                       <h2 className='v-install-script__content-title-secondary'>
-                            Next steps
+                            Steps
                       </h2>
 
                       <div className="v-install-script__steps">

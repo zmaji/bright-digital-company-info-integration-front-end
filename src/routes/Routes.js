@@ -23,8 +23,8 @@ const AppRoutes = () => {
         <Route path="/install" element={<Install />} />
         <Route path="/thank-you" element={<ThankYou />} />
         <Route path="/overview" element={<DashboardOverview />} />
-        <Route path="/install-script" element={<InstallScript/>} />
-        <Route path="/enrich-data" element={<EnrichData/>} />
+        <Route path="/enrich-audience" element={<InstallScript/>} />
+        <Route path="/enrich-company" element={<EnrichData/>} />
         <Route path="/search-company" element={<SearchCompany/>} />
         <Route path="/search-company/search-results" element={<Companies/>} />
         <Route path="/search-company/search-results/company-detail" element={<CompanyDetail/>} />

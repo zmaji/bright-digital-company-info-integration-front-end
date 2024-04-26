@@ -16,8 +16,8 @@ const sidebarData = [
     {
         title: 'Analytics',
         items: [
-            { icon: DownloadIcon, title: 'Enrich audience', link: '/install-script' },
-            { icon: LightbulbIcon, title: 'Enrich company', link: '/enrich-data' },
+            { icon: DownloadIcon, title: 'Enrich audience', link: '/enrich-audience' },
+            { icon: LightbulbIcon, title: 'Enrich company', link: '/enrich-company' },
             { icon: SearchIcon, title: 'Search company', link: '/search-company' }
         ],
     },
