@@ -1,8 +1,8 @@
 const overviewCardsData = [
     {
       icon: 'DownloadGradient',
-      title: 'Install script',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in.',
+      title: 'Enrich target audience',
+      text: 'Enrich data by creating a form on your HubSpot website.',
       button: {
         title: 'Start now',
         style: 'tertiary',
@@ -13,8 +13,8 @@ const overviewCardsData = [
     },
     {
       icon: 'LightBulbGradient',
-      title: 'Enrich data',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in.',
+      title: 'Enrich a company',
+      text: 'Enrich company data by entering or changing it\'s dossier number.',
       button: {
         title: 'Start now',
         style: 'tertiary',
@@ -26,7 +26,7 @@ const overviewCardsData = [
     {
       icon: 'SearchGradient',
       title: 'Search company',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in.',
+      text: 'Manually search company data and save it\'s results in HubSpot.',
       button: {
         title: 'Start now',
         style: 'tertiary',

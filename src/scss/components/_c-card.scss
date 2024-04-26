@@ -1,6 +1,7 @@
 .c-card {
-  flex-grow: 1;
+  display: flex;
   max-width: calc(33.33% - 24px);
+  flex-direction: column;
 
   &-icon {
     margin-bottom: rem-calc(21);
@@ -27,6 +28,10 @@
       font-size: rem-calc(16);
       line-height: 1.75;
       font-weight: 300;
+    }
+
+    &-button {
+      margin-top: auto;
     }
   }
 }

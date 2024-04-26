@@ -12,6 +12,7 @@ import { ReactComponent as SearchGradient } from '../icons/search-gradient.svg';
 import { ReactComponent as Search } from '../icons/search.svg';
 import { ReactComponent as SearchWhite } from '../icons/search-white.svg';
 import { ReactComponent as SearchBlack } from '../icons/search-black.svg';
+import { ReactComponent as Refresh } from '../icons/arrows-rotate-solid.svg';
 
 const icons = {
     ArrowRight: ArrowRight,
@@ -28,6 +29,7 @@ const icons = {
     Search: Search,
     SearchWhite: SearchWhite,
     SearchBlack: SearchBlack,
+    Refresh: Refresh,
 }
 
 export const retrieveIcon = (icon) => {

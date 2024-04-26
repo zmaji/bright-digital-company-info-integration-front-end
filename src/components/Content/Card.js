@@ -30,13 +30,12 @@ const Card = ({ step, icon, title, text, button }) => {
             { text }
             </div>
           )}
-
-          {button && (
+        </div>
+        {button && (
             <div className='c-card__content-button' data-testid="card-button">
               <Button {...button} />
             </div>
           )}
-        </div>
       </div>
     );
   };

@@ -14,6 +14,7 @@ const DashboardOverview = () => {
   const [missingHubSpotProperties, setMissingHubSpotProperties] = useState([]);
   const [missingProperties, setMissingProperties] = useState([]);
   const [propertiesToUpdate, setPropertiesToUpdate] = useState([]);
+  const [propertyFields, setPropertyfields] = useState([]);
 
   const updateProperties = async () => {
     try {
@@ -50,6 +51,8 @@ const DashboardOverview = () => {
       const currentHubSpotProperties = await propertyService.getHubSpotProperties(authToken, 'company', 'company_info_integration');
       const propertyFields = await generatePropertyFields();
 
+      setPropertyfields(propertyFields);
+
       if (currentProperties !== null) {
         const propertiesToUpdate = currentProperties
         .filter((property) => property.toSave === false)
@@ -57,17 +60,12 @@ const DashboardOverview = () => {
           ...property,
           toSave: true,
         }));
-  
-        console.log('propertiesToUpdate')
-        console.log(propertiesToUpdate)
         setPropertiesToUpdate(propertiesToUpdate);
       } else {
         const missingProperties = propertyFields.map((property) => ({
           name: property.name,
           toSave: true,
         }));
-        console.log('missingProperties')
-        console.log(missingProperties)
         setMissingProperties(missingProperties);
       }
 
@@ -75,18 +73,24 @@ const DashboardOverview = () => {
         const missingHubSpotProperties = propertyFields.filter(
           (field) => !currentHubSpotProperties.some((cp) => cp.name === field.name)
         );
-        console.log('missingHubSpotProperties');
-        console.log(missingHubSpotProperties);
         setMissingHubSpotProperties(missingHubSpotProperties);
       };
     };
     checkForMissingProperties();
   }, [authToken]);
 
-  const buttonText = missingProperties.length === 64 
-    ? 'Set up default properties' 
-    : 'Reset default properties';
+  const buttonText = missingProperties.length === propertyFields.length
+    ? 'Set up properties' 
+    : 'Reset properties';
 
+  const paragraphText = missingProperties.length === propertyFields.length
+    ? 'By clicking the button below, a default HubSpot group and the necessary properties will be automatically created. This serves as the central hub for all your the retrieved data in HubSpot and ensures that it is accurately organized and ready for further operations.' 
+    : 'By clicking the button below, all the necessary properties will be automatically reset to default.';
+
+  const buttonIcon = missingProperties.length === propertyFields.length
+    ? 'Plus' 
+    : 'Refresh';
+    
   return (
     <div className='v-dashboard-overview'>
       <DefaultLayout padding='default'>
@@ -97,13 +101,13 @@ const DashboardOverview = () => {
             </h1>
 
             <p className='v-dashboard-overview__content-text'>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.
+              {paragraphText}
             </p>
 
             <Button
               title={buttonText}
               style="primary"
-              icon="Plus"
+              icon={buttonIcon}
               animation="move-right"
               onClick={updateProperties}
             />
