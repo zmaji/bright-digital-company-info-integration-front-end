@@ -1,8 +1,8 @@
 const overviewCardsData = [
     {
       icon: 'DownloadGradient',
-      title: 'Enrich target audience',
-      text: 'Enrich data by creating a form on your HubSpot website.',
+      title: 'Enrich audience',
+      text: 'Enrich your target audience by creating a form on your HubSpot website.',
       button: {
         title: 'Start now',
         style: 'tertiary',
@@ -13,7 +13,7 @@ const overviewCardsData = [
     },
     {
       icon: 'LightBulbGradient',
-      title: 'Enrich a company',
+      title: 'Enrich company',
       text: 'Enrich company data by entering or changing it\'s dossier number.',
       button: {
         title: 'Start now',
