@@ -43,13 +43,11 @@ const SearchCompany = () => {
 
                       <div className='v-search-company__content-inner'>
                         <h1 className='v-search-company__content-title'>
-                            Search for a company
+                            Search company
                         </h1>
 
                         <p className='v-search-company__content-text'>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                        Phasellus pharetra eros dui, et pellentesque est bibendum eget. 
-                        Nullam ornare purus in turpis pharetra, eu congue arcu laoreet. 
+                        Quickly find companies by entering a trade name into the search bar. With just one click on the search button, you'll retrieve a comprehensive list of all companies that match your search.
                         </p>
 
                         <SearchBar onSearch={handleSearch} />
