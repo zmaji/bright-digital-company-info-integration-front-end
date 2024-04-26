@@ -1,0 +1,18 @@
+.v-activate {
+    &__content-wrapper {
+        margin-top: 25px;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    &__content-container {
+        width: 100%;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    &__content-input {
+        margin-bottom: 25px;
+    }
+}

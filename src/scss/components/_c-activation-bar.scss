@@ -1,0 +1,20 @@
+.c-activation-bar {
+    &__container {
+        position: relative;
+    }
+
+    &__button-container {
+        position: absolute;
+        top: 0;
+        right: 0px
+    }
+    
+    &__input {
+        width: 380px;
+        display: block;
+    }
+
+    &__button {
+        padding: 30rem;
+    }
+}

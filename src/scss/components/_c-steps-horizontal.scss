@@ -1,0 +1,53 @@
+.c-steps-horizontal {
+    &__container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  
+    &__step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    &__icon {
+        width: 18px;
+        height: 18px;
+    }
+  
+    &__title {
+      font-size: 16px;
+      font-weight: 300;
+      text-align: center;
+      width: 200px;
+    }
+  
+    &__circle-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      margin-top: 25px;
+      margin-bottom: 25px;
+    }
+  
+    &__circle {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: #E3EAF4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  
+    &__line {
+      position: absolute;
+      left: 50px; 
+      width: 150px;
+      height: 4px;
+      background-color: #E3EAF4;
+    }
+  }
+  
