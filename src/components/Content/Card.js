@@ -5,6 +5,8 @@ import Button from '../elements/Button';
 const Card = ({ step, icon, title, text, button }) => {
 
     const IconComponent = retrieveIcon(icon);
+
+    console.log(step);
   
     return (
       <div className='c-card'>

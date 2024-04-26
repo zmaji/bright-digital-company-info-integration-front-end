@@ -23,16 +23,17 @@ const EnrichData = () => {
                   <div className='v-enrich-data__content-container'>
                     <div className='v-enrich-data__content-inner'>
                         <h1 className='v-enrich-data__content-title'>
-                            Enrich existing data
+                            Enrich a company
                         </h1>
 
                         <p className='v-enrich-data__content-text'>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                            Phasellus pharetra eros dui, et pellentesque est bibendum eget.
+                            Streamline the process of keeping the selected company's information up to date. By entering a new dossier number or updating an existing one, the system automatically fetches and updates your company's data. This ensures that all relevant information is accurate and reflects the latest business details.
                         </p>
                     </div>
 
-                    <Cards cardData={enrichCardsData} customStyles={['c-cards--flex', 'c-cards--default-margin']} />
+                    <div className="v-enrich-data__cards-container">
+                      <Cards cardData={enrichCardsData} customStyles={['c-cards--flex']} />
+                    </div>
 
                     <Button title='Go to HubSpot' style='primary' link={`https://app-eu1.hubspot.com/contacts/${userData.hubSpotPortalId}/objects/0-2/views/all/list`} newTab='true' icon='ArrowRight' animation='move-right'/>
                   </div>

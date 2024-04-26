@@ -18,6 +18,7 @@
 
     &__content-inner {
         max-width: 489px;
+        // max-width: 100%;
     }
 
     &__content-title {
@@ -31,10 +32,10 @@
     &__content-text {
         font-size: 16px;
         font-weight: 300;
-        margin-bottom: rem-calc(62);
     }
 
     &__cards-container {
-        margin-bottom: rem-calc(50);
+        margin-top: rem-calc(50);
+        margin-bottom: rem-calc(25);
     }
 }

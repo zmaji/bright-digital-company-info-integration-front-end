@@ -9,6 +9,7 @@ const Cards = ({ cardData, customStyles }) => {
       {cardData.map((card, index) => (
         <Card
           key={index}
+          step={card.step}
           icon={card.icon}
           title={card.title}
           text={card.text}

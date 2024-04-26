@@ -1,33 +1,28 @@
 const enrichCardsData = [
     {
       step: 'step 1',
-      title: 'Dolor sit amet',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in.',
+      title: 'Navigate to HubSpot',
+      text: 'Open HubSpot, navigate to the \'Companies\' section and find the company you wish to update.',
     },
     {
       step: 'step 2',
-      title: 'Voluptat aenean',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in.',
+      title: 'Locate dossier number',
+      text: 'This is located in the company\'s properties. If it\'s not immediately visible, check the  settings or consult an administrator.',
     },
     {
       step: 'step 3',
-      title: 'Suspendise var',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in.',
+      title: 'Enter or update',
+      text: 'Enter the new dossier number into the designated field. If you are updating an existing dossier number, replace the old number with the correct new one.',
     },
     {
       step: 'step 4',
-      title: 'Elit adipiscing',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in.',
+      title: 'Save changes',
+      text: 'After entering or updating the dossier number, click \'Save\' to confirm the changes. This will trigger the connected data enrichment processes.',
     },
     {
       step: 'step 5',
-      title: 'Lorem ipsum',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in.',
-    },
-    {
-      step: 'step 6',
-      title: 'Varius enim',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in.',
+      title: 'Verify data',
+      text: 'Once the changes are saved, check the company\'s data to ensure that the information reflects the updated dossier number.',
     },
   ];
 

@@ -2,6 +2,11 @@
   display: flex;
   max-width: calc(33.33% - 24px);
   flex-direction: column;
+  margin-right: 36px;
+
+  &:nth-child(3n) {
+    margin-right: 0px;
+  }
 
   &-icon {
     margin-bottom: rem-calc(21);
