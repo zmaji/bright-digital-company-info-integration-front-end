@@ -96,8 +96,7 @@ const Profile = () => {
                       </h1>
 
                       <p className='v-profile__content-container__inner__text'>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                        Suspendisse varius enim in eros.
+                      On this profile page, you have the ability to update your account settings. If you wish to utilize the app's full range of functionalities, it is crucial to fill in your company information credentials.
                       </p>
 
                       <Table data={profileData} />
