@@ -9,13 +9,7 @@ import smileIcon from '../icons/face-smile-regular.svg'
 import ActivateBar from '../components/elements/ActivateBar';
 
 const Activate = () => {
-  const [activationCode, setActivationCode] = useState('');
-
-  const handleActivationCodeChange = (e) => {
-    setActivationCode(e.target.value);
-  };
-
-  const handleVerifyActivationCode = async () => {
+  const handleVerifyActivationCode = async (activationCode) => {
     const userId = localStorage.getItem('userId');
     const result = await userService.verifyActivationCode(userId, activationCode);
 
@@ -45,7 +39,7 @@ const Activate = () => {
               </div>
               <div className="v-activate__content-container u-flex">
                 <div className="v-activate__content-input">
-                  <ActivateBar />
+                  <ActivateBar onSubmit={handleVerifyActivationCode} />
                 </div>
               </div>
             </div>
