@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import SignupHeader from '../components/header/SignupHeader';
 import HorizontalSteps from '../components/content/HorizontalSteps';
 import userService from '../services/userService';

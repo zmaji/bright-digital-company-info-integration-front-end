@@ -7,6 +7,8 @@ import { useSelector } from 'react-redux';
 import propertyService from '../services/propertyService';
 import groupService from '../services/groupService';
 import { generatePropertyFields } from '../helpers/hubSpot/generatePropertyFields';
+import ReactDOM from 'react-dom';
+import Modal from 'react-modal';
 
 const CompanyDetail = () => {
   const authToken = useSelector((state) => state.auth.authToken);
@@ -15,6 +17,23 @@ const CompanyDetail = () => {
   const [currentHubSpotProperties, setCurrentHubSpotProperties] = useState([]);
   const [selectedProperties, setSelectedProperties] = useState(new Set());
   const [deleteUnselected, setDeleteUnselected] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const customModalStyles = {
+    overlay: {
+      backgroundColor: 'rgba(0, 0, 0, 0.75)', // opaque overlay to hide background
+      zIndex: 1000, // high z-index to ensure it appears above everything else
+    },
+    content: {
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      transform: 'translate(-50%, -50%)',
+      borderRadius: '10px', // adds rounded corners
+      padding: '20px', // internal padding
+    },
+  };
   
   useEffect(() => {
     const fetchData = async () => {
@@ -163,6 +182,23 @@ const CompanyDetail = () => {
     }
   };
 
+  const handleModalConfirm = () => {
+    setDeleteUnselected(true);
+    setIsModalOpen(false);
+  };
+
+  const handleModalCancel = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleDeleteUnselectedChange = (e) => {
+    if (e.target.checked) {
+      setIsModalOpen(true); 
+    } else {
+      setDeleteUnselected(false);
+    }
+  };
+
   return (
     <DefaultLayout>
       <div className="v-properties__content-wrapper">
@@ -174,7 +210,7 @@ const CompanyDetail = () => {
           <div className="v-properties__content-container__left">
             <h2 className="v-properties__title">Select properties</h2>
             <p className="v-properties__text">
-            Choose which properties will be saved to HubSpot when manually retrieving data. You can select or deselect the properties as needed. Be aware that when the checkbox below is selected, it will permanently delete that property from HubSpot, including any existing values associated with it. This action is irreversible, so please ensure you have made the correct selection before proceeding.
+              Choose which properties will be saved to HubSpot when manually retrieving data. You can select or deselect the properties as needed. Be aware that when the checkbox below is selected, it will permanently delete that property from HubSpot, including any existing values associated with it. This action is irreversible, so please ensure you have made the correct selection before proceeding.
             </p>
 
             <Button
@@ -191,7 +227,7 @@ const CompanyDetail = () => {
                   type="checkbox"
                   id="delete-unselected"
                   checked={deleteUnselected}
-                  onChange={(e) => setDeleteUnselected(e.target.checked)} 
+                  onChange={handleDeleteUnselectedChange} 
                 />
               </div>
 
@@ -238,6 +274,35 @@ const CompanyDetail = () => {
             </div>
           </div>
         </div>
+
+        <Modal
+          isOpen={isModalOpen}
+          onRequestClose={handleModalCancel}
+          style={customModalStyles}
+          contentLabel="Confirm Deletion">
+
+          <p>Are you sure you want to delete these properties?</p>
+          <div className="c-properties-modal__button-container u-flex u-flex-v-center">
+            <div className="c-properties-modal__button-confirm">
+              <Button
+                title="Confirm"
+                style="primary"
+                icon="Plus"
+                animation='none'
+                onClick={handleModalConfirm}
+              />
+            </div>
+            <div className="c-properties-modal__button-cancel">
+              <Button
+                title="Cancel"
+                style="secondary"
+                icon="Plus"
+                animation='none'
+                onClick={handleModalCancel}
+              />
+              </div>
+          </div>
+        </Modal>
       </div>
     </DefaultLayout>
   );
