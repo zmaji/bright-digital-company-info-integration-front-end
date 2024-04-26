@@ -2,7 +2,7 @@ const enrichCardsData = [
     {
       step: 'step 1',
       title: 'Navigate to HubSpot',
-      text: 'Open HubSpot, navigate to the \'Companies\' section and find the company you wish to update.',
+      text: 'Open HubSpot and navigate to the \'Companies\' section by clicking on the button below to find the company you wish to update.',
     },
     {
       step: 'step 2',
