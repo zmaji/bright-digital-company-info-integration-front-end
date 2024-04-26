@@ -48,7 +48,7 @@ const Companies = () => {
                       </h2>
 
                       <p className='v-search-results__text'>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.
+                      These search results display all companies matching your search criteria. You can click on 'More information' next to any company to access detailed information. This provides an efficient way to explore company profiles in greater depth.
                       </p>
 
                       <ResultTable data={companyData} />

@@ -169,10 +169,10 @@ const CompanyDetail = () => {
                         </h2>
 
                         <p className='v-company-detail__text'>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus pharetra eros dui, et pellentesque est bibendum eget. Nullam ornare purus in turpis pharetra, eu congue.
+                        The properties displayed are based on your customized settings. By clicking the button, you can automatically create a new company record or update an existing one in HubSpot. If the information requires adjustments, feel free to make changes before saving.
                         </p>
 
-                        <Button title='Save in HubSpot' style='primary' icon='ArrowRight' animation='move-right' onClick={handleSaveCompany}/>
+                        <Button title='Save in HubSpot' style='primary' icon='Plus' animation='none' onClick={handleSaveCompany}/>
                       </div>
 
                       <div className="v-company-detail__content-container__right">
