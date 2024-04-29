@@ -17,22 +17,6 @@ const CompanyDetail = () => {
   const [selectedProperties, setSelectedProperties] = useState(new Set());
   const [deleteUnselected, setDeleteUnselected] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const customModalStyles = {
-    overlay: {
-      backgroundColor: 'rgba(0, 0, 0, 0.75)', 
-      zIndex: 1000, 
-    },
-    content: {
-      top: '50%',
-      left: '50%',
-      right: 'auto',
-      bottom: 'auto',
-      transform: 'translate(-50%, -50%)',
-      borderRadius: '10px',
-      padding: '20px',
-    },
-  };
   
   useEffect(() => {
     const fetchData = async () => {
@@ -163,13 +147,21 @@ const CompanyDetail = () => {
           toSave: true,
         }));
 
-        await propertyService.updateProperties(authToken, propertiesToUpdate);
+        const createdProperty = await propertyService.updateProperties(authToken, propertiesToUpdate);
 
-        const matchingProperties = allProperties.filter((allProperty) =>
+        if (createdProperty) {
+          const matchingProperties = allProperties.filter((allProperty) =>
           propertiesToCreate.some((createProperty) => createProperty.name === allProperty.name)
-        );
+          );
 
-        await propertyService.createHubSpotProperties(authToken, 'company', matchingProperties);
+          const createdHubSpotProperty = await propertyService.createHubSpotProperties(authToken, 'company', matchingProperties);
+
+          if (createdHubSpotProperty) {
+            toast.success('Successfully created a property');
+          } else {
+            toast.error('Successfully deleted hubspot properties');
+          } 
+        }
       }
 
       if (propertiesToDelete.length === 0 && propertiesToCreate.length === 0) {
@@ -278,7 +270,7 @@ const CompanyDetail = () => {
           isOpen={isModalOpen}
           onRequestClose={handleModalCancel}
           title='Are you sure?'
-          content='Are you sure you want to delete these properties?'
+          content='This action will permanently delete the selected properties from HubSpot, including any existing'
           onConfirm={handleModalConfirm}
           onCancel={handleModalCancel}
         />

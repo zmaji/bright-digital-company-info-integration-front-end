@@ -52,7 +52,7 @@ const CustomModal = ({ isOpen, onRequestClose, customStyles, title, content, onC
         <div className="c-modal__button-container u-flex u-flex-v-center">
             <div className="c-modal__button-confirm">
             <Button
-                title="Confirm"
+                title="Continue"
                 style="primary"
                 icon="Check"
                 onClick={onConfirm}
