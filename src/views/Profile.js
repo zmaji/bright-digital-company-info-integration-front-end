@@ -19,11 +19,16 @@ const Profile = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editContext, setEditContext] = useState(null);
 
+  const obscurePassword = (password) => {
+    return '*'.repeat(password.length);
+  };
+
   const firstName = userData ? userData.firstName : '';
   const lastName = userData ? userData.lastName : '';
   const emailAddress = userData ? userData.emailAddress : '';
   const domain = userData ? userData.domain : '';
   const companyInfoUserName = userData ? userData.companyInfoUserName : '';
+  const companyInfoPassword = userData ? obscurePassword(userData.companyInfoPassword) : '';
 
   const openModal = (title, editableValue) => {
     setEditContext({ title, editableValue });
@@ -79,9 +84,8 @@ const Profile = () => {
         { title: 'Last name', value: lastName, button: { title: 'Change', style: 'edit', onClick: openModal } },
         { title: 'Email address', value: emailAddress, button: { title: 'Change', style: 'edit', onClick: openModal } },
         { title: 'Domain', value: domain, button: { title: 'Change', style: 'edit', onClick: openModal } },
-        { title: 'Password', value: '*******', button: { title: 'Change', style: 'edit', onClick: openModal } },
         { title: 'Company info username', value: companyInfoUserName, button: { title: 'Change', style: 'edit', onClick: openModal } },
-        { title: 'Company info password', value: '*******', button: { title: 'Change', style: 'edit', onClick: openModal } },
+        { title: 'Company info password', value: companyInfoPassword, button: { title: 'Change', style: 'edit', onClick: openModal } },
       ];
       setProfileData(updatedProfileData);
   }, [userData]);
