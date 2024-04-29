@@ -7,7 +7,8 @@ import profileIcon from '../icons/profile.svg';
 import userService from '../services/userService';
 import { setUserData } from '../store/userSlice';
 import { useDispatch } from 'react-redux';
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
+import Modal from '../components/elements/Modal';
 
 const Profile = () => {
   const userData = useSelector(state => state.user.userData.data);
@@ -15,12 +16,31 @@ const Profile = () => {
   const dispatch = useDispatch();
 
   const [profileData, setProfileData] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [editContext, setEditContext] = useState(null);
 
   const firstName = userData ? userData.firstName : '';
   const lastName = userData ? userData.lastName : '';
   const emailAddress = userData ? userData.emailAddress : '';
   const domain = userData ? userData.domain : '';
   const companyInfoUserName = userData ? userData.companyInfoUserName : '';
+
+  const openModal = (title, editableValue) => {
+    setEditContext({ title, editableValue });
+    setIsModalOpen(true);
+  };
+
+  const handleModalConfirm = () => {
+    if (editContext) { 
+      const { title, editableValue } = editContext;
+      updateUser(title, editableValue); 
+    }
+    setIsModalOpen(false);
+  };
+
+  const handleModalCancel = () => {
+    setIsModalOpen(false);
+  };
   
   const updateUser = async (title, editableValue) => {
     const titleToFieldMap = {
@@ -55,13 +75,13 @@ const Profile = () => {
 
   useEffect(() => {
       const updatedProfileData = [
-        { title: 'First name', value: firstName, button: { title: 'Change', style: 'edit', onClick: updateUser } },
-        { title: 'Last name', value: lastName, button: { title: 'Change', style: 'edit', onClick: updateUser } },
-        { title: 'Email address', value: emailAddress, button: { title: 'Change', style: 'edit', onClick: updateUser } },
-        { title: 'Domain', value: domain, button: { title: 'Change', style: 'edit', onClick: updateUser } },
-        { title: 'Password', value: '*******', button: { title: 'Change', style: 'edit', onClick: updateUser } },
-        { title: 'Company info username', value: companyInfoUserName, button: { title: 'Change', style: 'edit', onClick: updateUser } },
-        { title: 'Company info password', value: '*******', button: { title: 'Change', style: 'edit', onClick: updateUser } },
+        { title: 'First name', value: firstName, button: { title: 'Change', style: 'edit', onClick: openModal } },
+        { title: 'Last name', value: lastName, button: { title: 'Change', style: 'edit', onClick: openModal } },
+        { title: 'Email address', value: emailAddress, button: { title: 'Change', style: 'edit', onClick: openModal } },
+        { title: 'Domain', value: domain, button: { title: 'Change', style: 'edit', onClick: openModal } },
+        { title: 'Password', value: '*******', button: { title: 'Change', style: 'edit', onClick: openModal } },
+        { title: 'Company info username', value: companyInfoUserName, button: { title: 'Change', style: 'edit', onClick: openModal } },
+        { title: 'Company info password', value: '*******', button: { title: 'Change', style: 'edit', onClick: openModal } },
       ];
       setProfileData(updatedProfileData);
   }, [userData]);
@@ -96,14 +116,23 @@ const Profile = () => {
                       </h1>
 
                       <p className='v-profile__content-container__inner__text'>
-                      On this profile page, you have the ability to update your account settings. If you wish to utilize the app's full range of functionalities, it is crucial to fill in your company information credentials.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                        Suspendisse varius enim in eros.
                       </p>
 
                       <Table data={profileData} />
                   </div>
               </div>
+
+              <Modal
+                isOpen={isModalOpen}
+                onRequestClose={handleModalCancel}
+                title='Are you sure?'
+                content={`You're about to change ${editContext?.title || 'this field'}`}
+                onConfirm={handleModalConfirm}
+                onCancel={handleModalCancel}
+              />
             </DefaultLayout>
-            <Toaster />
         </div>
     );
   };
