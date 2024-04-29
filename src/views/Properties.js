@@ -201,7 +201,7 @@ const CompanyDetail = () => {
           <div className="v-properties__content-container__left">
             <h2 className="v-properties__title">Select properties</h2>
             <p className="v-properties__text">
-              Choose which properties will be saved to HubSpot when manually retrieving data. You can select or deselect the properties as needed. Be aware that when the checkbox below is selected, it will permanently delete that property from HubSpot, including any existing values associated with it. This action is irreversible, so please ensure you have made the correct selection before proceeding.
+              Choose which properties will be saved to HubSpot when manually retrieving data. You can select or deselect the properties as needed.
             </p>
 
             <Button

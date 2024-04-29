@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 import propertyService from '../services/propertyService';
 import { generatePropertyFields } from '../helpers/hubSpot/generatePropertyFields';
 import toast from 'react-hot-toast';
+import Modal from '../components/elements/Modal';
 
 const DashboardOverview = () => {
   const authToken = useSelector((state) => state.auth.authToken);
@@ -15,6 +16,20 @@ const DashboardOverview = () => {
   const [missingProperties, setMissingProperties] = useState([]);
   const [propertiesToUpdate, setPropertiesToUpdate] = useState([]);
   const [propertyFields, setPropertyfields] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleModalConfirm = () => {
+    updateProperties();
+    setIsModalOpen(false);
+  };
+
+  const handleModalCancel = () => {
+    setIsModalOpen(false);
+  };
 
   const updateProperties = async () => {
     try {
@@ -90,6 +105,10 @@ const DashboardOverview = () => {
   const buttonIcon = missingProperties.length === propertyFields.length
     ? 'Plus' 
     : 'Refresh';
+
+  const modalText = missingProperties.length === propertyFields.length
+    ? 'This action will create all default properties'
+    : 'This action will reset all default properties, recreating missing ones';
     
   return (
     <div className='v-dashboard-overview'>
@@ -109,12 +128,21 @@ const DashboardOverview = () => {
               style="primary"
               icon={buttonIcon}
               animation="move-right"
-              onClick={updateProperties}
+              onClick={openModal}
             />
           </div>
           
           <Cards cardData={overviewCardsData} customStyles={['c-cards--flex', 'c-cards--default-margin']} />
         </div>
+
+        <Modal
+          isOpen={isModalOpen}
+          onRequestClose={handleModalCancel}
+          title='Are you sure?'
+          content={modalText}
+          onConfirm={handleModalConfirm}
+          onCancel={handleModalCancel}
+        />
       </DefaultLayout>
     </div>
   );
