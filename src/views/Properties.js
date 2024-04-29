@@ -7,8 +7,7 @@ import { useSelector } from 'react-redux';
 import propertyService from '../services/propertyService';
 import groupService from '../services/groupService';
 import { generatePropertyFields } from '../helpers/hubSpot/generatePropertyFields';
-import ReactDOM from 'react-dom';
-import Modal from 'react-modal';
+import Modal from '../components/elements/Modal';
 
 const CompanyDetail = () => {
   const authToken = useSelector((state) => state.auth.authToken);
@@ -21,8 +20,8 @@ const CompanyDetail = () => {
 
   const customModalStyles = {
     overlay: {
-      backgroundColor: 'rgba(0, 0, 0, 0.75)', // opaque overlay to hide background
-      zIndex: 1000, // high z-index to ensure it appears above everything else
+      backgroundColor: 'rgba(0, 0, 0, 0.75)', 
+      zIndex: 1000, 
     },
     content: {
       top: '50%',
@@ -30,8 +29,8 @@ const CompanyDetail = () => {
       right: 'auto',
       bottom: 'auto',
       transform: 'translate(-50%, -50%)',
-      borderRadius: '10px', // adds rounded corners
-      padding: '20px', // internal padding
+      borderRadius: '10px',
+      padding: '20px',
     },
   };
   
@@ -182,6 +181,14 @@ const CompanyDetail = () => {
     }
   };
 
+  const handleDeleteUnselectedChange = (e) => {
+    if (e.target.checked) {
+      setIsModalOpen(true); 
+    } else {
+      setDeleteUnselected(false);
+    }
+  };
+
   const handleModalConfirm = () => {
     setDeleteUnselected(true);
     setIsModalOpen(false);
@@ -189,14 +196,6 @@ const CompanyDetail = () => {
 
   const handleModalCancel = () => {
     setIsModalOpen(false);
-  };
-
-  const handleDeleteUnselectedChange = (e) => {
-    if (e.target.checked) {
-      setIsModalOpen(true); 
-    } else {
-      setDeleteUnselected(false);
-    }
   };
 
   return (
@@ -278,31 +277,11 @@ const CompanyDetail = () => {
         <Modal
           isOpen={isModalOpen}
           onRequestClose={handleModalCancel}
-          style={customModalStyles}
-          contentLabel="Confirm Deletion">
-
-          <p>Are you sure you want to delete these properties?</p>
-          <div className="c-properties-modal__button-container u-flex u-flex-v-center">
-            <div className="c-properties-modal__button-confirm">
-              <Button
-                title="Confirm"
-                style="primary"
-                icon="Plus"
-                animation='none'
-                onClick={handleModalConfirm}
-              />
-            </div>
-            <div className="c-properties-modal__button-cancel">
-              <Button
-                title="Cancel"
-                style="secondary"
-                icon="Plus"
-                animation='none'
-                onClick={handleModalCancel}
-              />
-              </div>
-          </div>
-        </Modal>
+          title='Are you sure?'
+          content='Are you sure you want to delete these properties?'
+          onConfirm={handleModalConfirm}
+          onCancel={handleModalCancel}
+        />
       </div>
     </DefaultLayout>
   );
