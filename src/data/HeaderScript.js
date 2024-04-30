@@ -1,6 +1,12 @@
-const headerScriptData = [
-`<link rel="stylesheet" href="{{ get_asset_url('/bright/css/company-info.css') }}" />
-<script type="text/javascript" src="{{ get_asset_url('/bright/js/company-info.js') }}"></script>`
-];
+const generateHeaderScript = (portalId) => {
+    const headerScriptData = [
+        `<link rel="stylesheet" href="https://${portalId}.fs1.hubspotusercontent-eu1.net/hubfs/${portalId}/docs/Stylescript.css" />
+        <script type="text/javascript" src="https://${portalId}.fs1.hubspotusercontent-eu1.net/hubfs/${portalId}/docs/FormScript.js"></script>`
+        ];
+    
+    return headerScriptData
+}
 
-export default headerScriptData;
+
+
+export default generateHeaderScript;

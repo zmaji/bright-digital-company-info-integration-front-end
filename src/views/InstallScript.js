@@ -4,7 +4,7 @@ import Button from '../components/elements/Button';
 import BreadCrumb from '../components/elements/BreadCrumb';
 import Steps from '../components/content/Steps';
 import { useSelector } from 'react-redux';
-import headerScriptData from '../data/HeaderScript';
+import generateHeaderScript from '../data/HeaderScript';
 import formService from '../services/formService';
 import fileService from '../services/fileService';
 import toast from 'react-hot-toast';
@@ -14,10 +14,10 @@ const InstallScript = () => {
     const userData = useSelector(state => state.user.userData.data);
 
     const createForm = async () => {
-      console.log("Create form action triggered");
-    
       try {
         const hubSpotForms = await formService.getForms(authToken);
+
+        console.log(hubSpotForms);
     
         const existingForm = hubSpotForms.some(
           (form) => form.name === "Company.info Form"
@@ -43,8 +43,6 @@ const InstallScript = () => {
       try {
         const hubSpotFiles = await fileService.getFiles(authToken);
 
-        console.log(hubSpotFiles);
-
         if (hubSpotFiles.length > 0) {
           const hasFormScript = hubSpotFiles.some(file => file.name === 'FormScript');
 
@@ -69,6 +67,10 @@ const InstallScript = () => {
               toast.error('Something went wrong creating a file, please contact an admin');
             }
           }
+
+          if (hasFormScript && hasStyleScript) {
+            toast.success('All hubspot files are up-to-date');
+          }
         } else {
           const hubSpotScriptFile = await fileService.createFile(authToken, 'FormScript.js');
 
@@ -84,40 +86,6 @@ const InstallScript = () => {
             toast.error('Something went wrong creating a file, please contact an admin');
           }
         }
-    
-        // const scriptFile = hubSpotFiles.some(
-        //   (file) => file.name === "Company.info file"
-        // );
-
-        // const styleFile = hubSpotFiles.some(
-        //   (file) => file.name === "Company.info file"
-        // );
-    
-        // if (existingFile) {
-        //   toast.success('HubSpot file has already been created')
-        // } else {
-        //   const scriptFile = await fileService.createFile(authToken, 'FormScript.js');
-
-        //   if (scriptFile) {
-
-        //   } else {
-
-        //   }
-
-        //   const styleFile = await fileService.createFile(authToken, 'FormStyle.css');
-
-        //   if (styleFile) {
-
-        //   } else {
-
-        //   }
-
-        //   if (scriptFile && styleFile) {
-        //     toast.success('HubSpot files successfully created!');
-        //   } else {
-        //     toast.error('HubSpot files could not be created, please contact an admin');
-        //   }
-        // }
       } catch (error) {
         console.error("Error fetching HubSpot files:", error);
       }
@@ -134,7 +102,7 @@ const InstallScript = () => {
     ];
 
     const copyHeaderScript = async () => {
-      const headerScript = headerScriptData;
+      const headerScript = generateHeaderScript(userData.hubSpotPortalId);
       await navigator.clipboard.writeText(headerScript);
     }
 

@@ -65,8 +65,8 @@ const defaultFormData = {
         groupType: 'default_group',
         fields: [
           {
-            name: 'email',
-            label: 'Email Address',
+            name: 'company',
+            label: 'Company name',
             fieldType: 'email',
             type: 'string',
             required: true,
