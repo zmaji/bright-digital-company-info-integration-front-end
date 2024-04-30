@@ -7,7 +7,6 @@ import toast from 'react-hot-toast';
 import companyService from '../services/companyService';
 import { useSelector } from 'react-redux';
 import Modal from '../components/elements/Modal';
-import formService from '../services/formService';
 
 const SearchCompany = () => {
     const navigation = useNavigate();
@@ -22,7 +21,6 @@ const SearchCompany = () => {
     };
   
     const handleProfileConfirm = () => {
-      formService.createForm(authToken);
       navigation('/profile');
       setIsModalOpen(false);
     };
@@ -55,7 +53,7 @@ const SearchCompany = () => {
     };
 
     const modalTitle = userData && userData.companyInfoUserName && userData.companyInfoPassword ? 'Are you sure?' : 'Missing credentials'
-    const modalText = userData && userData.companyInfoUserName && userData.companyInfoPassword ? 'This action will cost Company.info credits' : 'Please enter your Company.info username and password'
+    const modalText = userData && userData.companyInfoUserName && userData.companyInfoPassword ? 'This action uses Company.info credits' : 'Please navigate to your profile page and enter your Company.info username and password'
     const modalConfirm = userData && userData.companyInfoUserName && userData.companyInfoPassword ? handleSearchConfirm : handleProfileConfirm; 
 
     return (

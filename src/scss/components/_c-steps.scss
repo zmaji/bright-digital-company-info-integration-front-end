@@ -45,4 +45,10 @@
         height: fit-content;
         line-height: 1.6;
     }
+
+    &__clickable {
+        font-weight: 500;
+        text-decoration: underline;
+        cursor: pointer;
+    }
 }

@@ -5,20 +5,50 @@ import BreadCrumb from '../components/elements/BreadCrumb';
 import Steps from '../components/content/Steps';
 import { useSelector } from 'react-redux';
 import headerScriptData from '../data/HeaderScript';
-
-const steps = [
-  { title: 'Create a HubSpot form' },
-  { title: 'Copy style tag' },
-  { title: 'You will be redirect to Settings > Content > Pages > Templates' },
-  { title: 'Paste tag inside header' }
-];
+import formService from '../services/formService';
+import toast from 'react-hot-toast';
 
 const InstallScript = () => {
+    const authToken = useSelector(state => state.auth.authToken);
     const userData = useSelector(state => state.user.userData.data);
+
+    const createForm = async () => {
+      console.log("Create form action triggered");
+    
+      try {
+        const hubSpotForms = await formService.getForms(authToken);
+    
+        const existingForm = hubSpotForms.some(
+          (form) => form.name === "Company.info Form"
+        );
+    
+        if (existingForm) {
+          toast.success('HubSpot Form has already been created')
+        } else {
+          const newHubSpotForm = await formService.createForm(authToken);
+
+          if (newHubSpotForm) {
+            toast.success('HubSpot Form successfully created!');
+          } else {
+            toast.error('HubSpot Form could not be created, please contact an admin');
+          }
+        }
+      } catch (error) {
+        console.error("Error fetching HubSpot forms:", error);
+      }
+    };
+
+    const steps = [
+      { title: 'Create a HubSpot form', onClick: createForm },
+      { title: 'Copy style tags, you will be redirected to your Website Pages' },
+      { title: 'Create new website page or choose existing page' },
+      { title: 'Select and add the newly created form' },
+      { title: 'Go to settings > Advanced > Head HTML' },
+      { title: 'Paste tags inside header' }
+    ];
 
     const copyHeaderScript = async () => {
       const headerScript = headerScriptData;
-      
       await navigator.clipboard.writeText(headerScript);
     }
 
@@ -42,7 +72,7 @@ const InstallScript = () => {
                         <p className='v-install-script__content-text'>
                         Enrich your target audience by creating a HubSpot form and embedding it on your website. Once set up, this form allows you to gather valuable information from visitors, helping you understand and engage with your audience more effectively.
                         </p>
-                        <Button title='Copy tags' style='tertiary' link={`https://app-eu1.hubspot.com/settings/${userData.hubSpotPortalId}/website/pages/all-domains/page-templates`} newTab='true' icon='Download' animation='move-down' iconStyle='large-margin' onClick={copyHeaderScript}/>
+                        <Button title='Copy tags' style='tertiary' link={`https://app-eu1.hubspot.com/website/${userData.hubSpotPortalId}/pages/site/all`} newTab='true' icon='Download' animation='move-down' iconStyle='large-margin' onClick={copyHeaderScript}/>
                     </div>
 
                     <div className='v-install-script__content-right'>

@@ -59,26 +59,31 @@ const defaultFormData = {
             "useDefaultBlockList": false
           }
         },
-        {
-          name: 'company',
-          label: 'Trade name',
-          fieldType: 'single_line_text',
-          type: 'string',
-          required: true,
-          objectTypeId: '0-1',
-          validation: {
-            "blockedEmailDomains": [],
-            "useDefaultBlockList": false
-          }
-        },
       ],
     },
     {
         groupType: 'default_group',
         fields: [
+          {
+            name: 'email',
+            label: 'Email Address',
+            fieldType: 'email',
+            type: 'string',
+            required: true,
+            objectTypeId: '0-1',
+            validation: {
+              "blockedEmailDomains": [],
+              "useDefaultBlockList": false
+            }
+          },
+        ],
+      },
+    {
+        groupType: 'default_group',
+        fields: [
             {
             name: "dossier_number",
-            label: "Test",
+            label: "Dossier number",
             objectTypeId: "0-2",
             fieldType: "number",
             hidden: true,
@@ -118,6 +123,24 @@ const defaultFormData = {
   },
 };
 
+const getForms = async (authToken) => {
+  setAuthorizationHeader(authToken);
+
+  try {
+    const response = await axios.get(`${BASE_URL}/forms`, defaultFormData, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    return response.data.results;
+  } catch (error) {
+    console.error('Error retrieving forms:', error);
+    const errorMessage = error.response?.data?.message || error.message || 'An error occurred while retrieving forms';
+    throw new Error(errorMessage);
+  }
+};
+
 const createForm = async (authToken) => {
   setAuthorizationHeader(authToken);
 
@@ -138,6 +161,7 @@ const createForm = async (authToken) => {
 
 const formService = {
   createForm,
+  getForms
 };
 
 export default formService;
