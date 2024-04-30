@@ -10,7 +10,6 @@ const SidebarItem = ({ title, icon, link, onClick, testId }) => {
 
   const handleClick = () => {
     if (onClick === 'logout') {
-      console.log('Successfully logged out!');
       toast.success('Successfully logged out!');
       logout();
     }

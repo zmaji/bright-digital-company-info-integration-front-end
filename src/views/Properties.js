@@ -51,7 +51,6 @@ const CompanyDetail = () => {
           setSelectedProperties(initialSelectedProperties);
           }
         } else {
-          console.log('test');
         }
       } catch (error) {
         console.error('Error fetching data:', error);

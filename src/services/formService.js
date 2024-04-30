@@ -127,7 +127,7 @@ const getForms = async (authToken) => {
   setAuthorizationHeader(authToken);
 
   try {
-    const response = await axios.get(`${BASE_URL}/forms`, defaultFormData, {
+    const response = await axios.get(`${BASE_URL}/forms`, {
       headers: {
         'Content-Type': 'application/json',
       },

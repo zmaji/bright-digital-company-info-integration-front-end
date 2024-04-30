@@ -1,6 +1,5 @@
 export const compareProperties = async (currentProperties, propertyFields) => {
   if (!currentProperties || currentProperties.length === 0) {
-    console.log('No existing properties. All fields are considered missing.');
     return propertyFields.map((field) => ({
       name: field.name,
       toSave: true,

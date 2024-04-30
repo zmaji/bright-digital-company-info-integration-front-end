@@ -28,9 +28,6 @@ const getHubSpotProperties = async (authToken, objectType, groupName) => {
 
 const createHubSpotProperties = async (authToken, objectType, missingProperties) => {
   await setAuthorizationHeader(authToken);
-
-  console.log('missing properties controller')
-  console.log(missingProperties)
   
   try {
     const response = await axios.post(`${BASE_URL}/properties/hubspot`, {

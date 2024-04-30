@@ -6,6 +6,7 @@ import Steps from '../components/content/Steps';
 import { useSelector } from 'react-redux';
 import headerScriptData from '../data/HeaderScript';
 import formService from '../services/formService';
+import fileService from '../services/fileService';
 import toast from 'react-hot-toast';
 
 const InstallScript = () => {
@@ -38,8 +39,93 @@ const InstallScript = () => {
       }
     };
 
+    const createFiles = async () => {    
+      try {
+        const hubSpotFiles = await fileService.getFiles(authToken);
+
+        console.log(hubSpotFiles);
+
+        if (hubSpotFiles.length > 0) {
+          const hasFormScript = hubSpotFiles.some(file => file.name === 'FormScript');
+
+          if (!hasFormScript) {
+            const hubSpotScriptFile = await fileService.createFile(authToken, 'FormScript.js');
+
+            if (hubSpotScriptFile) {
+              toast.success('Script file has been succesfully created');
+            } else {
+              toast.error('Something went wrong creating a file, please contact an admin');
+            }
+          }
+
+          const hasStyleScript = hubSpotFiles.some(file => file.name === 'StyleScript');
+
+          if (!hasStyleScript) {
+            const hasStyleScript = await fileService.createFile(authToken, 'StyleScript.css');
+
+            if (hasStyleScript) {
+              toast.success('Script file has been succesfully created');
+            } else {
+              toast.error('Something went wrong creating a file, please contact an admin');
+            }
+          }
+        } else {
+          const hubSpotScriptFile = await fileService.createFile(authToken, 'FormScript.js');
+
+          if (hubSpotScriptFile) {
+            const hubSpotStyleScript = await fileService.createFile(authToken, 'StyleScript.css');
+
+            if (hubSpotStyleScript) {
+              toast.success('All Scripts have been succesfully created');
+            } else {
+              toast.error('Something went wrong creating a file, please contact an admin');
+            }
+          } else {
+            toast.error('Something went wrong creating a file, please contact an admin');
+          }
+        }
+    
+        // const scriptFile = hubSpotFiles.some(
+        //   (file) => file.name === "Company.info file"
+        // );
+
+        // const styleFile = hubSpotFiles.some(
+        //   (file) => file.name === "Company.info file"
+        // );
+    
+        // if (existingFile) {
+        //   toast.success('HubSpot file has already been created')
+        // } else {
+        //   const scriptFile = await fileService.createFile(authToken, 'FormScript.js');
+
+        //   if (scriptFile) {
+
+        //   } else {
+
+        //   }
+
+        //   const styleFile = await fileService.createFile(authToken, 'FormStyle.css');
+
+        //   if (styleFile) {
+
+        //   } else {
+
+        //   }
+
+        //   if (scriptFile && styleFile) {
+        //     toast.success('HubSpot files successfully created!');
+        //   } else {
+        //     toast.error('HubSpot files could not be created, please contact an admin');
+        //   }
+        // }
+      } catch (error) {
+        console.error("Error fetching HubSpot files:", error);
+      }
+    };
+
     const steps = [
       { title: 'Create a HubSpot form', onClick: createForm },
+      { title: 'Create HubSpot files', onClick: createFiles },
       { title: 'Copy style tags, you will be redirected to your Website Pages' },
       { title: 'Create new website page or choose existing page' },
       { title: 'Select and add the newly created form' },
