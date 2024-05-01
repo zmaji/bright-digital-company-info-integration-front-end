@@ -46,7 +46,7 @@ const ThankYou = () => {
 
                     <h1 className='v-thank-you__content-title'>Thank you!</h1>
 
-                    <p className='v-thank-you__content-text'>Lorem ipsum dolor sit amet, consectetur adipiscing. Ut enim ad minim veniam</p>
+                    <p className='v-thank-you__content-text'>Please continue take use of all the app's features for the best experience.</p>
 
                     <Button title='Continue' style='primary' onClick={updateUser} icon='ArrowRight' animation='move-right' variable={hubSpotPortalId}/>
                   </div>
