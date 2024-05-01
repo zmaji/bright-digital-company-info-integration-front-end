@@ -19,16 +19,17 @@ const Profile = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editContext, setEditContext] = useState(null);
 
+
   const obscurePassword = (password) => {
     return '*'.repeat(password.length);
   };
 
-  const firstName = userData ? userData.firstName : '';
-  const lastName = userData ? userData.lastName : '';
-  const emailAddress = userData ? userData.emailAddress : '';
-  const domain = userData ? userData.domain : '';
-  const companyInfoUserName = userData ? userData.companyInfoUserName : '';
-  const companyInfoPassword = userData ? obscurePassword(userData.companyInfoPassword) : '';
+  const firstName = userData?.firstName ? userData.firstName : '';
+  const lastName = userData?.lastname ? userData.lastName : '';
+  const emailAddress = userData?.emailAddress ? userData.emailAddress : '';
+  const domain = userData?.domain ? userData.domain : '';
+  const companyInfoUserName = userData?.companyInfoUserName ? userData.companyInfoUserName : '';
+  const companyInfoPassword = userData?.companyInfoPassword ? obscurePassword(userData.companyInfoPassword) : '';
 
   const openModal = (title, editableValue) => {
     setEditContext({ title, editableValue });
