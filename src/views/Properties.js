@@ -133,6 +133,12 @@ const CompanyDetail = () => {
 
         const deletedProperties = await Promise.all(deletionPromises);
 
+        deletedProperties.forEach((result) => {
+          if (result === undefined) {
+            toast.error('Could not delete property that is currently in use');
+          }
+        });
+
         if (deletedProperties) {
           toast.success('Successfully deleted hubspot properties');
         } else {
