@@ -21,9 +21,9 @@ const HubspotSticker = ( ) => {
             </div>
 
             <div className='c-hubspot-sticker__button-container'>
-                <Link to='https://ecosystem.hubspot.com/marketplace/solutions/bright-digital' className='c-hubspot-sticker__button u-flex u-flex-v-center'>
+                <Link to='https://ecosystem.hubspot.com/marketplace/solutions/bright-digital' className='c-hubspot-sticker__button u-flex u-flex-v-center' target="_blank" rel="noopener_noreferrer">
                     <span className='c-hubspot-sticker__button-title'>
-                        Bekijk alle reviews
+                        Show all reviews
                     </span>
                 </Link>
             </div>
