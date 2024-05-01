@@ -1,13 +1,52 @@
-import React from 'react';
+import React, { useState } from 'react';
 import DefaultLayout from '../components/layout/DefaultLayout';
 import Button from '../components/elements/Button';
 import BreadCrumb from '../components/elements/BreadCrumb';
 import Cards from '../components/content/Cards';
 import enrichCardsData from '../data/EnrichCards';
 import { useSelector } from 'react-redux';
+import Modal from '../components/elements/Modal';
 
 const EnrichData = () => {
     const userData = useSelector(state => state.user.userData.data);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const openModal = (searchTerm) => {
+      setIsModalOpen(true);
+    };
+
+    const handleModalConfirm = () => {
+      setIsModalOpen(false);
+    };
+  
+    const handleModalCancel = () => {
+      setIsModalOpen(false);
+    };
+
+    const renderButton = () => {
+      if (userData && userData.companyInfoUserName && userData.companyInfoPassword) {
+        return (
+          <Button
+            title="Go to HubSpot"
+            style="primary"
+            newTab="true"
+            link={`https://app-eu1.hubspot.com/contacts/${userData.hubSpotPortalId}/objects/0-2/views/all/list`}
+            icon="ArrowRight"
+            animation="move-right"
+          />
+        );
+      } else {  
+        return (
+          <Button
+            title="Go to HubSpot"
+            style="primary"
+            icon="ArrowRight"
+            animation="move-right"
+            onClick={openModal}
+          />
+        );
+      }
+    };
 
     return (
         <div className='v-enrich-data'>
@@ -35,9 +74,18 @@ const EnrichData = () => {
                       <Cards cardData={enrichCardsData} customStyles={['c-cards--flex']} />
                     </div>
 
-                    <Button title='Go to HubSpot' style='primary' link={`https://app-eu1.hubspot.com/contacts/${userData.hubSpotPortalId}/objects/0-2/views/all/list`} newTab='true' icon='ArrowRight' animation='move-right'/>
+                   {renderButton()}
                   </div>
                 </div>
+
+                <Modal
+                  isOpen={isModalOpen}
+                  onRequestClose={handleModalCancel}
+                  title='This action uses Company.info credits'
+                  content='Please navigate to your profile page and enter your Company.info username and password'
+                  onConfirm={handleModalConfirm}
+                  onCancel={handleModalCancel}
+              />
             </DefaultLayout>
         </div>
     );
