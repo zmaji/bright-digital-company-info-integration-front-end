@@ -19,17 +19,18 @@ const Profile = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editContext, setEditContext] = useState(null);
 
-
   const obscurePassword = (password) => {
     return '*'.repeat(password.length);
   };
 
   const firstName = userData?.firstName ? userData.firstName : '';
-  const lastName = userData?.lastname ? userData.lastName : '';
+  const lastName = userData?.lastName ? userData.lastName : '';
   const emailAddress = userData?.emailAddress ? userData.emailAddress : '';
   const domain = userData?.domain ? userData.domain : '';
   const companyInfoUserName = userData?.companyInfoUserName ? userData.companyInfoUserName : '';
   const companyInfoPassword = userData?.companyInfoPassword ? obscurePassword(userData.companyInfoPassword) : '';
+
+  console.log(lastName)
 
   const openModal = (title, editableValue) => {
     setEditContext({ title, editableValue });
@@ -121,8 +122,7 @@ const Profile = () => {
                       </h1>
 
                       <p className='v-profile__content-container__inner__text'>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                        Suspendisse varius enim in eros.
+                      This is where you manage your personal information. To fully utilize the app's features, please enter your Company.info credentials.
                       </p>
 
                       <Table data={profileData} />
