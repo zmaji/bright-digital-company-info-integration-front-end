@@ -122,18 +122,17 @@ const Register = () => {
                         <Label text='Repeat password' />
                         <Input type="password" name="repeatPassword" value={repeatPassword} onChange={handleRepeatPasswordChange} validationError={validationErrors.repeatPassword} technicalError={error} />
 
-                        <div className="v-register-content__form-bar">
-                            <div className="v-register-content__remember-me u-flex u-flex-v-center">
-                                {/* <Input type="checkbox" name='termsAndConditions' value={termsAndConditions} onChange={handleTermsAndConditionsChange} validationError={validationErrors.termsAndConditions}/> */}
-                                <Input type="checkbox" name='termsAndConditions' value={termsAndConditions} validationError={validationErrors.termsAndConditions}/>
-                                <span className='v-register-content__p-small'>
+                        {/* <div className="v-register-content__form-bar">
+                            <div className="v-register-content__remember-me u-flex u-flex-v-center"> */}
+                                {/* <Input type="checkbox" name='termsAndConditions' value={termsAndConditions} validationError={validationErrors.termsAndConditions}/> */}
+                                {/* <span className='v-register-content__p-small'>
                                     By signing up I agree with the&nbsp;
                                     <Link to='/' className='v-register-content__sign-up--underline'>
                                         terms & conditions
                                     </Link>
-                                </span>
-                            </div>
-                        </div>
+                                </span> */}
+                            {/* </div>
+                        </div> */}
                     </Form>
 
                     <Button title='Sign up' style='primary_submit' icon='ArrowRight' animation='move-right' onClick={handleSignUp}/>
