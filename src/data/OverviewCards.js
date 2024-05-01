@@ -6,7 +6,7 @@ const overviewCardsData = [
       button: {
         title: 'Start now',
         style: 'tertiary',
-        link: '/install-script',
+        link: '/enrich-audience',
         icon: 'ArrowRight',
         animation: 'move-right'
       }
@@ -18,7 +18,7 @@ const overviewCardsData = [
       button: {
         title: 'Start now',
         style: 'tertiary',
-        link: '/enrich-data',
+        link: '/enrich-company',
         icon: 'ArrowRight',
         animation: 'move-right'
       }
