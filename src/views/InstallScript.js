@@ -107,10 +107,6 @@ const InstallScript = () => {
       await navigator.clipboard.writeText(headerScript);
     }
 
-    const scriptStyles = {
-      fontSize: '16px',
-    }
-
     return (
         <div className='v-install-script'>
             <DefaultLayout>
