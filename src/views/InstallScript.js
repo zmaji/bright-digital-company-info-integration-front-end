@@ -8,10 +8,12 @@ import generateHeaderScript from '../data/HeaderScript';
 import formService from '../services/formService';
 import fileService from '../services/fileService';
 import toast from 'react-hot-toast';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 
 const InstallScript = () => {
     const authToken = useSelector(state => state.auth.authToken);
     const userData = useSelector(state => state.user.userData.data);
+    const headerScript = generateHeaderScript(userData.hubSpotPortalId);
 
     const createForm = async () => {
       try {
@@ -102,8 +104,11 @@ const InstallScript = () => {
     ];
 
     const copyHeaderScript = async () => {
-      const headerScript = generateHeaderScript(userData.hubSpotPortalId);
       await navigator.clipboard.writeText(headerScript);
+    }
+
+    const scriptStyles = {
+      fontSize: '16px',
     }
 
     return (
@@ -126,7 +131,14 @@ const InstallScript = () => {
                         <p className='v-install-script__content-text'>
                         Enrich your target audience by creating a HubSpot form and embedding it on your website. Once set up, this form allows you to gather valuable information from visitors, helping you understand and engage with your audience more effectively.
                         </p>
-                        <Button title='Copy tags' style='tertiary' link={`https://app-eu1.hubspot.com/website/${userData.hubSpotPortalId}/pages/site/all`} newTab='true' icon='Download' animation='move-down' iconStyle='large-margin' onClick={copyHeaderScript}/>
+                        
+                        <div className="v-install-script__code-block">
+                          <SyntaxHighlighter language="html">
+                              {headerScript}
+                          </SyntaxHighlighter>
+                        </div>
+
+                        <Button title='Copy' style='tertiary' link={`https://app-eu1.hubspot.com/website/${userData.hubSpotPortalId}/pages/site/all`} newTab='true' icon='Download' animation='move-down' iconStyle='large-margin' onClick={copyHeaderScript}/>
                     </div>
 
                     <div className='v-install-script__content-right'>
