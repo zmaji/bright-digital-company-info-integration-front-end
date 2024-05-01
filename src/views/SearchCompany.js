@@ -78,13 +78,13 @@ const SearchCompany = () => {
 
                         <SearchBar onSearch={openModal} />
 
-                        <p className='v-search-company__content-terms'>
+                        {/* <p className='v-search-company__content-terms'>
                           By searching you agree with the&nbsp;
                           
                           <Link to='/' className='v-search-company__content-terms-link'>
                             terms & conditions
                           </Link>
-                        </p>
+                        </p> */}
                       </div>
                     </div>
 

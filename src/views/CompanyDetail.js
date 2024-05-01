@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import DefaultLayout from '../components/layout/DefaultLayout';
 import BreadCrumb from '../components/elements/BreadCrumb';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import companyService from '../services/companyService';
 import Button from '../components/elements/Button';
 import toast from 'react-hot-toast';
@@ -10,79 +10,19 @@ import removeEmptyStrings from '../helpers/cleanObject';
 
 const CompanyDetail = () => {
     const location = useLocation();
+    const navigation = useNavigate();
     const authToken = useSelector(state => state.auth.authToken);
+    const userData = useSelector(state => state.user.userData.data);
     const [companyData, setCompanyData] = useState(null);
     const [cleanCompanyData, setCleanCompanyData] = useState(null);
     const [visibleItemCount, setVisibleItemCount] = useState(6);
   
     useEffect(() => {
         const fetchData = async () => {
-            // if (location && location.search) {
+            if (location && location.search) {
                 const searchParams = new URLSearchParams(location.search);
                 const dossierNumber = searchParams.get('dossierNumber');
-                // const company = await companyService.getCompany(dossierNumber);
-
-                const company = {
-                    assets: 867308,
-                    authorized_share_capital: "",
-                    authorized_share_capital_currency: "EUR",
-                    city_correspondence_address: "Apeldoorn",
-                    city_country: "",
-                    city_establishment_address: "Apeldoorn",
-                    continuation_date: "",
-                    correspondence_address: "Vosselmanstraat 300 7311VV Apeldoorn",
-                    country_correspondence_address: "Nederland",
-                    country_establishment_address: "Nederland",
-                    discontinuation_date: "",
-                    domain_name: "www.brightdigital.nl",
-                    dossier_number: 62801406,
-                    establishment_address: "Vosselmanstraat 300 7311VV Apeldoorn",
-                    establishment_date: "2015-03-05",
-                    establishment_number: 31778321,
-                    founder: "",
-                    founding_date: "2015-03-05",
-                    house_number_addition_correspondence_address: "",
-                    house_number_addition_establishment_address: "",
-                    house_number_and_addition: "",
-                    house_number_correspondence_address: 300,
-                    house_number_establishment_address: "300",
-                    indication_bankruptcy: "",
-                    indication_insolvency: "",
-                    indication_insolvency_number_description_date: "",
-                    indication_organisation_code: "O",
-                    industry_companyinfo: "",
-                    issued_share_capital: 1000,
-                    issued_share_capital_currency: "EUR",
-                    legal_form_code: 41,
-                    // legal_name: "Bright Digital B.V.",
-                    main_establishment_number: 85840408,
-                    main_establishment_number_direct: 91231779,
-                    mobile_number: "06 43218079",
-                    number_of_establishments: "",
-                    paid_up_share_capital: 1000,
-                    paid_up_share_capital_currency: "EUR",
-                    personnel_annual_reports: "",
-                    personnel_kvk: 16,
-                    postal_code: "",
-                    postalcode_correspondence_address: "7311VV",
-                    postalcode_establishment_address: "7311VV",
-                    primary_sbi_code: 7311,
-                    primary_sbi_code_text: "Reclamebureaus",
-                    profit: "",
-                    profit_currency: "",
-                    revenue: "",
-                    revenue_currency: "",
-                    rsin_number: "854962657",
-                    sbi_code_description: "",
-                    secondary_sbi_code2: "",
-                    street: "",
-                    street_correspondence_address: "Vosselmanstraat",
-                    street_establishment_address: "Vosselmanstraat",
-                    telephone_number: "",
-                    trade_name: "Bright Digital B.V.",
-                    trade_name_full: "Bright Digital B.V.",
-                    ws_indication_economically_active: "",
-                  };
+                const company = await companyService.getCompany(dossierNumber);
 
                 const cleanedData = await removeEmptyStrings(company);
 
@@ -93,7 +33,7 @@ const CompanyDetail = () => {
                     toast.error('Something went wrong, please contact an admin');
                 }
             }
-        // };
+        };
         fetchData();
     }, [location.search]);
 
@@ -133,6 +73,7 @@ const CompanyDetail = () => {
 
                   if (updatedCompany) {
                     toast.success('Successfully updated company');
+                    window.open(`https://app-eu1.hubspot.com/contacts/${userData.hubSpotPortalId}/objects/0-2/views/all/list`, '_blank');
                   } else {
                     toast.error('Could not update company, please contact an admin');
                   }
@@ -141,6 +82,7 @@ const CompanyDetail = () => {
 
                   if (newCompany) {
                     toast.success('Successfully created company');
+                    window.open(`https://app-eu1.hubspot.com/contacts/${userData.hubSpotPortalId}/objects/0-2/views/all/list`, '_blank');
                   } else {
                     toast.error('Could not create company, please contact an admin');
                   }
