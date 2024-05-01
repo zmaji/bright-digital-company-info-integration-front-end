@@ -108,7 +108,7 @@ const DashboardOverview = () => {
 
   const modalText = missingProperties.length === propertyFields.length
     ? 'This action will create all default properties'
-    : 'This action will reset all default properties, recreating missing ones';
+    : 'This action will reset all default properties. However, values referencing existing properties will not be deleted.';
     
   return (
     <div className='v-dashboard-overview'>
