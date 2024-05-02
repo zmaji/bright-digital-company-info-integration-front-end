@@ -1,33 +1,22 @@
-import React, { useState } from 'react';
-import Button from '../elements/Button'
+import React from 'react';
+import { render, fireEvent } from '@testing-library/react';
+import ActivateBar from '../../../../components/content/ActivateBar'; 
 
-const ActivateBar = ({ onSubmit }) => {
-  const [activationCode, setActivationCode] = useState('');
+describe('ActivateBar Component', () => {
+  it('should update activation code on input change and call onSubmit with the correct value on button click', () => {
+    const mockOnSubmit = jest.fn(); 
 
-  const handleChange = (e) => {
-    setActivationCode(e.target.value);
-  };
+    const { getByPlaceholderText, getByTestId } = render(<ActivateBar onSubmit={mockOnSubmit} />);
 
-  const handleSubmit = () => {
-    onSubmit(activationCode);
-  };
+    const inputElement = getByPlaceholderText('Activation code'); 
+    const buttonElement = getByTestId('button-component');
 
-  return (
-    <div className="c-activation-bar">
-        <form className="c-activation-bar__container">
-        <input
-            type="search"
-            placeholder="Activation code"
-            value={activationCode}
-            onChange={handleChange}
-            className="c-activation-bar__input"
-        />
-        <div className="c-activation-bar__button-container">
-            <Button title='Activate' style='primary_search' icon='Plus' animation='move-right' customStyle='medium' onClick={handleSubmit} className='c-activation-bar__button'/>
-        </div>
-        </form>
-    </div>
-  );
-};
+    fireEvent.change(inputElement, { target: { value: '12345' } });
 
-export default ActivateBar;
+    fireEvent.click(buttonElement);
+
+    expect(inputElement.value).toBe('12345');
+
+    expect(mockOnSubmit).toHaveBeenCalledWith('12345');
+  });
+});
