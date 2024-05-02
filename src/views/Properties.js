@@ -22,7 +22,10 @@ const CompanyDetail = () => {
     const fetchData = async () => {
       try {
         const allProps = await generatePropertyFields();
-        setAllProperties(allProps);
+        const updatedProps = allProps.filter(
+          (property) => property.name !== "dossier_number"
+        );
+        setAllProperties(updatedProps);
 
         const currentHubSpotProperties = await propertyService.getHubSpotProperties(authToken, 'company', 'company_info_integration');
 
