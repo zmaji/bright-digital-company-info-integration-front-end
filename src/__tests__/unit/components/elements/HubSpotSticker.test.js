@@ -20,10 +20,10 @@ describe('HubspotSticker Component', () => {
     const ratingTitle = getByText('5/5');
     expect(ratingTitle).toBeInTheDocument();
 
-    const buttonTitle = getByText('Bekijk alle reviews');
+    const buttonTitle = getByText('Show all reviews');
     expect(buttonTitle).toBeInTheDocument();
 
-    const buttonLink = getByText('Bekijk alle reviews').closest('a');
+    const buttonLink = getByText('Show all reviews').closest('a');
     expect(buttonLink).toHaveAttribute('href', 'https://ecosystem.hubspot.com/marketplace/solutions/bright-digital');
   });
 });
