@@ -240,12 +240,12 @@ const CompanyDetail = () => {
             <div className="v-properties__titles-container u-flex">
               <div className="v-properties__hubspot-property-title-container">
                 <div className="v-properties__hubspot-properties-title">HubSpot property name</div>
-                <div class="v-properties__line"></div>
+                <div className="v-properties__line"></div>
               </div>
 
               <div className="v-properties__company-info-property-title-container">
-                <div class="v-properties__company-info-properties-title">Company.info property name</div>
-                <div class="v-properties__line"></div>
+                <div className="v-properties__company-info-properties-title">Company.info property name</div>
+                <div className="v-properties__line"></div>
               </div>
             </div>
 
