@@ -4,10 +4,9 @@ import Button from '../components/elements/Button';
 import HubSpotLogo from '../icons/hubspot-logo-v2.svg';
 import SyncIcon from '../icons/sync.svg';
 import CompanyInfoLogo from '../icons/company-info-logo.svg';
-import { useSelector } from 'react-redux';
 
-const baseUrl = process.env.BACK_END_BASE_URL;
-const installUrl = baseUrl + '/install';
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+const installUrl = BASE_URL + '/install';
 
 const Install = () => {
     return (
