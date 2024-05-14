@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import LogoRow from '../../../../components/elements/LogoRow'
+import LogoRow from '../../../../components/Elements/LogoRow'
 import logoRowData from '../../../../data/DefaultLogoRow';
 
 describe('LogoRow Component', () => {

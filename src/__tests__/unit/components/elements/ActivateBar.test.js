@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import ActivateBar from '../../../../components/elements/ActivateBar'; 
+import ActivateBar from '../../../../components/Elements/ActivateBar'; 
 import { MemoryRouter } from 'react-router-dom';
 
 describe('ActivateBar Component', () => {

@@ -1,6 +1,6 @@
 
 import React from 'react';
-import Button from '../elements/Button';
+import Button from '../Elements/Button';
 
 const SearchRow = ({ name, address, location, button }) => {    
   return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import SearchRow from '../elements/SearchRow';
+import SearchRow from '../Elements/SearchRow';
 
 const ResultTable = ({ data }) => {
     return (

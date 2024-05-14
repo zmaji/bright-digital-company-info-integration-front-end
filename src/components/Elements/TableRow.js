@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import Button from '../elements/Button';
+import Button from '../Elements/Button';
 
 const TableRow = ({ title, value, button }) => {
   const [editableValue, setEditableValue] = useState(value);

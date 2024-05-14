@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import Button from '../../../../components/elements/Button';
+import Button from '../../../../components/Elements/Button';
 
 describe('Button Component', () => {
   it('renders button with correct link, style, and title', () => {

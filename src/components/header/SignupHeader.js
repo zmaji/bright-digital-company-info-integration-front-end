@@ -1,9 +1,9 @@
 import React from 'react';
 import brightDigitalLogo from '../../images/logo-bright-zw.svg';
-import HubspotSticker from '../elements/HubspotSticker';
+import HubspotSticker from '../Elements/HubspotSticker';
 import { Link } from 'react-router-dom';
 
-import Button from '../elements/Button';
+import Button from '../Elements/Button';
 
 const SignupHeader = () => {
     return (

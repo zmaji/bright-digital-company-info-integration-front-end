@@ -1,6 +1,6 @@
 import React from 'react';
 import { retrieveIcon } from '../../helpers/retrieveIcon';
-import Button from '../elements/Button';
+import Button from '../Elements/Button';
 
 const Card = ({ step, icon, title, text, button }) => {
 

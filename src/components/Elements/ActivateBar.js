@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Button from '../elements/Button'
+import Button from '../Elements/Button'
 
 const ActivateBar = ({ onSubmit }) => {
   const [activationCode, setActivationCode] = useState('');

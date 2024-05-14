@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import SearchRow from '../../../../components/elements/SearchRow';
+import SearchRow from '../../../../components/Elements/SearchRow';
 import { MemoryRouter } from 'react-router-dom';
 
 describe('SearchRow Component', () => {

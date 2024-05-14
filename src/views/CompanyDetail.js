@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import DefaultLayout from '../components/layout/DefaultLayout';
-import BreadCrumb from '../components/elements/BreadCrumb';
+import BreadCrumb from '../components/Elements/BreadCrumb';
 import { useLocation, useNavigate } from 'react-router-dom';
 import companyService from '../services/companyService';
-import Button from '../components/elements/Button';
+import Button from '../components/Elements/Button';
 import toast from 'react-hot-toast';
 import { useSelector } from 'react-redux';
 import removeEmptyStrings from '../helpers/cleanObject';

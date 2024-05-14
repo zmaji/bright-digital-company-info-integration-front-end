@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { MemoryRouter, Routes, Route } from 'react-router-dom';
-import BreadCrumb from '../../../../components/elements/BreadCrumb';
+import BreadCrumb from '../../../../components/Elements/BreadCrumb';
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),

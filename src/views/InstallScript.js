@@ -1,7 +1,7 @@
 import React from 'react';
 import DefaultLayout from '../components/layout/DefaultLayout';
-import Button from '../components/elements/Button';
-import BreadCrumb from '../components/elements/BreadCrumb';
+import Button from '../components/Elements/Button';
+import BreadCrumb from '../components/Elements/BreadCrumb';
 import Steps from '../components/content/Steps';
 import { useSelector } from 'react-redux';
 import generateHeaderScript from '../data/HeaderScript';

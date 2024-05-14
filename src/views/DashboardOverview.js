@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import DefaultLayout from '../components/layout/DefaultLayout';
-import Button from '../components/elements/Button';
+import Button from '../components/Elements/Button';
 import Cards from '../components/content/Cards';
 import overviewCardsData from '../data/OverviewCards';
 import groupService from '../services/groupService';
@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
 import propertyService from '../services/propertyService';
 import { generatePropertyFields } from '../helpers/hubSpot/generatePropertyFields';
 import toast from 'react-hot-toast';
-import Modal from '../components/elements/Modal';
+import Modal from '../components/Elements/Modal';
 
 const DashboardOverview = () => {
   const authToken = useSelector((state) => state.auth.authToken);

@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import DefaultLayout from '../components/layout/DefaultLayout';
-import BreadCrumb from '../components/elements/BreadCrumb';
-import Button from '../components/elements/Button';
+import BreadCrumb from '../components/Elements/BreadCrumb';
+import Button from '../components/Elements/Button';
 import toast from 'react-hot-toast';
 import { useSelector } from 'react-redux';
 import propertyService from '../services/propertyService';
 import groupService from '../services/groupService';
 import { generatePropertyFields } from '../helpers/hubSpot/generatePropertyFields';
-import Modal from '../components/elements/Modal';
+import Modal from '../components/Elements/Modal';
 
 const CompanyDetail = () => {
   const authToken = useSelector((state) => state.auth.authToken);

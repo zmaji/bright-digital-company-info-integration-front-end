@@ -1,5 +1,5 @@
 import React from 'react';
-import TableRow from '../elements/TableRow';
+import TableRow from '../Elements/TableRow';
 
 const Table = ({ data }) => {
     return (

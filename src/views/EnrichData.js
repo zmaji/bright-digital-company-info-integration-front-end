@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import DefaultLayout from '../components/layout/DefaultLayout';
-import Button from '../components/elements/Button';
-import BreadCrumb from '../components/elements/BreadCrumb';
+import Button from '../components/Elements/Button';
+import BreadCrumb from '../components/Elements/BreadCrumb';
 import Cards from '../components/content/Cards';
 import enrichCardsData from '../data/EnrichCards';
 import { useSelector } from 'react-redux';
-import Modal from '../components/elements/Modal';
+import Modal from '../components/Elements/Modal';
 
 const EnrichData = () => {
     const userData = useSelector(state => state.user.userData.data);

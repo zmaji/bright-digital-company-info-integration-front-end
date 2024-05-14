@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import HubspotSticker from '../../../../components/elements/HubspotSticker';
+import HubspotSticker from '../../../../components/Elements/HubspotSticker';
 
 describe('HubspotSticker Component', () => {
   it('renders correctly', () => {

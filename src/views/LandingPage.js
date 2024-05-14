@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-import Button from '../components/elements/Button';
+import Button from '../components/Elements/Button';
 import Form from '../components/form/Form';
 import Label from '../components/form/Label'; 
 import Input from '../components/form/Input';
-import HubspotSticker from '../components/elements/HubspotSticker';
-import LogoRow from '../components/elements/LogoRow';
+import HubspotSticker from '../components/Elements/HubspotSticker';
+import LogoRow from '../components/Elements/LogoRow';
 import brightDigitalLogo from '../images/logo-bright-zw.svg';
 import LandingpageBackground from '../images/landingpage-background-image.png';
 import logorowData from '../data/DefaultLogoRow';

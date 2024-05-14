@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import DefaultLayout from '../components/layout/DefaultLayout';
-import BreadCrumb from '../components/elements/BreadCrumb';
+import BreadCrumb from '../components/Elements/BreadCrumb';
 import { Link, useNavigate } from 'react-router-dom';
-import SearchBar from '../components/elements/SearchBar';
+import SearchBar from '../components/Elements/SearchBar';
 import toast from 'react-hot-toast';
 import companyService from '../services/companyService';
 import { useSelector } from 'react-redux';
-import Modal from '../components/elements/Modal';
+import Modal from '../components/Elements/Modal';
 
 const SearchCompany = () => {
     const navigation = useNavigate();

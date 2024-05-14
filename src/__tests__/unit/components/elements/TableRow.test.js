@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import TableRow from '../../../../components/elements/TableRow';
+import TableRow from '../../../../components/Elements/TableRow';
 
 describe('TableRow Component', () => {
   it('renders table row with given props', () => {

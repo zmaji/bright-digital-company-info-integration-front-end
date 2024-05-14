@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import DefaultLayout from '../components/layout/DefaultLayout';
-import BreadCrumb from '../components/elements/BreadCrumb';
+import BreadCrumb from '../components/Elements/BreadCrumb';
 import Table from '../components/content/Table';
 import { useSelector } from 'react-redux';
 import profileIcon from '../icons/profile.svg';
@@ -8,7 +8,7 @@ import userService from '../services/userService';
 import { setUserData } from '../store/userSlice';
 import { useDispatch } from 'react-redux';
 import toast from 'react-hot-toast';
-import Modal from '../components/elements/Modal';
+import Modal from '../components/Elements/Modal';
 
 const Profile = () => {
   const userData = useSelector(state => state.user.userData.data);

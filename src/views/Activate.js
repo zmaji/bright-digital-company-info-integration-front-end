@@ -6,7 +6,7 @@ import toast from 'react-hot-toast';
 import checkIcon from '../icons/check-solid.svg'
 import mailIcon from '../icons/envelope-regular.svg'
 import smileIcon from '../icons/face-smile-regular.svg'
-import ActivateBar from '../components/elements/ActivateBar';
+import ActivateBar from '../components/Elements/ActivateBar';
 
 const Activate = () => {
   const handleVerifyActivationCode = async (activationCode) => {

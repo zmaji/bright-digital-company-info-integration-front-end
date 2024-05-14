@@ -1,6 +1,6 @@
 import React from 'react';
 import Modal from 'react-modal';
-import Button from '../elements/Button';
+import Button from '../Elements/Button';
 
 const defaultModalStyles = {
   overlay: {

@@ -1,6 +1,6 @@
 import React from 'react';
 import SignupHeader from '../components/header/SignupHeader';
-import Button from '../components/elements/Button';
+import Button from '../components/Elements/Button';
 import HubSpotLogo from '../icons/hubspot-logo-v2.svg';
 import SyncIcon from '../icons/sync.svg';
 import CompanyInfoLogo from '../icons/company-info-logo.svg';
