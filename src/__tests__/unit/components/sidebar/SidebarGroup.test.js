@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom'; 
-import SidebarGroup from '../../../../components/sidebar/SidebarGroup';
+import SidebarGroup from '../../../../components/Sidebar/SidebarGroup';
 import { Provider } from 'react-redux'; 
 
 const mockStore = {

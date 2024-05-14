@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import SidebarCategory from '../../../../components/sidebar/SidebarCategory';
+import SidebarCategory from '../../../../components/Sidebar/SidebarCategory';
 
 describe('SidebarCategory Component', () => {
   it('renders the category title correctly', () => {

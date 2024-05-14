@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import SidebarItem from '../../../../components/sidebar/SidebarItem';
+import SidebarItem from '../../../../components/Sidebar/SidebarItem';
 import { MemoryRouter } from 'react-router-dom'; 
 import { Provider } from 'react-redux'; 
 
