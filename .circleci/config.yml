@@ -22,7 +22,7 @@ jobs:
           if [ "${CIRCLE_BRANCH}" == "acceptance" ]; then
             touch ~/repo/.env
             echo "NODE_ENV=staging" >> ~/repo/.env
-            echo "REACT_APP_BASE_URL=https://company-info-bright-c6c99ec34e11.herokuapp.com/" >> ~/repo/.env
+            echo "REACT_APP_BASE_URL=https://company-info-bright-c6c99ec34e11.herokuapp.com" >> ~/repo/.env
           fi
 
       # Download and cache dependencies
