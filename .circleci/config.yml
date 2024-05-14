@@ -38,8 +38,9 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
+      - run: npm run build
       - deploy:
           command: |
             if [ "${CIRCLE_BRANCH}" == "acceptance" ]; then
-              rsync -avz -e "ssh -o 'StrictHostKeyChecking no'" ~/repo/* webdev@87.233.181.243:/data/www/companyinfo.brightdigital.dev/public_html/ --delete
+              rsync -avz -e "ssh -o 'StrictHostKeyChecking no'" ~/repo/build* webdev@87.233.181.243:/data/www/companyinfo.brightdigital.dev/public_html/ --delete
             fi
