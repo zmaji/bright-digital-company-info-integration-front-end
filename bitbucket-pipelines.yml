@@ -25,7 +25,7 @@ pipelines:
 
       - step:
           name: Tests
-          script:
+          script:sdsd
             - npm run test
           caches:
             - node
