@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import DefaultLayout from '../../../../components/layout/DefaultLayout';
+import DefaultLayout from '../../../../components/Layout/DefaultLayout';
 import { Provider } from 'react-redux'; 
 import { MemoryRouter } from 'react-router-dom';
 

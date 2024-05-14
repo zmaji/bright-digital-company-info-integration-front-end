@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import DefaultLayout from '../components/layout/DefaultLayout';
+import DefaultLayout from '../components/Layout/DefaultLayout';
 import BreadCrumb from '../components/Elements/BreadCrumb';
 import Table from '../components/content/Table';
 import { useSelector } from 'react-redux';

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import DefaultLayout from '../components/layout/DefaultLayout';
+import DefaultLayout from '../components/Layout/DefaultLayout';
 import Button from '../components/Elements/Button';
 import BreadCrumb from '../components/Elements/BreadCrumb';
 import Cards from '../components/content/Cards';

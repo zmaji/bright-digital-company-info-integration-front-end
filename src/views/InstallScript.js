@@ -1,5 +1,5 @@
 import React from 'react';
-import DefaultLayout from '../components/layout/DefaultLayout';
+import DefaultLayout from '../components/Layout/DefaultLayout';
 import Button from '../components/Elements/Button';
 import BreadCrumb from '../components/Elements/BreadCrumb';
 import Steps from '../components/content/Steps';

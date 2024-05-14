@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import DefaultLayout from '../components/layout/DefaultLayout';
+import DefaultLayout from '../components/Layout/DefaultLayout';
 import BreadCrumb from '../components/Elements/BreadCrumb';
 import { Link, useNavigate } from 'react-router-dom';
 import SearchBar from '../components/Elements/SearchBar';

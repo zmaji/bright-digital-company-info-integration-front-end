@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import DefaultLayout from '../components/layout/DefaultLayout';
+import DefaultLayout from '../components/Layout/DefaultLayout';
 import BreadCrumb from '../components/Elements/BreadCrumb';
 import { useLocation } from 'react-router-dom';
 import ResultTable from '../components/content/ResultTable';
