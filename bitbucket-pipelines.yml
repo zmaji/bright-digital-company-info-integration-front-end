@@ -29,3 +29,18 @@ pipelines:
             - npm run test
           caches:
             - node
+
+    acceptance:
+      - step:
+          name: Build
+          caches:
+            - node
+          script:
+            - npm install
+
+      - step:
+          name: Tests
+          script:
+            - npm run test
+          caches:
+            - node        
