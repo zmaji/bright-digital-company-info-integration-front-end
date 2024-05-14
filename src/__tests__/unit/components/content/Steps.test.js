@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import Steps from '../../../../components/content/Steps';
+import Steps from '../../../../components/Content/Steps';
 
 describe('Steps Component', () => {
   it('renders steps with given props', () => {

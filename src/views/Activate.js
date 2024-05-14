@@ -1,6 +1,6 @@
 import React from 'react';
 import SignupHeader from '../components/header/SignupHeader';
-import HorizontalSteps from '../components/content/HorizontalSteps';
+import HorizontalSteps from '../components/Content/HorizontalSteps';
 import userService from '../services/userService';
 import toast from 'react-hot-toast';
 import checkIcon from '../icons/check-solid.svg'

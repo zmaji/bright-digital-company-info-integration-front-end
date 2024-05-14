@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import DefaultLayout from '../components/Layout/DefaultLayout';
 import BreadCrumb from '../components/Elements/BreadCrumb';
-import Table from '../components/content/Table';
+import Table from '../components/Content/Table';
 import { useSelector } from 'react-redux';
 import profileIcon from '../icons/profile.svg';
 import userService from '../services/userService';

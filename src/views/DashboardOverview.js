@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import DefaultLayout from '../components/Layout/DefaultLayout';
 import Button from '../components/Elements/Button';
-import Cards from '../components/content/Cards';
+import Cards from '../components/Content/Cards';
 import overviewCardsData from '../data/OverviewCards';
 import groupService from '../services/groupService';
 import { useSelector } from 'react-redux';

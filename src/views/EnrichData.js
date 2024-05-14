@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import DefaultLayout from '../components/Layout/DefaultLayout';
 import Button from '../components/Elements/Button';
 import BreadCrumb from '../components/Elements/BreadCrumb';
-import Cards from '../components/content/Cards';
+import Cards from '../components/Content/Cards';
 import enrichCardsData from '../data/EnrichCards';
 import { useSelector } from 'react-redux';
 import Modal from '../components/Elements/Modal';

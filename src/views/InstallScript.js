@@ -2,7 +2,7 @@ import React from 'react';
 import DefaultLayout from '../components/Layout/DefaultLayout';
 import Button from '../components/Elements/Button';
 import BreadCrumb from '../components/Elements/BreadCrumb';
-import Steps from '../components/content/Steps';
+import Steps from '../components/Content/Steps';
 import { useSelector } from 'react-redux';
 import generateHeaderScript from '../data/HeaderScript';
 import formService from '../services/formService';

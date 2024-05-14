@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import Table from '../../../../components/content/Table';
+import Table from '../../../../components/Content/Table';
 
 describe('Table Component', () => {
   it('renders table with given data', () => {

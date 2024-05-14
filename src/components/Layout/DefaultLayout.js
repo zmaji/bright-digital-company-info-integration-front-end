@@ -1,7 +1,7 @@
 import React from 'react';
 import Sidebar from '../Sidebar/Sidebar';
 import sidebarData from '../../data/DefaultSideBar';
-import ContentContainer from '../content/ContentContainer';
+import ContentContainer from '../Content/ContentContainer';
 import DefaultHeader from '../header/DefaultHeader';
 
 const DefaultLayout = ({ padding, children }) => {

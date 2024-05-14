@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import ResultTable from '../../../../components/content/ResultTable';
+import ResultTable from '../../../../components/Content/ResultTable';
 
 describe('ResultTable Component', () => {
   it('renders ResultTable with the correct SearchRow content', () => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import ContentContainer from '../../../../components/content/ContentContainer';
+import ContentContainer from '../../../../components/Content/ContentContainer';
 
 describe('ContentContainer Component', () => {
   it('renders content container with children', () => {
