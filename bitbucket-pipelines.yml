@@ -41,6 +41,6 @@ pipelines:
       - step:
           name: Tests
           script:
-            - npm run test
+            - npm run test:pipeline
           caches:
             - node        
