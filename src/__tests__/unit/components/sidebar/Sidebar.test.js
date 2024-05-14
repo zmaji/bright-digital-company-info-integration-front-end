@@ -3,8 +3,7 @@ import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import Sidebar from '../../../../components/Sidebar/Sidebar';
-import SidebarGroup from '../../../../components/Sidebar/SidebarGroup';
-import sidebarData from '../../../../data/DefaultSideBar';
+import sidebarData from '../../../../data/defaultSideBar';
 
 const mockStore = {
   getState: () => ({}),
