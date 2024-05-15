@@ -11,7 +11,7 @@ const EnrichData = () => {
     const userData = useSelector(state => state.user.userData.data);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const openModal = (searchTerm) => {
+    const openModal = () => {
       setIsModalOpen(true);
     };
 

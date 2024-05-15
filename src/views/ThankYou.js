@@ -3,6 +3,7 @@ import SignupHeader from '../components/header/SignupHeader';
 import Button from '../components/Elements/Button';
 import HubSpotLogo from '../icons/hubspot-logo-v2.svg';
 import SyncIcon from '../icons/sync.svg';
+import { useDispatch } from 'react-redux';
 import CompanyInfoLogo from '../icons/company-info-logo.svg';
 import { useLocation, useNavigate } from 'react-router';
 import userService from '../services/userService';
@@ -10,6 +11,7 @@ import { useSelector } from 'react-redux';
 import toast from 'react-hot-toast';
 
 const ThankYou = () => {
+    const dispatch = useDispatch();
     const location = useLocation();
     const navigate = useNavigate();
     const searchParams = new URLSearchParams(location.search);
@@ -23,6 +25,8 @@ const ThankYou = () => {
     const updateUser = async () => {
         try {
             await userService.updateUser(authToken, updateFields);
+            const currentUser = await userService.getUser(token);
+            dispatch(setUserData(currentUser));
             toast.success('Successfully installed the integration!')
             navigate('/overview');
         } catch (error) {
