@@ -2,7 +2,7 @@ import React from 'react';
 import validIcon from '../../icons/valid.svg';
 import invalidIcon from '../../icons/invalid.svg';
 
-const Input = ({ type, name, value, onChange, style, validationError, emailError, conflictError, technicalError }) => {
+const Input = ({ type, name, value, onChange, style, validationError, emailError, conflictError, technicalError, disabled }) => {
   const hasText = !!value;
 
   const renderIcon = (isValid) => {
@@ -24,6 +24,7 @@ const Input = ({ type, name, value, onChange, style, validationError, emailError
         name={name}
         onChange={onChange}
         value={value}
+        disabled={disabled}
       />
 
       {(validationError || emailError || conflictError || technicalError) && renderIcon(false)}
