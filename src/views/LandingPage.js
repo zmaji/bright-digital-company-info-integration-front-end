@@ -69,18 +69,23 @@ const LandingPage = () => {
                 const currentUser = await userService.getUser(token);
                 dispatch(setUserData(currentUser));
 
-                if (rememberMe) {
-                  localStorage.setItem('rememberMe', 'true');
+                if (currentUser.data.isActive === false) {
+                  toast.error('Please activate your account!')
+                  navigation('/activate');
                 } else {
-                  localStorage.setItem('rememberMe', 'false');
-                }
-                
-                if (currentUser?.data?.hubSpotPortalId) {
-                  navigation('/overview');
-                  toast.success('Successfully logged in!')
-                } else {
-                  navigation('/install');
-                  toast.success('Successfully logged in!')
+                  if (rememberMe) {
+                    localStorage.setItem('rememberMe', 'true');
+                  } else {
+                    localStorage.setItem('rememberMe', 'false');
+                  }
+                  
+                  if (currentUser?.data?.hubSpotPortalId) {
+                    navigation('/overview');
+                    toast.success('Successfully logged in!')
+                  } else {
+                    navigation('/install');
+                    toast.success('Successfully logged in!')
+                  }
                 }
               }
           } else {
