@@ -25,7 +25,7 @@ const ThankYou = () => {
     const updateUser = async () => {
         try {
             await userService.updateUser(authToken, updateFields);
-            const currentUser = await userService.getUser(token);
+            const currentUser = await userService.getUser(authToken);
             dispatch(setUserData(currentUser));
             toast.success('Successfully installed the integration!')
             navigate('/overview');
