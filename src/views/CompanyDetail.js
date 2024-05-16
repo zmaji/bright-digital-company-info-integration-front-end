@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import DefaultLayout from '../components/Layout/DefaultLayout';
 import BreadCrumb from '../components/Elements/BreadCrumb';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import companyService from '../services/companyService';
 import Button from '../components/Elements/Button';
 import toast from 'react-hot-toast';
 import { useSelector } from 'react-redux';
 import removeEmptyStrings from '../helpers/cleanObject';
+import propertyService from '../services/propertyService';
 
 const CompanyDetail = () => {
     const location = useLocation();
-    const navigation = useNavigate();
     const authToken = useSelector(state => state.auth.authToken);
     const userData = useSelector(state => state.user.userData.data);
     const [companyData, setCompanyData] = useState(null);
@@ -46,6 +46,28 @@ const CompanyDetail = () => {
     };
 
     const showSeeMoreButton = cleanCompanyData && Object.keys(cleanCompanyData).length > visibleItemCount;
+
+    const formatResult = async (companyData) => {
+        try {
+          const currentProperties = await propertyService.getProperties(authToken);
+      
+          if (currentProperties) {
+            const filteredCompanyData = Object.keys(companyData)
+              .filter((key) => {
+                const property = currentProperties.find((prop) => prop.name === key);
+                return property && property.toSave;
+              })
+              .reduce((obj, key) => {
+                obj[key] = companyData[key];
+                return obj;
+              }, {});
+
+            return filteredCompanyData;
+          }
+        } catch (error) {
+          console.error('Error fetching properties:', error);
+        }
+      };
     
     const handleSaveCompany = async () => {
         if (companyData) {
@@ -68,8 +90,10 @@ const CompanyDetail = () => {
                   }
                 );
 
+                const formattedCompanyData = await formatResult(companyData);
+
                 if (matchingCompany) {
-                  const updatedCompany = await companyService.updateHubSpotCompany(authToken, matchingCompany.properties.hs_object_id, companyData);
+                  const updatedCompany = await companyService.updateHubSpotCompany(authToken, matchingCompany.properties.hs_object_id, formattedCompanyData);
 
                   if (updatedCompany) {
                     toast.success('Successfully updated company');
@@ -78,7 +102,7 @@ const CompanyDetail = () => {
                     toast.error('Could not update company, please contact an admin');
                   }
                 } else {
-                  const newCompany = await companyService.createHubSpotCompany(authToken, companyData);
+                  const newCompany = await companyService.createHubSpotCompany(authToken, formattedCompanyData);
 
                   if (newCompany) {
                     toast.success('Successfully created company');
