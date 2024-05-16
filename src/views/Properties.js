@@ -165,16 +165,17 @@ const CompanyDetail = () => {
           const createdHubSpotProperty = await propertyService.createHubSpotProperties(authToken, 'company', matchingProperties);
 
           if (createdHubSpotProperty) {
-            toast.success('Successfully created a property');
+            toast.success('Successfully created a HubSpot property');
           } else {
-            toast.error('Successfully deleted hubspot properties');
+            toast.error('Something went wrong, please contact an admin');
           } 
         }
       }
-
       if (propertiesToDelete.length === 0 && propertiesToCreate.length === 0) {
         toast.success('All properties are up-to-date');
       }
+      
+      setDeleteUnselected(false);
     } catch (error) {
       console.error('Error processing properties:', error);
       toast.error('Failed to process properties, please contact an admin');
