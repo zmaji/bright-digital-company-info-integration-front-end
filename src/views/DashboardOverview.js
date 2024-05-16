@@ -53,6 +53,7 @@ const DashboardOverview = () => {
       }
 
       setMissingProperties(missingProperties);
+      window.location.reload(); 
       toast.success('Successfully updated all properties!');
     } catch (error) {
       console.error('Error setting up properties:', error);

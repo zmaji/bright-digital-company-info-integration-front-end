@@ -6,6 +6,7 @@ import SyncIcon from '../icons/sync.svg';
 import { useDispatch } from 'react-redux';
 import CompanyInfoLogo from '../icons/company-info-logo.svg';
 import { useLocation, useNavigate } from 'react-router';
+import { setUserData } from '../store/userSlice';
 import userService from '../services/userService';
 import { useSelector } from 'react-redux';
 import toast from 'react-hot-toast';
