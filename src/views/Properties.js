@@ -83,7 +83,7 @@ const CompanyDetail = () => {
       .join(' ');
   };
 
-  const handleSaveProperties = async () => {
+  const saveSettings = async () => {
     try {
       let group = await groupService.getGroup(authToken, 'company', 'company_info_integration');
 
@@ -180,6 +180,20 @@ const CompanyDetail = () => {
       console.error('Error processing properties:', error);
       toast.error('Failed to process properties, please contact an admin');
     }
+  };
+
+  const handleSaveProperties = () => {
+    toast.promise(
+      saveSettings(),
+      {
+        loading: 'Saving settings..',
+        success: 'Settings successfully saved!',
+        error: 'Failed to save settings..',
+      }
+    ).catch(error => {
+      console.error('Error processing settings:', error);
+      toast.error('Failed to process settings, please contact an admin');
+    });
   };
 
   const handleDeleteUnselectedChange = (e) => {
