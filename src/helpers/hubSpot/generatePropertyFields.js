@@ -638,24 +638,13 @@ export const generatePropertyFields = async () => {
       "formField": true
     },
     {
-      "label": "Branche volgens company.info",
-      "name": "industry_companyinfo",
-      "type": "string",
-      "fieldType": "text",
-      "groupName": "company_info_integration",
-      "hidden": false,
-      "displayOrder": 50,
-      "hasUniqueValue": false,
-      "formField": true
-    },
-    {
       "label": "Aantal werkzame personen, bron: kvk",
       "name": "personnel_kvk",
       "type": "number",
       "fieldType": "number",
       "groupName": "company_info_integration",
       "hidden": false,
-      "displayOrder": 51,
+      "displayOrder": 50,
       "hasUniqueValue": false,
       "formField": true
     },
@@ -666,7 +655,7 @@ export const generatePropertyFields = async () => {
       "fieldType": "number",
       "groupName": "company_info_integration",
       "hidden": false,
-      "displayOrder": 52,
+      "displayOrder": 51,
       "hasUniqueValue": false,
       "formField": true
     },
@@ -677,7 +666,7 @@ export const generatePropertyFields = async () => {
       "fieldType": "number",
       "groupName": "company_info_integration",
       "hidden": false,
-      "displayOrder": 53,
+      "displayOrder": 52,
       "hasUniqueValue": false,
       "formField": true
     },
@@ -688,7 +677,7 @@ export const generatePropertyFields = async () => {
       "fieldType": "text",
       "groupName": "company_info_integration",
       "hidden": false,
-      "displayOrder": 54,
+      "displayOrder": 53,
       "hasUniqueValue": false,
       "formField": true
     },
@@ -699,7 +688,7 @@ export const generatePropertyFields = async () => {
       "fieldType": "number",
       "groupName": "company_info_integration",
       "hidden": false,
-      "displayOrder": 55,
+      "displayOrder": 54,
       "hasUniqueValue": false,
       "formField": true
     },
@@ -710,7 +699,7 @@ export const generatePropertyFields = async () => {
       "fieldType": "text",
       "groupName": "company_info_integration",
       "hidden": false,
-      "displayOrder": 56,
+      "displayOrder": 55,
       "hasUniqueValue": false,
       "formField": true
     },
@@ -721,7 +710,7 @@ export const generatePropertyFields = async () => {
       "fieldType": "number",
       "groupName": "company_info_integration",
       "hidden": false,
-      "displayOrder": 57,
+      "displayOrder": 56,
       "hasUniqueValue": false,
       "formField": true
     },
@@ -732,7 +721,7 @@ export const generatePropertyFields = async () => {
       "fieldType": "text",
       "groupName": "company_info_integration",
       "hidden": false,
-      "displayOrder": 58,
+      "displayOrder": 57,
       "hasUniqueValue": false,
       "formField": true
     },
@@ -743,7 +732,7 @@ export const generatePropertyFields = async () => {
       "fieldType": "number",
       "groupName": "company_info_integration",
       "hidden": false,
-      "displayOrder": 59,
+      "displayOrder": 58,
       "hasUniqueValue": false,
       "formField": true
     },
@@ -754,7 +743,7 @@ export const generatePropertyFields = async () => {
       "fieldType": "text",
       "groupName": "company_info_integration",
       "hidden": false,
-      "displayOrder": 60,
+      "displayOrder": 59,
       "hasUniqueValue": false,
       "formField": true
     },
@@ -765,7 +754,7 @@ export const generatePropertyFields = async () => {
       "fieldType": "number",
       "groupName": "company_info_integration",
       "hidden": false,
-      "displayOrder": 61,
+      "displayOrder": 60,
       "hasUniqueValue": false,
       "formField": true
     },
@@ -776,7 +765,7 @@ export const generatePropertyFields = async () => {
       "fieldType": "text",
       "groupName": "company_info_integration",
       "hidden": false,
-      "displayOrder": 62,
+      "displayOrder": 61,
       "hasUniqueValue": false,
       "formField": true
     },
@@ -787,7 +776,7 @@ export const generatePropertyFields = async () => {
       "fieldType": "number",
       "groupName": "company_info_integration",
       "hidden": false,
-      "displayOrder": 63,
+      "displayOrder": 62,
       "hasUniqueValue": false,
       "formField": true
     },
@@ -798,7 +787,7 @@ export const generatePropertyFields = async () => {
       "fieldType": "text",
       "groupName": "company_info_integration",
       "hidden": false,
-      "displayOrder": 64,
+      "displayOrder": 63,
       "hasUniqueValue": false,
       "formField": true,
     }
