@@ -34,7 +34,7 @@ const SearchCompany = () => {
       setIsModalOpen(false);
     };
 
-    const handleSearch = async (searchTerm) => {
+    const searchCompany = async (searchTerm) => {
         if (searchTerm === '') {
           toast.error('Please enter a valid trade name');
         } else {
@@ -50,6 +50,20 @@ const SearchCompany = () => {
             openModal();
           }
         }
+    };
+
+    const handleSearch = (searchTerm) => {
+      toast.promise(
+        searchCompany(searchTerm),
+        {
+          loading: 'Retrieving results..',
+          success: 'Companies successfully found!',
+          error: 'Failed retrieve results..',
+        }
+      ).catch(error => {
+        console.error('Error processing search results:', error);
+        toast.error('Failed to process search results, please contact an admin');
+      });
     };
 
     const modalTitle = userData && userData.companyInfoUserName && userData.companyInfoPassword ? 'Are you sure?' : 'Missing credentials'
