@@ -16,6 +16,7 @@ const Activate = () => {
     if (result && result.status === 200) {
       localStorage.removeItem('userId');
       toast.success('Successfully activated account');
+      window.location.href = '/';
     } else {
       toast.error('Something went wrong activating your account');
     }
@@ -38,6 +39,9 @@ const Activate = () => {
                 <HorizontalSteps steps={steps} />
               </div>
               <div className="v-activate__content-container u-flex">
+                <div className="v-activate__content-paragraph">
+                  An activation code has been sent to your email address. Please verify your account.
+                </div>
                 <div className="v-activate__content-input">
                   <ActivateBar onSubmit={handleVerifyActivationCode} />
                 </div>
