@@ -31,7 +31,7 @@ const DashboardOverview = () => {
     setIsModalOpen(false);
   };
 
-  const updateProperties = async () => {
+  const handleUpdateProperties = async () => {
     try {
       let group = await groupService.getGroup(authToken, 'company', 'company_info_integration');
       if (!group) {
@@ -53,12 +53,24 @@ const DashboardOverview = () => {
       }
 
       setMissingProperties(missingProperties);
-      window.location.reload(); 
-      toast.success('Successfully updated all properties!');
     } catch (error) {
       console.error('Error setting up properties:', error);
       toast.error('Failed to set up properties. Contact an admin.');
     }
+  };
+
+  const updateProperties = () => {
+    toast.promise(
+      handleUpdateProperties(),
+      {
+        loading: 'Saving settings properties..',
+        success: 'Properties successfully saved!',
+        error: 'Failed to save properties..',
+      }
+    ).catch(error => {
+      console.error('Error processing properties:', error);
+      toast.error('Failed to process properties, please contact an admin');
+    });
   };
 
   useEffect(() => {
