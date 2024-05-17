@@ -30,10 +30,9 @@ const Profile = () => {
   const companyInfoUserName = userData?.companyInfoUserName ? userData.companyInfoUserName : '';
   const companyInfoPassword = userData?.companyInfoPassword ? obscurePassword(userData.companyInfoPassword) : '';
 
-  console.log(lastName)
-
   const openModal = (title, editableValue) => {
-    setEditContext({ title, editableValue });
+    const valueToEdit = title.toLowerCase().includes('password') ? obscurePassword(editableValue) : editableValue;
+    setEditContext({ title, editableValue: valueToEdit });
     setIsModalOpen(true);
   };
 
@@ -59,24 +58,28 @@ const Profile = () => {
       'Company info username': 'companyInfoUserName',
       'Company info password': 'companyInfoPassword'
     };
-
+  
     const fieldName = titleToFieldMap[title];
-
+    const valueToUpdate = title.toLowerCase().includes('password') ? editableValue : editableValue;
+  
     try {
       const updateFields = {
-        [fieldName]: editableValue
-      }
-
+        [fieldName]: valueToUpdate
+      };
+  
       await userService.updateUser(authToken, updateFields);
       const updatedUser = await userService.getUser(authToken);
-
-      if (updateUser) {
+  
+      if (updatedUser) {
         dispatch(setUserData(updatedUser));
-        toast.success(`Successfully updated ${(title.toLowerCase())}!`);
+        toast.success(`Successfully updated ${title.toLowerCase()}!`);
+        if (title.toLowerCase().includes('password')) {
+          setEditContext({ ...editContext, editableValue: obscurePassword(editableValue) });
+        }
       }
     } catch (error) {
       console.error('Error:', error);
-      toast.success('An error occured, please contact an admin')
+      toast.error('An error occurred, please contact an admin');
     }
   };
 
