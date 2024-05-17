@@ -61,31 +61,37 @@ const Register = () => {
     // };
 
     const signUp = async () => {
-      try {
-        const formData = { firstName, lastName, email, password, repeatPassword };
-        const errors = validateForm(formData);
-        
-        if (Object.keys(errors).length === 0) {
-            setIsSubmitting(true);
-            const response = await userService.register(firstName, lastName, email, password);
+      const formData = { firstName, lastName, email, password, repeatPassword };
+      const errors = validateForm(formData);
 
-            if (response.status >= 200 && response.status < 300) {
-                localStorage.setItem('userId', response.data.id); 
-                navigation('/activate');
-                // navigation('/');
-            } else {
-              if (response.status === 409) {
-                setEmailError('Email address already exists.');
+      console.log(errors);
+      console.log(Object.keys(errors).length);
+
+      if (Object.keys(errors).length === 0) {
+          try {
+              const response = await userService.register(firstName, lastName, email, password);
+
+              if (response.status >= 200 && response.status < 300) {
+                  localStorage.setItem('userId', response.data.id); 
+                  navigation('/activate');
+                  return Promise.resolve();
+              } else {
+                  if (response === 409) {
+                      setEmailError('Email address already exists.');
+                      return Promise.reject(new Error('Email address already exists.'));
+                  }
+                  return Promise.reject(new Error('Registration failed.'));
               }
-            }
-          } else {
-            setValidationErrors(errors);
-        }
-      } catch (error) {
-        console.error('Error:', error);
-        setError('An error occurred. Please try again later.');
-      } finally {
-        setIsSubmitting(false);
+          } catch (error) {
+              if (error.status !== 409) {
+                console.error('Error:', error);
+                setError('An error occurred. Please try again later.');
+                return Promise.reject(error);
+              }
+          }
+      } else {
+          setValidationErrors(errors);
+          return Promise.reject(new Error('Validation errors occurred.'));
       }
     };
 
@@ -95,11 +101,10 @@ const Register = () => {
           {
             loading: 'Registering account..',
             success: 'Successfully registered an account!',
-            error: 'An error occurred while registering.',
+            error: (err) => err.message,
           }
         ).catch(error => {
           console.error('Error processing account:', error);
-          toast.error('Failed to process account, please contact an admin');
         });
       };
 

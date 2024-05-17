@@ -37,7 +37,10 @@ const register = async (firstName, lastName, email, password) => {
     return response;
   } catch (error) {
     console.error('Error:', error);
-    throw new Error(error|| 'An error occurred while registering');
+    if (error.response && error.response.status === 409) {
+      return error.response.status;
+    }
+    throw new Error(error.message || 'An error occurred while registering');
   }
 };
 
