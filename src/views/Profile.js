@@ -28,10 +28,10 @@ const Profile = () => {
   const emailAddress = userData?.emailAddress ? userData.emailAddress : '';
   const domain = userData?.domain ? userData.domain : '';
   const companyInfoUserName = userData?.companyInfoUserName ? userData.companyInfoUserName : '';
-  const companyInfoPassword = userData?.companyInfoPassword ? obscurePassword(userData.companyInfoPassword) : '';
+  const companyInfoPassword = userData?.companyInfoPassword ? userData.companyInfoPassword : '';
 
   const openModal = (title, editableValue) => {
-    const valueToEdit = title.toLowerCase().includes('password') ? obscurePassword(editableValue) : editableValue;
+    const valueToEdit = title.toLowerCase().includes('password') ? editableValue : editableValue;
     setEditContext({ title, editableValue: valueToEdit });
     setIsModalOpen(true);
   };
@@ -74,7 +74,7 @@ const Profile = () => {
         dispatch(setUserData(updatedUser));
         toast.success(`Successfully updated ${title.toLowerCase()}!`);
         if (title.toLowerCase().includes('password')) {
-          setEditContext({ ...editContext, editableValue: obscurePassword(editableValue) });
+          setEditContext({ ...editContext, editableValue: editableValue });
         }
       }
     } catch (error) {
