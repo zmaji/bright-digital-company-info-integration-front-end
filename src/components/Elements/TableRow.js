@@ -31,7 +31,11 @@ const TableRow = ({ title, value, button }) => {
   };
 
   useEffect(() => {
-    setDisplayValue(value);
+    if (title.toLowerCase().includes('password')) {
+      setDisplayValue(obscurePassword(value));
+    } else {
+      setDisplayValue(value);
+    }
   }, [value]);
 
   return (

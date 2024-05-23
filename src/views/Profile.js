@@ -28,7 +28,7 @@ const Profile = () => {
   const emailAddress = userData?.emailAddress ? userData.emailAddress : '';
   const domain = userData?.domain ? userData.domain : '';
   const companyInfoUserName = userData?.companyInfoUserName ? userData.companyInfoUserName : '';
-  const companyInfoPassword = userData?.companyInfoPassword ? userData.companyInfoPassword : '';
+  const companyInfoPassword = userData?.companyInfoPassword ? obscurePassword(userData.companyInfoPassword) : '';
 
   const openModal = (title, editableValue) => {
     const valueToEdit = title.toLowerCase().includes('password') ? editableValue : editableValue;
@@ -60,7 +60,11 @@ const Profile = () => {
     };
   
     const fieldName = titleToFieldMap[title];
-    const valueToUpdate = title.toLowerCase().includes('password') ? editableValue : editableValue;
+    const valueToUpdate = editableValue;
+
+    if (title.toLowerCase().includes('password') && editableValue === obscurePassword(editableValue)) {
+      valueToUpdate = userData[fieldName];
+    }
   
     try {
       const updateFields = {
