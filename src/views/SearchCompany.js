@@ -36,7 +36,7 @@ const SearchCompany = () => {
 
     const searchCompany = async (searchTerm) => {
         if (searchTerm === '') {
-          toast.error('Please enter a valid trade name');
+          throw new Error('Invalid trade name');
         } else {
           if (userData && userData.companyInfoUserName && userData.companyInfoPassword) {
             const companies = await companyService.getCompanies(searchTerm, authToken);
@@ -44,10 +44,11 @@ const SearchCompany = () => {
             if (companies && companies.item) {
               navigation('/search-company/search-results', { state: { searchResults: companies.item } });
             } else {
-              toast.error(`No companies found with trade name: ${searchTerm}`);
+              throw new Error('No companies found');
             }
           } else {
             openModal();
+            throw new Error('User data is missing');
           }
         }
     };
@@ -58,11 +59,11 @@ const SearchCompany = () => {
         {
           loading: 'Retrieving results..',
           success: 'Companies successfully found!',
-          error: 'Failed retrieve results..',
+          error: 'No results have been found..',
         }
       ).catch(error => {
         console.error('Error processing search results:', error);
-        toast.error('Failed to process search results, please contact an admin');
+        toast.error('Please contact an admin to proceed');
       });
     };
 
