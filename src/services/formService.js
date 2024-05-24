@@ -78,22 +78,22 @@ const defaultFormData = {
           },
         ],
       },
-    {
-        groupType: 'default_group',
-        fields: [
-            {
-            name: "dossier_number",
-            label: "Dossier number",
-            objectTypeId: "0-2",
-            fieldType: "number",
-            hidden: true,
-            // validation: {
-            //     minAllowedDigits: 0,
-            //     maxAllowedDigits: 10
-            // }
-        },
-        ],
-      },
+    // {
+    //     groupType: 'default_group',
+    //     fields: [
+    //         {
+    //         name: "dossier_number",
+    //         label: "Dossier number",
+    //         objectTypeId: "0-2",
+    //         fieldType: "number",
+    //         hidden: true,
+    //         // validation: {
+    //         //     minAllowedDigits: 0,
+    //         //     maxAllowedDigits: 10
+    //         // }
+    //     },
+    //     ],
+    //   },
   ],
   configuration: {
     createNewContactForNewEmail: true,
