@@ -70,7 +70,7 @@ const defaultFormData = {
           fieldType: 'email',
           type: 'string',
           required: true,
-          objectTypeId: '0-1',
+          objectTypeId: '0-2',
           validation: {
             "blockedEmailDomains": [],
             "useDefaultBlockList": false
@@ -87,7 +87,7 @@ const defaultFormData = {
           fieldType: 'single_line_text',
           type: 'string',
           required: true,
-          objectTypeId: '0-1',
+          objectTypeId: '0-2',
           validation: {
             "blockedEmailDomains": [],
             "useDefaultBlockList": false
