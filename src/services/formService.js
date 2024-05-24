@@ -50,6 +50,23 @@ const defaultFormData = {
         {
           name: 'email',
           label: 'Email Address',
+          fieldType: 'single_line_text',
+          type: 'string',
+          required: true,
+          objectTypeId: '0-1',
+          validation: {
+            "blockedEmailDomains": [],
+            "useDefaultBlockList": false
+          }
+        },
+      ],
+    },
+    {
+      groupType: 'default_group',
+      fields: [
+        {
+          name: 'company',
+          label: 'Company name',
           fieldType: 'email',
           type: 'string',
           required: true,
@@ -62,51 +79,34 @@ const defaultFormData = {
       ],
     },
     {
-        groupType: 'default_group',
-        fields: [
-          {
-            name: 'company',
-            label: 'Company name',
-            fieldType: 'email',
-            type: 'string',
-            required: true,
-            objectTypeId: '0-1',
-            validation: {
-              "blockedEmailDomains": [],
-              "useDefaultBlockList": false
-            }
-          },
-        ],
-      },
-      {
-        groupType: 'default_group',
-        fields: [
-          {
-            name: 'website',
-            label: 'Website URL',
-            fieldType: 'string',
-            type: 'string',
-            required: true,
-            objectTypeId: '0-1',
-            validation: {
-              "blockedEmailDomains": [],
-              "useDefaultBlockList": false
-            }
-          },
-        ],
-      },
-    {
-        groupType: 'default_group',
-        fields: [
-            {
-            name: "dossier_number",
-            label: "Dossier number",
-            objectTypeId: "0-2",
-            fieldType: "number",
-            hidden: true,
+      groupType: 'default_group',
+      fields: [
+        {
+          name: 'website',
+          label: 'Website URL',
+          fieldType: 'single_line_text',
+          type: 'string',
+          required: true,
+          objectTypeId: '0-1',
+          validation: {
+            "blockedEmailDomains": [],
+            "useDefaultBlockList": false
+          }
         },
-        ],
+      ],
+    },
+    {
+      groupType: 'default_group',
+      fields: [
+          {
+          name: "dossier_number",
+          label: "Dossier number",
+          objectTypeId: "0-2",
+          fieldType: "number",
+          hidden: true,
       },
+      ],
+    },
   ],
   configuration: {
     createNewContactForNewEmail: true,
