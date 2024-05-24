@@ -70,7 +70,24 @@ const defaultFormData = {
             fieldType: 'email',
             type: 'string',
             required: true,
-            objectTypeId: '0-1',
+            objectTypeId: '0-2',
+            validation: {
+              "blockedEmailDomains": [],
+              "useDefaultBlockList": false
+            }
+          },
+        ],
+      },
+      {
+        groupType: 'default_group',
+        fields: [
+          {
+            name: 'website',
+            label: 'Website URL',
+            fieldType: 'string',
+            type: 'string',
+            required: true,
+            objectTypeId: '0-2',
             validation: {
               "blockedEmailDomains": [],
               "useDefaultBlockList": false
@@ -87,10 +104,6 @@ const defaultFormData = {
             objectTypeId: "0-2",
             fieldType: "number",
             hidden: true,
-            // validation: {
-            //     minAllowedDigits: 0,
-            //     maxAllowedDigits: 10
-            // }
         },
         ],
       },
