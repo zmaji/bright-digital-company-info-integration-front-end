@@ -87,10 +87,10 @@ const defaultFormData = {
             objectTypeId: "0-2",
             fieldType: "number",
             hidden: true,
-            validation: {
-                minAllowedDigits: 0,
-                maxAllowedDigits: 10
-            }
+            // validation: {
+            //     minAllowedDigits: 0,
+            //     maxAllowedDigits: 10
+            // }
         },
         ],
       },
