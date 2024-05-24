@@ -78,6 +78,23 @@ const defaultFormData = {
           },
         ],
       },
+      {
+        groupType: 'default_group',
+        fields: [
+          {
+            name: 'website',
+            label: 'Website URL',
+            fieldType: 'string',
+            type: 'string',
+            required: true,
+            objectTypeId: '0-1',
+            validation: {
+              "blockedEmailDomains": [],
+              "useDefaultBlockList": false
+            }
+          },
+        ],
+      },
     {
         groupType: 'default_group',
         fields: [
