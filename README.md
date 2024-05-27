@@ -25,7 +25,7 @@ To get the application up and running, follow these steps:
 1. **Clone the repository:**
 
    ```sh
-   git clone https://github.com/yourusername/company-info-integration-app.git
+   git clone https://YOURUSERNAME@bitbucket.org/bureau_bright/company-info-integration-front-end.git
    cd company-info-integration-app
    ```
 
