@@ -1,70 +1,83 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Company Info Integration App
 
-## Available Scripts
+## Overview
 
-In the project directory, you can run:
+This project is the front-end application for integrating company information. It is built using React and provides a user-friendly interface to manage and retrieve company data. This README will guide you through the necessary steps to get the application up and running.
 
-### `npm start`
+## Project Information
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Name:** company-info-integration-app
+- **Version:** 1.0.0
+- **Author:** Maurice ten Teije
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Table of Contents
 
-### `npm test`
+- [Getting Started](#getting-started)
+- [Scripts](#scripts)
+- [Dependencies](#dependencies)
+- [Dev Dependencies](#dev-dependencies)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Getting Started
 
-### `npm run build`
+To get the application up and running, follow these steps:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. **Clone the repository:**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   ```sh
+   git clone https://github.com/yourusername/company-info-integration-app.git
+   cd company-info-integration-app
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. **Install dependencies:**
 
-### `npm run eject`
+    ```sh
+    npm install
+    ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3. **Start the application:**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    ```sh
+    npm run start
+    ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## **Scripts**
+The following scripts are available in the project:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- `start`: Starts the application on port 8080.
+- `build`: Builds the application for production.
+- `test`: Runs the test suite in watch mode.
+- `test:pipeline`: Runs the test suite for CI/CD pipelines.
+- `test:coverage`: Generates a code coverage report.
+- `eject`: Ejects the create-react-app configuration.
 
-## Learn More
+## **Dependencies**
+The project relies on the following dependencies:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- `@reduxjs/toolkit`: Toolkit for efficient Redux development.
+- `axios`: Promise-based HTTP client.
+- `jest`: JavaScript testing framework.
+- `jest-environment-jsdom`: Jest environment for testing with JSDOM.
+- `react`: JavaScript library for building user interfaces.
+- `react-dom`: Entry point to the DOM and server renderers for React.
+- `react-hot-toast`: Notifications for React.
+- `react-jwt`: JWT authentication for React.
+- `react-modal`: Accessible modal dialog component for React.
+- `react-redux`: Official React bindings for Redux.
+- `react-router`: Declarative routing for React.
+- `react-router-dom`: DOM bindings for React Router.
+- `react-scripts`: Scripts and configuration used by Create React App.
+- `react-syntax-highlighter`: Syntax highlighting component for React.
+- `redux-persist`: Persist and rehydrate a Redux store.
+- `web-vitals`: Library for measuring essential web vitals.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## **Dev Dependencies**
+The project includes the following dev dependencies:
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- `@babel/core`: Babel compiler core.
+- `@babel/preset-react`: Babel preset for React.
+- `babel-jest`: Jest plugin to use Babel for transformation.
+- `node-sass`: Node.js bindings to libsass.
+- `prettier`: Code formatter.
+- `svg-react-loader`: SVG loader for Webpack.
+- `webpack`: Module bundler.
