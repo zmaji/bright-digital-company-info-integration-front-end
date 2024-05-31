@@ -1,12 +1,6 @@
 .c-activation-bar {
-    &__container {
-        position: relative;
-    }
-
     &__button-container {
-        position: absolute;
-        top: 0;
-        right: 0px
+        margin-top: 16px;
     }
     
     &__input {

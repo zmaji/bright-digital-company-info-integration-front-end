@@ -34,7 +34,7 @@ const Activate = () => {
       <div className="v-activate__background-wrapper">
         <div className="o-container">
           <div className="u-squeeze u-squeeze--xl">
-            <div className="v-activate__content-wrapper u-flex">
+            <div className="v-activate__content-wrapper">
               <div className="v-activate__steps-container">
                 <HorizontalSteps steps={steps} />
               </div>
