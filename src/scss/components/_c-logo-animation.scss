@@ -1,0 +1,77 @@
+.c-logo-animation {  
+    &__pen {
+      fill: none;
+      stroke-width: 19;
+      stroke-miterlimit: 10;
+      stroke: $almost-black;
+  
+      &--b {
+        stroke-width: 22;
+        stroke-dasharray: 836px;
+        stroke-dashoffset: 836px;
+      }
+      &--ri {
+        stroke-dasharray: 298px;
+        stroke-dashoffset: 298px;
+      }
+      &--g {
+        stroke-dasharray: 571px;
+        stroke-dashoffset: 571px;
+        animation-delay: 1s;
+      }
+      &--h {
+        stroke-dasharray: 648px;
+        stroke-dashoffset: 648px;
+      }
+      &--t1 {
+        stroke-dasharray: 174px;
+        stroke-dashoffset: 174px;
+        animation-delay: 1.5s;
+      }
+      &--t2 {
+        stroke-dasharray: 173px;
+        stroke-dashoffset: 173px;
+      }
+      &--dot {
+        stroke-dasharray: 25px;
+        stroke-dashoffset: 25px;
+      }
+    }
+  
+    @at-root .js-loaded &__pen {
+      animation: dash 1s ease-out forwards;
+  
+      &--b {
+        animation-delay: .5s;
+      }
+      &--ri {
+        animation-delay: .75s;
+      }
+      &--g {
+        animation-delay: 1s;
+      }
+      &--h {
+        animation-delay: 1.25s;
+      }
+      &--t1 {
+        animation-delay: 1.5s;
+      }
+      &--t2 {
+        animation-delay: 1.5s;
+      }
+      &--dot {
+        animation-delay: .5s;
+      }
+    }
+  
+    &__bg {
+      fill: rgba($black, .2);
+    }
+  
+  }
+  
+  @keyframes dash {
+    to {
+      stroke-dashoffset: 0px;
+    }
+  }

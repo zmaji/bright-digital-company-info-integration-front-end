@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import brightDigitalLogo from '../../images/logo-bright-zw.svg';
 import profileIcon from '../../icons/profile.svg';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import ClipPathLogo from '../../macros/ClipPathLogo';
 
 const DefaultHeader = () => {
     const userData = useSelector(state => state.user.userData.data);
@@ -10,14 +11,18 @@ const DefaultHeader = () => {
     const firstName = userData ? userData.firstName : 'First name not found';
     const lastName = userData ? userData.lastName : 'Last name not found';
 
+    useEffect(() => {
+        document.body.classList.add('js-loaded');
+    }, []);
+
     return (
       <div className='c-default-header'>
         <div className='o-container'>
             <div className='u-squeeze u-squeeze--xxl'>
                <div className='c-default-header__container u-flex u-flex-sb u-flex-v-center'>
                 <div className='c-default-header__logo-container'>
-                    <Link to="/overview">
-                        <img className='c-default-header__logo' src={brightDigitalLogo} alt='Bright Digital Logo' />
+                    <Link to='/overview'>
+                        <ClipPathLogo cl='c-default-header__logo c-logo-animation' type='page' />
                     </Link>
                 </div>
                 <div className='c-default-header__profile-container u-flex u-flex-v-center'>
