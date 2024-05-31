@@ -7,7 +7,7 @@ import Label from '../components/form/Label';
 import Input from '../components/form/Input';
 import HubspotSticker from '../components/Elements/HubspotSticker';
 import LogoRow from '../components/Elements/LogoRow';
-import brightDigitalLogo from '../images/logo-bright-zw.svg';
+import ClipPathLogo from '../macros/ClipPathLogo';
 import LandingpageBackground from '../images/landingpage-background-image.png';
 import logorowData from '../data/DefaultLogoRow';
 import authService from '../services/authService';
@@ -107,6 +107,7 @@ const LandingPage = () => {
     const userData = useSelector(state => state.user.userData);
 
     useEffect(() => {
+      document.body.classList.add('js-loaded');
       const rememberMeValue = localStorage.getItem('rememberMe');
 
       if (userData && userData.data && rememberMeValue === 'true') {
@@ -119,7 +120,9 @@ const LandingPage = () => {
             <div className="o-container">
                 <div className="u-squeeze u-squeeze--xxl">
                     <div className='v-landingpage__header-container u-flex u-flex-sb u-flex-v-center'>
-                            <img className="v-landingpage__header__logo-left" src={brightDigitalLogo} alt="Bright Digital Logo" />
+                            <Link to='/'>
+                                <ClipPathLogo cl='v-landingpage__header__logo-left c-logo-animation' type='page' />
+                            </Link>
 
                             <div className='v-landingpage__header__logo-right'>
                                 <HubspotSticker />

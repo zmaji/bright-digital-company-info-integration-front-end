@@ -1,11 +1,15 @@
-import React from 'react';
-import brightDigitalLogo from '../../images/logo-bright-zw.svg';
+import React, { useEffect } from 'react';
 import HubspotSticker from '../Elements/HubspotSticker';
 import { Link } from 'react-router-dom';
+import ClipPathLogo from '../../macros/ClipPathLogo';
 
 import Button from '../Elements/Button';
 
 const SignupHeader = () => {
+    useEffect(() => {
+        document.body.classList.add('js-loaded');
+    }, []);
+
     return (
       <div className='c-signup-header'>
         <div className='o-container'>
@@ -18,7 +22,7 @@ const SignupHeader = () => {
 
                 <div className='c-signup-header__logo-container'>
                     <Link to='/'>
-                      <img className='c-signup-header__logo' src={brightDigitalLogo} alt='Bright Digital Logo' />   
+                        <ClipPathLogo cl='c-signup-header__logo c-logo-animation' type='page' />
                     </Link>
                 </div>
 

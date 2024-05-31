@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import brightDigitalLogo from '../../images/logo-bright-zw.svg';
 import profileIcon from '../../icons/profile.svg';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
