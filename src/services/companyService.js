@@ -61,7 +61,7 @@ const getCompanies = async (tradeName, authToken) => {
   const updateHubSpotCompany = async (authToken, companyId, companyData) => {
     await setAuthorizationHeader(authToken);
 
-    const syncDate = new Date.now();
+    const syncDate = new Date();
     console.log('date');
     console.log(date);
 
