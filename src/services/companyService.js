@@ -62,9 +62,7 @@ const getCompanies = async (tradeName, authToken) => {
     await setAuthorizationHeader(authToken);
 
     const syncDate = new Date();
-    console.log('date');
-    console.log(date);
-
+    console.log(syncDate);
     companyData = { ...companyData, last_sync: syncDate}
 
     console.log('companyData')
@@ -94,11 +92,9 @@ const getCompanies = async (tradeName, authToken) => {
   const createHubSpotCompany = async (authToken, companyData) => {
     await setAuthorizationHeader(authToken);
 
-    const date = new Date.now();
-    console.log('date');
-    console.log(date);
-
-    companyData = { ...companyData, last_sync: new Date.now()}
+    const syncDate = new Date();
+    console.log(syncDate);
+    companyData = { ...companyData, last_sync: syncDate}
 
     console.log('companyData')
     console.log(companyData)
