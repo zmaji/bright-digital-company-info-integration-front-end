@@ -790,7 +790,18 @@ export const generatePropertyFields = async () => {
       "displayOrder": 63,
       "hasUniqueValue": false,
       "formField": true,
-    }
+    },
+    {
+      "label": "Laatst geüpdatet",
+      "name": "last_sync",
+      "type": "date",
+      "fieldType": "date",
+      "groupName": "company_info_integration",
+      "hidden": false,
+      "displayOrder": 64,
+      "hasUniqueValue": false,
+      "formField": true
+    },
   ]
 
   return data
