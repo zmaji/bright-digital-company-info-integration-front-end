@@ -62,8 +62,15 @@ const getCompanies = async (tradeName, authToken) => {
     await setAuthorizationHeader(authToken);
 
     const syncDate = new Date();
-    console.log(syncDate);
-    companyData = { ...companyData, last_sync: syncDate}
+    const year = syncDate.getFullYear();
+    const month = String(syncDate.getMonth() + 1).padStart(2, '0');
+    const day = String(syncDate.getDate()).padStart(2, '0');
+    const formattedDate = `${day}-${month}-${year}`;
+
+    console.log('formattedDate')
+    console.log(formattedDate)
+
+    companyData = { ...companyData, last_sync: formattedDate}
 
     console.log('companyData')
     console.log(companyData)
@@ -93,8 +100,15 @@ const getCompanies = async (tradeName, authToken) => {
     await setAuthorizationHeader(authToken);
 
     const syncDate = new Date();
-    console.log(syncDate);
-    companyData = { ...companyData, last_sync: syncDate}
+    const year = syncDate.getFullYear();
+    const month = String(syncDate.getMonth() + 1).padStart(2, '0');
+    const day = String(syncDate.getDate()).padStart(2, '0');
+    const formattedDate = `${day}-${month}-${year}`;
+
+    console.log('formattedDate')
+    console.log(formattedDate)
+
+    companyData = { ...companyData, last_sync: formattedDate}
 
     console.log('companyData')
     console.log(companyData)
