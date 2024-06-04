@@ -65,7 +65,7 @@ const getCompanies = async (tradeName, authToken) => {
     const year = syncDate.getFullYear();
     const month = String(syncDate.getMonth() + 1).padStart(2, '0');
     const day = String(syncDate.getDate()).padStart(2, '0');
-    const formattedDate = `${day}-${month}-${year}`;
+    const formattedDate = `${year}-${month}-${day}`;
 
     console.log('formattedDate')
     console.log(formattedDate)
@@ -103,7 +103,7 @@ const getCompanies = async (tradeName, authToken) => {
     const year = syncDate.getFullYear();
     const month = String(syncDate.getMonth() + 1).padStart(2, '0');
     const day = String(syncDate.getDate()).padStart(2, '0');
-    const formattedDate = `${day}-${month}-${year}`;
+    const formattedDate = `${year}-${month}-${day}`;
 
     console.log('formattedDate')
     console.log(formattedDate)
