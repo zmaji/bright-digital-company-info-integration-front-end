@@ -61,6 +61,9 @@ const getCompanies = async (tradeName, authToken) => {
   const updateHubSpotCompany = async (authToken, companyId, companyData) => {
     await setAuthorizationHeader(authToken);
 
+    console.log('companyData')
+    console.log(companyData)
+
     try {
       const response = await axios.put(`${BASE_URL}/companies/hubspot`, {
         companyId: companyId,
