@@ -22,7 +22,8 @@ const CompanyDetail = () => {
             if (location && location.search) {
                 const searchParams = new URLSearchParams(location.search);
                 const dossierNumber = searchParams.get('dossierNumber');
-                const company = await companyService.getCompany(dossierNumber);
+                const establishmentNumber = searchParams.get('establishmentNumber');
+                const company = await companyService.getCompany(dossierNumber, establishmentNumber, authToken);
 
                 const cleanedData = await removeEmptyStrings(company);
 

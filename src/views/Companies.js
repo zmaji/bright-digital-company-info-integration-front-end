@@ -22,7 +22,7 @@ const Companies = () => {
               button: {
                   title: 'More information',
                   style: 'tertiary',
-                  link: `/search-company/search-results/company-detail?dossierNumber=${encodeURIComponent(company.dossier_number)}`,
+                  link: `/search-company/search-results/company-detail?dossierNumber=${encodeURIComponent(company.dossier_number)}&establishmentNumber=${encodeURIComponent(company.establishment_number)}`,
                   icon: 'ArrowRight',
                   animation: 'move-right'
               }

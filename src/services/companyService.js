@@ -118,14 +118,14 @@ const getCompanies = async (tradeName, authToken) => {
     }
   };
 
-
-  const getCompany = async (dossierNumber, authToken) => {
+  const getCompany = async (dossierNumber, establishmentNumber, authToken) => {
     await setAuthorizationHeader(authToken);
     
     try {
       const response = await axios.get(`${BASE_URL}/companies/info`, {
         params: {
-          dossierNumber: dossierNumber
+          dossierNumber: dossierNumber,
+          establishmentNumber: establishmentNumber
         },
         headers: {
           'Content-Type': 'application/json',
