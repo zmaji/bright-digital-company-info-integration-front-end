@@ -23,6 +23,14 @@ const CompanyDetail = () => {
                 const searchParams = new URLSearchParams(location.search);
                 const dossierNumber = searchParams.get('dossierNumber');
                 const establishmentNumber = searchParams.get('establishmentNumber');
+
+                console.log('establishmentNumber')
+                console.log('establishmentNumber')
+                console.log('establishmentNumber')
+                console.log('establishmentNumber')
+                console.log('establishmentNumber')
+                console.log('establishmentNumber')
+                console.log(establishmentNumber)
                 const company = await companyService.getCompany(dossierNumber, establishmentNumber, authToken);
 
                 const cleanedData = await removeEmptyStrings(company);
