@@ -794,8 +794,8 @@ export const generatePropertyFields = async () => {
     {
       "label": "Laatst geüpdatet",
       "name": "last_sync",
-      "type": "date",
-      "fieldType": "date",
+      "type": "string",
+      "fieldType": "text",
       "groupName": "company_info_integration",
       "hidden": false,
       "displayOrder": 64,
