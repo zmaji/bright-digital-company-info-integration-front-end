@@ -63,6 +63,13 @@ const CompanyDetail = () => {
                 return obj;
               }, {});
 
+              if (companyData.dossier_number) {
+                filteredCompanyData.dossier_number = companyData.dossier_number;
+              }
+              if (companyData.establishment_number) {
+                filteredCompanyData.establishment_number = companyData.establishment_number;
+              }        
+
             return filteredCompanyData;
           }
         } catch (error) {
