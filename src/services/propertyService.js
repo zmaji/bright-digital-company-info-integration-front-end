@@ -10,6 +10,7 @@ const setAuthorizationHeader = async (authToken) => {
 };
 
 const getHubSpotProperties = async (authToken, objectType, groupName) => {
+  console.log('Retrieving HubSpot properties..');
   await setAuthorizationHeader(authToken);
   
   try {
@@ -27,6 +28,7 @@ const getHubSpotProperties = async (authToken, objectType, groupName) => {
 };
 
 const createHubSpotProperties = async (authToken, objectType, missingProperties) => {
+  console.log('Creating HubSpot properties..');
   await setAuthorizationHeader(authToken);
 
   console.log('missingProperties')
