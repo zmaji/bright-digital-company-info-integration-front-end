@@ -108,6 +108,8 @@ const DashboardOverview = () => {
       }
 
       if (currentHubSpotProperties) {
+        console.log('currentHubSpotProperties');
+        console.log(currentHubSpotProperties);
         const missingHubSpotProperties = propertyFields.filter(
           (field) => !currentHubSpotProperties.some((cp) => cp.name === field.name)
         );
