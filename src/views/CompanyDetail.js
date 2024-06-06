@@ -90,8 +90,14 @@ const CompanyDetail = () => {
                     );
                   }
                 );
+                
+                console.log('companyData')
+                console.log(companyData)
 
                 const formattedCompanyData = await formatResult(companyData);
+
+                console.log('formattedCompanyData')
+                console.log(formattedCompanyData)
 
                 if (matchingCompany) {
                   const updatedCompany = await companyService.updateHubSpotCompany(authToken, matchingCompany.properties.hs_object_id, formattedCompanyData);
