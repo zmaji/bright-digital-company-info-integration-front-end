@@ -90,7 +90,9 @@ const DashboardOverview = () => {
         }));
         setPropertiesToUpdate(propertiesToUpdate);
       } else {
-        const missingProperties = propertyFields.map((property) => ({
+        const missingProperties = propertyFields
+        .filter((property) => property.name !== 'dossier_number' && property.name !== 'establishment_number')
+        .map((property) => ({
           name: property.name,
           toSave: true,
         }));

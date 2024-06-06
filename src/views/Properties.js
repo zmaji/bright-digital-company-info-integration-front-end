@@ -23,7 +23,7 @@ const CompanyDetail = () => {
       try {
         const allProps = await generatePropertyFields();
         const updatedProps = allProps.filter(
-          (property) => property.name !== "dossier_number" && property.name !== "last_sync"
+          (property) => property.name !== "dossier_number" && property.name !== "establishment_number" && property.name !== "last_sync"
         );
         setAllProperties(updatedProps);
 
