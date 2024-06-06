@@ -79,7 +79,13 @@ const DashboardOverview = () => {
       const currentHubSpotProperties = await propertyService.getHubSpotProperties(authToken, 'company', 'company_info_integration');
       const propertyFields = await generatePropertyFields();
 
-      setPropertyfields(propertyFields);
+      const filteredPropertyFields = propertyFields.filter((property) => 
+        property.name !== 'dossier_number' &&
+        property.name !== 'establishment_number' &&
+        property.name !== 'last_sync'
+      );
+
+      setPropertyfields(filteredPropertyFields);
 
       if (currentProperties !== null) {
         const propertiesToUpdate = currentProperties
@@ -90,8 +96,7 @@ const DashboardOverview = () => {
         }));
         setPropertiesToUpdate(propertiesToUpdate);
       } else {
-        const missingProperties = propertyFields
-        .filter((property) => property.name !== 'dossier_number' && property.name !== 'establishment_number')
+        const missingProperties = filteredPropertyFields
         .map((property) => ({
           name: property.name,
           toSave: true,
