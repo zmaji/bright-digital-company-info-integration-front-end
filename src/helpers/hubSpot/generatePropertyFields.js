@@ -3,8 +3,8 @@ export const generatePropertyFields = async () => {
     {
       "label": "KVK-nummer",
       "name": "dossier_number",
-      "type": "number",
-      "fieldType": "number",
+      "type": "string",
+      "fieldType": "text",
       "groupName": "company_info_integration",
       "hidden": false,
       "displayOrder": 1,
@@ -14,8 +14,8 @@ export const generatePropertyFields = async () => {
     {
       "label": "Vestigingsnummer",
       "name": "establishment_number",
-      "type": "number",
-      "fieldType": "number",
+      "type": "string",
+      "fieldType": "text",
       "groupName": "company_info_integration",
       "hidden": false,
       "displayOrder": 2,
