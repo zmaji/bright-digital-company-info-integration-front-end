@@ -80,6 +80,8 @@ const DashboardOverview = () => {
     const checkForMissingProperties = async () => {
       const currentProperties = await propertyService.getProperties(authToken);
       const currentHubSpotProperties = await propertyService.getHubSpotProperties(authToken, 'company', 'company_info_integration');
+      console.log('currentHubSpotProperties');
+      console.log(currentHubSpotProperties);
       const propertyFields = await generatePropertyFields();
 
       const filteredPropertyFields = propertyFields.filter((property) => 
@@ -108,8 +110,6 @@ const DashboardOverview = () => {
       }
 
       if (currentHubSpotProperties) {
-        console.log('currentHubSpotProperties');
-        console.log(currentHubSpotProperties);
         const missingHubSpotProperties = propertyFields.filter(
           (field) => !currentHubSpotProperties.some((cp) => cp.name === field.name)
         );
