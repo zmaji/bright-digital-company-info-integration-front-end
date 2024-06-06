@@ -70,9 +70,6 @@ const CompanyDetail = () => {
                 filteredCompanyData.establishment_number = companyData.establishment_number;
               }        
 
-              console.log('filteredCompanyData')
-              console.log(filteredCompanyData)
-
             return filteredCompanyData;
           }
         } catch (error) {
@@ -100,14 +97,8 @@ const CompanyDetail = () => {
                     );
                   }
                 );
-                
-                console.log('companyData')
-                console.log(companyData)
 
                 const formattedCompanyData = await formatResult(companyData);
-
-                console.log('formattedCompanyData')
-                console.log(formattedCompanyData)
 
                 if (matchingCompany) {
                   const updatedCompany = await companyService.updateHubSpotCompany(authToken, matchingCompany.properties.hs_object_id, formattedCompanyData);
