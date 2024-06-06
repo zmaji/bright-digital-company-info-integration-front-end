@@ -68,7 +68,7 @@ const CompanyDetail = () => {
               }
               if (companyData.establishment_number) {
                 filteredCompanyData.establishment_number = companyData.establishment_number;
-              }        
+              }       
 
             return filteredCompanyData;
           }

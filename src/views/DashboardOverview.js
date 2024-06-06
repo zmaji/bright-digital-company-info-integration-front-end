@@ -43,12 +43,15 @@ const DashboardOverview = () => {
       }
 
       if (missingHubSpotProperties.length > 0) {
+        console.log('Hello');
         await propertyService.createHubSpotProperties(authToken, 'company', missingHubSpotProperties);
       }
 
       if (missingProperties.length > 0) {
+        console.log('Hello2');
         await propertyService.createProperties(authToken, missingProperties);
       } else {
+        console.log('Hello3');
         await propertyService.updateProperties(authToken, propertiesToUpdate)
       }
 
