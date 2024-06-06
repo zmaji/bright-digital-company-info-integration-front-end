@@ -80,8 +80,6 @@ const DashboardOverview = () => {
     const checkForMissingProperties = async () => {
       const currentProperties = await propertyService.getProperties(authToken);
       const currentHubSpotProperties = await propertyService.getHubSpotProperties(authToken, 'company', 'company_info_integration');
-      console.log('currentHubSpotProperties');
-      console.log(currentHubSpotProperties);
       const propertyFields = await generatePropertyFields();
 
       const filteredPropertyFields = propertyFields.filter((property) => 
@@ -119,19 +117,19 @@ const DashboardOverview = () => {
     checkForMissingProperties();
   }, [authToken]);
 
-  const buttonText = missingProperties.length === propertyFields.length
+  const buttonText = missingProperties.length === propertyFields.length - 3
     ? 'Set up properties' 
     : 'Reset properties';
 
-  const paragraphText = missingProperties.length === propertyFields.length
+  const paragraphText = missingProperties.length === propertyFields.length - 3
     ? 'By clicking the button below, a default HubSpot group and the necessary properties will be automatically created. This serves as the central hub for all your the retrieved data in HubSpot and ensures that it is accurately organized and ready for further operations.' 
     : 'By clicking the button below, all the necessary properties will be automatically reset to default.';
 
-  const buttonIcon = missingProperties.length === propertyFields.length
+  const buttonIcon = missingProperties.length === propertyFields.length - 3
     ? 'Plus' 
     : 'Refresh';
 
-  const modalText = missingProperties.length === propertyFields.length
+  const modalText = missingProperties.length === propertyFields.length - 3
     ? 'This action will create all default properties'
     : 'This action will reset all default properties. However, values referencing existing properties will not be deleted.';
     
