@@ -70,6 +70,9 @@ const CompanyDetail = () => {
                 filteredCompanyData.establishment_number = companyData.establishment_number;
               }        
 
+              console.log('filteredCompanyData')
+              console.log(filteredCompanyData)
+
             return filteredCompanyData;
           }
         } catch (error) {
