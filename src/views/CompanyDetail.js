@@ -84,16 +84,19 @@ const CompanyDetail = () => {
 
                 const matchingCompany = existingCompanies.find(
                   (company) => {
-                    const name = String(company.properties.name || '').trim().toLowerCase();
-                    const tradeName = String(companyData.trade_name || '').trim().toLowerCase();
-                    const tradeNameFull = String(companyData.trade_name_full || '').trim().toLowerCase();
+                    // const name = String(company.properties.name || '').trim().toLowerCase();
+                    // const tradeName = String(companyData.trade_name || '').trim().toLowerCase();
+                    // const tradeNameFull = String(companyData.trade_name_full || '').trim().toLowerCase();
                     const dossierNumber = String(company.properties.dossier_number || '').trim().toLowerCase();
                     const companyDossierNumber = String(companyData.dossier_number || '').trim().toLowerCase();
+                    const establishmentNumber = String(companyData.establishment_number || '').trim().toLowerCase();
+                    const companyEstablishmentNumber = String(company.properties.establishment_number || '').trim().toLowerCase();
                 
                     return (
-                      name === tradeName || 
-                      name === tradeNameFull || 
-                      dossierNumber === companyDossierNumber
+                      // name === tradeName || 
+                      // name === tradeNameFull || 
+                      dossierNumber === companyDossierNumber &&
+                      establishmentNumber === companyEstablishmentNumber
                     );
                   }
                 );

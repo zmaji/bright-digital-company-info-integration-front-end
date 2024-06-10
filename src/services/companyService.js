@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
-const formatDate = (date: any) => {
+const formatDate = (date) => {
   const options = {
     year: 'numeric',
     month: '2-digit',
