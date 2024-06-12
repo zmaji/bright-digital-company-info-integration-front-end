@@ -85,6 +85,8 @@ const CompanyDetail = () => {
                 console.log('existingCompanies');
                 console.log(existingCompanies.data.results);
 
+                console.log('hallo1')
+
                 const matchingCompany = existingCompanies.data.results.find(
                   (company) => {
                     // const name = String(company.properties.name || '').trim().toLowerCase();
@@ -108,6 +110,8 @@ const CompanyDetail = () => {
                 console.log('matchingCompany');
                 console.log(matchingCompany);
 
+                console.log('hallo2')
+
                 const formattedCompanyData = await formatResult(companyData);
 
                 if (matchingCompany) {
@@ -121,6 +125,8 @@ const CompanyDetail = () => {
                   }
                 } else {
                   const newCompany = await companyService.createHubSpotCompany(authToken, formattedCompanyData);
+                  
+                  console.log('hallo3')
 
                   if (newCompany) {
                     toast.success('Successfully created company');
