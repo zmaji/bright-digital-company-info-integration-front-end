@@ -82,11 +82,6 @@ const CompanyDetail = () => {
             if (companyData.trade_name || companyData.trade_name_full || companyData.dossier_number) {
                 const existingCompanies = await companyService.getHubSpotCompanies(authToken);
     
-                console.log('existingCompanies');
-                console.log(existingCompanies);
-    
-                console.log('hallo1');
-    
                 const matchingCompany = existingCompanies.find((company) => {
                     const existingDossierNumber = company.properties.dossier_number ? String(company.properties.dossier_number).trim() : '';
                     const companyDossierNumber = companyData.dossier_number ? String(companyData.dossier_number).trim() : '';
@@ -96,21 +91,21 @@ const CompanyDetail = () => {
     
                     console.log('Comparing dossier numbers:', existingDossierNumber, companyDossierNumber);
                     console.log('Comparing establishment numbers:', existingEstablishmentNumber, companyEstablishmentNumber);
+
+                    if (existingDossierNumber === companyDossierNumber &&
+                      existingEstablishmentNumber === companyEstablishmentNumber
+                    )
     
                     return (
                         existingDossierNumber === companyDossierNumber &&
                         existingEstablishmentNumber === companyEstablishmentNumber
                     );
                 });
-    
-                console.log('matchingCompany');
-                console.log(matchingCompany);
-    
-                console.log('hallo2');
-    
+  
                 const formattedCompanyData = await formatResult(companyData);
     
                 if (matchingCompany) {
+                    console.log('matching!!!!!!!!!');
                     const updatedCompany = await companyService.updateHubSpotCompany(authToken, matchingCompany.properties.hs_object_id, formattedCompanyData);
     
                     if (updatedCompany) {
@@ -120,9 +115,8 @@ const CompanyDetail = () => {
                         toast.error('Could not update company, please contact an admin');
                     }
                 } else {
+                  console.log('no matching!!!!!!!!!');
                     const newCompany = await companyService.createHubSpotCompany(authToken, formattedCompanyData);
-    
-                    console.log('hallo3');
     
                     if (newCompany) {
                         toast.success('Successfully created company');
