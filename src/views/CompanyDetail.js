@@ -83,11 +83,11 @@ const CompanyDetail = () => {
                 const existingCompanies = await companyService.getHubSpotCompanies(authToken);
 
                 console.log('existingCompanies');
-                console.log(existingCompanies.data.results);
+                console.log(existingCompanies);
 
                 console.log('hallo1')
 
-                const matchingCompany = existingCompanies.data.results.find(
+                const matchingCompany = existingCompanies.find(
                   (company) => {
                     // const name = String(company.properties.name || '').trim().toLowerCase();
                     // const tradeName = String(companyData.trade_name || '').trim().toLowerCase();
@@ -125,7 +125,7 @@ const CompanyDetail = () => {
                   }
                 } else {
                   const newCompany = await companyService.createHubSpotCompany(authToken, formattedCompanyData);
-                  
+
                   console.log('hallo3')
 
                   if (newCompany) {
