@@ -77,71 +77,68 @@ const CompanyDetail = () => {
         }
       };
     
-    const handleSaveCompany = async () => {
+      const handleSaveCompany = async () => {
         if (companyData) {
             if (companyData.trade_name || companyData.trade_name_full || companyData.dossier_number) {
                 const existingCompanies = await companyService.getHubSpotCompanies(authToken);
-
+    
                 console.log('existingCompanies');
                 console.log(existingCompanies);
-
-                console.log('hallo1')
-
-                const matchingCompany = existingCompanies.find(
-                  (company) => {
-                    // const name = String(company.properties.name || '').trim().toLowerCase();
-                    // const tradeName = String(companyData.trade_name || '').trim().toLowerCase();
-                    // const tradeNameFull = String(companyData.trade_name_full || '').trim().toLowerCase();
-                    const existingDossierNumber = company.properties.dossier_number? company.properties.dossier_number : '';
-                    const companyDossierNumber = companyData.dossier_number? companyData.dossier_number: '';
-
-                    const existingEstablishmentNumber = company.properties.establishment_number? company.properties.establishment_number : '';
-                    const companyEstablishmentNumber = companyData.establishment_number? companyData.establishment_number: '';
-
+    
+                console.log('hallo1');
+    
+                const matchingCompany = existingCompanies.find((company) => {
+                    const existingDossierNumber = company.properties.dossier_number ? String(company.properties.dossier_number).trim() : '';
+                    const companyDossierNumber = companyData.dossier_number ? String(companyData.dossier_number).trim() : '';
+    
+                    const existingEstablishmentNumber = company.properties.establishment_number ? String(company.properties.establishment_number).trim() : '';
+                    const companyEstablishmentNumber = companyData.establishment_number ? String(companyData.establishment_number).trim() : '';
+    
+                    console.log('Comparing dossier numbers:', existingDossierNumber, companyDossierNumber);
+                    console.log('Comparing establishment numbers:', existingEstablishmentNumber, companyEstablishmentNumber);
+    
                     return (
-                      // name === tradeName || 
-                      // name === tradeNameFull || 
-                      existingDossierNumber === companyDossierNumber &&
-                      existingEstablishmentNumber === companyEstablishmentNumber
+                        existingDossierNumber === companyDossierNumber &&
+                        existingEstablishmentNumber === companyEstablishmentNumber
                     );
-                  }
-                );
-
+                });
+    
                 console.log('matchingCompany');
                 console.log(matchingCompany);
-
-                console.log('hallo2')
-
+    
+                console.log('hallo2');
+    
                 const formattedCompanyData = await formatResult(companyData);
-
+    
                 if (matchingCompany) {
-                  const updatedCompany = await companyService.updateHubSpotCompany(authToken, matchingCompany.properties.hs_object_id, formattedCompanyData);
-
-                  if (updatedCompany) {
-                    toast.success('Successfully updated company');
-                    window.open(`https://app-eu1.hubspot.com/contacts/${userData.hubSpotPortalId}/objects/0-2/views/all/list`, '_blank');
-                  } else {
-                    toast.error('Could not update company, please contact an admin');
-                  }
+                    const updatedCompany = await companyService.updateHubSpotCompany(authToken, matchingCompany.properties.hs_object_id, formattedCompanyData);
+    
+                    if (updatedCompany) {
+                        toast.success('Successfully updated company');
+                        window.open(`https://app-eu1.hubspot.com/contacts/${userData.hubSpotPortalId}/objects/0-2/views/all/list`, '_blank');
+                    } else {
+                        toast.error('Could not update company, please contact an admin');
+                    }
                 } else {
-                  const newCompany = await companyService.createHubSpotCompany(authToken, formattedCompanyData);
-
-                  console.log('hallo3')
-
-                  if (newCompany) {
-                    toast.success('Successfully created company');
-                    window.open(`https://app-eu1.hubspot.com/contacts/${userData.hubSpotPortalId}/objects/0-2/views/all/list`, '_blank');
-                  } else {
-                    toast.error('Could not create company, please contact an admin');
-                  }
+                    const newCompany = await companyService.createHubSpotCompany(authToken, formattedCompanyData);
+    
+                    console.log('hallo3');
+    
+                    if (newCompany) {
+                        toast.success('Successfully created company');
+                        window.open(`https://app-eu1.hubspot.com/contacts/${userData.hubSpotPortalId}/objects/0-2/views/all/list`, '_blank');
+                    } else {
+                        toast.error('Could not create company, please contact an admin');
+                    }
                 }
             } else {
-                toast.error('No data found, please contact an admin.')
+                toast.error('No data found, please contact an admin.');
             }
         } else {
-            toast.error('No data found, please contact an admin.')
+            toast.error('No data found, please contact an admin.');
         }
     };
+    
 
     return (
         <div className='v-company-detail'>
