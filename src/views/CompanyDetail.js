@@ -105,7 +105,6 @@ const CompanyDetail = () => {
                 const formattedCompanyData = await formatResult(companyData);
     
                 if (matchingCompany) {
-                    console.log('matching!!!!!!!!!');
                     const updatedCompany = await companyService.updateHubSpotCompany(authToken, matchingCompany.properties.hs_object_id, formattedCompanyData);
     
                     if (updatedCompany) {
@@ -115,7 +114,6 @@ const CompanyDetail = () => {
                         toast.error('Could not update company, please contact an admin');
                     }
                 } else {
-                  console.log('no matching!!!!!!!!!');
                     const newCompany = await companyService.createHubSpotCompany(authToken, formattedCompanyData);
     
                     if (newCompany) {
