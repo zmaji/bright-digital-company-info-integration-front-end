@@ -82,24 +82,31 @@ const CompanyDetail = () => {
             if (companyData.trade_name || companyData.trade_name_full || companyData.dossier_number) {
                 const existingCompanies = await companyService.getHubSpotCompanies(authToken);
 
-                const matchingCompany = existingCompanies.find(
+                console.log('existingCompanies');
+                console.log(existingCompanies.data.results);
+
+                const matchingCompany = existingCompanies.data.results.find(
                   (company) => {
                     // const name = String(company.properties.name || '').trim().toLowerCase();
                     // const tradeName = String(companyData.trade_name || '').trim().toLowerCase();
                     // const tradeNameFull = String(companyData.trade_name_full || '').trim().toLowerCase();
-                    const dossierNumber = String(company.properties.dossier_number || '').trim().toLowerCase();
-                    const companyDossierNumber = String(companyData.dossier_number || '').trim().toLowerCase();
-                    const establishmentNumber = String(companyData.establishment_number || '').trim().toLowerCase();
-                    const companyEstablishmentNumber = String(company.properties.establishment_number || '').trim().toLowerCase();
-                
+                    const existingDossierNumber = company.properties.dossier_number? company.properties.dossier_number : '';
+                    const companyDossierNumber = companyData.dossier_number? companyData.dossier_number: '';
+
+                    const existingEstablishmentNumber = company.properties.establishment_number? company.properties.establishment_number : '';
+                    const companyEstablishmentNumber = companyData.establishment_number? companyData.establishment_number: '';
+
                     return (
                       // name === tradeName || 
                       // name === tradeNameFull || 
-                      dossierNumber === companyDossierNumber &&
-                      establishmentNumber === companyEstablishmentNumber
+                      existingDossierNumber === companyDossierNumber &&
+                      existingEstablishmentNumber === companyEstablishmentNumber
                     );
                   }
                 );
+
+                console.log('matchingCompany');
+                console.log(matchingCompany);
 
                 const formattedCompanyData = await formatResult(companyData);
 
