@@ -107,18 +107,6 @@ const defaultFormData = {
       },
       ],
     },
-    {
-      groupType: 'default_group',
-      fields: [
-          {
-          name: "establishment_number",
-          label: "Establishment Number",
-          objectTypeId: "0-2",
-          fieldType: "number",
-          hidden: true,
-      },
-      ],
-    },
   ],
   configuration: {
     createNewContactForNewEmail: true,
