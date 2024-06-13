@@ -19,6 +19,8 @@ const Companies = () => {
               name: company.name,
               address: company.correspondence_street,
               location: capitalizeFirstLetter(company.correspondence_city),
+              dossier: company.dossier_number,
+              establishment: company.establishment_number,
               button: {
                   title: 'More information',
                   style: 'tertiary',

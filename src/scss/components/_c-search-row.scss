@@ -16,6 +16,15 @@
         width: 25%
     }
 
+    &__address-container {
+        width: 25%
+    }
+
+    &__info-container {
+        margin-left: auto;
+        width: 25%
+    }
+
     &__name {
         font-size: 16px;
         font-weight: 600;
@@ -28,6 +37,27 @@
     }
 
     &__location {
+        font-size: 16px;
+        font-weight: 300;
+    }
+
+    &__dossier-title {
+        margin-bottom: 16px;
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    &__dossier-value {
+        font-size: 16px;
+        font-weight: 300;
+    }
+
+    &__establishment-title {
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    &__establishment-value {
         font-size: 16px;
         font-weight: 300;
     }

@@ -2,7 +2,7 @@
 import React from 'react';
 import Button from '../Elements/Button';
 
-const SearchRow = ({ name, address, location, button }) => {    
+const SearchRow = ({ name, address, location, button, dossier, establishment }) => {    
   return (
     <div className='c-search-row u-flex'>
       <div className='c-search-row__line'></div>
@@ -16,6 +16,19 @@ const SearchRow = ({ name, address, location, button }) => {
                 <div className='c-search-row__address'>{address}&nbsp;|</div>
                 <div className='c-search-row__location'>&nbsp;{location}</div>
             </div>
+
+            <div className="c-search-row__info-container u-flex">
+              <div className='c-search-row__dossier-title'>
+                Dossier number:<br />
+                <div className='c-search-row__dossier-value'>{dossier}</div>
+              </div>
+               
+              <div className='c-search-row__establishment-title'>
+                Establishment number:<br />
+                <div className='c-search-row__establishment-value'>{establishment}</div>
+              </div>
+            </div>
+
 
             <div className='c-search-row__button-container' data-testid="search-row-button">
             <Button
