@@ -63,7 +63,6 @@ const SearchCompany = () => {
         }
       ).catch(error => {
         console.error('Error processing search results:', error);
-        toast.error('Please contact an admin to proceed');
       });
     };
 
