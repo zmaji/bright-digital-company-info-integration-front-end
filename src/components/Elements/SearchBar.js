@@ -8,13 +8,18 @@ const SearchBar = ({ onSearch }) => {
     setSearchTerm(e.target.value);
   };
 
+  const handleEnterSubmit = (e) => {
+    e.preventDefault();
+    onSearch(searchTerm);
+  };
+
   const handleSubmit = () => {
     onSearch(searchTerm);
   };
 
   return (
     <div className="c-search-bar">
-        <form className="c-search-bar__container">
+        <form onSubmit={handleEnterSubmit} className="c-search-bar__container">
         <input
             type="search"
             placeholder="Trade name"
