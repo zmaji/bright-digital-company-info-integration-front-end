@@ -78,6 +78,11 @@ const LandingPage = () => {
                   } else {
                     localStorage.setItem('rememberMe', 'false');
                   }
+
+                  logger.success('currentUser.data.roles');
+                  logger.success('currentUser.data.roles');
+                  logger.success('currentUser.data.roles');
+                  logger.success(currentUser.data.roles);
                   
                   if (currentUser?.data?.hubSpotPortalId || currentUser?.data?.roles.includes('Admin')) {
                     navigation('/overview');
