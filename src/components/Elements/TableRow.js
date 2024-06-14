@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Button from '../Elements/Button';
-import { useNavigate } from 'react-router-dom';
 
 const TableRow = ({ title, value, button }) => {
-  const navigation = useNavigate();
   const [editableValue, setEditableValue] = useState(value);
   const [isEditing, setIsEditing] = useState(false);
   const [displayValue, setDisplayValue] = useState(value);
@@ -16,11 +14,17 @@ const TableRow = ({ title, value, button }) => {
     setEditableValue(event.target.value);
   };
 
+  // const handleEditClick = () => {
+  //   if (button.title === 'Edit') {
+  //     console.log('jaaa')
+  //     navigation('/admin');
+  //   } else {
+  //     setIsEditing(true);
+  //   }
+  // };
+
   const handleEditClick = () => {
-    if (button.title === 'Edit') {
-      navigation('/overview');
-      console.log(navigation);
-    } else {
+    if (button.title === 'Change') {
       setIsEditing(true);
     }
   };
@@ -59,7 +63,7 @@ const TableRow = ({ title, value, button }) => {
             type={title.toLowerCase().includes('password') ? 'password' : 'text'}
             value={editableValue}
             onChange={handleChange}
-            className='c-table-row__input'X
+            className='c-table-row__input'
             autoFocus
           />
         ) : (
@@ -74,6 +78,7 @@ const TableRow = ({ title, value, button }) => {
             {...button}
             title={isEditing ? 'Submit' : button.title}
             onClick={isEditing ? handleSubmitClick : handleEditClick}
+            link='/admin'
           />
         </div>
       )}
