@@ -1,0 +1,41 @@
+.v-admin {
+    &__content-wrapper {
+        padding: 48px 55px;
+    }
+
+    &__profile-icon {
+        height: rem-calc(150);
+        width: rem-calc(150);
+    }
+
+    &__personal-information {
+        margin-left: 30px;
+
+        &__name {
+            font-size: 30px;
+            font-weight: 500;
+            margin-top: rem-calc(30);
+            margin-bottom: rem-calc(9);
+        }
+
+        &__email {
+            font-size: 16px;
+            font-weight: 300;
+        }
+    }
+
+    &__content-container__inner {
+        margin-top: rem-calc(78);
+
+        &__title {
+            font-size: 30px;
+            font-weight: 500;
+        }
+
+        &__text {
+            font-size: 16px;
+            font-weight: 300px;
+            max-width: rem-calc(675);
+        }
+    }
+}

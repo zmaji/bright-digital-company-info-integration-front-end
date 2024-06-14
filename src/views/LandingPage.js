@@ -78,15 +78,13 @@ const LandingPage = () => {
                   } else {
                     localStorage.setItem('rememberMe', 'false');
                   }
-
-                  logger.success('currentUser.data.roles');
-                  logger.success('currentUser.data.roles');
-                  logger.success('currentUser.data.roles');
-                  logger.success(currentUser.data.roles);
                   
-                  if (currentUser?.data?.hubSpotPortalId || currentUser?.data?.roles.includes('Admin')) {
+                  if (currentUser?.data?.hubSpotPortalId) {
                     navigation('/overview');
                     toast.success('Successfully logged in!')
+                  } else if (currentUser?.data?.roles.includes('Admin')) {
+                    navigation('/admin');
+                    toast.success('Successfully logged in as admin!')
                   } else {
                     navigation('/install');
                     toast.success('Successfully logged in!')

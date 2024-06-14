@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Button from '../Elements/Button';
+import { useNavigate } from 'react-router-dom';
 
 const TableRow = ({ title, value, button }) => {
+  const navigation = useNavigate();
   const [editableValue, setEditableValue] = useState(value);
   const [isEditing, setIsEditing] = useState(false);
   const [displayValue, setDisplayValue] = useState(value);
@@ -15,7 +17,12 @@ const TableRow = ({ title, value, button }) => {
   };
 
   const handleEditClick = () => {
-    setIsEditing(true);
+    if (button.title === 'Edit') {
+      navigation('/overview');
+      console.log(navigation);
+    } else {
+      setIsEditing(true);
+    }
   };
 
   const handleSubmitClick = () => {
@@ -52,7 +59,7 @@ const TableRow = ({ title, value, button }) => {
             type={title.toLowerCase().includes('password') ? 'password' : 'text'}
             value={editableValue}
             onChange={handleChange}
-            className='c-table-row__input'
+            className='c-table-row__input'X
             autoFocus
           />
         ) : (
@@ -65,7 +72,7 @@ const TableRow = ({ title, value, button }) => {
         <div className='c-table-row__button-container' data-testid="table-row-button">
           <Button
             {...button}
-            title={isEditing ? 'Submit' : 'Change'}
+            title={isEditing ? 'Submit' : button.title}
             onClick={isEditing ? handleSubmitClick : handleEditClick}
           />
         </div>
