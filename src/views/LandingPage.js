@@ -79,7 +79,7 @@ const LandingPage = () => {
                     localStorage.setItem('rememberMe', 'false');
                   }
                   
-                  if (currentUser?.data?.hubSpotPortalId) {
+                  if (currentUser?.data?.hubSpotPortalId || currentUser?.data?.roles.includes('Admin')) {
                     navigation('/overview');
                     toast.success('Successfully logged in!')
                   } else {
