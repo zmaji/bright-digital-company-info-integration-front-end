@@ -69,7 +69,6 @@ const TableRow = ({ title, value, button }) => {
             {...button}
             title={isEditing ? 'Submit' : button.title}
             onClick={isEditing ? handleSubmitClick : handleEditClick}
-            link='/admin'
           />
         </div>
       )}

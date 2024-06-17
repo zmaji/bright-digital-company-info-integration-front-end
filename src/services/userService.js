@@ -81,6 +81,19 @@ const updateUser = async (authToken, updateFields) => {
   }
 };
 
+const updateUserById = async (authToken, updateFields, userId) => {
+  await setAuthorizationHeader(authToken);
+  
+  try {
+    await axios.put(`${BASE_URL}/users/${userId}`, {
+      updateFields,
+    });
+  } catch (error) {
+      console.error('Error:', error);
+      throw new Error(error.message || 'An error occurred getting a user');
+  }
+};
+
 const verifyActivationCode = async (userId, activationCode) => {
   try {
     const response = axios.get(`${BASE_URL}/users/verify`, {
@@ -99,6 +112,7 @@ const verifyActivationCode = async (userId, activationCode) => {
 
 const userService = {
   getUser,
+  updateUserById,
   getUserById,
   getUsers,
   register,
