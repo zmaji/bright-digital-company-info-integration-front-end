@@ -1,0 +1,44 @@
+.c-user-row {
+    &__content-container {
+        width: calc(100% - 140px);
+    }
+
+    &__line {
+        width: 100%;
+        height: 1px;
+        background-color: $light-blue-gray-alt;
+        margin-top: rem-calc(24);
+        margin-bottom: rem-calc(24);
+    }
+
+    &__name-container {
+        flex-direction: row;
+        width: calc(50% - 80px);
+    }
+
+    &__firstname {
+        display: inline-block;
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    &__lastname {
+        display: inline-block;
+        font-size: 16px;
+        font-weight: 600;
+        margin-left: rem-calc(5);
+    }
+
+    &__email-container {
+        margin-right: auto;
+    }
+
+    &__emailaddress {
+        font-size: 16px;
+        font-weight: 300;
+    }
+
+    &__button-container {
+        margin-left: auto;
+    }
+}

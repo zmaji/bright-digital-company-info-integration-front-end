@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import AdminLayout from '../components/Layout/AdminLayout';
 import { useSelector } from 'react-redux';
 import userService from '../services/userService';
-import Table from '../components/Content/Table';
+import UserTable from '../components/Content/UserTable';
 
 const Users = () => {
   const authToken = useSelector((state) => state.auth.authToken);
@@ -22,15 +22,12 @@ const Users = () => {
     fetchUsers(authToken);
 }, [authToken]);
 
-  const openModal = (title, editableValue) => {
-    setEditContext({ title, editableValue });
-    setIsModalOpen(true);
-  };
-
   const userData = users.map(user => ({
-    title: 'Email address',
-    value: user.emailAddress,
-    button: { title: 'Edit', style: 'edit', onClick: openModal }
+    userId: user.id? user.id : '',
+    firstName: user.firstName? user.firstName : '',
+    lastName: user.lastName? user.lastName : '',
+    emailAddress: user.emailAddress,
+    button: { title: 'Edit', style: 'edit' }
   }));
 
   return (
@@ -40,7 +37,7 @@ const Users = () => {
           <div className="v-admin__content-container__inner">
             <h1 className='v-admin__content-container__inner__title'>Users</h1>
 
-            <Table data={userData} />
+            <UserTable data={userData} />
           </div>
         </div>
       </AdminLayout>

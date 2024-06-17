@@ -69,6 +69,8 @@
 @import "components/c-steps-horizontal";
 @import "components/c-table-row";
 @import "components/c-search-row";
+@import "components/c-user-row";
+@import "components/c-user-detail-row";
 @import "components/c-cards";
 @import "components/c-search-bar";
 @import "components/c-activation-bar";
@@ -92,6 +94,7 @@
 @import "views/v-profile";
 @import "views/v-activate";
 @import "views/v-admin";
+@import "views/v-user-detail";
 
 /**
   * Utilities

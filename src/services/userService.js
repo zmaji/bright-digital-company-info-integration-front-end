@@ -21,9 +21,21 @@ const getUser = async (authToken) => {
   }
 };
 
-const getUsers = async (authToken) => {
+const getUserById = async (authToken, userId) => {
   await setAuthorizationHeader(authToken);
   
+  try {
+      const response = await axios.get(`${BASE_URL}/users/${userId}`)
+      return response;
+  } catch (error) {
+      console.error('Error:', error);
+      throw new Error(error.message || 'An error occurred getting a user');
+  }
+};
+
+const getUsers = async (authToken) => {
+  await setAuthorizationHeader(authToken);
+
   try {
       const response = await axios.get(`${BASE_URL}/users/all`)
       return response.data;
@@ -87,6 +99,7 @@ const verifyActivationCode = async (userId, activationCode) => {
 
 const userService = {
   getUser,
+  getUserById,
   getUsers,
   register,
   updateUser,

@@ -14,15 +14,6 @@ const TableRow = ({ title, value, button }) => {
     setEditableValue(event.target.value);
   };
 
-  // const handleEditClick = () => {
-  //   if (button.title === 'Edit') {
-  //     console.log('jaaa')
-  //     navigation('/admin');
-  //   } else {
-  //     setIsEditing(true);
-  //   }
-  // };
-
   const handleEditClick = () => {
     if (button.title === 'Change') {
       setIsEditing(true);
@@ -64,7 +55,7 @@ const TableRow = ({ title, value, button }) => {
             value={editableValue}
             onChange={handleChange}
             className='c-table-row__input'
-            autoFocus
+            autoFocus 
           />
         ) : (
           <div className='c-table-row__title-container'>

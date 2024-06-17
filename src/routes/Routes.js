@@ -15,6 +15,7 @@ import CompanyDetail from '../views/CompanyDetail';
 import Properties from '../views/Properties';
 import Admin from '../views/Admin';
 import Users from '../views/Users';
+import UserDetail from '../views/UserDetail';
 
 const AppRoutes = () => {
   return (
@@ -35,6 +36,7 @@ const AppRoutes = () => {
         <Route path="/properties" element={<Properties/>} />
         <Route path="/admin" element={<Admin/>} />
         <Route path="/users" element={<Users/>} />
+        <Route path="/users/:userId" element={<UserDetail/>} />
         {/* <Route path="*" element={<NotFound />} /> */}
       </Routes>
     </Router>
