@@ -5,6 +5,7 @@ import userService from '../services/userService';
 import UserDetailsTable from '../components/Content/UserDetailTable';
 import Modal from '../components/Elements/Modal';
 import { useParams } from 'react-router-dom';
+import Button from '../components/Elements/Button';
 
 const UserDetail = () => {
   const authToken = useSelector((state) => state.auth.authToken);
@@ -69,6 +70,10 @@ const UserDetail = () => {
       valueToUpdate = user[fieldName];
     }
 
+    if (fieldName === 'isActive') {
+      valueToUpdate = editableValue === 'Yes';
+    }
+
     try {
       const updateFields = {
         [fieldName]: valueToUpdate,
@@ -92,26 +97,37 @@ const UserDetail = () => {
     return <div>Loading...</div>;
   }
 
-  const userData = {
-    'ID': user.id || 'Undefined',
-    'First name': user.firstName || 'Undefined',
-    'Last name': user.lastName || 'Undefined',
-    'Portal ID': user.hubSpotPortalId || 'Undefined',
-    'Email address': user.emailAddress || 'Undefined',
-    'Domain': user.domain || 'Undefined',
-    'Roles': user.roles || 'Undefined',
-    'Activated': user.isActive || 'Undefined',
-    'Password': user.password || 'Undefined',
-    'Company.info username': user.companyInfoUserName || 'Undefined',
-    'Company.info password': user.companyInfoPassword || 'Undefined',
+  let userData = {
+    'ID': user.id || '',
+    'First name': user.firstName || '',
+    'Last name': user.lastName || '',
+    'Email address': user.emailAddress || '',
+    'Roles': user.roles || '',
+    'Activated': user.isActive ? 'Yes' : 'No',
   };
+  
+  if (!user.roles?.includes('Admin')) {
+    userData = {
+      ...userData,
+      'Portal ID': user.hubSpotPortalId || '',
+      'Domain': user.domain || '',
+      'Company.info username': user.companyInfoUserName || '',
+      'Company.info password': user.companyInfoPassword || '',
+    };
+  }
 
   return (
     <div className='v-user-detail'>
       <AdminLayout>
         <div className="v-user-detail__content-wrapper">
           <div className="v-user-detail__content-container__inner">
+
+            <div className='c-signup-header__return-container u-flex-v-center'>
+              <Button title='Return' style='tertiary' link='/users' icon='ArrowLeft' animation='move-left'/>
+            </div>
+
             <h1 className='v-user-detail__content-container__inner__title'>{user.firstName} {user.lastName}</h1>
+
             {user && <UserDetailsTable userData={userData} openModal={openModal} />}
           </div>
         </div>
@@ -120,7 +136,7 @@ const UserDetail = () => {
         isOpen={isModalOpen}
         onRequestClose={handleModalCancel}
         title='Are you sure?'
-        content={`You're about to change ${editContext?.label || 'this field'}`}
+        content={`You're about to change ${editContext?.label.toLowerCase() || 'this field'}`}
         onConfirm={handleModalConfirm}
         onCancel={handleModalCancel}
       />

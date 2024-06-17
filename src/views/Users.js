@@ -3,6 +3,7 @@ import AdminLayout from '../components/Layout/AdminLayout';
 import { useSelector } from 'react-redux';
 import userService from '../services/userService';
 import UserTable from '../components/Content/UserTable';
+import Button from '../components/Elements/Button';
 
 const Users = () => {
   const authToken = useSelector((state) => state.auth.authToken);
@@ -34,11 +35,22 @@ const Users = () => {
     <div className='v-admin'>
       <AdminLayout>
         <div className="v-admin__content-wrapper">
-          <div className="v-admin__content-container__inner">
+          <div className="v-admin__content-container__inner u-flex u-flex-v-center">
             <h1 className='v-admin__content-container__inner__title'>Users</h1>
 
-            <UserTable data={userData} />
+            <div className="v-admin__content__button-container">
+              <Button
+                title='Create user'
+                style="primary"
+                icon='Plus'
+                animation="move-right"
+                link='/users/create'
+              />
+            </div>
+
           </div>
+
+          <UserTable data={userData} />
         </div>
       </AdminLayout>
     </div>

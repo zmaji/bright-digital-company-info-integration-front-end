@@ -1,17 +1,17 @@
-import DownloadIcon from '../icons/download.svg';
 import LogoutIcon from '../icons/logout.svg';
 import HomeIcon from '../icons/home.svg';
+import UsersIcon from '../icons/buyer-persona.svg';
 
 const sidebarData = [
     {
         items: [
-            { icon: HomeIcon, title: 'Home', link: '/admin' },
+            { icon: HomeIcon, title: 'Admin panel', link: '/admin' },
         ]
     },
     {
         title: 'Users',
         items: [
-            { icon: DownloadIcon, title: 'Users', link: '/users' },
+            { icon: UsersIcon, title: 'Users', link: '/users' },
         ],
     },
     {

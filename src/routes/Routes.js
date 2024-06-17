@@ -16,6 +16,7 @@ import Properties from '../views/Properties';
 import Admin from '../views/Admin';
 import Users from '../views/Users';
 import UserDetail from '../views/UserDetail';
+import UserCreate from '../views/UserCreate';
 
 const AppRoutes = () => {
   return (
@@ -37,6 +38,7 @@ const AppRoutes = () => {
         <Route path="/admin" element={<Admin/>} />
         <Route path="/users" element={<Users/>} />
         <Route path="/users/:userId" element={<UserDetail/>} />
+        <Route path="/users/create" element={<UserCreate/>} />
         {/* <Route path="*" element={<NotFound />} /> */}
       </Routes>
     </Router>

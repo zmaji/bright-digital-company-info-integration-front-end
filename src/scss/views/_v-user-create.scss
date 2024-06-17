@@ -1,6 +1,10 @@
-.v-user-detail {
+.v-user-create {
+    &__return-container {
+        padding: 48px 55px 0px 55px;
+    }
+
     &__content-wrapper {
-        padding: 48px 55px;
+        padding: 0px 250px 48px 250px;
     }
 
     &__profile-icon {
@@ -26,6 +30,7 @@
 
     &__content-container__inner {
         &__title {
+            margin-bottom: rem-calc(50);
             margin-top: rem-calc(50);
             font-size: 30px;
             font-weight: 500;
@@ -36,5 +41,21 @@
             font-weight: 300px;
             max-width: rem-calc(675);
         }
+    }
+
+    &__checkbox-container {
+        flex-direction: column;
+        
+        & label:last-child {
+            margin-bottom: rem-calc(40);
+        }
+    }
+
+    &__checkbox-label {
+        margin-bottom: rem-calc(10);
+    }
+
+    &__checkbox-text {
+        margin-left: 10px;
     }
 }

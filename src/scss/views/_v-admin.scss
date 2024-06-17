@@ -25,6 +25,7 @@
     }
 
     &__content-container__inner {
+        justify-content: space-between;
         &__title {
             font-size: 30px;
             font-weight: 500;
