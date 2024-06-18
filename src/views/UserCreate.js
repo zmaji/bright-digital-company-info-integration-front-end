@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import AdminLayout from '../components/Layout/AdminLayout';
-import { useSelector } from 'react-redux';
+import AdminLayout from '../components/Layout/AdminLayout';s
 import userService from '../services/userService';
 import Button from '../components/Elements/Button';
 import Form from '../components/form/Form';
@@ -8,9 +7,9 @@ import Label from '../components/form/Label';
 import Input from '../components/form/Input';
 import { validateForm } from '../helpers/validateFormData';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 const UserCreate = () => {
-  const authToken = useSelector((state) => state.auth.authToken);
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
@@ -22,6 +21,7 @@ const UserCreate = () => {
   const [emailError, setEmailError] = useState('');
   const [validationErrors, setValidationErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const navigation = useNavigate();
 
   const handleFirstNameChange = (e) => {
     setFirstName(e.target.value);
@@ -71,7 +71,7 @@ const UserCreate = () => {
             const response = await userService.register(firstName, lastName, email, password, isAdmin, sendValidationEmail);
 
             if (response.status >= 200 && response.status < 300) {
-                localStorage.setItem('userId', response.data.id); 
+                navigation('/users');
                 return Promise.resolve();
             } else {
                 if (response === 409) {
