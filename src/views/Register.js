@@ -64,9 +64,6 @@ const Register = () => {
       const formData = { firstName, lastName, email, password, repeatPassword };
       const errors = validateForm(formData);
 
-      console.log(errors);
-      console.log(Object.keys(errors).length);
-
       if (Object.keys(errors).length === 0) {
           try {
               const response = await userService.register(firstName, lastName, email, password);

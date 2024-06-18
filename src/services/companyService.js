@@ -67,8 +67,6 @@ const getCompanies = async (tradeName, authToken) => {
           'Content-Type': 'application/json',
         },
       });
-
-      console.log(response);
   
       return response.data.results;
     } catch (error) {

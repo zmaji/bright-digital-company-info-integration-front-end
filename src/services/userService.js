@@ -45,14 +45,28 @@ const getUsers = async (authToken) => {
   }
 };
 
-const register = async (firstName, lastName, email, password) => {
+const register = async (firstName, lastName, email, password, isAdmin, sendValidationEmail) => {
   try {
-    const response = await axios.post(`${BASE_URL}/users`, {
+    const requestBody = {
       firstName: firstName,
       lastName: lastName,
       emailAddress: email,
       password: password,
-    }, {
+    };
+
+    if (isAdmin) {
+      requestBody.roles = ['Gebruiker', 'Admin'];
+    } else {
+      requestBody.roles = ['Gebruiker'];
+    }
+
+    if (sendValidationEmail) {
+      requestBody.sendValidationEmail = true;
+    } else {
+      requestBody.sendValidationEmail = false;
+    }
+
+    const response = await axios.post(`${BASE_URL}/users`, requestBody, {
       headers: {
         'Content-Type': 'application/json',
       },
@@ -67,6 +81,7 @@ const register = async (firstName, lastName, email, password) => {
     throw new Error(error.message || 'An error occurred while registering');
   }
 };
+
 
 const updateUser = async (authToken, updateFields) => {
   await setAuthorizationHeader(authToken);

@@ -88,9 +88,6 @@ const CompanyDetail = () => {
     
                     const existingEstablishmentNumber = company.properties.establishment_number ? String(company.properties.establishment_number).trim() : '';
                     const companyEstablishmentNumber = companyData.establishment_number ? String(companyData.establishment_number).trim() : '';
-    
-                    console.log('Comparing dossier numbers:', existingDossierNumber, companyDossierNumber);
-                    console.log('Comparing establishment numbers:', existingEstablishmentNumber, companyEstablishmentNumber);
 
                     if (existingDossierNumber === companyDossierNumber &&
                       existingEstablishmentNumber === companyEstablishmentNumber

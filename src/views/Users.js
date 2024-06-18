@@ -16,7 +16,6 @@ const Users = () => {
 
             if (users) {
                 setUsers(users);
-                console.log('users', users);
             }
         }
     };

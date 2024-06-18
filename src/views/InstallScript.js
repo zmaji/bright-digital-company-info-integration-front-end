@@ -18,8 +18,6 @@ const InstallScript = () => {
     const createForm = async () => {
       try {
         const hubSpotForms = await formService.getForms(authToken);
-
-        console.log(hubSpotForms);
     
         const existingForm = hubSpotForms.some(
           (form) => form.name === "Company.info Form"
