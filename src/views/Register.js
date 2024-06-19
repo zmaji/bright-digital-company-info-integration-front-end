@@ -9,8 +9,12 @@ import { validateForm } from '../helpers/validateFormData';
 import userService from '../services/userService';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import { setAuthToken } from '../store/authSlice';
+import { useDispatch } from 'react-redux';
+import authService from '../services/authService';
 
 const Register = () => {
+    const dispatch = useDispatch();
     const navigation = useNavigate();
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -66,11 +70,29 @@ const Register = () => {
 
       if (Object.keys(errors).length === 0) {
           try {
-              const response = await userService.register(firstName, lastName, email, password);
+              const sendValidationEmail = true;
+              const isAdmin = false;
+              const response = await userService.register(firstName, lastName, email, password, isAdmin, sendValidationEmail);
 
               if (response.status >= 200 && response.status < 300) {
-                  navigation('/activate');
-                  return Promise.resolve();
+                  const currentUser = await authService.login(email, password);
+
+                  if (currentUser) {
+                    const token = currentUser.data.result
+                  
+                    if (token) {
+                      dispatch(setAuthToken(token));
+                      navigation('/activate');
+
+                      return Promise.resolve();
+                    } else {
+                      setError('An error occurred. Please try again later.');
+                      return Promise.reject();
+                    }
+                  } else {
+                    setError('An error occurred. Please try again later.');
+                    return Promise.reject();
+                  }
               } else {
                   if (response === 409) {
                       setEmailError('Email address already exists.');

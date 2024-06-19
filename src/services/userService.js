@@ -66,6 +66,9 @@ const register = async (firstName, lastName, email, password, isAdmin, sendValid
       requestBody.sendValidationEmail = false;
     }
 
+    console.log('requestBody')
+    console.log(requestBody)
+
     const response = await axios.post(`${BASE_URL}/users`, requestBody, {
       headers: {
         'Content-Type': 'application/json',
