@@ -25,8 +25,9 @@
     }
 
     &__content-container__inner {
+      margin-top: rem-calc(50);
+      justify-content: space-between;
         &__title {
-            margin-top: rem-calc(50);
             font-size: 30px;
             font-weight: 500;
         }
@@ -36,5 +37,9 @@
             font-weight: 300px;
             max-width: rem-calc(675);
         }
+    }
+
+    &__button-container {
+      margin-top: 15px;
     }
 }

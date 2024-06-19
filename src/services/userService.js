@@ -112,6 +112,17 @@ const updateUserById = async (authToken, updateFields, userId) => {
   }
 };
 
+const deleteUserById = async (authToken, userId) => {
+  await setAuthorizationHeader(authToken);
+  
+  try {
+    await axios.delete(`${BASE_URL}/users/${userId}`);
+  } catch (error) {
+      console.error('Error:', error);
+      throw new Error(error.message || 'An error occurred deleting a user');
+  }
+};
+
 const verifyActivationCode = async (userId, activationCode) => {
   try {
     const response = await axios.get(`${BASE_URL}/users/verify`, {
@@ -135,6 +146,7 @@ const userService = {
   getUsers,
   register,
   updateUser,
+  deleteUserById,
   verifyActivationCode,
 };
 
