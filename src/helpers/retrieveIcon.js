@@ -14,6 +14,7 @@ import { ReactComponent as SearchWhite } from '../icons/search-white.svg';
 import { ReactComponent as SearchBlack } from '../icons/search-black.svg';
 import { ReactComponent as Refresh } from '../icons/arrows-rotate-solid.svg';
 import { ReactComponent as Close } from '../icons/close.svg';
+import { ReactComponent as Users } from '../icons/buyer-persona.svg';
 
 const icons = {
     ArrowRight: ArrowRight,
@@ -32,6 +33,7 @@ const icons = {
     SearchBlack: SearchBlack,
     Refresh: Refresh,
     Close: Close,
+    Users: Users,
 }
 
 export const retrieveIcon = (icon) => {
