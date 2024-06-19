@@ -8,8 +8,10 @@ import checkIcon from '../icons/check-solid.svg'
 import mailIcon from '../icons/envelope-regular.svg'
 import smileIcon from '../icons/face-smile-regular.svg'
 import ActivateBar from '../components/Elements/ActivateBar';
+import { useNavigate } from 'react-router-dom';
 
 const Activate = () => {
+  const navigation = useNavigate();
   const authToken = useSelector((state) => state.auth.authToken);
   const [user, setUser] = useState(null);
 
@@ -19,7 +21,12 @@ const Activate = () => {
         const currentUser = await userService.getUser(authToken);
 
         if (currentUser) {
-          setUser(currentUser.data);
+          console.log(currentUser)
+          if (currentUser.data.isActive === false) {
+            setUser(currentUser.data);
+          } else {
+            navigation('/');
+          }
         }
       } catch (error) {
         console.error('Error fetching current user:', error);
