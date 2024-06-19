@@ -7,7 +7,7 @@ import DefaultHeader from '../header/DefaultHeader';
 const AdminLayout = ({ padding, children }) => {
     return (
         <div className='c-default-layout'>
-         <DefaultHeader />
+         <DefaultHeader adminLink='/admin' />
             <div className='o-container'>
                 <div className='u-squeeze u-squeeze--xxl'>
                     <div className='c-default-layout__container u-flex'>

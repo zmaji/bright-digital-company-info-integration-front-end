@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ClipPathLogo from '../../macros/ClipPathLogo';
 
-const DefaultHeader = () => {
+const DefaultHeader = ({ adminLink }) => {
     const userData = useSelector(state => state.user.userData.data);
 
     const firstName = userData ? userData.firstName : 'First name not found';
@@ -20,7 +20,7 @@ const DefaultHeader = () => {
             <div className='u-squeeze u-squeeze--xxl'>
                <div className='c-default-header__container u-flex u-flex-sb u-flex-v-center'>
                 <div className='c-default-header__logo-container'>
-                    <Link to='/overview'>
+                    <Link to={adminLink || '/overview'}>
                         <ClipPathLogo cl='c-default-header__logo c-logo-animation' type='page' />
                     </Link>
                 </div>
