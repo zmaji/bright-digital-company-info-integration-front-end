@@ -10,6 +10,7 @@ import Button from '../components/Elements/Button';
 const UserDetail = () => {
   const authToken = useSelector((state) => state.auth.authToken);
   const [user, setUser] = useState(null);
+  const [currentAdmin, setCurrentAdmin] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editContext, setEditContext] = useState(null);
   const { userId } = useParams();
@@ -20,6 +21,12 @@ const UserDetail = () => {
         const response = await userService.getUserById(authToken, userId);
         if (response) {
           setUser(response.data);
+        }
+
+        const currentAdmin = await userService.getUser(authToken);
+
+        if (currentAdmin) {
+          setCurrentAdmin(currentAdmin.data);
         }
       }
     };
@@ -116,6 +123,8 @@ const UserDetail = () => {
     };
   }
 
+  const allowEdit = currentAdmin && currentAdmin.id !== user.id;
+
   return (
     <div className='v-user-detail'>
       <AdminLayout>
@@ -128,7 +137,7 @@ const UserDetail = () => {
 
             <h1 className='v-user-detail__content-container__inner__title'>{user.firstName} {user.lastName}</h1>
 
-            {user && <UserDetailsTable userData={userData} openModal={openModal} />}
+            {user && <UserDetailsTable userData={userData} openModal={openModal} allowEdit={allowEdit} />}
           </div>
         </div>
       </AdminLayout>
