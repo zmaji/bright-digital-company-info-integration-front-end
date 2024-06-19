@@ -69,7 +69,6 @@ const Register = () => {
               const response = await userService.register(firstName, lastName, email, password);
 
               if (response.status >= 200 && response.status < 300) {
-                  localStorage.setItem('userId', response.data.id); 
                   navigation('/activate');
                   return Promise.resolve();
               } else {

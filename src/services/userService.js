@@ -111,7 +111,7 @@ const updateUserById = async (authToken, updateFields, userId) => {
 
 const verifyActivationCode = async (userId, activationCode) => {
   try {
-    const response = axios.get(`${BASE_URL}/users/verify`, {
+    const response = await axios.get(`${BASE_URL}/users/verify`, {
       params: {
         userId: userId,
         activationCode: activationCode,
