@@ -9,7 +9,7 @@ import groupService from '../services/groupService';
 import { generatePropertyFields } from '../helpers/hubSpot/generatePropertyFields';
 import Modal from '../components/Elements/Modal';
 
-const CompanyDetail = () => {
+const Properties = () => {
   const authToken = useSelector((state) => state.auth.authToken);
   const [allProperties, setAllProperties] = useState([]);
   const [currentProperties, setCurrentProperties] = useState([]);
@@ -17,6 +17,7 @@ const CompanyDetail = () => {
   const [selectedProperties, setSelectedProperties] = useState(new Set());
   const [deleteUnselected, setDeleteUnselected] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectAll, setSelectAll] = useState(false);
   
   useEffect(() => {
     const fetchData = async () => {
@@ -213,6 +214,17 @@ const CompanyDetail = () => {
     setIsModalOpen(false);
   };
 
+
+  const handleSelectAllChange = () => {
+    if (selectAll) {
+      setSelectedProperties(new Set());
+    } else {
+      const allPropertyNames = new Set(allProperties.map((property) => property.name));
+      setSelectedProperties(allPropertyNames);
+    }
+    setSelectAll(!selectAll);
+  };
+
   return (
     <DefaultLayout>
       <div className="v-properties__content-wrapper">
@@ -235,18 +247,31 @@ const CompanyDetail = () => {
               onClick={handleSaveProperties}
             />
 
-            <div className="v-properties__delete-unselected-container u-flex u-flex-v-cent">
-              <div className="v-properties__delete-unselected-checkbox">
+            <div className="v-properties__delete-unselected-container u-flex">
+              <div className="v-properties__delete-unselected-checkbox u-flex">
                 <input
                   type="checkbox"
                   id="delete-unselected"
                   checked={deleteUnselected}
                   onChange={handleDeleteUnselectedChange} 
                 />
+
+                <div className="v-properties__delete-unselected-title">
+                    Delete unselected properties
+                </div>
               </div>
 
-              <div className="v-properties__delete-unselected-title">
-                  Delete unselected properties
+              <div className="v-properties__delete-unselected-checkbox u-flex">
+              <input
+                  type="checkbox"
+                  id="select-all"
+                  checked={selectAll}
+                  onChange={handleSelectAllChange}
+                />
+
+                <div className="v-properties__delete-unselected-title">
+                    Select all properties
+                </div>
               </div>
             </div>
           </div>
@@ -302,4 +327,4 @@ const CompanyDetail = () => {
   );
 };
 
-export default CompanyDetail;
+export default Properties;
