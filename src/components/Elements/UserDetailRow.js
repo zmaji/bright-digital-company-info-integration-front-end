@@ -95,7 +95,7 @@ const UserDetailRow = ({ label, value, button, openModal }) => {
             </div>
           )}
         </div>
-        {button && label !== 'ID' && (
+        {button && label !== 'ID' && label!== 'Portal ID' && (
           <div className='c-user-detail-row__button-container' data-testid="user-row-button">
             <Button
               {...button}
@@ -105,7 +105,7 @@ const UserDetailRow = ({ label, value, button, openModal }) => {
           </div>
         )}
 
-        {button && label !== 'ID' && isEditing && (
+        {button && label !== 'ID' && label!== 'Portal ID' && isEditing && (
           <div className='c-user-detail-row__cancel-button' data-testid="user-row-button">
             <Button
               {...button}
