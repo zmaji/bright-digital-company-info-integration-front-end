@@ -6,6 +6,11 @@ import ClipPathLogo from '../../macros/ClipPathLogo';
 
 const DefaultHeader = ({ adminLink }) => {
     const userData = useSelector(state => state.user.userData.data);
+    let profileLink = '/profile';
+
+    if (adminLink) {
+        profileLink = '';
+    }
 
     const firstName = userData ? userData.firstName : 'First name not found';
     const lastName = userData ? userData.lastName : 'Last name not found';
@@ -27,7 +32,7 @@ const DefaultHeader = ({ adminLink }) => {
                 <div className='c-default-header__profile-container u-flex u-flex-v-center'>
                     <span className='c-default-header__profile-title'>{firstName} {lastName}</span>
 
-                    <Link to='/profile'>
+                    <Link to={profileLink}>
                         <img className='c-default-header__profile-icon' src={profileIcon} alt='Profile icon' />
                     </Link>
                 </div>
