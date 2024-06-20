@@ -53,59 +53,74 @@ const LandingPage = () => {
     //   toast.error('Please contact an admin to change password')
     // };
 
-    const handleLogin = async () => {
+    const userLogin = async () => {
       try {
         const formData = { email, password };
         const errors = validateForm(formData);
-
+    
         if (Object.keys(errors).length === 0) {
           const response = await authService.login(email, password);
-
+    
           if (response.status >= 200 && response.status < 300) {
-              const token = response.data.result;
-              
-              if (token) {
-                dispatch(setAuthToken(token));
-                const currentUser = await userService.getUser(token);
-                dispatch(setUserData(currentUser));
-
-                if (currentUser.data.isActive === false) {
-                  toast.error('Please activate your account!')
-                  navigation('/activate');
+            const token = response.data.result;
+    
+            if (token) {
+              dispatch(setAuthToken(token));
+              const currentUser = await userService.getUser(token);
+              dispatch(setUserData(currentUser));
+    
+              if (currentUser.data.isActive === false) {
+                toast.error('Please activate your account!');
+                navigation('/activate');
+              } else {
+                if (rememberMe) {
+                  localStorage.setItem('rememberMe', 'true');
                 } else {
-                  if (rememberMe) {
-                    localStorage.setItem('rememberMe', 'true');
-                  } else {
-                    localStorage.setItem('rememberMe', 'false');
-                  }
-                  
-                  if (currentUser?.data?.hubSpotPortalId) {
-                    navigation('/overview');
-                    toast.success('Successfully logged in!')
-                  } else if (currentUser?.data?.roles.includes('Admin')) {
-                    navigation('/admin');
-                    toast.success('Successfully logged in as admin!')
-                  } else {
-                    navigation('/install');
-                    toast.success('Successfully logged in!')
-                  }
+                  localStorage.setItem('rememberMe', 'false');
+                }
+    
+                if (currentUser?.data?.hubSpotPortalId) {
+                  navigation('/overview');
+                } else if (currentUser?.data?.roles.includes('Admin')) {
+                  navigation('/admin');
+                } else {
+                  navigation('/install');
                 }
               }
+            }
           } else {
-              if (response.status === 409) {
-                  setEmailError('Email address does not exist.');
-              } else if (response.status === 401) {
-                  setConflictError('Email address and password do not match.');
-              }
+            if (response.status === 409) {
+              setEmailError('Email address does not exist.');
+              throw new Error('Email address does not exist.');
+            } else if (response.status === 401) {
+              setConflictError('Email address and password do not match.');
+              throw new Error('Email address and password do not match.');
+            }
           }
         } else {
-            setValidationErrors(errors);
+          setValidationErrors(errors);
+          throw new Error('Validation errors occurred.');
         }
       } catch (error) {
         console.error('Error:', error);
         setError('An error occurred. Please try again later.');
+        throw error;
       }
     };
+    
+    const handleLogin = () => {
+      toast.promise(
+        userLogin(),
+        {
+          loading: 'Logging in..',
+          success: 'Successfully logged in!',
+          error: 'Error logging in..',
+        }
+      ).catch(error => {
+        console.error('Error logging in:', error);
+      });
+    };
+    
 
     const userData = useSelector(state => state.user.userData);
 
