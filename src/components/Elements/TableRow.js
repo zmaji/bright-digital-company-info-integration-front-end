@@ -15,9 +15,7 @@ const TableRow = ({ title, value, button }) => {
   };
 
   const handleEditClick = () => {
-    if (button.title === 'Change') {
-      setIsEditing(true);
-    }
+    setIsEditing(true);
   };
 
   const handleSubmitClick = () => {
@@ -30,6 +28,11 @@ const TableRow = ({ title, value, button }) => {
         setDisplayValue(editableValue);
       }
     }
+  };
+
+  const handleCancelClick = () => {
+    setEditableValue(value);
+    setIsEditing(false);
   };
 
   useEffect(() => {
@@ -64,12 +67,21 @@ const TableRow = ({ title, value, button }) => {
         )}
       </div>
       {button && (
-        <div className='c-table-row__button-container' data-testid="table-row-button">
+        <div className='c-table-row__button-container u-flex u-flex-v-center' data-testid="table-row-button">
           <Button
             {...button}
             title={isEditing ? 'Submit' : button.title}
             onClick={isEditing ? handleSubmitClick : handleEditClick}
           />
+          {isEditing && (
+            <div className='c-user-detail-row__cancel-button' data-testid="user-row-button">
+              <Button
+                {...button}
+                title={'Cancel'}
+                onClick={handleCancelClick}
+              />
+            </div>
+          )}
         </div>
       )}
     </div>
