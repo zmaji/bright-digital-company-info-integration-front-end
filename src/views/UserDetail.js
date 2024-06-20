@@ -142,7 +142,6 @@ const UserDetail = () => {
     userData = {
       ...userData,
       'Portal ID': user.hubSpotPortalId || '',
-      'Domain': user.domain || '',
       'Company.info username': user.companyInfoUserName || '',
       'Company.info password': user.companyInfoPassword || '',
     };

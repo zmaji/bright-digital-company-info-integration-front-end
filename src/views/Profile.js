@@ -92,7 +92,6 @@ const Profile = () => {
         { title: 'First name', value: firstName, button: { title: 'Change', style: 'edit', onClick: openModal } },
         { title: 'Last name', value: lastName, button: { title: 'Change', style: 'edit', onClick: openModal } },
         { title: 'Email address', value: emailAddress, button: { title: 'Change', style: 'edit', onClick: openModal } },
-        { title: 'Domain', value: domain, button: { title: 'Change', style: 'edit', onClick: openModal } },
         { title: 'Company info username', value: companyInfoUserName, button: { title: 'Change', style: 'edit', onClick: openModal } },
         { title: 'Company info password', value: companyInfoPassword, button: { title: 'Change', style: 'edit', onClick: openModal } },
       ];
