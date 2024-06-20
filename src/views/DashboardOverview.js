@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import DefaultLayout from '../components/Layout/DefaultLayout';
 import Button from '../components/Elements/Button';
 import Cards from '../components/Content/Cards';
@@ -15,7 +15,7 @@ const DashboardOverview = () => {
   const [missingHubSpotProperties, setMissingHubSpotProperties] = useState([]);
   const [missingProperties, setMissingProperties] = useState([]);
   const [propertiesToUpdate, setPropertiesToUpdate] = useState([]);
-  const [propertyFields, setPropertyfields] = useState([]);
+  const [propertyFields, setPropertyFields] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => {
@@ -30,6 +30,49 @@ const DashboardOverview = () => {
   const handleModalCancel = () => {
     setIsModalOpen(false);
   };
+
+  const fetchProperties = useCallback(async () => {
+    try {
+      const currentProperties = await propertyService.getProperties(authToken);
+      const currentHubSpotProperties = await propertyService.getHubSpotProperties(authToken, 'company', 'company_info_integration');
+      const propertyFields = await generatePropertyFields();
+
+      const filteredPropertyFields = propertyFields.filter((property) => 
+        property.name !== 'dossier_number' &&
+        property.name !== 'establishment_number' &&
+        property.name !== 'last_sync'
+      );
+
+      setPropertyFields(filteredPropertyFields);
+
+      if (currentProperties !== null) {
+        const propertiesToUpdate = currentProperties
+          .filter((property) => property.toSave === false)
+          .map((property) => ({
+            ...property,
+            toSave: true,
+          }));
+        setPropertiesToUpdate(propertiesToUpdate);
+      } else {
+        const missingProperties = filteredPropertyFields
+          .map((property) => ({
+            name: property.name,
+            toSave: true,
+          }));
+        setMissingProperties(missingProperties);
+      }
+
+      if (currentHubSpotProperties) {
+        const missingHubSpotProperties = propertyFields.filter(
+          (field) => !currentHubSpotProperties.some((cp) => cp.name === field.name)
+        );
+        setMissingHubSpotProperties(missingHubSpotProperties);
+      };
+    } catch (error) {
+      console.error('Error fetching properties:', error);
+      toast.error('Failed to fetch properties. Contact an admin.');
+    }
+  }, [authToken]);
 
   const handleUpdateProperties = async () => {
     try {
@@ -49,10 +92,11 @@ const DashboardOverview = () => {
       if (missingProperties.length > 0) {
         await propertyService.createProperties(authToken, missingProperties);
       } else {
-        await propertyService.updateProperties(authToken, propertiesToUpdate)
+        await propertyService.updateProperties(authToken, propertiesToUpdate);
       }
 
       setMissingProperties(missingProperties);
+      fetchProperties();
     } catch (error) {
       console.error('Error setting up properties:', error);
       toast.error('Failed to set up properties. Contact an admin.');
@@ -63,9 +107,9 @@ const DashboardOverview = () => {
     toast.promise(
       handleUpdateProperties(),
       {
-        loading: 'Saving settings properties..',
+        loading: 'Saving settings properties...',
         success: 'Properties successfully saved!',
-        error: 'Failed to save properties..',
+        error: 'Failed to save properties...',
       }
     ).catch(error => {
       console.error('Error processing properties:', error);
@@ -74,62 +118,25 @@ const DashboardOverview = () => {
   };
 
   useEffect(() => {
-    const checkForMissingProperties = async () => {
-      const currentProperties = await propertyService.getProperties(authToken);
-      const currentHubSpotProperties = await propertyService.getHubSpotProperties(authToken, 'company', 'company_info_integration');
-      const propertyFields = await generatePropertyFields();
+    fetchProperties();
+  }, [authToken, fetchProperties]);
 
-      const filteredPropertyFields = propertyFields.filter((property) => 
-        property.name !== 'dossier_number' &&
-        property.name !== 'establishment_number' &&
-        property.name !== 'last_sync'
-      );
-
-      setPropertyfields(filteredPropertyFields);
-
-      if (currentProperties !== null) {
-        const propertiesToUpdate = currentProperties
-        .filter((property) => property.toSave === false)
-        .map((property) => ({
-          ...property,
-          toSave: true,
-        }));
-        setPropertiesToUpdate(propertiesToUpdate);
-      } else {
-        const missingProperties = filteredPropertyFields
-        .map((property) => ({
-          name: property.name,
-          toSave: true,
-        }));
-        setMissingProperties(missingProperties);
-      }
-
-      if (currentHubSpotProperties) {
-        const missingHubSpotProperties = propertyFields.filter(
-          (field) => !currentHubSpotProperties.some((cp) => cp.name === field.name)
-        );
-        setMissingHubSpotProperties(missingHubSpotProperties);
-      };
-    };
-    checkForMissingProperties();
-  }, [authToken]);
-
-  const buttonText = missingProperties.length === propertyFields.length - 3
+  const buttonText = missingProperties.length === propertyFields.length || missingHubSpotProperties.length - 3 === propertyFields.length
     ? 'Set up properties' 
     : 'Reset properties';
 
-  const paragraphText = missingProperties.length === propertyFields.length - 3
-    ? 'By clicking the button below, a default HubSpot group and the necessary properties will be automatically created. This serves as the central hub for all your the retrieved data in HubSpot and ensures that it is accurately organized and ready for further operations.' 
+  const paragraphText = missingProperties.length === propertyFields.length || missingHubSpotProperties.length - 3 === propertyFields.length
+    ? 'By clicking the button below, a default HubSpot group and the necessary properties will be automatically created. This serves as the central hub for all your retrieved data in HubSpot and ensures that it is accurately organized and ready for further operations.' 
     : 'By clicking the button below, all the necessary properties will be automatically reset to default.';
 
-  const buttonIcon = missingProperties.length === propertyFields.length - 3
+  const buttonIcon = missingProperties.length === propertyFields.length || missingHubSpotProperties.length - 3 === propertyFields.length
     ? 'Plus' 
     : 'Refresh';
 
-  const modalText = missingProperties.length === propertyFields.length - 3
+  const modalText = missingProperties.length === propertyFields.length || missingHubSpotProperties.length - 3 === propertyFields.length
     ? 'This action will create all default properties'
     : 'This action will reset all default properties. However, values referencing existing properties will not be deleted.';
-    
+
   return (
     <div className='v-dashboard-overview'>
       <DefaultLayout padding='default'>
