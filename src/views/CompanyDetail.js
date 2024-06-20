@@ -16,7 +16,8 @@ const CompanyDetail = () => {
     const [companyData, setCompanyData] = useState(null);
     const [cleanCompanyData, setCleanCompanyData] = useState(null);
     const [visibleItemCount, setVisibleItemCount] = useState(6);
-  
+    const [loading, setLoading] = useState(true);
+
     useEffect(() => {
         const fetchData = async () => {
             if (location && location.search) {
@@ -33,6 +34,7 @@ const CompanyDetail = () => {
                 } else {
                     toast.error('Something went wrong, please contact an admin');
                 }
+                setLoading(false);
             }
         };
         fetchData();
@@ -138,80 +140,82 @@ const CompanyDetail = () => {
                   </div>
 
                   <div className="v-company-detail__content-container u-flex">
+                    {loading ? (
+                        <div className="loader">Loading...</div> // Add your loader here
+                    ) : (
+                        <React.Fragment>
+                            <div className="v-company-detail__content-container__left">
+                                <h2 className='v-company-detail__title'>
+                                    {cleanCompanyData ? cleanCompanyData.trade_name_full : "No trade name found"}
+                                </h2>
 
-                      <div className="v-company-detail__content-container__left">
-                        <h2 className='v-company-detail__title'>
-                            {cleanCompanyData ? cleanCompanyData.trade_name_full : "No trade name found"}
-                        </h2>
+                                <p className='v-company-detail__text'>
+                                The properties displayed are based on your customized settings. By clicking the button, you can automatically create a new company record or update an existing one in HubSpot. If the information requires adjustments, feel free to make changes before saving.
+                                </p>
 
-                        <p className='v-company-detail__text'>
-                        The properties displayed are based on your customized settings. By clicking the button, you can automatically create a new company record or update an existing one in HubSpot. If the information requires adjustments, feel free to make changes before saving.
-                        </p>
+                                <Button title='Save in HubSpot' style='primary' icon='Plus' animation='none' onClick={handleSaveCompany}/>
+                            </div>
 
-                        <Button title='Save in HubSpot' style='primary' icon='Plus' animation='none' onClick={handleSaveCompany}/>
-                      </div>
+                            <div className="v-company-detail__content-container__right">
+                                {cleanCompanyData && (
+                                    <React.Fragment>
+                                        <div className="v-company-detail__identification-container">
+                                            <p className='v-company-detail__identification-title'>
+                                                Identification characteristics
+                                            </p>
 
-                      <div className="v-company-detail__content-container__right">
-                        {cleanCompanyData && (
-                            <React.Fragment>
-                                <div className="v-company-detail__identification-container">
-                                    <p className='v-company-detail__identification-title'>
-                                        Identification characteristics
-                                    </p>
+                                            <div className="v-company-detail__properties u-flex">
+                                                {Object.entries(cleanCompanyData)
+                                                    .filter(([key]) => ['dossier_number', 'rsin_number', 'establishment_number'].includes(key))
+                                                    .map(([key, value]) => (
+                                                        (typeof value === 'string' || typeof value === 'number') && (value !== null && value !== '') && (
+                                                            <div key={key} className="v-company-detail__property">
+                                                                <p className='v-company-detail__property-title'>{formatKey(key)}</p>
+                                                                <p className='v-company-detail__property-value'>{value}</p>
+                                                            </div>
+                                                        )
+                                                ))}
+                                            </div>
+                                            
+                                            <div className='v-company-detail__line'></div>
+                                        </div>
 
-                                    <div className="v-company-detail__properties u-flex">
-                                        {Object.entries(cleanCompanyData)
-                                            .filter(([key]) => ['dossier_number', 'rsin_number', 'establishment_number'].includes(key))
-                                            .map(([key, value]) => (
-                                                (typeof value === 'string' || typeof value === 'number') && (value !== null && value !== '') && (
-                                                    <div key={key} className="v-company-detail__property">
-                                                        <p className='v-company-detail__property-title'>{formatKey(key)}</p>
-                                                        <p className='v-company-detail__property-value'>{value}</p>
-                                                    </div>
-                                                )
-                                        ))}
-                                    </div>
-                                    
-                                    <div className='v-company-detail__line'></div>
-                                </div>
+                                        <div className="v-company-detail__company-info-container">
+                                            <p className='v-company-detail__identification-title'>
+                                                Company characteristics
+                                            </p>
 
-                                <div className="v-company-detail__company-info-container">
-                                    <p className='v-company-detail__identification-title'>
-                                        Company characteristics
-                                    </p>
+                                            <div className="v-company-detail__properties u-flex">
+                                                {cleanCompanyData &&
+                                                    Object.entries(cleanCompanyData)
+                                                        .filter(([key]) => !['dossier_number', 'rsin_number', 'establishment_number'].includes(key))
+                                                        .slice(0, visibleItemCount)
+                                                        .map(([key, value]) => (
+                                                            (typeof value === 'string' || typeof value === 'number') && (value !== null && value !== '') && (
+                                                                <div key={key} className="v-company-detail__property">
+                                                                    <p className='v-company-detail__property-title'>{formatKey(key)}</p>
+                                                                    <p className='v-company-detail__property-value'>{value}</p>
+                                                                </div>
+                                                            )
+                                                    ))}
+                                            </div>
+                                        </div>
+                                    </React.Fragment>
+                                )}
 
-                                    <div className="v-company-detail__properties u-flex">
-                                        {cleanCompanyData &&
-                                            Object.entries(cleanCompanyData)
-                                                .filter(([key]) => !['dossier_number', 'rsin_number', 'establishment_number'].includes(key))
-                                                .slice(0, visibleItemCount)
-                                                .map(([key, value]) => (
-                                                    (typeof value === 'string' || typeof value === 'number') && (value !== null && value !== '') && (
-                                                        <div key={key} className="v-company-detail__property">
-                                                            <p className='v-company-detail__property-title'>{formatKey(key)}</p>
-                                                            <p className='v-company-detail__property-value'>{value}</p>
-                                                        </div>
-                                                    )
-                                            ))}
-                                    </div>
-                                </div>
-                            </React.Fragment>
-                        )}
-
-                        {showSeeMoreButton && (
-                            <Button
-                                title="See more"
-                                style="tertiary"
-                                icon="ArrowDown"
-                                animation="move-down"
-                                onClick={handleSeeMore}
-                            />
-                        )}
-
-                      </div>
-
+                                {showSeeMoreButton && (
+                                    <Button
+                                        title="See more"
+                                        style="tertiary"
+                                        icon="ArrowDown"
+                                        animation="move-down"
+                                        onClick={handleSeeMore}
+                                    />
+                                )}
+                            </div>
+                        </React.Fragment>
+                    )}
                   </div>
-
                 </div>
             </DefaultLayout>
         </div>
