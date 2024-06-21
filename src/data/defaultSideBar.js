@@ -6,6 +6,7 @@ import CogIcon from '../icons/cog.svg';
 import LogoutIcon from '../icons/logout.svg';
 import HomeIcon from '../icons/home.svg';
 import SyncIcon from '../icons/sync.svg';
+import WorkflowIcon from '../icons/direction.svg';
 
 const sidebarData = [
     {
@@ -19,7 +20,8 @@ const sidebarData = [
             { icon: DownloadIcon, title: 'Enrich audience', link: '/enrich-audience' },
             { icon: LightbulbIcon, title: 'Enrich company', link: '/enrich-company' },
             { icon: SyncIcon, title: 'Sync company', link: '/sync-company' },
-            { icon: SearchIcon, title: 'Search company', link: '/search-company' }
+            { icon: SearchIcon, title: 'Search company', link: '/search-company' },
+            { icon: WorkflowIcon, title: 'Workflow action', link: '/workflow' },
         ],
     },
     {

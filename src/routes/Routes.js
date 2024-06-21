@@ -18,6 +18,7 @@ import Users from '../views/Users';
 import UserDetail from '../views/UserDetail';
 import UserCreate from '../views/UserCreate';
 import SyncCompany from '../views/SyncCompany';
+import Workflow from '../views/Workflow';
 
 const AppRoutes = () => {
   return (
@@ -41,6 +42,7 @@ const AppRoutes = () => {
         <Route path="/users" element={<Users/>} />
         <Route path="/users/:userId" element={<UserDetail/>} />
         <Route path="/users/create" element={<UserCreate/>} />
+        <Route path="/workflow" element={<Workflow/>} />
       </Routes>
     </Router>
   );
