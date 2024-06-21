@@ -2,10 +2,10 @@ import DownloadIcon from '../icons/download.svg';
 import LightbulbIcon from '../icons/lightbulb.svg';
 import SearchIcon from '../icons/search-black.svg';
 import ChartIcon from '../icons/chart-bar.svg';
-// import SupportIcon from '../icons/support.svg';
 import CogIcon from '../icons/cog.svg';
 import LogoutIcon from '../icons/logout.svg';
 import HomeIcon from '../icons/home.svg';
+import SyncIcon from '../icons/sync.svg';
 
 const sidebarData = [
     {
@@ -18,6 +18,7 @@ const sidebarData = [
         items: [
             { icon: DownloadIcon, title: 'Enrich audience', link: '/enrich-audience' },
             { icon: LightbulbIcon, title: 'Enrich company', link: '/enrich-company' },
+            { icon: SyncIcon, title: 'Sync company', link: '/sync-company' },
             { icon: SearchIcon, title: 'Search company', link: '/search-company' }
         ],
     },
@@ -29,7 +30,6 @@ const sidebarData = [
     },
     {
         items: [
-            // { icon: SupportIcon, title: 'Support', link: '' },
             { icon: CogIcon, title: 'Settings', link: '/profile' },
             { icon: LogoutIcon, title: 'Logout', link: '/', onClick: 'logout' },
         ],

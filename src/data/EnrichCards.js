@@ -7,7 +7,7 @@ const enrichCardsData = [
     {
       step: 'step 2',
       title: 'Locate dossier number',
-      text: 'This is located in the company\'s properties. If it\'s not immediately visible, check the  settings or consult an administrator.',
+      text: 'This is located in the company\'s properties. If it\'s not immediately visible, check the settings or consult an administrator.',
     },
     {
       step: 'step 3',

@@ -1,0 +1,40 @@
+.v-sync-company {
+    &__background {
+        max-height: 375px;
+        height: 375px;
+        background-image: url('../../images/Sync-company-background-image.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: 100% 35%;
+    }
+
+    &__breadcrumb-container {
+        margin-bottom: 47px;
+    }
+
+    &__content-wrapper {
+        padding: 25px 61px 51px 61px; 
+    }
+
+    &__content-inner {
+        max-width: 560px;
+    }
+
+    &__content-title {
+        font-size: rem-calc(30);
+        font-weight: 500;
+        margin-bottom: rem-calc(6);
+        margin-top: rem-calc(0);
+        
+    }
+
+    &__content-text {
+        font-size: 16px;
+        font-weight: 300;
+    }
+
+    &__cards-container {
+        margin-top: rem-calc(50);
+        margin-bottom: rem-calc(25);
+    }
+}

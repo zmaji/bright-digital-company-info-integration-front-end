@@ -17,6 +17,7 @@ import Admin from '../views/Admin';
 import Users from '../views/Users';
 import UserDetail from '../views/UserDetail';
 import UserCreate from '../views/UserCreate';
+import SyncCompany from '../views/SyncCompany';
 
 const AppRoutes = () => {
   return (
@@ -29,6 +30,7 @@ const AppRoutes = () => {
         <Route path="/overview" element={<DashboardOverview />} />
         <Route path="/enrich-audience" element={<InstallScript/>} />
         <Route path="/enrich-company" element={<EnrichData/>} />
+        <Route path="/sync-company" element={<SyncCompany/>} />
         <Route path="/search-company" element={<SearchCompany/>} />
         <Route path="/search-company/search-results" element={<Companies/>} />
         <Route path="/search-company/search-results/company-detail" element={<CompanyDetail/>} />
@@ -39,7 +41,6 @@ const AppRoutes = () => {
         <Route path="/users" element={<Users/>} />
         <Route path="/users/:userId" element={<UserDetail/>} />
         <Route path="/users/create" element={<UserCreate/>} />
-        {/* <Route path="*" element={<NotFound />} /> */}
       </Routes>
     </Router>
   );
